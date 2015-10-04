@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.YlbzMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Ylbz" >
+    <id column="ylbz_id" property="ylbzId" jdbcType="INTEGER" />
+    <result column="ylbz_studId" property="ylbzStudid" jdbcType="INTEGER" />
+    <result column="ylbz_applyTime" property="ylbzApplytime" jdbcType="TIMESTAMP" />
+    <result column="ylbz_inTime" property="ylbzIntime" jdbcType="VARCHAR" />
+    <result column="ylbz_outTime" property="ylbzOuttime" jdbcType="VARCHAR" />
+    <result column="ylbz_inovice" property="ylbzInovice" jdbcType="DOUBLE" />
+    <result column="ylbz_SSSum" property="ylbzSssum" jdbcType="DOUBLE" />
+    <result column="ylbz_CISum" property="ylbzCisum" jdbcType="DOUBLE" />
+    <result column="ylbz_applyType" property="ylbzApplytype" jdbcType="VARCHAR" />
+    <result column="ylbz_money" property="ylbzMoney" jdbcType="VARCHAR" />
+    <result column="ylbz_rescueMoney" property="ylbzRescuemoney" jdbcType="DOUBLE" />
+    <result column="ylbz_safeType" property="ylbzSafetype" jdbcType="VARCHAR" />
+    <result column="ylbz_special" property="ylbzSpecial" jdbcType="INTEGER" />
+    <result column="ylbz_line" property="ylbzLine" jdbcType="DOUBLE" />
+    <result column="ylbz_selfMoney" property="ylbzSelfmoney" jdbcType="DOUBLE" />
+    <result column="ylbz_wipeMoney" property="ylbzWipemoney" jdbcType="DOUBLE" />
+    <result column="ylbz_unwipeMoney" property="ylbzUnwipemoney" jdbcType="DOUBLE" />
+    <result column="ylbz_wsflId" property="ylbzWsflid" jdbcType="INTEGER" />
+    <result column="ylbz_workId" property="ylbzWorkid" jdbcType="INTEGER" />
+    <result column="ylbz_annual" property="ylbzAnnual" jdbcType="VARCHAR" />
+    <result column="ylbz_state" property="ylbzState" jdbcType="INTEGER" />
+    <result column="ylbz_reimbursable" property="ylbzReimbursable" jdbcType="DOUBLE" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="swust.edu.cn.zzxt.model.YlbzWithBLOBs" extends="BaseResultMap" >
+    <result column="ylbz_diagnosis" property="ylbzDiagnosis" jdbcType="LONGVARCHAR" />
+    <result column="ylbz_academyOpinion" property="ylbzAcademyopinion" jdbcType="LONGVARCHAR" />
+    <result column="ylbz_note" property="ylbzNote" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ylbz_id, ylbz_studId, ylbz_applyTime, ylbz_inTime, ylbz_outTime, ylbz_inovice, ylbz_SSSum, 
+    ylbz_CISum, ylbz_applyType, ylbz_money, ylbz_rescueMoney, ylbz_safeType, ylbz_special, 
+    ylbz_line, ylbz_selfMoney, ylbz_wipeMoney, ylbz_unwipeMoney, ylbz_wsflId, ylbz_workId, 
+    ylbz_annual, ylbz_state,ylbz_reimbursable
+  </sql>
+  <sql id="Blob_Column_List" >
+    ylbz_diagnosis, ylbz_academyOpinion, ylbz_note
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ylbz
+    where ylbz_id = #{ylbzId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ylbz
+    where ylbz_id = #{ylbzId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.YlbzWithBLOBs" >
+    insert into ylbz (ylbz_id, ylbz_studId, ylbz_applyTime, 
+      ylbz_inTime, ylbz_outTime, ylbz_inovice, 
+      ylbz_SSSum, ylbz_CISum, ylbz_applyType, 
+      ylbz_money, ylbz_rescueMoney, ylbz_safeType, 
+      ylbz_special, ylbz_line, ylbz_selfMoney, 
+      ylbz_wipeMoney, ylbz_unwipeMoney, ylbz_wsflId, 
+      ylbz_workId, ylbz_annual, ylbz_state, 
+      ylbz_diagnosis, ylbz_academyOpinion, 
+      ylbz_note,ylbz_reimbursable)
+    values (#{ylbzId,jdbcType=INTEGER}, #{ylbzStudid,jdbcType=INTEGER}, #{ylbzApplytime,jdbcType=TIMESTAMP}, 
+      #{ylbzIntime,jdbcType=VARCHAR}, #{ylbzOuttime,jdbcType=VARCHAR}, #{ylbzInovice,jdbcType=DOUBLE}, 
+      #{ylbzSssum,jdbcType=DOUBLE}, #{ylbzCisum,jdbcType=DOUBLE}, #{ylbzApplytype,jdbcType=VARCHAR}, 
+      #{ylbzMoney,jdbcType=VARCHAR}, #{ylbzRescuemoney,jdbcType=DOUBLE}, #{ylbzSafetype,jdbcType=VARCHAR}, 
+      #{ylbzSpecial,jdbcType=INTEGER}, #{ylbzLine,jdbcType=DOUBLE}, #{ylbzSelfmoney,jdbcType=DOUBLE}, 
+      #{ylbzWipemoney,jdbcType=DOUBLE}, #{ylbzUnwipemoney,jdbcType=DOUBLE}, #{ylbzWsflid,jdbcType=INTEGER}, 
+      #{ylbzWorkid,jdbcType=INTEGER}, #{ylbzAnnual,jdbcType=VARCHAR}, #{ylbzState,jdbcType=INTEGER}, 
+      #{ylbzDiagnosis,jdbcType=LONGVARCHAR}, #{ylbzAcademyopinion,jdbcType=LONGVARCHAR}, 
+      #{ylbzNote,jdbcType=LONGVARCHAR},#{ylbzReimbursable,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.YlbzWithBLOBs" >
+    insert into ylbz
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ylbzId != null" >
+        ylbz_id,
+      </if>
+      <if test="ylbzStudid != null" >
+        ylbz_studId,
+      </if>
+      <if test="ylbzApplytime != null" >
+        ylbz_applyTime,
+      </if>
+      <if test="ylbzIntime != null" >
+        ylbz_inTime,
+      </if>
+      <if test="ylbzOuttime != null" >
+        ylbz_outTime,
+      </if>
+      <if test="ylbzInovice != null" >
+        ylbz_inovice,
+      </if>
+      <if test="ylbzSssum != null" >
+        ylbz_SSSum,
+      </if>
+      <if test="ylbzCisum != null" >
+        ylbz_CISum,
+      </if>
+      <if test="ylbzApplytype != null" >
+        ylbz_applyType,
+      </if>
+      <if test="ylbzMoney != null" >
+        ylbz_money,
+      </if>
+      <if test="ylbzRescuemoney != null" >
+        ylbz_rescueMoney,
+      </if>
+      <if test="ylbzSafetype != null" >
+        ylbz_safeType,
+      </if>
+      <if test="ylbzSpecial != null" >
+        ylbz_special,
+      </if>
+      <if test="ylbzLine != null" >
+        ylbz_line,
+      </if>
+      <if test="ylbzSelfmoney != null" >
+        ylbz_selfMoney,
+      </if>
+      <if test="ylbzWipemoney != null" >
+        ylbz_wipeMoney,
+      </if>
+      <if test="ylbzUnwipemoney != null" >
+        ylbz_unwipeMoney,
+      </if>
+      <if test="ylbzWsflid != null" >
+        ylbz_wsflId,
+      </if>
+      <if test="ylbzWorkid != null" >
+        ylbz_workId,
+      </if>
+      <if test="ylbzAnnual != null" >
+        ylbz_annual,
+      </if>
+      <if test="ylbzState != null" >
+        ylbz_state,
+      </if>
+      <if test="ylbzDiagnosis != null" >
+        ylbz_diagnosis,
+      </if>
+      <if test="ylbzAcademyopinion != null" >
+        ylbz_academyOpinion,
+      </if>
+      <if test="ylbzNote != null" >
+        ylbz_note,
+      </if>
+      <if test="ylbzReimbursable != null" >
+        ylbz_reimbursable,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ylbzId != null" >
+        #{ylbzId,jdbcType=INTEGER},
+      </if>
+      <if test="ylbzStudid != null" >
+        #{ylbzStudid,jdbcType=INTEGER},
+      </if>
+      <if test="ylbzApplytime != null" >
+        #{ylbzApplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ylbzIntime != null" >
+        #{ylbzIntime,jdbcType=VARCHAR},
+      </if>
+      <if test="ylbzOuttime != null" >
+        #{ylbzOuttime,jdbcType=VARCHAR},
+      </if>
+      <if test="ylbzInovice != null" >
+        #{ylbzInovice,jdbcType=DOUBLE},
+      </if>
+      <if test="ylbzSssum != null" >
+        #{ylbzSssum,jdbcType=DOUBLE},
+      </if>
+      <if test="ylbzCisum != null" >
+        #{ylbzCisum,jdbcType=DOUBLE},
+      </if>
+      <if test="ylbzApplytype != null" >
+        #{ylbzApplytype,jdbcType=VARCHAR},
+      </if>
+      <if test="ylbzMoney != null" >
+        #{ylbzMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="ylbzRescuemoney != null" >
+        #{ylbzRescuemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="ylbzSafetype != null" >
+        #{ylbzSafetype,jdbcType=VARCHAR},
+      </if>
+      <if test="ylbzSpecial != null" >
+        #{ylbzSpecial,jdbcType=INTEGER},
+      </if>
+      <if test="ylbzLine != null" >
+        #{ylbzLine,jdbcType=DOUBLE},
+      </if>
+      <if test="ylbzSelfmoney != null" >
+        #{ylbzSelfmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="ylbzWipemoney != null" >
+        #{ylbzWipemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="ylbzUnwipemoney != null" >
+        #{ylbzUnwipemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="ylbzWsflid != null" >
+        #{ylbzWsflid,jdbcType=INTEGER},
+      </if>
+      <if test="ylbzWorkid != null" >
+        #{ylbzWorkid,jdbcType=INTEGER},
+      </if>
+      <if test="ylbzAnnual != null" >
+        #{ylbzAnnual,jdbcType=VARCHAR},
+      </if>
+      <if test="ylbzState != null" >
+        #{ylbzState,jdbcType=INTEGER},
+      </if>
+      <if test="ylbzDiagnosis != null" >
+        #{ylbzDiagnosis,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ylbzAcademyopinion != null" >
+        #{ylbzAcademyopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ylbzNote != null" >
+        #{ylbzNote,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ylbzReimbursable != null" >
+        #{ylbzReimbursable,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.YlbzWithBLOBs" >
+    update ylbz
+    <set >
+      <if test="ylbzStudid != null" >
+        ylbz_studId = #{ylbzStudid,jdbcType=INTEGER},
+      </if>
+      <if test="ylbzApplytime != null" >
+        ylbz_applyTime = #{ylbzApplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ylbzIntime != null" >
+        ylbz_inTime = #{ylbzIntime,jdbcType=VARCHAR},
+      </if>
+      <if test="ylbzOuttime != null" >
+        ylbz_outTime = #{ylbzOuttime,jdbcType=VARCHAR},
+      </if>
+      <if test="ylbzInovice != null" >
+        ylbz_inovice = #{ylbzInovice,jdbcType=DOUBLE},
+      </if>
+      <if test="ylbzSssum != null" >
+        ylbz_SSSum = #{ylbzSssum,jdbcType=DOUBLE},
+      </if>
+      <if test="ylbzCisum != null" >
+        ylbz_CISum = #{ylbzCisum,jdbcType=DOUBLE},
+      </if>
+      <if test="ylbzApplytype != null" >
+        ylbz_applyType = #{ylbzApplytype,jdbcType=VARCHAR},
+      </if>
+      <if test="ylbzMoney != null" >
+        ylbz_money = #{ylbzMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="ylbzRescuemoney != null" >
+        ylbz_rescueMoney = #{ylbzRescuemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="ylbzSafetype != null" >
+        ylbz_safeType = #{ylbzSafetype,jdbcType=VARCHAR},
+      </if>
+      <if test="ylbzSpecial != null" >
+        ylbz_special = #{ylbzSpecial,jdbcType=INTEGER},
+      </if>
+      <if test="ylbzLine != null" >
+        ylbz_line = #{ylbzLine,jdbcType=DOUBLE},
+      </if>
+      <if test="ylbzSelfmoney != null" >
+        ylbz_selfMoney = #{ylbzSelfmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="ylbzWipemoney != null" >
+        ylbz_wipeMoney = #{ylbzWipemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="ylbzUnwipemoney != null" >
+        ylbz_unwipeMoney = #{ylbzUnwipemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="ylbzWsflid != null" >
+        ylbz_wsflId = #{ylbzWsflid,jdbcType=INTEGER},
+      </if>
+      <if test="ylbzWorkid != null" >
+        ylbz_workId = #{ylbzWorkid,jdbcType=INTEGER},
+      </if>
+      <if test="ylbzAnnual != null" >
+        ylbz_annual = #{ylbzAnnual,jdbcType=VARCHAR},
+      </if>
+      <if test="ylbzState != null" >
+        ylbz_state = #{ylbzState,jdbcType=INTEGER},
+      </if>
+      <if test="ylbzDiagnosis != null" >
+        ylbz_diagnosis = #{ylbzDiagnosis,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ylbzAcademyopinion != null" >
+        ylbz_academyOpinion = #{ylbzAcademyopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ylbzNote != null" >
+        ylbz_note = #{ylbzNote,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ylbzReimbursable != null" >
+        ylbz_reimbursable = #{ylbzReimbursable,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where ylbz_id = #{ylbzId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="swust.edu.cn.zzxt.model.YlbzWithBLOBs" >
+    update ylbz
+    set ylbz_studId = #{ylbzStudid,jdbcType=INTEGER},
+      ylbz_applyTime = #{ylbzApplytime,jdbcType=TIMESTAMP},
+      ylbz_inTime = #{ylbzIntime,jdbcType=VARCHAR},
+      ylbz_outTime = #{ylbzOuttime,jdbcType=VARCHAR},
+      ylbz_inovice = #{ylbzInovice,jdbcType=DOUBLE},
+      ylbz_SSSum = #{ylbzSssum,jdbcType=DOUBLE},
+      ylbz_CISum = #{ylbzCisum,jdbcType=DOUBLE},
+      ylbz_applyType = #{ylbzApplytype,jdbcType=VARCHAR},
+      ylbz_money = #{ylbzMoney,jdbcType=VARCHAR},
+      ylbz_rescueMoney = #{ylbzRescuemoney,jdbcType=DOUBLE},
+      ylbz_safeType = #{ylbzSafetype,jdbcType=VARCHAR},
+      ylbz_special = #{ylbzSpecial,jdbcType=INTEGER},
+      ylbz_line = #{ylbzLine,jdbcType=DOUBLE},
+      ylbz_selfMoney = #{ylbzSelfmoney,jdbcType=DOUBLE},
+      ylbz_wipeMoney = #{ylbzWipemoney,jdbcType=DOUBLE},
+      ylbz_unwipeMoney = #{ylbzUnwipemoney,jdbcType=DOUBLE},
+      ylbz_wsflId = #{ylbzWsflid,jdbcType=INTEGER},
+      ylbz_workId = #{ylbzWorkid,jdbcType=INTEGER},
+      ylbz_annual = #{ylbzAnnual,jdbcType=VARCHAR},
+      ylbz_state = #{ylbzState,jdbcType=INTEGER},
+      ylbz_diagnosis = #{ylbzDiagnosis,jdbcType=LONGVARCHAR},
+      ylbz_academyOpinion = #{ylbzAcademyopinion,jdbcType=LONGVARCHAR},
+      ylbz_note = #{ylbzNote,jdbcType=LONGVARCHAR},
+      ylbz_reimbursable = #{ylbzReimbursable,jdbcType=DOUBLE}
+    where ylbz_id = #{ylbzId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Ylbz" >
+    update ylbz
+    set ylbz_studId = #{ylbzStudid,jdbcType=INTEGER},
+      ylbz_applyTime = #{ylbzApplytime,jdbcType=TIMESTAMP},
+      ylbz_inTime = #{ylbzIntime,jdbcType=VARCHAR},
+      ylbz_outTime = #{ylbzOuttime,jdbcType=VARCHAR},
+      ylbz_inovice = #{ylbzInovice,jdbcType=DOUBLE},
+      ylbz_SSSum = #{ylbzSssum,jdbcType=DOUBLE},
+      ylbz_CISum = #{ylbzCisum,jdbcType=DOUBLE},
+      ylbz_applyType = #{ylbzApplytype,jdbcType=VARCHAR},
+      ylbz_money = #{ylbzMoney,jdbcType=VARCHAR},
+      ylbz_rescueMoney = #{ylbzRescuemoney,jdbcType=DOUBLE},
+      ylbz_safeType = #{ylbzSafetype,jdbcType=VARCHAR},
+      ylbz_special = #{ylbzSpecial,jdbcType=INTEGER},
+      ylbz_line = #{ylbzLine,jdbcType=DOUBLE},
+      ylbz_selfMoney = #{ylbzSelfmoney,jdbcType=DOUBLE},
+      ylbz_wipeMoney = #{ylbzWipemoney,jdbcType=DOUBLE},
+      ylbz_unwipeMoney = #{ylbzUnwipemoney,jdbcType=DOUBLE},
+      ylbz_wsflId = #{ylbzWsflid,jdbcType=INTEGER},
+      ylbz_workId = #{ylbzWorkid,jdbcType=INTEGER},
+      ylbz_annual = #{ylbzAnnual,jdbcType=VARCHAR},
+      ylbz_state = #{ylbzState,jdbcType=INTEGER}
+      ylbz_reimbursable = #{ylbzReimbursable,jdbcType=DOUBLE}
+    where ylbz_id = #{ylbzId,jdbcType=INTEGER}
+  </update>
+<!--   按学生id查询 -->
+  <select id="selectByStudId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ylbz
+    where ylbz_studId = #{studId,jdbcType=INTEGER}
+  </select>
+ <!--  查询所有医疗补助信息 -->
+  <select id="selectAllYlbzbasiinfo" resultType="swust.edu.cn.zzxt.selfmodel.Ylbzbasicinfo">
+    select
+    	m.stud_id as studentId,
+    	m.stud_name as studentName,
+    	m.stud_number as studentNumber,
+    	n.class_name as className,
+    	n.class_shortname as classShortName,
+    	o.majr_name as majrName,
+    	o.majr_shortname as majrShortName,
+    	p.inst_name as instName,
+    	p.inst_shortname as instShortName,
+    	q.ylbz_id as ylbzId,
+    	q.ylbz_annual as annual,
+    	q.ylbz_applyType as applyType,
+    	q.ylbz_applyTime as applyTime,
+    	q.ylbz_state as state
+    from
+    	
+    	student m,
+    	studentclass n,
+    	major o,
+    	institution p,
+    	ylbz q
+    	where p.inst_id = o.majr_instId
+	    and o.majr_id = n.class_majrId
+	    and n.class_id = m.stud_classId
+	    and m.stud_id = q.ylbz_studId
+  </select>
+  <!--  按学生id查询医疗补助信息 -->
+  <select id="selectYlbzbasiinfoBystudId" resultType="swust.edu.cn.zzxt.selfmodel.Ylbzbasicinfo" parameterType="java.lang.Integer">
+    select
+    	m.stud_id as studentId,
+    	m.stud_name as studentName,
+    	m.stud_number as studentNumber,
+    	n.class_name as className,
+    	n.class_shortname as classShortName,
+    	o.majr_name as majrName,
+    	o.majr_shortname as majrShortName,
+    	p.inst_name as instName,
+    	p.inst_shortname as instShortName,
+    	q.ylbz_id as ylbzId,
+    	q.ylbz_annual as annual,
+    	q.ylbz_applyType as applyType,
+    	q.ylbz_applyTime as applyTime,
+    	q.ylbz_state as state
+    from
+    	student m,
+    	studentclass n,
+    	major o,
+    	institution p,
+    	ylbz q
+    	where p.inst_id = o.majr_instId
+	    and o.majr_id = n.class_majrId
+	    and n.class_id = m.stud_classId
+	    and m.stud_id = q.ylbz_studId
+	    and m.stud_id = #{studId,jdbcType=INTEGER}
+  </select>
+  <!--  按班级id查询医疗补助信息 -->
+  <select id="selectYlbzbasiinfoByclassId" resultType="swust.edu.cn.zzxt.selfmodel.Ylbzbasicinfo" parameterType="java.lang.Integer">
+    select
+    	m.stud_id as studentId,
+    	m.stud_name as studentName,
+    	m.stud_number as studentNumber,
+    	n.class_name as className,
+    	n.class_shortname as classShortName,
+    	o.majr_name as majrName,
+    	o.majr_shortname as majrShortName,
+    	p.inst_name as instName,
+    	p.inst_shortname as instShortName,
+    	q.ylbz_id as ylbzId,
+    	q.ylbz_annual as annual,
+    	q.ylbz_applyType as applyType,
+    	q.ylbz_applyTime as applyTime,
+    	q.ylbz_state as state
+    from
+    	student m,
+    	studentclass n,
+    	major o,
+    	institution p,
+    	ylbz q
+    	where p.inst_id = o.majr_instId
+	    and o.majr_id = n.class_majrId
+	    and n.class_id = m.stud_classId
+	    and m.stud_id = q.ylbz_studId
+	    and n.class_id = #{classId,jdbcType=INTEGER}
+  </select>
+  <!--  按专业id查询医疗补助信息 -->
+  <select id="selectYlbzbasiinfoBymajrId" resultType="swust.edu.cn.zzxt.selfmodel.Ylbzbasicinfo" parameterType="java.lang.Integer">
+    select
+    	m.stud_id as studentId,
+    	m.stud_name as studentName,
+    	m.stud_number as studentNumber,
+    	n.class_name as className,
+    	n.class_shortname as classShortName,
+    	o.majr_name as majrName,
+    	o.majr_shortname as majrShortName,
+    	p.inst_name as instName,
+    	p.inst_shortname as instShortName,
+    	q.ylbz_id as ylbzId,
+    	q.ylbz_annual as annual,
+    	q.ylbz_applyType as applyType,
+    	q.ylbz_applyTime as applyTime,
+    	q.ylbz_state as state
+    from
+    	student m,
+    	studentclass n,
+    	major o,
+    	institution p,
+    	ylbz q
+    	where p.inst_id = o.majr_instId
+	    and o.majr_id = n.class_majrId
+	    and n.class_id = m.stud_classId
+	    and m.stud_id = q.ylbz_studId
+	    and o.majr_id = #{majrId,jdbcType=INTEGER}
+  </select>
+  <!--  按学院id查询医疗补助信息 -->
+  <select id="selectYlbzbasiinfoByinstId" resultType="swust.edu.cn.zzxt.selfmodel.Ylbzbasicinfo" parameterType="java.lang.Integer">
+    select
+    	m.stud_id as studentId,
+    	m.stud_name as studentName,
+    	m.stud_number as studentNumber,
+    	n.class_name as className,
+    	n.class_shortname as classShortName,
+    	o.majr_name as majrName,
+    	o.majr_shortname as majrShortName,
+    	p.inst_name as instName,
+    	p.inst_shortname as instShortName,
+    	q.ylbz_id as ylbzId,
+    	q.ylbz_annual as annual,
+    	q.ylbz_applyType as applyType,
+    	q.ylbz_applyTime as applyTime,
+    	q.ylbz_state as state
+    from
+    	student m,
+    	studentclass n,
+    	major o,
+    	institution p,
+    	ylbz q
+    	where p.inst_id = o.majr_instId
+	    and o.majr_id = n.class_majrId
+	    and n.class_id = m.stud_classId
+	    and m.stud_id = q.ylbz_studId
+	    and p.inst_id = #{instId,jdbcType=INTEGER}
+  </select>
+</mapper>

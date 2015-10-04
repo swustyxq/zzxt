@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="../../../images/favicon.png">
+
+<title>西南科技大学资助系统</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../../../css/bootstrap.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="../../../css/bootstrap-theme.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="../../../css/theme.css" rel="stylesheet">
+<link href="../../../css/docs.css" rel="stylesheet">
+<link href="../../../css/bootstrap.css" rel="stylesheet">
+<link href="../../../css/github.min.css" rel="stylesheet">
+<link href="../../../css/bootstrap.min.css" rel="stylesheet">
+
+<script src="../../../javascript/jquery.min.js"></script>
+<script src="../../../javascript/bootstrap.min.js"></script>
+<script src="../../../javascript/holder.min.js"></script>
+</head>
+
+<body>
+
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">西南科技大学学生资助系统</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><span id="current_user">辅导员用户</span><b
+							class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li class="divider"></li>
+							<li class="dropdown-header">基本功能</li>
+							<li><a href="help.html">系统帮助</a></li>
+							<li><a href="changePassword.html">修改密码</a></li>
+							<li><a href="login.html">退出</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+	<div class="container theme-showcase">
+		<div class="col-md-12">
+			<div class="col-md-12">
+
+				<div id="location" class="page-header">
+					<small>当前位置导航：&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">首页</a>&gt;<a
+						href="#">使用说明</a></small>
+				</div>
+			</div>
+
+
+			<!-- 左侧导航栏    -->
+			<div class="col-md-3">
+				<div class="bs-example">
+					<div class="panel-group" id="accordion">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseOne">大学生城镇医疗保险</a>
+								</h4>
+							</div>
+							<div id="collapseOne" class="panel-collapse collapse in">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+								        <li><a href="insSeeCzIntroduction.html">查看保险介绍</a></li>
+								        <li><a href="insSeeCzBuy.html">保险购买情况</a></li>
+								        <li><a href="insConfirmCzBuy.html">确认不购买学生的信息</a></li>
+								    </ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseTwo">学生平安保险</a>
+								</h4>
+							</div>
+							<div id="collapseTwo" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+								        <li><a href="../../xspabx/instructor/insSeeXpIntroduction.html">查看保险介绍</a></li>
+								        <li><a href="../../xspabx/instructor/insSeeXpBuy.html">保险购买情况</a></li>
+								    </ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseThree">学费奖补</a>
+								</h4>
+							</div>
+							<div id="collapseThree" class="panel-collapse collapse">
+								<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+								    <li><a href="../../xfjb/instructor/insSeeJbIntroduction.html">查看学费奖补公告</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseFour">绿色通道</a>
+								</h4>
+							</div>
+							<div id="collapseFour" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+									    <li><a href="../../lstd/instructor/insSeeLsIntroduction.html">查看绿色通道情况</a></li>
+									    <li><a href="../../lstd/instructor/insExportLsDetail.html">录入学生绿色通道信息</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseFive">贫困生管理</a>
+								</h4>
+							</div>
+							<div id="collapseFive" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+									    <li><a href="../../pksgl/instructor/insAuditPkApplication.html">审核贫困生申请</a></li>
+									    <li><a href="../../pksgl/instructor/insSeePkIntroduction.html">查看贫困生情况</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseSix">国家奖学金</a>
+								</h4>
+							</div>
+							<div id="collapseSix" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+									    <li><a href="../../gjjxj/instructor/insAuditGjApplication.html">审核国家奖学金申请</a></li>
+									    <li><a href="../../gjjxj/instructor/insSeeGjApplication1.html">查看国家奖学金申请情况</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseSeven">社会奖学金</a>
+								</h4>
+							</div>
+							<div id="collapseSeven" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+									    <li><a href="../../shjxj/instructor/insAuditSjApplication.html">审核社会奖学金申请</a></li>
+									    <li><a href="../../shjxj/instructor/insSeeSjApplication1.html">查看社会奖学金申请情况</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseEight">国家励志奖学金</a>
+								</h4>
+							</div>
+							<div id="collapseEight" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+									    <li><a href="../../gjlzjxj/instructor/insAuditLzApplication.html">审核国家励志奖学金申请</a></li>
+									    <li><a href="../../gjlzjxj/instructor/insSeeLzApplication1.html">查看国家励志奖学金申请情况</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseNine">国家助学金</a>
+								</h4>
+							</div>
+							<div id="collapseNine" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+									    <li><a href="../../gjzxj/instructor/insAuditZxApplication.html">审核国家助学金申请</a></li>
+									    <li><a href="../../gjzxj/instructor/insSeeZxApplication1.html">查看国家助学金申请情况</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseTen">行政部门勤工助学岗位申请</a>
+								</h4>
+							</div>
+							<div id="collapseTen" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+									    <li><a href="../../qgzx/instructor/insSeeQgIntroduction.html">查看勤工助学岗位</a></li>
+									    <li><a href="../../qgzx/instructor/insSeeStuQgIntroduction.html">查看学生勤工助学情况</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseEleven">大学生医疗补助</a>
+								</h4>
+							</div>
+							<div id="collapseEleven" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+									    <li><a href="../../ylbz/instructor/insSeeYlIntroduction.html">查看大学生医疗补助介绍</a></li>
+										<li><a href="../../ylbz/instructor/insSeeYlDetail.html">查看学生医疗补助情况</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div>
+				  <div class="alert alert-success fade in">
+			        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+			        <strong>系统截止时间：2014年8月15日23点59分59秒</strong> 
+			        <br />请在系统截止时间之前完成不购买保险同学信息的确认！
+			      </div>
+				</div>
+				<div style="text-align:center">
+					<div>
+						<br />
+						<form class="form-horizontal" role="form">
+						  <div class="form-group">
+						    <label for="major" class="col-sm-1 control-label">专业:</label>
+						    <div class="col-sm-2">
+						      <select class="form-control" id="major">
+						      	  <option>所有</option>
+						          <option>计算机</option>
+						          <option>信息安全</option>
+						          <option>软件</option>
+						      </select>
+						    </div>
+						    <label for="year" class="col-sm-1 control-label">班级:</label>
+						    <div class="col-sm-2">
+						      <select class="form-control" id="year">
+						          <option>所有</option>
+						          <option>计算机1001</option>
+						      </select>
+						    </div>
+						    <button type="button" class="btn btn-primary">筛选查询</button>
+						  </div>
+						</form>
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label for="studentId" class="col-sm-3 control-label">按学号进行查询:</label>
+							    <div class="col-sm-3">
+							      <input type="text" class="form-control" id="studentId" placeholder="请输入学生学号">
+								</div>
+								<button type="button" class="btn btn-success">按学生学号查询</button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div>
+					<br /><br />
+					<div style="text-align:center;">
+						<h4>
+							<strong>
+								<span class="glyphicon glyphicon-bookmark"></span>
+								大学生城镇医疗保险未交费同学不购买确认(只显示未交费)：
+							</strong>
+						</h4>
+					</div>
+					<div>
+					  <br />
+					  <button type="button" class="btn btn-info">批量确认不购买</button>
+					  <table class="table table-striped table-bordered">
+				        <thead>
+				          <tr>
+				          	<th><a href="#">全选</a></th>
+				          	<th>专业</th>
+				            <th>班级</th>
+				            <th>学号</th>
+				            <th>姓名</th>
+				            <th>保险年度</th>
+				            <th>状态</th>
+				            <th>确认不购买</th>
+				          </tr>
+				        </thead>
+				        <tbody>
+				          <tr>
+				          	<td><input type="checkbox"></td>
+				          	<td>计算机科学与技术</td>
+				            <td>计算机1101</td>
+				            <td>20111220</td>
+				            <td>张爽</td>
+				            <td>2014</td>
+				            <td>未交费</td>
+				            <td><button type="button" class="btn btn-link">确认不购买</button></td>
+				          </tr>
+				          <tr>
+				          	<td><input type="checkbox"></td>
+				          	<td>计算机科学与技术</td>
+				            <td>计算机1101</td>
+				            <td>20111220</td>
+				            <td>刘宇</td>
+				            <td>2014</td>
+				            <td>未交费</td>
+				            <td><button type="button" class="btn btn-link">确认不购买</button></td>
+				          </tr>
+				          <tr>
+				          	<td><input type="checkbox"></td>
+				          	<td>计算机科学与技术</td>
+				            <td>计算机1101</td>
+				            <td>20111221</td>
+				            <td>李黄飞</td>
+				            <td>2014</td>
+				            <td>未交费</td>
+				            <td><button type="button" class="btn btn-link">确认不购买</button></td>
+				          </tr>
+				          <tr>
+				          	<td><input type="checkbox"></td>
+				          	<td>计算机科学与技术</td>
+				            <td>计算机1101</td>
+				            <td>20111222</td>
+				            <td>胡姬花</td>
+				            <td>2014</td>
+				            <td>未交费</td>
+				            <td><button type="button" class="btn btn-link">确认不购买</button></td>
+				          </tr>
+				          <tr>
+				          	<td><input type="checkbox"></td>
+				          	<td>软件工程</td>
+				            <td>软件1101</td>
+				            <td>20111223</td>
+				            <td>智旭丽</td>
+				            <td>2014</td>
+				            <td>未交费</td>
+				            <td><button type="button" class="btn btn-link">确认不购买</button></td>
+				          </tr>
+				          <tr>
+				          	<td><input type="checkbox"></td>
+				          	<td>软件工程</td>
+				            <td>软件1101</td>
+				            <td>20111224</td>
+				            <td>张华飞</td>
+				            <td>2014</td>
+				            <td>未交费</td>
+				            <td><button type="button" class="btn btn-link">确认不购买</button></td>
+				          </tr>
+				          <tr>
+				          	<td><input type="checkbox"></td>
+				          	<td>软件工程</td>
+				            <td>软件1101</td>
+				            <td>20111225</td>
+				            <td>华龙苑</td>
+				            <td>2014</td>
+				            <td>未交费</td>
+				            <td><button type="button" class="btn btn-link">确认不购买</button></td>
+				          </tr>
+				          <tr>
+				          	<td><input type="checkbox"></td>
+				          	<td>软件工程</td>
+				            <td>软件1101</td>
+				            <td>20111226</td>
+				            <td>吴世飞</td>
+				            <td>2014</td>
+				            <td>未交费</td>
+				            <td><button type="button" class="btn btn-link">确认不购买</button></td>
+				          </tr>
+				        </tbody>
+				      </table>
+					</div>
+					<div style="float:right;">
+					  <ul class="pagination">
+						<li><a href="#">&laquo;</a></li>
+						<li><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#">&raquo;</a></li>
+					  </ul>
+				   </div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<footer class="bs-footer" role="contentinfo">
+		<p class="pull-right">
+			<a href="#">回到页面顶部</a>
+		</p>
+		<div class="container">
+			<p>系统由XXXX公司开发</p>
+			<p>版权所有&nbsp;&nbsp;&nbsp;©2012&nbsp;&nbsp;&nbsp;西南科技大学学生工作部（处）</p>
+			<ul class="footer-links">
+				<li>当前版本：&nbsp;&nbsp; v3.0.3
+					&nbsp;&nbsp;&nbsp;系统更新时间：2014年4月25日&nbsp;&nbsp;&nbsp;&nbsp;西南科技大学学生资助系统</li>
+				<li class="muted">·</li>
+			</ul>
+		</div>
+	</footer>
+</body>
+</html>

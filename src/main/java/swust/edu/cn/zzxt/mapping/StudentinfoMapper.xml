@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.StudentinfoMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Studentinfo" >
+    <id column="stin_id" property="stinId" jdbcType="INTEGER" />
+    <result column="stin_studId" property="stinStudid" jdbcType="INTEGER" />
+    <result column="stin_politicState" property="stinPoliticstate" jdbcType="VARCHAR" />
+    <result column="stin_sex" property="stinSex" jdbcType="VARCHAR" />
+    <result column="stin_phone" property="stinPhone" jdbcType="VARCHAR" />
+    <result column="stin_QQ" property="stinQq" jdbcType="VARCHAR" />
+    <result column="stin_email" property="stinEmail" jdbcType="VARCHAR" />
+    <result column="stin_residence" property="stinResidence" jdbcType="VARCHAR" />
+    <result column="stin_population" property="stinPopulation" jdbcType="INTEGER" />
+    <result column="stin_allIncomes" property="stinAllincomes" jdbcType="DOUBLE" />
+    <result column="stin_incomeType" property="stinIncometype" jdbcType="VARCHAR" />
+    <result column="stin_mailCode" property="stinMailcode" jdbcType="VARCHAR" />
+    <result column="stin_areaIdHome" property="stinAreaidhome" jdbcType="INTEGER" />
+    <result column="stin_areaDeatilHome" property="stinAreadeatilhome" jdbcType="VARCHAR" />
+    <result column="stin_department" property="stinDepartment" jdbcType="VARCHAR" />
+    <result column="stin_bankNumber" property="stinBanknumber" jdbcType="VARCHAR" />
+    <result column="stin_areaIdOrigin" property="stinAreaidorigin" jdbcType="INTEGER" />
+    <result column="stin_areaDetailOrigin" property="stinAreadetailorigin" jdbcType="VARCHAR" />
+    <result column="stin_state" property="stinState" jdbcType="INTEGER" />
+    <result column="stin_isEditable" property="stinIseditable" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    stin_id, stin_studId, stin_politicState, stin_sex, stin_phone, stin_QQ, stin_email, 
+    stin_residence, stin_population, stin_allIncomes, stin_incomeType, stin_mailCode, 
+    stin_areaIdHome, stin_areaDeatilHome, stin_department, stin_bankNumber, stin_areaIdOrigin, 
+    stin_areaDetailOrigin, stin_state, stin_isEditable
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from studentinfo
+    where stin_id = #{stinId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from studentinfo
+    where stin_id = #{stinId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.Studentinfo" >
+    insert into studentinfo (stin_id, stin_studId, stin_politicState, 
+      stin_sex, stin_phone, stin_QQ, 
+      stin_email, stin_residence, stin_population, 
+      stin_allIncomes, stin_incomeType, stin_mailCode, 
+      stin_areaIdHome, stin_areaDeatilHome, stin_department, 
+      stin_bankNumber, stin_areaIdOrigin, stin_areaDetailOrigin, 
+      stin_state, stin_isEditable)
+    values (#{stinId,jdbcType=INTEGER}, #{stinStudid,jdbcType=INTEGER}, #{stinPoliticstate,jdbcType=VARCHAR}, 
+      #{stinSex,jdbcType=VARCHAR}, #{stinPhone,jdbcType=VARCHAR}, #{stinQq,jdbcType=VARCHAR}, 
+      #{stinEmail,jdbcType=VARCHAR}, #{stinResidence,jdbcType=VARCHAR}, #{stinPopulation,jdbcType=INTEGER}, 
+      #{stinAllincomes,jdbcType=DOUBLE}, #{stinIncometype,jdbcType=VARCHAR}, #{stinMailcode,jdbcType=VARCHAR}, 
+      #{stinAreaidhome,jdbcType=INTEGER}, #{stinAreadeatilhome,jdbcType=VARCHAR}, #{stinDepartment,jdbcType=VARCHAR}, 
+      #{stinBanknumber,jdbcType=VARCHAR}, #{stinAreaidorigin,jdbcType=INTEGER}, #{stinAreadetailorigin,jdbcType=VARCHAR}, 
+      #{stinState,jdbcType=INTEGER}, #{stinIseditable,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.Studentinfo" >
+    insert into studentinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stinId != null" >
+        stin_id,
+      </if>
+      <if test="stinStudid != null" >
+        stin_studId,
+      </if>
+      <if test="stinPoliticstate != null" >
+        stin_politicState,
+      </if>
+      <if test="stinSex != null" >
+        stin_sex,
+      </if>
+      <if test="stinPhone != null" >
+        stin_phone,
+      </if>
+      <if test="stinQq != null" >
+        stin_QQ,
+      </if>
+      <if test="stinEmail != null" >
+        stin_email,
+      </if>
+      <if test="stinResidence != null" >
+        stin_residence,
+      </if>
+      <if test="stinPopulation != null" >
+        stin_population,
+      </if>
+      <if test="stinAllincomes != null" >
+        stin_allIncomes,
+      </if>
+      <if test="stinIncometype != null" >
+        stin_incomeType,
+      </if>
+      <if test="stinMailcode != null" >
+        stin_mailCode,
+      </if>
+      <if test="stinAreaidhome != null" >
+        stin_areaIdHome,
+      </if>
+      <if test="stinAreadeatilhome != null" >
+        stin_areaDeatilHome,
+      </if>
+      <if test="stinDepartment != null" >
+        stin_department,
+      </if>
+      <if test="stinBanknumber != null" >
+        stin_bankNumber,
+      </if>
+      <if test="stinAreaidorigin != null" >
+        stin_areaIdOrigin,
+      </if>
+      <if test="stinAreadetailorigin != null" >
+        stin_areaDetailOrigin,
+      </if>
+      <if test="stinState != null" >
+        stin_state,
+      </if>
+      <if test="stinIseditable != null" >
+        stin_isEditable,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stinId != null" >
+        #{stinId,jdbcType=INTEGER},
+      </if>
+      <if test="stinStudid != null" >
+        #{stinStudid,jdbcType=INTEGER},
+      </if>
+      <if test="stinPoliticstate != null" >
+        #{stinPoliticstate,jdbcType=VARCHAR},
+      </if>
+      <if test="stinSex != null" >
+        #{stinSex,jdbcType=VARCHAR},
+      </if>
+      <if test="stinPhone != null" >
+        #{stinPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="stinQq != null" >
+        #{stinQq,jdbcType=VARCHAR},
+      </if>
+      <if test="stinEmail != null" >
+        #{stinEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="stinResidence != null" >
+        #{stinResidence,jdbcType=VARCHAR},
+      </if>
+      <if test="stinPopulation != null" >
+        #{stinPopulation,jdbcType=INTEGER},
+      </if>
+      <if test="stinAllincomes != null" >
+        #{stinAllincomes,jdbcType=DOUBLE},
+      </if>
+      <if test="stinIncometype != null" >
+        #{stinIncometype,jdbcType=VARCHAR},
+      </if>
+      <if test="stinMailcode != null" >
+        #{stinMailcode,jdbcType=VARCHAR},
+      </if>
+      <if test="stinAreaidhome != null" >
+        #{stinAreaidhome,jdbcType=INTEGER},
+      </if>
+      <if test="stinAreadeatilhome != null" >
+        #{stinAreadeatilhome,jdbcType=VARCHAR},
+      </if>
+      <if test="stinDepartment != null" >
+        #{stinDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="stinBanknumber != null" >
+        #{stinBanknumber,jdbcType=VARCHAR},
+      </if>
+      <if test="stinAreaidorigin != null" >
+        #{stinAreaidorigin,jdbcType=INTEGER},
+      </if>
+      <if test="stinAreadetailorigin != null" >
+        #{stinAreadetailorigin,jdbcType=VARCHAR},
+      </if>
+      <if test="stinState != null" >
+        #{stinState,jdbcType=INTEGER},
+      </if>
+      <if test="stinIseditable != null" >
+        #{stinIseditable,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.Studentinfo" >
+    update studentinfo
+    <set >
+      <if test="stinStudid != null" >
+        stin_studId = #{stinStudid,jdbcType=INTEGER},
+      </if>
+      <if test="stinPoliticstate != null" >
+        stin_politicState = #{stinPoliticstate,jdbcType=VARCHAR},
+      </if>
+      <if test="stinSex != null" >
+        stin_sex = #{stinSex,jdbcType=VARCHAR},
+      </if>
+      <if test="stinPhone != null" >
+        stin_phone = #{stinPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="stinQq != null" >
+        stin_QQ = #{stinQq,jdbcType=VARCHAR},
+      </if>
+      <if test="stinEmail != null" >
+        stin_email = #{stinEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="stinResidence != null" >
+        stin_residence = #{stinResidence,jdbcType=VARCHAR},
+      </if>
+      <if test="stinPopulation != null" >
+        stin_population = #{stinPopulation,jdbcType=INTEGER},
+      </if>
+      <if test="stinAllincomes != null" >
+        stin_allIncomes = #{stinAllincomes,jdbcType=DOUBLE},
+      </if>
+      <if test="stinIncometype != null" >
+        stin_incomeType = #{stinIncometype,jdbcType=VARCHAR},
+      </if>
+      <if test="stinMailcode != null" >
+        stin_mailCode = #{stinMailcode,jdbcType=VARCHAR},
+      </if>
+      <if test="stinAreaidhome != null" >
+        stin_areaIdHome = #{stinAreaidhome,jdbcType=INTEGER},
+      </if>
+      <if test="stinAreadeatilhome != null" >
+        stin_areaDeatilHome = #{stinAreadeatilhome,jdbcType=VARCHAR},
+      </if>
+      <if test="stinDepartment != null" >
+        stin_department = #{stinDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="stinBanknumber != null" >
+        stin_bankNumber = #{stinBanknumber,jdbcType=VARCHAR},
+      </if>
+      <if test="stinAreaidorigin != null" >
+        stin_areaIdOrigin = #{stinAreaidorigin,jdbcType=INTEGER},
+      </if>
+      <if test="stinAreadetailorigin != null" >
+        stin_areaDetailOrigin = #{stinAreadetailorigin,jdbcType=VARCHAR},
+      </if>
+      <if test="stinState != null" >
+        stin_state = #{stinState,jdbcType=INTEGER},
+      </if>
+      <if test="stinIseditable != null" >
+        stin_isEditable = #{stinIseditable,jdbcType=INTEGER},
+      </if>
+    </set>
+    where stin_id = #{stinId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Studentinfo" >
+    update studentinfo
+      set stin_studId = #{stinStudid,jdbcType=INTEGER},
+      stin_politicState = #{stinPoliticstate,jdbcType=VARCHAR},
+      stin_sex = #{stinSex,jdbcType=VARCHAR},
+      stin_phone = #{stinPhone,jdbcType=VARCHAR},
+      stin_QQ = #{stinQq,jdbcType=VARCHAR},
+      stin_email = #{stinEmail,jdbcType=VARCHAR},
+      stin_residence = #{stinResidence,jdbcType=VARCHAR},
+      stin_population = #{stinPopulation,jdbcType=INTEGER},
+      stin_allIncomes = #{stinAllincomes,jdbcType=DOUBLE},
+      stin_incomeType = #{stinIncometype,jdbcType=VARCHAR},
+      stin_mailCode = #{stinMailcode,jdbcType=VARCHAR},
+      stin_areaIdHome = #{stinAreaidhome,jdbcType=INTEGER},
+      stin_areaDeatilHome = #{stinAreadeatilhome,jdbcType=VARCHAR},
+      stin_department = #{stinDepartment,jdbcType=VARCHAR},
+      stin_bankNumber = #{stinBanknumber,jdbcType=VARCHAR},
+      stin_areaIdOrigin = #{stinAreaidorigin,jdbcType=INTEGER},
+      stin_areaDetailOrigin = #{stinAreadetailorigin,jdbcType=VARCHAR},
+      stin_state = #{stinState,jdbcType=INTEGER},
+      stin_isEditable = #{stinIseditable,jdbcType=INTEGER}
+    where stin_id = #{stinId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 通过学生的id查询详细信息表 -->
+  <select id="selectByInfoStudId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from studentinfo
+		where stin_studId= #{stinStudid,jdbcType=INTEGER}
+	</select>
+	<!-- 通过学生的id查询详细信息表2  非list -->
+  <select id="selectBystudInfoStudId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from studentinfo
+		where stin_studId= #{stinStudid,jdbcType=INTEGER}
+	</select>
+	<!-- wj根据sinId更新学生的家庭详细地址 -->
+	<update id="updateByStinId" parameterType="swust.edu.cn.zzxt.model.Studentinfo" >
+    update studentinfo
+    <set >
+      <if test="stinStudid != null" >
+        stin_studId = #{stinStudid,jdbcType=INTEGER},
+      </if>
+      <if test="stinPoliticstate != null" >
+        stin_politicState = #{stinPoliticstate,jdbcType=VARCHAR},
+      </if>
+      <if test="stinSex != null" >
+        stin_sex = #{stinSex,jdbcType=VARCHAR},
+      </if>
+      <if test="stinPhone != null" >
+        stin_phone = #{stinPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="stinQq != null" >
+        stin_QQ = #{stinQq,jdbcType=VARCHAR},
+      </if>
+      <if test="stinEmail != null" >
+        stin_email = #{stinEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="stinResidence != null" >
+        stin_residence = #{stinResidence,jdbcType=VARCHAR},
+      </if>
+      <if test="stinPopulation != null" >
+        stin_population = #{stinPopulation,jdbcType=INTEGER},
+      </if>
+      <if test="stinAllincomes != null" >
+        stin_allIncomes = #{stinAllincomes,jdbcType=DOUBLE},
+      </if>
+      <if test="stinIncometype != null" >
+        stin_incomeType = #{stinIncometype,jdbcType=VARCHAR},
+      </if>
+      <if test="stinMailcode != null" >
+        stin_mailCode = #{stinMailcode,jdbcType=VARCHAR},
+      </if>
+      <if test="stinAreaidhome != null" >
+        stin_areaIdHome = #{stinAreaidhome,jdbcType=INTEGER},
+      </if>
+      <if test="stinAreadeatilhome != null" >
+        stin_areaDeatilHome = #{stinAreadeatilhome,jdbcType=VARCHAR},
+      </if>
+      <if test="stinDepartment != null" >
+        stin_department = #{stinDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="stinBanknumber != null" >
+        stin_bankNumber = #{stinBanknumber,jdbcType=VARCHAR},
+      </if>
+      <if test="stinAreaidorigin != null" >
+        stin_areaIdOrigin = #{stinAreaidorigin,jdbcType=INTEGER},
+      </if>
+      <if test="stinAreadetailorigin != null" >
+        stin_areaDetailOrigin = #{stinAreadetailorigin,jdbcType=VARCHAR},
+      </if>
+      <if test="stinState != null" >
+        stin_state = #{stinState,jdbcType=INTEGER},
+      </if>
+      <if test="stinIseditable != null" >
+        stin_isEditable = #{stinIseditable,jdbcType=INTEGER},
+      </if>
+    </set>
+    where stin_id = #{stinId,jdbcType=INTEGER}
+  </update>
+</mapper>

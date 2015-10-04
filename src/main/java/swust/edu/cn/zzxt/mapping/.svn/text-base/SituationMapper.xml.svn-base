@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.SituationMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Situation" >
+    <id column="situ_id" property="situId" jdbcType="INTEGER" />
+    <result column="situ_name" property="situName" jdbcType="VARCHAR" />
+    <result column="situ_roleId" property="situRoleid" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="swust.edu.cn.zzxt.model.Situation" extends="BaseResultMap" >
+    <result column="situ_description" property="situDescription" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    situ_id, situ_name, situ_roleId
+  </sql>
+  <sql id="Blob_Column_List" >
+    situ_description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from situation
+    where situ_id = #{situId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from situation
+    where situ_id = #{situId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.Situation" >
+    insert into situation (situ_id, situ_name, situ_roleId, 
+      situ_description)
+    values (#{situId,jdbcType=INTEGER}, #{situName,jdbcType=VARCHAR}, #{situRoleid,jdbcType=INTEGER}, 
+      #{situDescription,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.Situation" >
+    insert into situation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="situId != null" >
+        situ_id,
+      </if>
+      <if test="situName != null" >
+        situ_name,
+      </if>
+      <if test="situRoleid != null" >
+        situ_roleId,
+      </if>
+      <if test="situDescription != null" >
+        situ_description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="situId != null" >
+        #{situId,jdbcType=INTEGER},
+      </if>
+      <if test="situName != null" >
+        #{situName,jdbcType=VARCHAR},
+      </if>
+      <if test="situRoleid != null" >
+        #{situRoleid,jdbcType=INTEGER},
+      </if>
+      <if test="situDescription != null" >
+        #{situDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.Situation" >
+    update situation
+    <set >
+      <if test="situName != null" >
+        situ_name = #{situName,jdbcType=VARCHAR},
+      </if>
+      <if test="situRoleid != null" >
+        situ_roleId = #{situRoleid,jdbcType=INTEGER},
+      </if>
+      <if test="situDescription != null" >
+        situ_description = #{situDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where situ_id = #{situId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="swust.edu.cn.zzxt.model.Situation" >
+    update situation
+    set situ_name = #{situName,jdbcType=VARCHAR},
+      situ_roleId = #{situRoleid,jdbcType=INTEGER},
+      situ_description = #{situDescription,jdbcType=LONGVARCHAR}
+    where situ_id = #{situId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Situation" >
+    update situation
+    set situ_name = #{situName,jdbcType=VARCHAR},
+      situ_roleId = #{situRoleid,jdbcType=INTEGER}
+    where situ_id = #{situId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="shortcut icon" href="../images/favicon.png">
+
+		<title>西南科技大学资助系统</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="../../../css/bootstrap.css" rel="stylesheet">
+		<!-- Bootstrap theme -->
+		<link href="../../../css/bootstrap-theme.min.css" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link href="../../../css/theme.css" rel="stylesheet">
+		<link href="../../../css/docs.css" rel="stylesheet">
+		<link href="../../../" rel="stylesheet">
+		<link href="../../../css/github.min.css" rel="stylesheet">
+		<link href="../../../css/bootstrap.min.css" rel="stylesheet">
+
+		<script src="../../../javascript/jquery.min.js">
+</script>
+		<script src="../../../javascript/bootstrap.min.js"">
+</script>
+		<script src="../../../javascript/holder.min.js">
+</script>
+	</head>
+
+	<body>
+
+		<!-- Fixed navbar -->
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">西南科技大学学生资助系统</a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+								id="current_user">学办主任</span><b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu">
+								<li class="divider"></li>
+								<li class="dropdown-header">
+									基本功能
+								</li>
+								<li>
+									<a href="help.html">系统帮助</a>
+								</li>
+								<li>
+									<a href="changePassword.html">修改密码</a>
+								</li>
+								<li>
+									<a href="login.html">退出</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div>
+		<div class="container theme-showcase">
+			<div class="col-md-12">
+				<div class="col-md-12">
+
+					<div id="location" class="page-header">
+						<small>当前位置导航：&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">首页</a>&gt;<a
+							href="#">使用说明</a>
+						</small>
+					</div>
+				</div>
+
+
+				<!-- 左侧导航栏    -->
+				<div class="col-md-3">
+					<div class="bs-example">
+						<div class="panel-group" id="accordion">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseOne">大学生城镇医疗保险</a>
+									</h4>
+								</div>
+								<div id="collapseOne" class="panel-collapse collapse in">
+									<div class="panel-body">
+										<ul class="nav nav-pills nav-stacked"
+											style="max-width: 300px;">
+											<li>
+												<a href="czylbx/director/dirSeeCzIntroduction.html">查看保险介绍</a>
+											</li>
+											<li>
+												<a href="czylbx/director/dirSeeCzBuy.html">保险购买情况</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseTwo">学生平安保险</a>
+									</h4>
+								</div>
+								<div id="collapseTwo" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav nav-pills nav-stacked"
+											style="max-width: 300px;">
+											<li>
+												<a href="xspabx/director/dirSeeXpIntroduction.html">查看保险介绍</a>
+											</li>
+											<li>
+												<a href="xspabx/director/dirSeeXpDetail.html">保险购买情况</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseThree">学费奖补</a>
+									</h4>
+								</div>
+								<div id="collapseThree" class="panel-collapse collapse">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li  >
+											<a href="xfjb/director/dirSeeJbIntroduction.html">查看学费奖补公告</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseFour">绿色通道</a>
+									</h4>
+								</div>
+								<div id="collapseFour" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav nav-pills nav-stacked"
+											style="max-width: 300px;">
+											<li>
+												<a href="lstd/director/dirSeeLsIntroduction.html">查看绿色通道情况</a>
+											</li>
+											<li>
+												<a href="lstd/director/dirExportLsDetail.html">录入学生绿色通道信息</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseFive">贫困生管理</a>
+									</h4>
+								</div>
+								<div id="collapseFive" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav nav-pills nav-stacked"
+											style="max-width: 300px;">
+											<li>
+												<a href="pksgl/director/dirSeePkIntroduction.html">查看贫困生情况</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseSix">国家奖学金</a>
+									</h4>
+								</div>
+								<div id="collapseSix" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav nav-pills nav-stacked"
+											style="max-width: 300px;">
+											<li>
+												<a href="gjjxj/director/dirAuditGjApplication.html">审核国家奖学金申请</a>
+											</li>
+											<li>
+												<a href="gjjxj/director/dirSeeGjApplication1.html">查看国家奖学金申请情况</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseSeven">社会奖学金</a>
+									</h4>
+								</div>
+								<div id="collapseSeven" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav nav-pills nav-stacked"
+											style="max-width: 300px;">
+											<li>
+												<a href="shjxj/director/dirAuditSjApplication.html">审核社会奖学金申请</a>
+											</li>
+											<li>
+												<a href="shjxj/director/dirSeeSjApplication1.html">查看社会奖学金申请情况</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseEight">国家励志奖学金</a>
+									</h4>
+								</div>
+								<div id="collapseEight" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav nav-pills nav-stacked"
+											style="max-width: 300px;">
+											<li>
+												<a href="gjlzjxj/director/dirAuditLzApplication.html">审核国家励志奖学金申请</a>
+											</li>
+											<li>
+												<a href="gjlzjxj/director/dirSeeLzApplication1.html">查看国家励志奖学金申请情况</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseNine">国家助学金</a>
+									</h4>
+								</div>
+								<div id="collapseNine" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav nav-pills nav-stacked"
+											style="max-width: 300px;">
+											<li>
+												<a href="gjzxj/director/dirAuditZxApplication.html">审核国家助学金申请</a>
+											</li>
+											<li>
+												<a href="gjzxj/director/dirSeeZxApplication1.html">查看国家助学金申请情况</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseTen">行政部门勤工助学岗位申请</a>
+									</h4>
+								</div>
+								<div id="collapseTen" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav nav-pills nav-stacked"
+											style="max-width: 300px;">
+											<li>
+												<a href="qgzx/director/dirSeeQgIntroduction.html">查看勤工助学岗位</a>
+											</li>
+											<li>
+												<a href="qgzx/director/dirSeeStuQgIntroduction.html">查看学生勤工助学情况</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-toggle="collapse"
+											data-parent="#accordion" href="#collapseEleven">大学生医疗补助</a>
+									</h4>
+								</div>
+								<div id="collapseEleven" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul class="nav nav-pills nav-stacked"
+											style="max-width: 300px;">
+											<li>
+												<a href="ylbz/director/dirSeeYlIntroduction.html">查看大学生医疗补助介绍</a>
+											</li>
+											<li>
+												<a href="ylbz/director/dirSeeYlDetail.html">查看学生医疗补助情况</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-9">
+					<div style="text-align: center">
+						<br />
+						<h2>
+							医疗相关信息
+						</h2>
+					</div>
+
+
+					<div class="bs-example bs-example-tabs">
+					<ul id="myTab" class="nav nav-tabs" role="tablist">
+						<li class="active"><a data-toggle="tab" role="tab"
+							href="#personal">医疗补助住院申请表</a></li>
+						<li class=""><a data-toggle="tab" role="tab" href="#Reward">医疗补助意外门诊申请表</a>
+						</li>
+						<li class=""><a data-toggle="tab" role="tab" href="#parents">医疗补助慢性病门诊申请表</a>
+						</li>
+					
+					</ul>
+					</div>
+					<div id="myTabContent" class="tab-content">
+						<div id="personal" class="tab-pane fade active in"></div>
+							<table border="1" >
+									<tr>
+                           <td height="50" width="150" style="text-align: center">姓名</td>
+							<td height="50"  width="250" style="text-align: center"><input></input></td>
+							<td height="50"  width="170" style="text-align: center">贫困等级   <br/> （限于贫困生）</td>
+							<td height="50"  width="170" style="text-align: center"><input></input></td>
+						</tr>
+
+</table>
+			<table border="1" >
+						<tr>
+                           <td height="50" width="150" style="text-align: center">院系</td>
+							<td height="50"  width="250" style="text-align: center"><input></input></td>
+							<td height="50"  width="170" style="text-align: center">专业班级</td>
+							<td height="50"  width="170" style="text-align: center"><input></input></td>
+							
+						</tr>
+
+</table>
+<table border="1" >
+						<tr>
+                           <td height="50" width="150" style="text-align: center">学号</td>
+							<td height="50"  width="250" style="text-align: center"><input></input></td>
+							<td height="50"  width="170" style="text-align: center">身份证号码</td>
+							<td height="50"  width="170" style="text-align: center"><input></input></td>
+							
+						</tr>
+
+</table>
+<table border="1" >
+						<tr>
+                           <td height="50" width="150" style="text-align: center">入院日期</td>
+							<td height="50"  width="250" style="text-align: center"><input></input></td>
+							<td height="50"  width="170" style="text-align: center">出院日期</td>
+							<td height="50"  width="170" style="text-align: center"><input></input></td>
+							
+						</tr>
+
+</table>
+<table border="1" >
+						<tr>
+                           <td height="50" width="150" style="text-align: center">主要诊断</td>
+							<td height="50"  width="590" style="text-align: center"> <input  style="width:550px;height:35px;" /></td>
+										
+
+</table>
+
+<table border="1" >
+						<tr>
+                           <td height="50" width="150" style="text-align: center">已参加社保类型</td>
+							<td height="50" width="250" style="text-align: center">
+							 <div style="float: left"></div>
+												<input type="checkbox"></input>新农合        
+												<div style="float: left"></div>
+												<input type="checkbox"></input>城镇居民医疗保险</td>
+							<td height="50"  width="170" style="text-align: center">是否缴费</td>
+							 <div style="float: right">
+												<td height="50"  width="170" style="text-align: center"><input type="checkbox"></input>是   
+												<div style="float: left">
+												<input type="checkbox"></input>否
+												</td>
+												</div>
+							
+						</tr>
+						</table>
+						<table border="1" >
+						<tr>
+                           <td height="50" width="150" style="text-align: center">发票金额</td>
+							<td height="50"  width="250" style="text-align: center"><input></input></td>
+							<td height="50"  width="170" style="text-align: center">大学生居保或新农合报销金额  <hr/><br/>商保报销金额</td>
+							
+							<td height="50"  width="170" style="text-align: center"><input></input>   <hr/><input></input></td>
+							
+						</tr>
+
+</table>
+<table border="1" >
+						<tr>
+                           <td height="50" width="150" style="text-align: center">本人电话</td>
+							<td height="50"  width="250" style="text-align: center"><input></input></td>
+							<td height="50"  width="170" style="text-align: center">申请日期</td>
+							<td height="50"  width="170" style="text-align: center"><input></input></td>
+							
+						</tr>
+
+</table>
+<table border="1" >
+						<tr>
+                           <td height="50" width="150" style="text-align: center">绵阳市农行卡号</td>
+							<td height="50"  width="590" style="text-align: center"><input  style="width:550px;height:35px;" /></td>
+				</tr>
+								</table>
+						
+											
+    
+<table border="1" >
+						<tr>
+                           <th height="90" width="15" rowspan="6">送交材料清单</th>
+						<td height="15" width="633"  style="text-align: left">1、发票（医院鲜章）
+						<td height="15" width="90" style="text-align: center"> <br/><input  style="width:40px;height:20px;" />份</td></tr>
+						<tr><td height="15" width="600" style="text-align: left">2、费用清单（医院鲜章）
+												<td height="15" width="90"  style="text-align: center"> <br/><input  style="width:40px;height:20px;" />份</td></tr>
+						<tr><td height="15"width="600" style="text-align: left"> 3、出院证（医院鲜章）
+												<td height="15" width="90"  style="text-align: center"> <br/><input  style="width:40px;height:20px;" />份</td></tr>
+						<tr><td height="15" width="600"  style="text-align: left">4、大学生居保、新农合或商业保险结算单原件
+												<td height="15" width="90"  style="text-align: center"> <br/><input  style="width:40px;height:20px;" />份</td></tr>
+						<tr><td height="15"width="600" style="text-align: left"> 5、受伤经过证明（限教学组织的意外伤害）
+												<td height="15" width="90"  style="text-align: center"> <br/><input  style="width:40px;height:20px;" />份</td></tr>
+						<tr><td height="15" width="600" style="text-align: left"> 6、身份证、农行卡正反面复印件(一张纸上)
+												<td height="15" width="90" style="text-align: center"> <br/><input  style="width:40px;height:20px;" />份</td></tr>
+						</table>
+						<table border="1" style="border-collapse:collapse;margin-left:">
+						<tr>
+                           <td height="200" width="150" style="text-align: center">学院审批意见</td>
+							
+							<td height="100"  width="590" style="text-align: right">  <br/><br/>盖章（学生工作办公室）<br/><input  style="width:54px;height:25px;" />年<input  style="width:54px;height:25px;" />   月<input  style="width:54px;height:25px;" />   日</td>
+								</tr>
+								</table>
+								</div>
+
+				<div id="Reward" class="tab-pane fade">
+					<table border="1">
+						<tr>
+							<td align="center" width="110px" height="20px">姓名</td>
+							<td width="250px" height="50px">&nbsp;<input type="text"
+								size="25"></td>
+							<td align="center" width="110px" height="20px">贫困等级<br />(限贫困生)
+							</td>
+							<td width="250px" height="20px">&nbsp;<input type="text"
+								size="25"></td>
+						</tr>
+						<tr>
+							<td align="center" width="110px" height="40px">院系</td>
+							<td width="250px" height="20px">&nbsp;<input type="text"
+								size="25"></td>
+							<td align="center" width="110px" height="40px">班级</td>
+							<td width="250px" height="20px">&nbsp;<input type="text"
+								size="25"></td>
+						</tr>
+						<tr>
+							<td align="center" width="110px" height="40px">学号</td>
+							<td width="250px" height="20px">&nbsp;<input type="text"
+								size="25"></td>
+							<td align="center" width="110px" height="40px">身份证号码</td>
+							<td width="250px" height="20px">&nbsp;<input type="text"
+								size="25"></td>
+						</tr>
+					</table>
+					<table border="1">
+						<tr>
+							<td align="center" width="110px" height="50">主要诊断</td>
+							<td width="610px" height="20px">&nbsp;<input type="text"
+								size="45"></td>
+						</tr>
+						<tr>
+							<td align="center" width="110px" height="50">申请理由</td>
+							<td width="610px" height="20px">&nbsp;<input type="text"
+								size="45"></td>
+						</tr>
+					</table>
+					<table border="1">
+						<tr>
+							<td align="center" width="110px" height="50">已参加社保<br>
+							</td>
+							<td width="317px" height="50"><form>
+									<input type="checkbox" />新农合 <input type="checkbox" />城镇居民医疗保险
+								</form></td>
+							<td align="center" width="110px" height="40px">是否缴费</td>
+							<td width="140px" height="20px">&nbsp;<input type="text"
+								size="25"></td>
+						</tr>
+					</table>
+					<table border="1">
+						<tr>
+							<th align="center" width="110px" height="40px" rowspan="2">发票总金额</th>
+							<th width="110px" height="40px" rowspan="2">&nbsp;<input
+								type="text" size="25"></th>
+							<td align="center" width="120px" height="60px">大学生居保或<br />新农合报销金
+							</td>
+							<td width="240px" height="20px">&nbsp;<input type="text"
+								size="25"></td>
+						</tr>
+						<tr>
+							<td align="center" width="120px" height="40px">商保报销金额</td>
+							<td width="240px" height="20px">&nbsp;<input type="text"
+								size="25"></td>
+						</tr>
+						<tr>
+							<td align="center" width="110px" height="40px">本人电话</td>
+							<td width="240px" height="20px">&nbsp;<input type="text"
+								size="25"></td>
+							<td align="center" width="110px" height="40px">申请日期</td>
+							<td width="250px" height="20px">&nbsp;<input type="text"
+								size="25"></td>
+						</tr>
+					</table>
+					<table border="1">
+						<tr>
+							<th align="center" width="220px" height="40px">绵阳市农行卡号</th>
+							<td width="500px" height="20px">&nbsp;<input type="text"
+								size="35"></td>
+						</tr>
+					</table>
+					<table border="1">
+						<tr>
+							<th width="10px" height="20px" rowspan="7">递交材料清单</th>
+							<td width="480px" height="20px">1、发票（医院鲜章）</td>
+							<td align="right"><input type="text" size="15">份</td>
+						</tr>
+						<tr>
+							<td width="380px" height="20px">2、处方签（涵盖药品明细）</td>
+							<td align="right"><input type="text" size="15">份</td>
+						</tr>
+						<tr>
+							<td width="380px" height="20px">3、检查报告单</td>
+							<td align="right" width="222px"><input type="text"
+								size="15">份</td>
+						</tr>
+						<tr>
+							<td width="380px" height="20px">4、医院门诊病情诊断证明（医院鲜章）</td>
+							<td align="right" width="222px"><input type="text" size="15">份</td>
+						</tr>
+						<tr>
+							<td width="380px" height="20px">5、受伤经过说明书（教学院、部盖章有效）</td>
+							<td align="right" width="222px"><input type="text" size="15">份</td>
+						</tr>
+						<tr>
+							<td width="380px" height="20px">6、大学生居保、新农合或商业保险结算单原件</td>
+							<td align="right" width="222px"><input type="text" size="15">份</td>
+						</tr>
+						<tr>
+							<td width="380px" height="20px">7、身份证、农行卡正反面复印件（一张纸上）</td>
+							<td align="right" width="222px"><input type="text" size="15">份</td>
+						</tr>
+					</table>
+					<table border="1">
+						<tr>
+							<td align="center" width="100px" height="100px">教学组织学院<br />审批意见
+							</td>
+							<td align="right" width="620px" height="100px">盖章（学生工作办公室）<br />
+							<input type="text" size="8">年<input type="text" size="8">月
+								<input type="text" size="8">日
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div id="parents" class="tab-pane fade">
+							<table border="1" >
+								<tr>
+			<td align="center"width="110px" height="20px"> 姓名  </td>
+			<td width="250px" height="50px">&nbsp;<input type="text"size="25"></td>
+			<td align="center"width="110px" height="20px">贫困等级<br/>（限贫困生）</td>
+			<td width="250px" height="20px">&nbsp;<input type="text"size="25"></td>
+			</tr>
+			<tr>
+			<td align="center"width="110px" height="40px">院系</td>
+			<td width="250px" height="20px">&nbsp;<input type="text"size="25"></td>
+			<td align="center"width="110px" height="40px">班级</td>
+			<td width="255x" height="20px">&nbsp;<input type="text"size="25"></td>
+			</tr>
+			<tr>
+			<td align="center"width="110px" height="40px">学号</td>
+			<td width="255px" height="20px">&nbsp;<input type="text"size="25"></td>
+			<td align="center"width="150px" height="4s0px">身份证号码</td>
+			<td width="255px" height="20px">&nbsp;<input type="text"size="25"></td>
+			</tr>
+			</table>
+			<table border="1">
+			<tr>
+			<td align="center"width="115px" height="50px">主要诊断</td>
+			<td width="655px"height="50px">&nbsp;<input type="text"size="80"></td>
+			</tr>
+			</table>
+			<table border="1">
+			<tr>
+			<td align="center"width="120px" height="50px">已参加社保类型</td>
+			<td align="center"><form><input type="checkbox"/>新农合   <input type="checkbox"/>城镇居民医疗保险</form></td>
+			<td align="center"width="140px" height="50px">是否缴费</td>
+			<td width="256px" height="20px">&nbsp;<input type="text"size="25"></td>
+			</tr>
+			<tr>
+			<td align="center"width="100px" height="50px">发票总金额</td>
+			<td width="200px" height="20px">&nbsp;<input type="text"size="25"></td>
+			<td align="center"width="120px" height="50px">大学生居保或新<br/>农合报销金额<hr/>商保报销金额</td>
+		    <td width="250px" height="20px"><input type="text"size="25"><br/><br/><input type="text"size="25"></td>
+			</tr>
+			<tr>
+			<td align="center">本人电话</td>
+			<td width="256px" height="40px">&nbsp;<input type="text"size="25"></td>
+			<td align="center">申请日期</td>
+			<td width="250px" height="40px">&nbsp;<input type="text"size="25"></td>
+			</tr>
+			</table>
+	        <table border="1">
+			<tr>
+			<td width="150px" height="40px">绵阳市农行卡号</td>
+			<td width="620px" height="20px">&nbsp;<input type="text"size="75"></td>
+			</tr>
+			</table>
+			<table border="1">
+			<tr>
+			<th width="4px" height="30px"rowspan="6">送交材料清单</th>
+			<td width="2180px" height="30px">1、发票（医院鲜章）</td>
+			<td align="right"width="610px" height="30px"><input type="text">份</td>
+			</tr>
+			<tr>
+			<td width="2180px" height="30px">2、处方签（涵盖药品明细）</td>
+			<td align="right"width="610px" height="30px"><input type="text">份</td>
+			</tr>
+			<tr>
+			<td width="2180px" height="30px">3、检查报告单</td>
+			<td align="right"width="610px" height="30px"><input type="text">份</td>
+			</tr>
+			<tr>
+			<td width="2180px" height="30px">4、县级以上医院诊断证明（医院鲜章）</td>
+			<td align="right"width="610px" height="30px"><input type="text">份</td>
+			</tr>
+			<tr>
+			<td width="2180px" height="30px">5、大学生居保、新农合或商业保险结算单原件</td>
+			<td align="right"width="610px" height="30px"><input type="text">份</td>
+			</tr>
+			<tr>
+			<td width="2180px" height="30px">6、身份证、农行卡正反面复印件（一张纸上）</td>
+			<td align="right"width="610px" height="30px"><input type="text">份</td>
+			</tr>
+			</table>
+			<table border="1">
+			<tr>
+			<td align="center"width="200px" height="150px">学校审批意见</td>
+			<td align="right"width="900px" height="150px"><input type="text">盖章（学生工作办公室）<hr/><input type="text"size="5">年<input type="text"size="5">    月 <input type="text"size="5">   日</td>
+			</tr>
+			</table>
+						
+
+
+
+
+			<div style="position: relative;">
+				<div class="col-md-9" align="center">
+					<button id="changestuInfo" class="btn btn-primary">修改资料</button>
+				</div>
+			</div>
+
+	</div>
+
+
+	<footer class="bs-footer" role="contentinfo">
+		<p class="pull-right">
+			<a href="#">回到页面顶部</a>
+		</p>
+		<div class="container">
+			<p>系统由XXXX公司开发</p>
+			<p>版权所有&nbsp;&nbsp;&nbsp;©2012&nbsp;&nbsp;&nbsp;西南科技大学学生工作部（处）</p>
+			<ul class="footer-links">
+				<li>当前版本：&nbsp;&nbsp; v3.0.3
+					&nbsp;&nbsp;&nbsp;系统更新时间：2014年4月25日&nbsp;&nbsp;&nbsp;&nbsp;西南科技大学学生资助系统</li>
+				<li class="muted">·</li>
+			</ul>
+		</div>
+	</footer>
+</body>
+</html>

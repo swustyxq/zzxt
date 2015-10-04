@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta http-equiv="Expires" CONTENT="0">
+<meta http-equiv="Cache-Control" CONTENT="no-cache">
+<meta http-equiv="Pragma" CONTENT="no-cache">
+<link rel="shortcut icon" href="../images/favicon.png">
+
+<title>西南科技大学资助系统</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../css/bootstrap.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="../css/theme.css" rel="stylesheet">
+<link href="../css/docs.css" rel="stylesheet">
+<link href="../css/github.min.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/jquery.fs.stepper.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="../javascript/jPaginate/css/style.css" media="screen" />
+
+
+<script src="../javascript/jquery.min.js"></script>
+<script src="../javascript/bootstrap.min.js"></script>
+<script src="../javascript/holder.min.js"></script>
+<script src="../javascript/jquery.fs.stepper.js"></script>
+<script type="text/javascript"
+	src="../javascript/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript"
+	src="../javascript/jPaginate/jquery.paginate.js"></script>
+
+<script src="../js/common.js"></script>
+<script src="../js/stuPrizeInfo.js"></script>
+<script src="../js/stuInputDetailIfo.js"></script>
+<script src="../js/stuInputInfo.js" charset="utf-8"></script>
+
+<script src="../js/stulearningsituation.js"></script>
+<!-- 数字微调用到的js -->
+<script>
+	$(document).ready(function() {
+		$("input[type='number']").stepper();
+	});
+</script>
+</head>
+
+<body>
+
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">西南科技大学学生资助系统</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><span
+							id="current_user">学生用户</span> </a>
+						<ul class="dropdown-menu">
+							<li class="divider"></li>
+							<li class="dropdown-header">系统帮助</li>
+							<li><a href="about.html"><span
+									class="glyphicon glyphicon-book"></span>关于系统</a></li>
+							<li><a href="help.html"><span
+									class="glyphicon glyphicon-print"></span>使用说明</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">基本功能</li>
+							<li><a href="#" data-toggle="modal"
+								data-target="#changePassword"><span
+									class="glyphicon glyphicon-cog"></span>修改密码</a></li>
+							<li><a href="#" id="logout"><span
+									class="glyphicon glyphicon-log-out"></span>退出</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+	<div class="container theme-showcase">
+		<div class="col-md-12">
+			<div class="col-md-12">
+
+				<div class="page-header">
+					<small><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;当前位置导航：&nbsp;&nbsp;&nbsp;&nbsp;
+						<span id="location"> <a href="#">首页</a>&gt;<a href="#">使用说明</a>&gt;<a
+							href="#">学生信息</a>
+					</span> </small>
+				</div>
+			</div>
+
+
+			<!-- 左侧导航栏    -->
+			<div class="col-md-3">
+				<div class="bs-example">
+					<div id="navigation" class="panel-group"></div>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div style="text-align: center">
+					<br />
+					<h2>学生基本信息</h2>
+				</div>
+
+
+				<div class="bs-Shaozhou bs-Shaozhou-tabs" >
+					<div class="alert alert-warning alert-dismissible fade in"
+						role="alert">
+						<button type="button" class="close" data-dismiss="alert">
+							<span aria-hidden="true">×</span><span class="sr-only">Close</span>
+						</button>
+						<h4>温馨提示：</h4>
+
+						<table>
+							<tr>
+								<td>初次登录系统，请先完善个人信息！</td>
+							</tr>
+							<tr>
+								<td>请各位同学务必认真填写，保存后由相关人员审核，审核通过后将不能再进行修改！</td>
+							</tr>
+							<tr>
+								<td>如个人信息后期需进行修改，请联系你的辅导员！</td>
+							</tr>
+						</table>
+					</div>
+					<ul id="myTab" class="nav nav-tabs" role="tablist">
+						<li class="active"><a data-toggle="tab" role="tab"
+							href="#personal">个人信息</a></li>
+						<li class=""><a data-toggle="tab" role="tab" href="#Reward" onclick="javascript:showallprizInfo()">获奖情况</a>
+						</li>
+						<li class=""><a data-toggle="tab" role="tab" href="#parents"  onclick= "javascript:showPareInfo()">家庭成员</a>
+						</li>
+						<li class=""><a data-toggle="tab" role="tab" href="#learing" onclick="javascript:showallLearing()">学习情况</a>
+						</li>
+						<li class="dropdown"><a href="#" id="myTabDrop1"
+							class="dropdown-toggle" data-toggle="dropdown">详细资料 <span
+								class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu"
+								aria-labelledby="myTabDrop1">
+								<li class=""><a href="#lookIfoDeatil" tabindex="-1"
+									role="tab" data-toggle="tab" onclick="javascript:showInformation()">查看</a></li>
+								<li class=""><a href="#infoDeatil" tabindex="-1" role="tab"
+									data-toggle="tab">修改</a></li>
+							</ul></li>
+					</ul>
+					<div id="myTabContent" class="tab-content">
+						<div id="personal" class="tab-pane fade active in">
+							<p align=center style="color: blue; font-size: 20px;">个人信息</p>
+							<table class="table table-striped table-bordered" align="center">
+								<tr>
+									<th align="center">姓名</th>
+									<td align="center" id="personalStuName"></td>
+									<th align="center">学号</th>
+									<td align="center" id="personalStuNumber"></td>
+									<th align="center">民族</th>
+									<td align="center" id="personalStuNation"></td>
+								</tr>
+								<tr>
+									<th align="center">专业</th>
+									<td align="center" id="personalStuDepartment"></td>
+									<th align="center">班级</th>
+									<td align="center" id="personalStuClass"></td>
+									<th align="center">邮箱</th>
+									<td align="center" id="personalStuEmail"></td>
+								</tr>
+								<tr>
+									<th align="center">身份证</th>
+									<td align="center" id="personalStuIdNumber"></td>
+									<th align="center">手机</th>
+									<td align="center" id="personalStuPhone"></td>
+									<th align="center">QQ</th>
+									<td id="personalStuQQ"></td>
+								</tr>
+							</table>
+						</div>
+						<div id="lookIfoDeatil" class="tab-pane fade">
+							<p align=center style="color: blue; font-size: 20px;">个人详细资料</p>
+							<table id="studentIfo" class="table table-striped table-bordered">
+
+							</table>
+						</div>
+						<div id="Reward" class="tab-pane fade">
+							<!-- <p>获奖情况内容添加于此</p> -->
+
+
+							<p align=center style="color: blue; font-size: 20px;">获奖情况</p>
+							<table class="table table-striped table-bordered"
+								id="HasWonAward">
+							</table>
+							<!-- 翻页 -->
+							<br> <br> <br>
+
+							<div class="col-xs-10 col-xs-offset-1" align="left" id="demo5"
+								style="display: none"></div>
+							<br>
+							<!-- 删除奖励信息模态框 -->
+							<button type="button" class="btn btn-info" data-toggle="modal"
+								data-target="#myDeleteModal" style="display: none" id="isDelete"></button>
+							<div class="modal fade" id="myDeleteModal" tabindex="-1">
+								<div style="position: relative; top: 200px;">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title" id="myDeleteModalLabel">确定删除？</h4>
+											</div>
+											<div class="modal-body">
+												<div>
+													<span>确定删除所选用户，请点击"确定"</span>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="surePrizDelete btn btn-primary"
+													data-dismiss="modal" id="sureDelete">确定</button>
+												<button type="button" class="btn btn-default"
+													data-dismiss="modal">取消</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- 修改奖励信息模态框 -->
+							<button type="button" class="btn btn-info" data-toggle="modal"
+								data-target="#myEditPrizeModal" style="display: none"
+								id="isEdit"></button>
+							<div class="modal fade" id="myEditPrizeModal" tabindex="-1">
+								<div style="position: relative; top: 200px;">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title" id="myEditPrizeModalLabel">修改个人奖励信息</h4>
+											</div>
+											<div class="modal-body">
+												<div>
+													<table class="table table-striped table-bordered"
+														id="editPrize">
+														<thead>
+															<tr>
+																<th>姓&nbsp;&nbsp;&nbsp;名</th>
+																<th>获奖名称</th>
+																<th>获奖级别</th>
+															</tr>
+															<tr>
+																<td id="Uname2">陈文辉</td>
+																<td id="priz_name11"><input id="priz_name1"
+																	type="text" class="form-control" placeholder=""
+																	style="max-width: 100px;" onblur="OnPrizeEditCheck(1)"
+																	onfocus="OnPrizeEditCheck(2)"></td>
+																<td id="priz_level11"><input id="priz_level1"
+																	type="text" class="form-control" placeholder=""
+																	style="max-width: 100px;" onblur="OnPrizeEditCheck(3)"
+																	onfocus="OnPrizeEditCheck(4)"></td>
+															</tr>
+
+														</thead>
+														<tbody>
+															<tr>
+																<th>颁奖单位</th>
+																<th>获奖时间</th>
+																<th>个人奖励</th>
+															</tr>
+															<tr>
+																<td id="priz_awarded11"><input id="priz_awarded1"
+																	type="text" class="form-control" placeholder=""
+																	style="max-width: 100px;" onblur="OnPrizeEditCheck(5)"
+																	onfocus="OnPrizeEditCheck(6)"></td>
+																<td><div>
+																		<input style="height: 30px; width: 100px" type="text"
+																			class="form-control Wdate" id="priz_time1"
+																			onClick="WdatePicker()" placeholder="获奖时间">
+																	</div></td>
+																<td><input id="yes1" type="radio"
+																	name="priz_isIndividual1" value="1">是 <input
+																	id="no1" type="radio" name="priz_isIndividual1"
+																	value="0">否</td>
+															</tr>
+														</tbody>
+													</table>
+													<div style="position: relative; bottom: 20px;">
+														<div class="form-group">
+															<div class=" control-label" align="left" id="priztip11"
+																style="display: none">
+																<font color="red" id="EditPriztip">获奖名称不能为空！</font>
+															</div>
+															<div class=" control-label" align="left" id="priztip12"
+																style="display: none">
+																<font color="red">获奖名称不能太长！</font>
+															</div>
+															<div class=" control-label" align="left" id="priztip13"
+																style="display: none">
+																<font color="red">获奖级别不能为空</font>
+															</div>
+															<div class=" control-label" align="left" id="priztip14"
+																style="display: none">
+																<font color="red">获奖级别不能太长！</font>
+															</div>
+															<div class=" control-label" align="left" id="priztip15"
+																style="display: none">
+																<font color="red">颁奖单位不能为空！</font>
+															</div>
+															<div class=" control-label" align="left" id="priztip16"
+																style="display: none">
+																<font color="red">颁奖单位不能太长！</font>
+															</div>
+															<div class=" control-label" align="left" id="priztip17"
+																style="display: none">
+																<font color="red">获奖时间不能为空！</font>
+															</div>
+															<div class=" control-label" align="left" id="priztip18"
+																style="display: none">
+																<font color="red">获奖时间不能超过当前时间！</font>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="sureEditPrize btn btn-primary"
+													data-dismiss="modal" id="sureEditPrize">确定</button>
+												<button type="button" class="btn btn-default"
+													data-dismiss="modal">取消</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div align="center">
+								<button class="btn btn-primary" data-toggle="modal"
+									data-target=".bs-prizExample-modal-lg">添加</button>
+							</div>
+							<div id="addModal" class="modal fade bs-prizExample-modal-lg"
+								tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+								aria-hidden="true" style="display: none;">
+								<div class="modal-dialog modal-lg">
+									<div class="modal-content">
+
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">
+												<span aria-hidden="true">×</span><span class="sr-only">Close</span>
+											</button>
+											<h4 class="modal-title" id="myLargeModalLabel">添加获奖信息</h4>
+										</div>
+										<div class="modal-body">
+											<table class="table table-striped table-bordered"
+												id="addNewPriz">
+												<thead>
+													<tr>
+														<th>姓&nbsp;&nbsp;&nbsp;名</th>
+														<th>获奖名称</th>
+														<th>获奖级别</th>
+													</tr>
+													<tr>
+														<td id="Uname">陈文辉</td>
+														<td><input id="priz_name" type="text"
+															class="form-control" placeholder=""
+															style="max-width: 100px;" onblur="onprizeNameCheck()"
+															onfocus="onprizeNameClean()"></td>
+														<td><input id="priz_level" type="text"
+															class="form-control" placeholder=""
+															style="max-width: 100px;" onblur="onprizeLevelCheck()"
+															onfocus="onprizeLevelClean()"></td>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<th>颁奖单位</th>
+														<th>获奖时间</th>
+														<th>个人奖励</th>
+													</tr>
+													<tr>
+														<td><input id="priz_awarded" type="text"
+															class="form-control" placeholder=""
+															style="max-width: 100px;" onblur="onprizeAwardedCheck()"
+															onfocus="onprizeAwardedClean()"></td>
+														<td><div>
+																<input style="height: 30px; width: 100px" type="text"
+																	class="form-control Wdate" id="priz_time"
+																	onClick="WdatePicker()" placeholder="获奖时间">
+															</div></td>
+														<td><input id="yes" type="radio"
+															name="priz_isIndividual" value="1">是 <input
+															id="no" type="radio" name="priz_isIndividual" value="0">否</td>
+													</tr>
+												</tbody>
+											</table>
+											<div style="position: relative; bottom: 20px;">
+												<div class="form-group">
+													<div class=" control-label" align="left" id="priztip01"
+														style="display: none">
+														<font color="red">获奖名称不能为空！</font>
+													</div>
+													<div class=" control-label" align="left" id="priztip02"
+														style="display: none">
+														<font color="red">获奖名称不能太长！</font>
+													</div>
+													<div class=" control-label" align="left" id="priztip03"
+														style="display: none">
+														<font color="red">获奖级别不能为空</font>
+													</div>
+													<div class=" control-label" align="left" id="priztip04"
+														style="display: none">
+														<font color="red">获奖级别不能太长！</font>
+													</div>
+													<div class=" control-label" align="left" id="priztip05"
+														style="display: none">
+														<font color="red">颁奖单位不能为空！</font>
+													</div>
+													<div class=" control-label" align="left" id="priztip06"
+														style="display: none">
+														<font color="red">颁奖单位不能太长！</font>
+													</div>
+													<div class=" control-label" align="left" id="priztip07"
+														style="display: none">
+														<font color="red">获奖时间不能为空！</font>
+													</div>
+													<div class=" control-label" align="left" id="priztip08"
+														style="display: none">
+														<font color="red">获奖时间不能超过当前时间！</font>
+													</div>
+												</div>
+											</div>
+											<div align="center">
+												<button id="prizsubmit" type="button"
+													class="btn btn-default">提交</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- /.modal-dialog -->
+							</div>
+						</div>
+						
+						<div id="parents" class="tab-pane fade">
+					
+							<p align=center style="color: blue; font-size: 20px;">家庭成员</p>
+							<table id="parentInfo" class="table table-striped table-bordered"
+								align="center">
+							</table>
+							<div style="position: relative;">
+								<div class="col-md-12" align="center">
+									<button id="add" class="btn btn-sm btn-primary" type="submit">添&nbsp;&nbsp;&nbsp;&nbsp;加</button>
+								</div>
+							</div>
+							<br /> <br />
+
+
+							<!-- 编辑Modal -->
+							<div class="modal fade motai" id="editPareInfo" tabindex="-1"
+								role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title" id="myModalLabel">修改父母信息</h4>
+										</div>
+										<div class="modal-body">
+											<table id="setPareInfo"
+												class="table table-striped table-bordered" align="center">
+												<tr>
+													<th>姓名</th>
+													<td><input id="pareName" class="form-control"
+														placeholder="姓名"></td>
+													<th>角色</th>
+													<td><input id="pareRole" class="form-control"
+														placeholder="角色"></td>
+													<th>电话号码</th>
+													<td><input id="parePhone" class="form-control"
+														placeholder="18181768385"></td>
+												</tr>
+
+												<tr>
+													<th>职业</th>
+													<td><input id="pareOccupation" class="form-control"
+														placeholder="职业"></td>
+													<th>工作单位</th>
+													<td><input id="pareWork" class="form-control"
+														placeholder="工作单位"></td>
+													<th>职务</th>
+													<td><input id="pareDuties" class="form-control"
+														placeholder="职务"></td>
+												</tr>
+												<tr>
+													<th>与本人的关系</th>
+													<td><input id="pareRelation" class="form-control"
+														placeholder="父子/母子"></td>
+													<th>身份证号码</th>
+													<td colspan="3"><input id="pareIdNumber"
+														class="form-control" placeholder="500110199309224035"></td>
+												</tr>
+
+											</table>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal">取消</button>
+
+											<button id="pareInfoChange" type="button"
+												class="buttonChange btn btn-primary" onclick="">确定</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- 添加Modal -->
+							<div class="modal fade" id="addPareInfo" tabindex="-1"
+								role="dialog" aria-labelledby="addModlLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title" id="addModlLabel">添加父母信息</h4>
+										</div>
+										<div class="modal-body">
+											<table id="addPare"
+												class="table table-striped table-bordered" align="center">
+												<tr>
+													<th>姓名</th>
+													<td><input id="addpareName" class="form-control"
+														placeholder="姓名"></td>
+													<th>角色</th>
+													<td><input id="addpareRole" class="form-control"
+														placeholder="角色"></td>
+													<th>电话号码</th>
+													<td><input id="addparePhone" class="form-control"
+														placeholder="18181768385"></td>
+												</tr>
+
+												<tr>
+													<th>职业</th>
+													<td><input id="addpareOccupation" class="form-control"
+														placeholder="职业"></td>
+													<th>工作单位</th>
+													<td><input id="addpareWork" class="form-control"
+														placeholder="工作单位"></td>
+													<th>职务</th>
+													<td><input id="addpareDuties" class="form-control"
+														placeholder="职务"></td>
+												</tr>
+												<tr>
+													<th>与本人的关系</th>
+													<td><input id="addpareRelation" class="form-control"
+														placeholder="父子/母子"></td>
+													<th>身份证号码</th>
+													<td colspan="3"><input id="addpareIdNumber"
+														class="form-control" placeholder="500110199309224035"></td>
+												</tr>
+
+											</table>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal">关闭</button>
+											<button id="addParent" type="button"
+												onclick="javascript:addParent()" class="btn btn-primary">提交</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+							<!-- 删除Modal -->
+							<div class="modal fade" id="deletePareInfo" tabindex="-1"
+								role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title" id="deleteModal">提示</h4>
+										</div>
+										<div class="modal-body">
+											<h4>是否删除该信息</h4>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal">取消</button>
+
+											<button id="deletePareBut" type="button"
+												class="btn btn-primary" onclick="">确定</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+
+
+						<div id="infoDeatil" class="tab-pane fade">
+							<p align=center style="color: blue; font-size: 20px;">修改个人资料</p>
+							<table class="table table-striped table-bordered">
+								<tr>
+									<th>政治<br>面貌
+									</th>
+									<td>
+										<div>
+											<input id="politicState" type="text" class="form-control"
+												placeholder="政治面貌">
+										</div>
+									</td>
+									<th>银行<br>卡号
+									</th>
+									<td>
+										<div>
+											<input id="bankNumber" type="text" class="form-control"
+												placeholder="银行卡号码">
+										</div>
+									</td>
+									<th>性别</th>
+									<td>
+										<div>
+											<select id="sex" class="form-control">
+												<option id="man">男</option>
+												<option id="woman">女</option>
+											</select>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th>电话<br>号码
+									</th>
+									<td>
+										<div>
+											<input id="phone" type="text" class="form-control"
+												placeholder="座机/手机">
+										</div>
+									</td>
+									<th>QQ<br>号码
+									</th>
+									<td>
+										<div>
+											<input id="QQ" type="text" class="form-control"
+												placeholder="qq号码">
+										</div>
+									</td>
+									<th>邮箱</th>
+									<td>
+										<div>
+											<input id="email" type="text" class="form-control"
+												placeholder="Email">
+										</div>
+									</td>
+
+								</tr>
+								<tr>
+									<th>户口<br>类型
+									</th>
+									<td>
+										<div>
+											<select id="residence" class="form-control">
+												<option id="nongcun">农村</option>
+												<option id="chengzhen">城镇</option>
+											</select>
+										</div>
+									</td>
+									<th>人口<br>数量
+									</th>
+									<td>
+										<div>
+											<input id="population" type="text" class="form-control"
+												placeholder="人口数量">
+										</div>
+									</td>
+									<th>家庭月<br>总收入
+									</th>
+									<td>
+										<div>
+											<input id="allIncomes" type="text" class="form-control"
+												placeholder="月总收入（/元）">
+										</div>
+									</td>
+								</tr>
+
+								<tr>
+									<th>收入<br>来源
+									</th>
+									<td>
+										<div>
+											<input id="incomeType" type="text" class="form-control"
+												placeholder="如：务农">
+										</div>
+
+									</td>
+									<th>邮政<br>编码
+									</th>
+									<td>
+										<div>
+											<input id="mailCode" type="text" class="form-control"
+												placeholder="mail_code">
+										</div>
+									</td>
+									<th>系别</th>
+									<td>
+										<div>
+											<input id="department" type="text" class="form-control"
+												placeholder="如：软件工程系">
+										</div>
+									</td>
+								</tr>
+
+								<!-- 	</table> -->
+								<tr>
+									<td colspan="6">
+										<div class="form-group">
+											<div class="col-xs-2 control-label">
+												<b>家庭详细地址:</b>
+											</div>
+											<div class="col-xs-2">
+
+												<select id="province" class="form-control"
+													onchange="cityChange()">
+												</select>
+											</div>
+											<div class="col-xs-2">
+
+												<select id="city" class="form-control"
+													onchange="countyChange()">
+												</select>
+											</div>
+											<div class="col-xs-2">
+
+												<select id="county" class="form-control"
+													onchange="townChange()">
+												</select>
+											</div>
+											<div class="col-xs-2">
+
+												<select id="town" class="form-control">
+												</select>
+											</div>
+											<div class="col-xs-2">
+												<input id="vallige" type="text" class="form-control"
+													placeholder="村/社">
+											</div>
+										</div>
+									</td>
+								</tr>
+							</table>
+							<!-- 			<table class="table table-striped table-bordered">
+								<tr>
+									<th>家庭详细地址</th>
+									<td>
+										<div >
+											<select id="province" 
+												class="form-control" onchange="cityChange()">
+											</select>
+										</div>
+									</td>
+									<td>
+										<div >
+											<select id="city"  class="form-control"
+												onchange="countyChange()">
+											</select>
+										</div>
+									</td>
+									<td>
+										<div >
+											<select id="county"class="form-control"
+												onchange="townChange()">
+											</select>
+										</div>
+									</td>
+									<td>
+										<div >
+											<select id="town" class="form-control">
+											</select>
+										</div>
+									</td>
+									<td>
+										<div >
+											<input id="vallige" type="text" class="form-control"
+												placeholder="村/社">
+										</div>
+									</td>
+
+								</tr>
+
+							</table> -->
+							<div style="position: relative; right: -20px;">
+								<div class="col-md-12" align="right">
+									<button type="button" class="btn btn-primary" id="saveIfo">
+										<!-- onclick="confirmSaveInfo()" -->
+										<b>保存</b>
+									</button>
+									<button type="button" class="btn btn-primary" id="Cancel"
+										onclick="window.location.href='inputInfo.html'">
+										<b>取消</b>
+									</button>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								</div>
+							</div>
+							<br /> <br />
+						</div>
+
+						<!-- 学习情况 -->
+						<div id="learing" class="tab-pane fade">
+							<p align=center style="color: blue; font-size: 20px;">学习情况</p>
+							<div style="text-align:center;">
+								<table  class="table table-bordered" >
+								<thead >
+									<tr >
+										<td style="width: 30px;"><b>#</b></td>
+										<td style="width: 80px;"><b>学期</b></td>
+										<td style="width: 40px;"><b>名次</b></td>
+										<td style="width: 70px;"><b>通过课程数</b></td>
+										<td style="width: 60px;"><b>学分绩点</b></td>
+										<td style="width: 70px;"><b>必修课绩点</b></td>
+										<td style="width: 80px;"><b>是否综合排名</b></td>
+										<td style="width: 100px;"><b>操作</b></td>
+									</tr>
+								</thead>
+								<tbody id="allLearning">
+								</tbody>
+							</table>
+							</div>
+							
+							<div style="position: relative;" align="center">
+								<button onclick="addOneLearning()" style="position: relative"
+									class="btn btn-primary" >添加</button>
+							</div>
+
+							<!-- 大模态框，用于添加和修改学习信息 -->
+							<div id="learingmodal"
+								class="modal fade bs-example-modal-lg-learing" tabindex="-1"
+								role="dialog" aria-labelledby="myLargeModalLabel"
+								aria-hidden="true" style="display: none;">
+								<div class="modal-dialog modal-lg">
+									<div class="modal-content">
+
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">
+												<span aria-hidden="true">×</span><span class="sr-only">Close</span>
+											</button>
+											<h4 class="modal-title" id="myLargeModalLabel">添加学习信息</h4>
+										</div>
+										<div class="modal-body"
+											style="vertical-align: middle; text-align: center;">
+											<table class="table table-bordered">
+												<tr>
+													<td style="width: 100px;vertical-align:middle;">学期</td>
+													<td style="width: 130px;vertical-align:middle;" >
+													<input style="border:0px;text-align:center;width: 90px;"id="semester" value="2013-2014(1)"></td>
+													<td style="width: 100px;vertical-align:middle;">名次</td>
+													<td style="width: 100px;vertical-align:middle;">
+														<div class="input-group input-group-sm">
+															<input id="grade_rank" type="number" min="1" value="1"
+																placeholder="" style="width: 100px;height:32px;"
+																class="form-control" onblur="identifylearing()">
+														</div>
+													</td>
+													<td style="width: 170px;vertical-align:middle;">通过的课程数</td>
+													<td style="width: 100px;vertical-align:middle;" >
+													<input style="border:0px;text-align:center;width: 90px;" id="pass_course" value="3"></td>
+												</tr>
+												<tr>
+													<td style="vertical-align:middle;">必修课程数</td>
+													<td style="vertical-align:middle;" >
+													<input style="border:0px;text-align:center;width: 90px;" id="required_course" value="2"></td>
+													<td style="vertical-align:middle;">选修课程数</td>
+													<td style="vertical-align:middle;">
+													<input style="border:0px;text-align:center;width: 90px;" id="select_course" value="1"></td>
+													<td style="vertical-align:middle;">总人数</td>
+													<td>
+														<div class="input-group input-group-sm">
+															<input id="totalNum" type="number" min="1" value="1"
+																placeholder="" style="width: 100px;height:32px;"
+																class="form-control" onblur="identifylearing()">
+														</div>
+													</td>
+												</tr>
+												
+												<tr>
+													<td style="vertical-align:middle;" >学分绩点</td>
+													<td style="vertical-align:middle;" >
+													<input style="border:0px;text-align:center;width: 90px;" id="gradepoint" value="36.5"></td>
+													<td style="vertical-align:middle;" >必修课绩点</td>
+													<td style="vertical-align:middle;" >
+													<input style="border:0px;text-align:center;width: 90px;" id="requirepoint" value="35.5"></td>
+													<td style="vertical-align:middle;">是否综合排名</td>
+													<td style="vertical-align:middle;">
+														<div class="input-group input-group-sm">
+															<select id="iscompRank" style="width: 80px;"
+																class="form-control" onchange="judgeRank()">
+																<option>否</option>
+																<option>是</option>
+															</select>
+														</div>
+													</td>
+												</tr>
+												<tr id="comprank" style="display:none;">
+													<td style="vertical-align:middle;">综合测评名次</td>
+													<td style="vertical-align:middle;">
+														<div class="input-group input-group-sm">
+															<input id="comp_rankvalue" type="number" min="1" value="1"
+																placeholder="" style="width: 100px;height:32px;"
+																class="form-control" onblur="identifylearing()">
+														</div>
+													</td>
+													<td style="vertical-align:middle;">综合测评人数</td>
+													<td style="vertical-align:middle;">
+														<div class="input-group input-group-sm">
+															<input id="com_totoalnumvalue" type="number" min="1" value="1"
+																placeholder="" style="width: 100px;height:32px;"
+																class="form-control" onblur="identifylearing()">
+														</div>
+													</td>
+												</tr>
+											</table>
+
+											<div align="center">
+												<button type="button" class="btn btn-success" id="changestuInfo">Success</button>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<!-- 大模态框结束 -->
+							
+							<!-- 详细信息模态框 -->
+							<div id="detaillearingmodal"
+								class="modal fade bs-example-modal-lg-learing" tabindex="-1"
+								role="dialog" aria-labelledby="myLargeModalLabel1"
+								aria-hidden="true" style="display: none;">
+								<div class="modal-dialog modal-lg">
+									<div class="modal-content">
+
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">
+												<span aria-hidden="true">×</span><span class="sr-only">Close</span>
+											</button>
+											<h4 class="modal-title" id="myLargeModalLabel">详细学习信息</h4>
+										</div>
+										<div class="modal-body"
+											style="vertical-align: middle; text-align: center;">
+											<table class="table table-bordered">
+												<tr>
+													<td style="width: 100px;vertical-align:middle;" >学期</td>
+													<td style="width: 130px;vertical-align:middle;" id="semester1"></td>
+													<td style="width: 100px;vertical-align:middle;">名次</td>
+													<td style="width: 100px;vertical-align:middle;" id="learRanking"></td>
+													<td style="width: 170px;vertical-align:middle;">通过的课程数</td>
+													<td style="width: 100px;vertical-align:middle;" id="learPassnumber"></td>
+												</tr>
+												<tr>
+													<td style="vertical-align:middle;">必修课程数</td>
+													<td style="vertical-align:middle;" id="learRequirednumber"></td>
+													<td style="vertical-align:middle;">选修课程数</td>
+													<td style="vertical-align:middle;" id="learSelectivesnumber"></td>
+													<td style="vertical-align:middle;">总人数</td>
+													<td style="vertical-align:middle;" id="learTotalnumber"></td>
+												</tr>
+												<tr>
+													<td style="vertical-align:middle;" >学分绩点</td>
+													<td style="vertical-align:middle;" id="learGradepoint"></td>
+													<td style="vertical-align:middle;" >必修课绩点</td>
+													<td style="vertical-align:middle;" id="learGradepointrequired"></td>
+													<td style="vertical-align:middle;">是否综合排名</td>
+													<td style="vertical-align:middle;" id="learEvaluationtype"></td>
+												</tr>
+												<tr id="comprankDetail" style="display:none;">
+													<td style="vertical-align:middle;">综合测评名次</td>
+													<td style="vertical-align:middle;" id="learComprehensive"></td>
+													<td style="vertical-align:middle;">综合测评人数</td>
+													<td style="vertical-align:middle;" id="learComprehensivetotal"></td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<!-- 详细模态框结束 -->
+							
+							<!-- 小模态框，用于验证用户是否确定删除 -->
+
+							<div class="modal fade" id="deletelearing" tabindex="-1">
+								<div style="position: relative; top: 200px;">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<br />
+											</div>
+											<div class="modal-body">
+												<div align="center">
+													<span><font
+														style="font-family: verdana; font-size: 180%; color: red">您确定要删除这条学习情况？</font></span>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-danger"
+													data-dismiss="modal" id="confirm_delete">删除</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- 小模态框结束 -->
+
+						</div>
+						<!--  学习情况结束 -->
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- 修改密码的模态对话框 Modal -->
+		<div class="modal fade" id="changePassword" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">修改用户密码</h4>
+					</div>
+					<div class="modal-body">
+						<!-- 对话框里面的内容   -->
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-4 control-label">当前密码：</label>
+								<div class="col-sm-6">
+									<input type="password" class="form-control" id="inputPassword1"
+										placeholder="原始密码">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword3" class="col-sm-4 control-label">新密码：</label>
+								<div class="col-sm-6">
+									<input type="password" class="form-control" id="inputPassword2"
+										placeholder="新密码">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword3" class="col-sm-4 control-label">再次输入新密码：</label>
+								<div class="col-sm-6">
+									<input type="password" class="form-control" id="inputPassword3"
+										placeholder="重复新密码">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button Id="changePWD" type="button" class="btn btn-primary">保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<footer class="bs-footer" role="contentinfo">
+		<p class="pull-right">
+			<a href="#">回到页面顶部</a>
+		</p>
+		<div class="container" id="copyright"></div>
+	</footer>
+</body>
+<script src="../js/selectarea.js"></script>
+</html>

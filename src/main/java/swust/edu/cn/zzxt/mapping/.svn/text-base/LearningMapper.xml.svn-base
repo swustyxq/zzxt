@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.LearningMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Learning" >
+    <id column="lear_id" property="learId" jdbcType="INTEGER" />
+    <result column="lear_studId" property="learStudid" jdbcType="INTEGER" />
+    <result column="lear_semester" property="learSemester" jdbcType="VARCHAR" />
+    <result column="lear_ranking" property="learRanking" jdbcType="INTEGER" />
+    <result column="lear_passNumber" property="learPassnumber" jdbcType="INTEGER" />
+    <result column="lear_requiredNumber" property="learRequirednumber" jdbcType="INTEGER" />
+    <result column="lear_selectivesNumber" property="learSelectivesnumber" jdbcType="INTEGER" />
+    <result column="lear_totalNumber" property="learTotalnumber" jdbcType="INTEGER" />
+    <result column="lear_evaluationType" property="learEvaluationtype" jdbcType="VARCHAR" />
+    <result column="lear_comprehensive" property="learComprehensive" jdbcType="INTEGER" />
+    <result column="lear_comprehensiveTotal" property="learComprehensivetotal" jdbcType="INTEGER" />
+    <result column="lear_gradePoint" property="learGradepoint" jdbcType="DOUBLE" />
+    <result column="lear_gradePointRequired" property="learGradepointrequired" jdbcType="DOUBLE" />
+    <result column="lear_firstSemesterYear" property="learFirstsemesteryear" jdbcType="INTEGER" />
+    <result column="lear_secondSemesterYear" property="learSecondsemesteryear" jdbcType="INTEGER" />
+    <result column="lear_semesterSequence" property="learSemestersequence" jdbcType="INTEGER" />
+    <result column="lear_state" property="learState" jdbcType="INTEGER" />
+    <result column="lear_isEditable" property="learIseditable" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    lear_id, lear_studId, lear_semester, lear_ranking, lear_passNumber, lear_requiredNumber, 
+    lear_selectivesNumber, lear_totalNumber, lear_evaluationType, lear_comprehensive, 
+    lear_comprehensiveTotal, lear_gradePoint, lear_gradePointRequired, lear_firstSemesterYear, 
+    lear_secondSemesterYear, lear_semesterSequence, lear_state, lear_isEditable
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from learning
+    where lear_id = #{learId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from learning
+    where lear_id = #{learId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.Learning" >
+    insert into learning (lear_id, lear_studId, lear_semester, 
+      lear_ranking, lear_passNumber, lear_requiredNumber, 
+      lear_selectivesNumber, lear_totalNumber, 
+      lear_evaluationType, lear_comprehensive, 
+      lear_comprehensiveTotal, lear_gradePoint, 
+      lear_gradePointRequired, lear_firstSemesterYear, 
+      lear_secondSemesterYear, lear_semesterSequence, 
+      lear_state, lear_isEditable)
+    values (#{learId,jdbcType=INTEGER}, #{learStudid,jdbcType=INTEGER}, #{learSemester,jdbcType=VARCHAR}, 
+      #{learRanking,jdbcType=INTEGER}, #{learPassnumber,jdbcType=INTEGER}, #{learRequirednumber,jdbcType=INTEGER}, 
+      #{learSelectivesnumber,jdbcType=INTEGER}, #{learTotalnumber,jdbcType=INTEGER}, 
+      #{learEvaluationtype,jdbcType=VARCHAR}, #{learComprehensive,jdbcType=INTEGER}, 
+      #{learComprehensivetotal,jdbcType=INTEGER}, #{learGradepoint,jdbcType=DOUBLE}, 
+      #{learGradepointrequired,jdbcType=DOUBLE}, #{learFirstsemesteryear,jdbcType=INTEGER}, 
+      #{learSecondsemesteryear,jdbcType=INTEGER}, #{learSemestersequence,jdbcType=INTEGER}, 
+      #{learState,jdbcType=INTEGER}, #{learIseditable,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.Learning" >
+    insert into learning
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="learId != null" >
+        lear_id,
+      </if>
+      <if test="learStudid != null" >
+        lear_studId,
+      </if>
+      <if test="learSemester != null" >
+        lear_semester,
+      </if>
+      <if test="learRanking != null" >
+        lear_ranking,
+      </if>
+      <if test="learPassnumber != null" >
+        lear_passNumber,
+      </if>
+      <if test="learRequirednumber != null" >
+        lear_requiredNumber,
+      </if>
+      <if test="learSelectivesnumber != null" >
+        lear_selectivesNumber,
+      </if>
+      <if test="learTotalnumber != null" >
+        lear_totalNumber,
+      </if>
+      <if test="learEvaluationtype != null" >
+        lear_evaluationType,
+      </if>
+      <if test="learComprehensive != null" >
+        lear_comprehensive,
+      </if>
+      <if test="learComprehensivetotal != null" >
+        lear_comprehensiveTotal,
+      </if>
+      <if test="learGradepoint != null" >
+        lear_gradePoint,
+      </if>
+      <if test="learGradepointrequired != null" >
+        lear_gradePointRequired,
+      </if>
+      <if test="learFirstsemesteryear != null" >
+        lear_firstSemesterYear,
+      </if>
+      <if test="learSecondsemesteryear != null" >
+        lear_secondSemesterYear,
+      </if>
+      <if test="learSemestersequence != null" >
+        lear_semesterSequence,
+      </if>
+      <if test="learState != null" >
+        lear_state,
+      </if>
+      <if test="learIseditable != null" >
+        lear_isEditable,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="learId != null" >
+        #{learId,jdbcType=INTEGER},
+      </if>
+      <if test="learStudid != null" >
+        #{learStudid,jdbcType=INTEGER},
+      </if>
+      <if test="learSemester != null" >
+        #{learSemester,jdbcType=VARCHAR},
+      </if>
+      <if test="learRanking != null" >
+        #{learRanking,jdbcType=INTEGER},
+      </if>
+      <if test="learPassnumber != null" >
+        #{learPassnumber,jdbcType=INTEGER},
+      </if>
+      <if test="learRequirednumber != null" >
+        #{learRequirednumber,jdbcType=INTEGER},
+      </if>
+      <if test="learSelectivesnumber != null" >
+        #{learSelectivesnumber,jdbcType=INTEGER},
+      </if>
+      <if test="learTotalnumber != null" >
+        #{learTotalnumber,jdbcType=INTEGER},
+      </if>
+      <if test="learEvaluationtype != null" >
+        #{learEvaluationtype,jdbcType=VARCHAR},
+      </if>
+      <if test="learComprehensive != null" >
+        #{learComprehensive,jdbcType=INTEGER},
+      </if>
+      <if test="learComprehensivetotal != null" >
+        #{learComprehensivetotal,jdbcType=INTEGER},
+      </if>
+      <if test="learGradepoint != null" >
+        #{learGradepoint,jdbcType=DOUBLE},
+      </if>
+      <if test="learGradepointrequired != null" >
+        #{learGradepointrequired,jdbcType=DOUBLE},
+      </if>
+      <if test="learFirstsemesteryear != null" >
+        #{learFirstsemesteryear,jdbcType=INTEGER},
+      </if>
+      <if test="learSecondsemesteryear != null" >
+        #{learSecondsemesteryear,jdbcType=INTEGER},
+      </if>
+      <if test="learSemestersequence != null" >
+        #{learSemestersequence,jdbcType=INTEGER},
+      </if>
+      <if test="learState != null" >
+        #{learState,jdbcType=INTEGER},
+      </if>
+      <if test="learIseditable != null" >
+        #{learIseditable,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.Learning" >
+    update learning
+    <set >
+      <if test="learStudid != null" >
+        lear_studId = #{learStudid,jdbcType=INTEGER},
+      </if>
+      <if test="learSemester != null" >
+        lear_semester = #{learSemester,jdbcType=VARCHAR},
+      </if>
+      <if test="learRanking != null" >
+        lear_ranking = #{learRanking,jdbcType=INTEGER},
+      </if>
+      <if test="learPassnumber != null" >
+        lear_passNumber = #{learPassnumber,jdbcType=INTEGER},
+      </if>
+      <if test="learRequirednumber != null" >
+        lear_requiredNumber = #{learRequirednumber,jdbcType=INTEGER},
+      </if>
+      <if test="learSelectivesnumber != null" >
+        lear_selectivesNumber = #{learSelectivesnumber,jdbcType=INTEGER},
+      </if>
+      <if test="learTotalnumber != null" >
+        lear_totalNumber = #{learTotalnumber,jdbcType=INTEGER},
+      </if>
+      <if test="learEvaluationtype != null" >
+        lear_evaluationType = #{learEvaluationtype,jdbcType=VARCHAR},
+      </if>
+      <if test="learComprehensive != null" >
+        lear_comprehensive = #{learComprehensive,jdbcType=INTEGER},
+      </if>
+      <if test="learComprehensivetotal != null" >
+        lear_comprehensiveTotal = #{learComprehensivetotal,jdbcType=INTEGER},
+      </if>
+      <if test="learGradepoint != null" >
+        lear_gradePoint = #{learGradepoint,jdbcType=DOUBLE},
+      </if>
+      <if test="learGradepointrequired != null" >
+        lear_gradePointRequired = #{learGradepointrequired,jdbcType=DOUBLE},
+      </if>
+      <if test="learFirstsemesteryear != null" >
+        lear_firstSemesterYear = #{learFirstsemesteryear,jdbcType=INTEGER},
+      </if>
+      <if test="learSecondsemesteryear != null" >
+        lear_secondSemesterYear = #{learSecondsemesteryear,jdbcType=INTEGER},
+      </if>
+      <if test="learSemestersequence != null" >
+        lear_semesterSequence = #{learSemestersequence,jdbcType=INTEGER},
+      </if>
+      <if test="learState != null" >
+        lear_state = #{learState,jdbcType=INTEGER},
+      </if>
+      <if test="learIseditable != null" >
+        lear_isEditable = #{learIseditable,jdbcType=INTEGER},
+      </if>
+    </set>
+    where lear_id = #{learId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Learning" >
+    update learning
+    set lear_studId = #{learStudid,jdbcType=INTEGER},
+      lear_semester = #{learSemester,jdbcType=VARCHAR},
+      lear_ranking = #{learRanking,jdbcType=INTEGER},
+      lear_passNumber = #{learPassnumber,jdbcType=INTEGER},
+      lear_requiredNumber = #{learRequirednumber,jdbcType=INTEGER},
+      lear_selectivesNumber = #{learSelectivesnumber,jdbcType=INTEGER},
+      lear_totalNumber = #{learTotalnumber,jdbcType=INTEGER},
+      lear_evaluationType = #{learEvaluationtype,jdbcType=VARCHAR},
+      lear_comprehensive = #{learComprehensive,jdbcType=INTEGER},
+      lear_comprehensiveTotal = #{learComprehensivetotal,jdbcType=INTEGER},
+      lear_gradePoint = #{learGradepoint,jdbcType=DOUBLE},
+      lear_gradePointRequired = #{learGradepointrequired,jdbcType=DOUBLE},
+      lear_firstSemesterYear = #{learFirstsemesteryear,jdbcType=INTEGER},
+      lear_secondSemesterYear = #{learSecondsemesteryear,jdbcType=INTEGER},
+      lear_semesterSequence = #{learSemestersequence,jdbcType=INTEGER},
+      lear_state = #{learState,jdbcType=INTEGER},
+      lear_isEditable = #{learIseditable,jdbcType=INTEGER}
+    where lear_id = #{learId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 通过学生id查询learning信息 -->
+  <select id="selectLearningByStudid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from learning
+    where lear_studId = #{learStudid,jdbcType=INTEGER}
+  </select>
+  
+   <!-- 通过学生id查询learning信息 -->
+  <select id="selectAllLearning" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from learning
+    where lear_studId = #{learStudid,jdbcType=INTEGER}
+  </select>
+  
+  <update id="updateByStudIdSelective" parameterType="swust.edu.cn.zzxt.model.Learning" >
+    update learning
+    <set >
+      <if test="learStudid != null" >
+        lear_studId = #{learStudid,jdbcType=INTEGER},
+      </if>
+      <if test="learSemester != null" >
+        lear_semester = #{learSemester,jdbcType=VARCHAR},
+      </if>
+      <if test="learRanking != null" >
+        lear_ranking = #{learRanking,jdbcType=INTEGER},
+      </if>
+      <if test="learPassnumber != null" >
+        lear_passNumber = #{learPassnumber,jdbcType=INTEGER},
+      </if>
+      <if test="learRequirednumber != null" >
+        lear_requiredNumber = #{learRequirednumber,jdbcType=INTEGER},
+      </if>
+      <if test="learSelectivesnumber != null" >
+        lear_selectivesNumber = #{learSelectivesnumber,jdbcType=INTEGER},
+      </if>
+      <if test="learTotalnumber != null" >
+        lear_totalNumber = #{learTotalnumber,jdbcType=INTEGER},
+      </if>
+      <if test="learEvaluationtype != null" >
+        lear_evaluationType = #{learEvaluationtype,jdbcType=VARCHAR},
+      </if>
+      <if test="learComprehensive != null" >
+        lear_comprehensive = #{learComprehensive,jdbcType=INTEGER},
+      </if>
+      <if test="learComprehensivetotal != null" >
+        lear_comprehensiveTotal = #{learComprehensivetotal,jdbcType=INTEGER},
+      </if>
+      <if test="learGradepoint != null" >
+        lear_gradePoint = #{learGradepoint,jdbcType=DOUBLE},
+      </if>
+      <if test="learGradepointrequired != null" >
+        lear_gradePointRequired = #{learGradepointrequired,jdbcType=DOUBLE},
+      </if>
+      <if test="learFirstsemesteryear != null" >
+        lear_firstSemesterYear = #{learFirstsemesteryear,jdbcType=INTEGER},
+      </if>
+      <if test="learSecondsemesteryear != null" >
+        lear_secondSemesterYear = #{learSecondsemesteryear,jdbcType=INTEGER},
+      </if>
+      <if test="learSemestersequence != null" >
+        lear_semesterSequence = #{learSemestersequence,jdbcType=INTEGER},
+      </if>
+      <if test="learState != null" >
+        lear_state = #{learState,jdbcType=INTEGER},
+      </if>
+      <if test="learIseditable != null" >
+        lear_isEditable = #{learIseditable,jdbcType=INTEGER},
+      </if>
+    </set>
+    where lear_studId = #{learStudid,jdbcType=INTEGER}
+  </update>
+</mapper>

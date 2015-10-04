@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.ShjxjtypeMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Shjxjtype" >
+    <id column="sjtp_id" property="sjtpId" jdbcType="INTEGER" />
+    <result column="sjtp_name" property="sjtpName" jdbcType="VARCHAR" />
+    <result column="sjtp_isPersonal" property="sjtpIspersonal" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="swust.edu.cn.zzxt.model.Shjxjtype" extends="BaseResultMap" >
+    <result column="sjtp_description" property="sjtpDescription" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sjtp_id, sjtp_name, sjtp_isPersonal
+  </sql>
+  <sql id="Blob_Column_List" >
+    sjtp_description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from shjxjtype
+    where sjtp_id = #{sjtpId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from shjxjtype
+    where sjtp_id = #{sjtpId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.Shjxjtype" >
+    insert into shjxjtype (sjtp_id, sjtp_name, sjtp_isPersonal, 
+      sjtp_description)
+    values (#{sjtpId,jdbcType=INTEGER}, #{sjtpName,jdbcType=VARCHAR}, #{sjtpIspersonal,jdbcType=INTEGER}, 
+      #{sjtpDescription,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.Shjxjtype" >
+    insert into shjxjtype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sjtpId != null" >
+        sjtp_id,
+      </if>
+      <if test="sjtpName != null" >
+        sjtp_name,
+      </if>
+      <if test="sjtpIspersonal != null" >
+        sjtp_isPersonal,
+      </if>
+      <if test="sjtpDescription != null" >
+        sjtp_description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sjtpId != null" >
+        #{sjtpId,jdbcType=INTEGER},
+      </if>
+      <if test="sjtpName != null" >
+        #{sjtpName,jdbcType=VARCHAR},
+      </if>
+      <if test="sjtpIspersonal != null" >
+        #{sjtpIspersonal,jdbcType=INTEGER},
+      </if>
+      <if test="sjtpDescription != null" >
+        #{sjtpDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.Shjxjtype" >
+    update shjxjtype
+    <set >
+      <if test="sjtpName != null" >
+        sjtp_name = #{sjtpName,jdbcType=VARCHAR},
+      </if>
+      <if test="sjtpIspersonal != null" >
+        sjtp_isPersonal = #{sjtpIspersonal,jdbcType=INTEGER},
+      </if>
+      <if test="sjtpDescription != null" >
+        sjtp_description = #{sjtpDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where sjtp_id = #{sjtpId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="swust.edu.cn.zzxt.model.Shjxjtype" >
+    update shjxjtype
+    set sjtp_name = #{sjtpName,jdbcType=VARCHAR},
+      sjtp_isPersonal = #{sjtpIspersonal,jdbcType=INTEGER},
+      sjtp_description = #{sjtpDescription,jdbcType=LONGVARCHAR}
+    where sjtp_id = #{sjtpId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Shjxjtype" >
+    update shjxjtype
+    set sjtp_name = #{sjtpName,jdbcType=VARCHAR},
+      sjtp_isPersonal = #{sjtpIspersonal,jdbcType=INTEGER}
+    where sjtp_id = #{sjtpId,jdbcType=INTEGER}
+  </update>
+</mapper>

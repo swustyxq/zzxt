@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="../images/favicon.png">
+
+<title>西南科技大学资助系统</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../css/bootstrap.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="../css/theme.css" rel="stylesheet">
+<link href="../css/docs.css" rel="stylesheet">
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/github.min.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<style>
+input {
+	
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+	resize: none;
+}
+
+textarea {
+	
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+	resize: none;
+	class:form-control;
+}
+</style>
+<script src="../javascript/jquery.min.js"></script>
+<script src="../javascript/bootstrap.min.js"></script>
+<script src="../javascript/holder.min.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/seeLzDetail.js"></script>
+</head>
+
+<body>
+
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">西南科技大学学生资助系统</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle"
+							data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><span id="current_user">学生用户</span>
+						</a>
+						<ul class="dropdown-menu">
+							<li class="divider"></li>
+							<li class="dropdown-header">系统帮助</li>
+							<li><a href="about.html"><span class="glyphicon glyphicon-book"></span>关于系统</a></li>
+							<li><a href="help.html"><span class="glyphicon glyphicon-print"></span>使用说明</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">基本功能</li>
+							<li><a href="#" data-toggle="modal" data-target="#changePassword"><span class="glyphicon glyphicon-cog"></span>修改密码</a></li>
+							<li><a href="#" id="logout"><span class="glyphicon glyphicon-log-out"></span>退出</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+	<div class="container theme-showcase">
+		<div class="col-md-12">
+			<div class="col-md-12">
+
+				<div class="page-header">
+					<small><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;当前位置导航：&nbsp;&nbsp;&nbsp;&nbsp;
+						<span id="location">
+							<a href="#">首页</a>&gt;<a href="#">使用说明</a>&gt;<a href="#">学生信息</a>
+						</span>
+					</small>
+				</div>
+			</div>
+
+
+			<!-- 左侧导航栏    -->
+			<div class="col-md-3">
+				<div class="bs-example">
+					<div id="navigation" class="panel-group">
+						
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div class="bs-Shaozhou">
+					<div style="text-align: center">
+						<table 	class="table table-bordered" id="table0">
+							<tr>
+								<th rowspan="4" width="10">
+								<br />基本情况
+								</th>
+								<td height="40" width="100"><b>姓名</b></td>
+								<td width="100"id="studName"></td>
+								<td width="80" ><b>性别</b></td>
+								<td width="80" id="stinSex"></td>
+								<td width="80" ><b>出生年月</b></td>
+								<td width="60" id="studBirthday"></td>
+							</tr>
+							<tr>
+								<td height="40" width="100" ><b>政治面貌</b></td>
+								<td width="100" id="stinPoliticstate"></td>
+								<td width="80" ><b>民族</b></td>
+								<td width="80" id="studNation"></td>
+								<td width="100" ><b>入学时间</b></td>
+								<td width="60" id="studAdmissiontime"></td>
+							</tr>
+							<tr>
+								<td height="40" width="100" ><b>专业</b></td>
+								<td width="100" id="majrName"></td>
+								<td width="80" ><b>学制</b></td>
+								<td width="80" id="majrEducationsystem"></td>
+								<td width="100" ><b>联系电话</b></td>
+								<td width="60" id="stinPhone"></td>
+							</tr>
+							<tr>
+								<td height="30" width="100" ><b>身份证号码</b></td>
+								<td colspan="5" id="studIdnumber"></td>										
+							</tr>
+							<tr>
+								<th rowspan="3" >家庭经济情况</th>
+								<td height="40" width="100" id="gjlzResidence" ><b>家庭户口</b></td>
+								<td colspan="3" >
+									<table>
+										<tbody>
+											<tr>
+												<td width="50"></td>
+												<td width="100px">A、
+													<div style="float: left">
+														<input id="l1"type="radio"disabled="disabled" name="radio1"value="农村"></input>
+													</div>农村
+												</td>
+												<td width="100px">B、
+													<div style="float: left">
+														<input id="l2"type="radio"disabled="disabled" name="radio1"value="城镇"></input>
+													</div>城镇
+												</td>
+											</tr>
+										</tbody>
+									</table></td>
+								<td ><b>家庭人口总数</b></td>
+								<td colspan="2"id="stinPopulation"></td>
+							</tr>
+							<tr>
+							<td ><b>家庭月总收入</b></td>
+							<td height="40" width="100" id="stinAllincomes"></td>
+							<td style="text-align: center" ><b>人均月收入</b></td>
+							<td id="renjunyueshouru"></td>
+							<td ><b>收入来源</b></td>
+							<td id="stinIncometype"></td>
+						</tr>
+						<tr>
+							<td height="40" width="100" ><b>家庭住址</b></td>
+							<td colspan="3" id="stinAreadeatilhome"></td>
+							<td ><b>邮政编码</b></td>
+							<td colspan="2" id="stinMailcode"></td>
+						</tr>
+							<tr>								
+								<th rowspan="2" ><br/>学习等情况</th>
+								<td colspan="3">
+									<table style="border:0;">
+										<tr>
+											<td width="100px"><b>成绩排名:</b></td>
+											<td width="70"><input id="gjlzRanking1"placeholder="请输入"
+													class="form-control"></input></td>
+											<td>/</td>
+											<td width="70"><input placeholder="请输入" id="gjlzRanking2"class="form-control"></input></td>
+											<td width="120"><b>（名次/总人数）</b></td>
+										</tr>
+									</table>
+								<td colspan="3">
+									<table>
+										<tr>
+											<td width="200"><b>实行综合考评排名：</b></td>
+											<td width="100px">
+												<div style="float: left">
+													<input type="radio" name="radio2"id="gjxjComprehensiveYes"value="是" onchange="onclick1()"></input>
+												</div>是
+											</td>
+											<td width="100px">
+												<div style="float: left">
+													<input type="radio" name="radio2"id="gjxjComprehensiveNo"value="否" onchange="onclick1()"checked="checked"></input>
+												</div>否
+											</td>
+										</tr>
+										
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3">
+									<table>
+										<tr>
+											<td width="70px" >必修课</td>
+											<td width="30px" id="learRequirednumber"></td>
+											<td width="10px" >门，</td>
+											<td width="40px" >&nbsp;</td>
+											<td width="130px">其中，及格以上</td>
+											<td width="30px" id="learPassnumber"></td>
+											<td width="10px" >门</td>
+										</tr>
+									</table>
+								</td>
+								<td colspan="3">
+									<table>
+										<tr>
+											<td width="100px">如是，排名：</td>
+											<td width="70"><input class="form-control"id="gjlzComprehensiveranking1"disabled="disabled"></td>
+											<td>/</td>
+											<td width="70"><input class="form-control"id="gjlzComprehensiveranking2"disabled="disabled"></td>
+											<td width="120">（名次/总人数）</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<th rowspan="5">
+								<br />
+								<br />获奖情况</th>
+								<td height="40"><b>日期</b></td>
+								<td colspan="2"><b>奖项名称</b></td>
+								<td colspan="2"><b>颁奖单位</b></td>
+								<td>
+									<nobr>
+										<button id="btn1"type="button"class="btn btn-info btn-xs">选择</button>
+									</nobr>
+								</td>
+							</tr>
+							<tr>
+								<td height="40"><input id="rewrTime1"class="form-control"></input></td>
+								<td colspan="2"><input id="rewrName1"class="form-control"></input></td>
+								<td colspan="2"><input id="rewrAwarded1"class="form-control"></input></td>
+								<td rowspan="4"><br /><br /><br /><button id="btn2"type="button"class="btn btn-info btn-xs">清空</button></td>
+							</tr>
+							<tr>
+								<td height="40"><input id="rewrTime2"class="form-control"></input></td>
+								<td colspan="2"><input id="rewrName2"class="form-control"></input></td>
+								<td colspan="2"><input id="rewrAwarded2"class="form-control"></input></td>
+								
+							</tr>
+							<tr>
+								<td height="40"><input id="rewrTime3"class="form-control"></input></td>
+								<td colspan="2"><input id="rewrName3"class="form-control"></input></td>
+								<td colspan="2"><input id="rewrAwarded3"class="form-control"></input></td>
+								
+							</tr>
+							<tr>
+								<td height="40"><input id="rewrTime4"class="form-control"></input></td>
+								<td colspan="2"><input id="rewrName4"class="form-control"></input></td>
+								<td colspan="2"><input id="rewrAwarded4"class="form-control"></input></td>
+								
+							</tr>
+							<tr>
+								<th style="text-align:"><br />
+								申请理由</th>
+								<td colspan="7"><textarea rows="3" id="gjlzApplyreason"class="form-control"
+															></textarea></td>
+							</tr>
+							<tr id="majortable">
+								<th>年级（专业）意见</th>
+								<td colspan="7"><textarea id="majorOption"
+										class="form-control" rows="3" placeholder="年级（专业）意见"></textarea></td>
+							</tr>
+							<tr id="academytable">
+								<th>学院意见</th>
+								<td colspan="7"><textarea id="academyOption"
+										class="form-control" rows="3" placeholder="学院意见"></textarea></td>
+							</tr>
+							<tr id="schooltable">
+								<th>学校意见</th>
+								<td colspan="7"><textarea id="schoolOption"
+								class="form-control" rows="3" placeholder="学校意见"></textarea></td>
+							</tr>
+						</table>
+						<!-- 获奖情况模态框 -->
+						<div class="modal fade" tabindex="-1" id="showPrizInfo">
+  							<div class="modal-dialog modal-sm">
+    							<div class="modal-content">
+								        <div class="modal-header">
+								          <button data-dismiss="modal" class="close" type="button"><span >×</span><span class="sr-only">Close</span></button>
+								          <h4 id="" class="modal-title">请选择最多四条获奖记录</h4>
+								          <div id="qintishi" style="display:none">
+								          		<font color="red">
+								          			亲！最多只能选择四条哦！
+								          		</font>
+								          </div>
+								        </div>
+								        <div class="modal-body">
+								         <!--  alert("暂无奖励信息！"); -->
+								         <table class="table table-bordered"border="1">
+								        	 <thead>
+									          	<tr>
+									          		<th>编号</th>
+									          		<th>日期</th>
+									          		<th>奖项名称</th>
+									          		<th>颁奖单位</th>
+									          		<th></th>
+									          	</tr>
+								          	</thead>
+								          	<tbody id="reward1">
+								          		
+								          	</tbody>
+								          </table>
+								        </div>
+								        <div class="modal-footer">
+    										<button type="button"class="btn btn-primary"id="confirm"data-dismiss="modal"class="close">确定</button>
+    										<button type="button"class="btn btn-primary"data-dismiss="modal"class="close">取消</button>
+    									</div>
+    							</div>
+    							
+						  </div>
+						</div>
+					</div>
+					<div align="right" id="nonebutton" style="display:block">
+								<button type="button" class="btn btn-primary"id="update">
+									<b>修改</b>
+								</button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<button type="button" class="btn btn-success"id="pass">
+									<b>审核通过</b>
+								</button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<button type="button" class="btn btn-danger" id="reject">
+									<b>驳回</b>
+								</button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<button type="button" class="btn btn-info" onclick="javascript: history.go(-1)">
+									<span class="glyphicon glyphicon-arrow-left"></span>
+								返回
+								</button>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- 修改密码的模态对话框 Modal -->
+		<div class="modal fade" id="changePassword" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">修改用户密码</h4>
+					</div>
+					<div class="modal-body">
+						<!-- 对话框里面的内容   -->
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-4 control-label">当前密码：</label>
+								<div class="col-sm-6">
+									<input type="password" class="form-control" id="inputPassword1"
+										placeholder="原始密码">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword3" class="col-sm-4 control-label">新密码：</label>
+								<div class="col-sm-6">
+									<input type="password" class="form-control" id="inputPassword2"
+										placeholder="新密码">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword3" class="col-sm-4 control-label">再次输入新密码：</label>
+								<div class="col-sm-6">
+									<input type="password" class="form-control" id="inputPassword3"
+										placeholder="重复新密码">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button Id="changePWD" type="button" class="btn btn-primary">保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<footer class="bs-footer" role="contentinfo">
+		<p class="pull-right">
+			<a href="#">回到页面顶部</a>
+		</p>
+		<div class="container" id="copyright">
+			
+		</div>
+	</footer>
+</body>
+</html>

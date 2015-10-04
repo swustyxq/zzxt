@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="../images/favicon.png">
+
+<title>西南科技大学资助系统</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../css/bootstrap.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="../css/theme.css" rel="stylesheet">
+<link href="../css/docs.css" rel="stylesheet">
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/github.min.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+
+<script src="../javascript/jquery.min.js"></script>
+<script src="../javascript/bootstrap.min.js"></script>
+<script src="../javascript/holder.min.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/setAcedemyRole.js"></script>
+</head>
+
+<body>
+
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">西南科技大学学生资助系统</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><span
+							id="current_user">学生用户</span> </a>
+						<ul class="dropdown-menu">
+							<li class="divider"></li>
+							<li class="dropdown-header">系统帮助</li>
+							<li><a href="help.html"><span
+									class="glyphicon glyphicon-book"></span>关于系统</a></li>
+							<li><a href="help.html"><span
+									class="glyphicon glyphicon-print"></span>使用说明</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">基本功能</li>
+							<li><a href="#" data-toggle="modal"
+								data-target="#changePassword"><span
+									class="glyphicon glyphicon-cog"></span>修改密码</a></li>
+							<li><a href="#" id="logout"><span
+									class="glyphicon glyphicon-log-out"></span>退出</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+	<div class="container theme-showcase">
+		<div class="col-md-12">
+			<div class="col-md-12">
+
+				<div class="page-header">
+					<small><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;当前位置导航：&nbsp;&nbsp;&nbsp;&nbsp;
+						<span id="location"> <a href="#">首页</a>&gt;<a href="#">使用说明</a>&gt;<a
+							href="#">学生信息</a>
+					</span> </small>
+				</div>
+			</div>
+
+
+			<!-- 左侧导航栏    -->
+			<div class="col-md-3">
+				<div class="bs-example">
+					<div id="navigation" class="panel-group"></div>
+				</div>
+			</div>
+
+			<div>
+				<div class="col-md-9" class="bs-Shaozhou">
+
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="active"><a href="#home" role="tab"
+							data-toggle="tab">代班设置</a></li>
+						<li><a href="#profile" role="tab" data-toggle="tab">经办老师设置</a></li>
+					</ul>
+
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div class="tab-pane active" id="home">
+							<table id="chaxun" class="table table-hover">
+								<tbody>
+									<tr>
+										<th>筛选</th>
+										<td><select id="major" class="form-control"
+											onchange="javascript:majorChange()">
+												<option selected="selected" value="0">专业</option>
+										</select></td>
+										<td><select id="classinfo" class="form-control"
+											onchange="">
+												<option selected="selected" value="0">班级</option>
+										</select></td>
+										<td style="align: left">
+											<button type="button" class="btn btn-primary"
+												onclick="javascript:serch()">搜索</button>
+										</td>
+									</tr>
+
+								</tbody>
+							</table>
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>班级</th>
+										<th>学院</th>
+										<th>辅导员</th>
+										<th>操作</th>
+									</tr>
+								</thead>
+								<tbody id="listbody">
+								</tbody>
+							</table>
+							<div align="right">
+								<button id="download1" type="button" class="btn btn-warning">
+									<span class="glyphicon glyphicon-share-alt"></span> 导出Excel
+								</button>
+							</div>
+						</div>
+						<div class="tab-pane" id="profile">
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>功能模块</th>
+										<th>经办老师</th>
+										<th>操作</th>
+									</tr>
+								</thead>
+								<tbody id="jingbanlistbody">
+									<tr>
+										<td>1</td>
+										<td id="titel1">保险经办老师</td>
+										<td id="ls1">..</td>
+										<td><a href="javascript:editjb(3)"><button
+													type="button" class="btn btn-success btn-xs">编辑</button></a></td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td id="titel2">学费奖补经办老师</td>
+										<td id="ls2">..</td>
+										<td><a href="javascript:editjb(4)"><button
+													type="button" class="btn btn-success btn-xs">编辑</button></a></td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td id="titel3">绿色通道经办老师</td>
+										<td id="ls3">..</td>
+										<td><a href="javascript:editjb(5)"><button
+													type="button" class="btn btn-success btn-xs">编辑</button></a></td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td id="titel4">贫困生经办老师</td>
+										<td id="ls4">..</td>
+										<td><a href="javascript:editjb(6)"><button
+													type="button" class="btn btn-success btn-xs">编辑</button></a></td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td id="titel5">国家奖学金经办老师</td>
+										<td id="ls5">..</td>
+										<td><a href="javascript:editjb(7)"><button
+													type="button" class="btn btn-success btn-xs">编辑</button></a></td>
+									</tr>
+									<tr>
+										<td>6</td>
+										<td id="titel6">社会奖学金经办老师</td>
+										<td id="ls6">..</td>
+										<td><a href="javascript:editjb(8)"><button
+													type="button" class="btn btn-success btn-xs">编辑</button></a></td>
+									</tr>
+									<tr>
+										<td>7</td>
+										<td id="titel7">国家励志奖学金经办老师</td>
+										<td id="ls7">..</td>
+										<td><a href="javascript:editjb(9)"><button
+													type="button" class="btn btn-success btn-xs">编辑</button></a></td>
+									</tr>
+									<tr>
+										<td>8</td>
+										<td id="titel8">国家助学金经办老师</td>
+										<td id="ls8">..</td>
+										<td><a href="javascript:editjb(10)"><button
+													type="button" class="btn btn-success btn-xs">编辑</button></a></td>
+									</tr>
+									<tr>
+										<td>9</td>
+										<td id="titel9">行政部门勤工助学岗位经办老师</td>
+										<td id="ls9">..</td>
+										<td><a href="javascript:editjb(11)"><button
+													type="button" class="btn btn-success btn-xs">编辑</button></a></td>
+									</tr>
+
+									<tr>
+										<td>10</td>
+										<td id="titel10">大学生医疗补助经办老师</td>
+										<td id="ls10">..</td>
+										<td><a href="javascript:editjb(12)"><button
+													type="button" class="btn btn-success btn-xs">编辑</button></a></td>
+									</tr>
+
+								</tbody>
+
+							</table>
+							<div align="right">
+								<button id="download2" type="button" class="btn btn-warning">
+									<span class="glyphicon glyphicon-share-alt"></span> 导出Excel
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 修改密码的模态对话框 Modal -->
+		<div class="modal fade" id="changePassword" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">修改用户密码</h4>
+					</div>
+					<div class="modal-body">
+						<!-- 对话框里面的内容   -->
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-4 control-label">当前密码：</label>
+								<div class="col-sm-6">
+									<input type="password" class="form-control" id="inputPassword1"
+										placeholder="原始密码">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword3" class="col-sm-4 control-label">新密码：</label>
+								<div class="col-sm-6">
+									<input type="password" class="form-control" id="inputPassword2"
+										placeholder="新密码">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword3" class="col-sm-4 control-label">再次输入新密码：</label>
+								<div class="col-sm-6">
+									<input type="password" class="form-control" id="inputPassword3"
+										placeholder="重复新密码">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button Id="changePWD" type="button" class="btn btn-primary">保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 修改经办老师 Modal -->
+	<div class="modal fade" id="changeJb" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title" id="modaltitle">选择经办老师</h4>
+				</div>
+				<div class="modal-body">
+					<!-- 对话框里面的内容   -->
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>选择</th>
+								<th>姓名</th>
+								<th>学工号</th>
+							</tr>
+						</thead>
+						<tbody id="selectJb">
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button Id="ok" type="button" class="btn btn-primary">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer class="bs-footer" role="contentinfo">
+		<p class="pull-right">
+			<a href="#">回到页面顶部</a>
+		</p>
+		<div class="container" id="copyright"></div>
+	</footer>
+</body>
+</html>

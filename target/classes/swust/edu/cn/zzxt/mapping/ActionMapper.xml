@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.ActionMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Action" >
+    <id column="aton_id" property="atonId" jdbcType="INTEGER" />
+    <result column="aton_name" property="atonName" jdbcType="VARCHAR" />
+    <result column="aton_url" property="atonUrl" jdbcType="VARCHAR" />
+    <result column="aton_type" property="atonType" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="swust.edu.cn.zzxt.model.Action" extends="BaseResultMap" >
+    <result column="aton_description" property="atonDescription" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    aton_id, aton_name, aton_url, aton_type
+  </sql>
+  <sql id="Blob_Column_List" >
+    aton_description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from action
+    where aton_id = #{atonId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from action
+    where aton_id = #{atonId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.Action" >
+    insert into action (aton_id, aton_name, aton_url, 
+      aton_type, aton_description)
+    values (#{atonId,jdbcType=INTEGER}, #{atonName,jdbcType=VARCHAR}, #{atonUrl,jdbcType=VARCHAR}, 
+      #{atonType,jdbcType=INTEGER}, #{atonDescription,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.Action" >
+    insert into action
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="atonId != null" >
+        aton_id,
+      </if>
+      <if test="atonName != null" >
+        aton_name,
+      </if>
+      <if test="atonUrl != null" >
+        aton_url,
+      </if>
+      <if test="atonType != null" >
+        aton_type,
+      </if>
+      <if test="atonDescription != null" >
+        aton_description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="atonId != null" >
+        #{atonId,jdbcType=INTEGER},
+      </if>
+      <if test="atonName != null" >
+        #{atonName,jdbcType=VARCHAR},
+      </if>
+      <if test="atonUrl != null" >
+        #{atonUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="atonType != null" >
+        #{atonType,jdbcType=INTEGER},
+      </if>
+      <if test="atonDescription != null" >
+        #{atonDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.Action" >
+    update action
+    <set >
+      <if test="atonName != null" >
+        aton_name = #{atonName,jdbcType=VARCHAR},
+      </if>
+      <if test="atonUrl != null" >
+        aton_url = #{atonUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="atonType != null" >
+        aton_type = #{atonType,jdbcType=INTEGER},
+      </if>
+      <if test="atonDescription != null" >
+        aton_description = #{atonDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where aton_id = #{atonId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="swust.edu.cn.zzxt.model.Action" >
+    update action
+    set aton_name = #{atonName,jdbcType=VARCHAR},
+      aton_url = #{atonUrl,jdbcType=VARCHAR},
+      aton_type = #{atonType,jdbcType=INTEGER},
+      aton_description = #{atonDescription,jdbcType=LONGVARCHAR}
+    where aton_id = #{atonId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Action" >
+    update action
+    set aton_name = #{atonName,jdbcType=VARCHAR},
+      aton_url = #{atonUrl,jdbcType=VARCHAR},
+      aton_type = #{atonType,jdbcType=INTEGER}
+    where aton_id = #{atonId,jdbcType=INTEGER}
+  </update>
+</mapper>

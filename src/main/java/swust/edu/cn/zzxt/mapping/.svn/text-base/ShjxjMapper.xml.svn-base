@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.ShjxjMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Shjxj" >
+    <id column="sjxj_id" property="sjxjId" jdbcType="INTEGER" />
+    <result column="sjxj_studId" property="sjxjStudid" jdbcType="INTEGER" />
+    <result column="sjxj_applyTime" property="sjxjApplytime" jdbcType="TIMESTAMP" />
+    <result column="sjxj_sjtpId" property="sjxjSjtpid" jdbcType="INTEGER" />
+    <result column="sjxj_academyOpinionTime" property="sjxjAcademyopiniontime" jdbcType="VARCHAR" />
+    <result column="sjxj_shoolOpinionTime" property="sjxjShoolopiniontime" jdbcType="VARCHAR" />
+    <result column="sjxj_wsflId" property="sjxjWsflid" jdbcType="INTEGER" />
+    <result column="sjxj_workId" property="sjxjWorkid" jdbcType="INTEGER" />
+    <result column="sjxj_annual" property="sjxjAnnual" jdbcType="VARCHAR" />
+    <result column="sjxj_instructor" property="sjxjInstructor" jdbcType="VARCHAR" />
+    <result column="sjxj_banknumber" property="sjxjBanknumber" jdbcType="VARCHAR" />
+    <result column="sjxj_isPoor" property="sjxjIspoor" jdbcType="VARCHAR" />
+    <result column="sjxj_poorRank" property="sjxjPoorrank" jdbcType="VARCHAR" />
+    <result column="sjxj_state" property="sjxjState" jdbcType="INTEGER" />
+    <result column="sjxj_instructorPhone" property="sjxjInstructorphone" jdbcType="VARCHAR" />
+    <result column="sjxj_instructorCall" property="sjxjInstructorcall" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="swust.edu.cn.zzxt.model.ShjxjWithBLOBs" extends="BaseResultMap" >
+    <result column="sjxj_applyReason" property="sjxjApplyreason" jdbcType="LONGVARCHAR" />
+    <result column="sjxj_awards" property="sjxjAwards" jdbcType="LONGVARCHAR" />
+    <result column="sjxj_academyOpinion" property="sjxjAcademyopinion" jdbcType="LONGVARCHAR" />
+    <result column="sjxj_shoolOpinion" property="sjxjShoolopinion" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sjxj_id, sjxj_studId, sjxj_applyTime, sjxj_sjtpId, sjxj_academyOpinionTime, sjxj_shoolOpinionTime, 
+    sjxj_wsflId, sjxj_workId, sjxj_annual, sjxj_instructor, sjxj_banknumber, sjxj_isPoor, 
+    sjxj_poorRank, sjxj_state, sjxj_instructorPhone, sjxj_instructorCall
+  </sql>
+  <sql id="Blob_Column_List" >
+    sjxj_applyReason, sjxj_awards, sjxj_academyOpinion, sjxj_shoolOpinion
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from shjxj
+    where sjxj_id = #{sjxjId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from shjxj
+    where sjxj_id = #{sjxjId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.ShjxjWithBLOBs" >
+    insert into shjxj (sjxj_id, sjxj_studId, sjxj_applyTime, 
+      sjxj_sjtpId, sjxj_academyOpinionTime, sjxj_shoolOpinionTime, 
+      sjxj_wsflId, sjxj_workId, sjxj_annual, 
+      sjxj_instructor, sjxj_banknumber, sjxj_isPoor, 
+      sjxj_poorRank, sjxj_state, sjxj_instructorPhone, 
+      sjxj_instructorCall, sjxj_applyReason, 
+      sjxj_awards, sjxj_academyOpinion, 
+      sjxj_shoolOpinion)
+    values (#{sjxjId,jdbcType=INTEGER}, #{sjxjStudid,jdbcType=INTEGER}, #{sjxjApplytime,jdbcType=TIMESTAMP}, 
+      #{sjxjSjtpid,jdbcType=INTEGER}, #{sjxjAcademyopiniontime,jdbcType=VARCHAR}, #{sjxjShoolopiniontime,jdbcType=VARCHAR}, 
+      #{sjxjWsflid,jdbcType=INTEGER}, #{sjxjWorkid,jdbcType=INTEGER}, #{sjxjAnnual,jdbcType=VARCHAR}, 
+      #{sjxjInstructor,jdbcType=VARCHAR}, #{sjxjBanknumber,jdbcType=VARCHAR}, #{sjxjIspoor,jdbcType=VARCHAR}, 
+      #{sjxjPoorrank,jdbcType=VARCHAR}, #{sjxjState,jdbcType=INTEGER}, #{sjxjInstructorphone,jdbcType=VARCHAR}, 
+      #{sjxjInstructorcall,jdbcType=VARCHAR}, #{sjxjApplyreason,jdbcType=LONGVARCHAR}, 
+      #{sjxjAwards,jdbcType=LONGVARCHAR}, #{sjxjAcademyopinion,jdbcType=LONGVARCHAR}, 
+      #{sjxjShoolopinion,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.ShjxjWithBLOBs" >
+    insert into shjxj
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sjxjId != null" >
+        sjxj_id,
+      </if>
+      <if test="sjxjStudid != null" >
+        sjxj_studId,
+      </if>
+      <if test="sjxjApplytime != null" >
+        sjxj_applyTime,
+      </if>
+      <if test="sjxjSjtpid != null" >
+        sjxj_sjtpId,
+      </if>
+      <if test="sjxjAcademyopiniontime != null" >
+        sjxj_academyOpinionTime,
+      </if>
+      <if test="sjxjShoolopiniontime != null" >
+        sjxj_shoolOpinionTime,
+      </if>
+      <if test="sjxjWsflid != null" >
+        sjxj_wsflId,
+      </if>
+      <if test="sjxjWorkid != null" >
+        sjxj_workId,
+      </if>
+      <if test="sjxjAnnual != null" >
+        sjxj_annual,
+      </if>
+      <if test="sjxjInstructor != null" >
+        sjxj_instructor,
+      </if>
+      <if test="sjxjBanknumber != null" >
+        sjxj_banknumber,
+      </if>
+      <if test="sjxjIspoor != null" >
+        sjxj_isPoor,
+      </if>
+      <if test="sjxjPoorrank != null" >
+        sjxj_poorRank,
+      </if>
+      <if test="sjxjState != null" >
+        sjxj_state,
+      </if>
+      <if test="sjxjInstructorphone != null" >
+        sjxj_instructorPhone,
+      </if>
+      <if test="sjxjInstructorcall != null" >
+        sjxj_instructorCall,
+      </if>
+      <if test="sjxjApplyreason != null" >
+        sjxj_applyReason,
+      </if>
+      <if test="sjxjAwards != null" >
+        sjxj_awards,
+      </if>
+      <if test="sjxjAcademyopinion != null" >
+        sjxj_academyOpinion,
+      </if>
+      <if test="sjxjShoolopinion != null" >
+        sjxj_shoolOpinion,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sjxjId != null" >
+        #{sjxjId,jdbcType=INTEGER},
+      </if>
+      <if test="sjxjStudid != null" >
+        #{sjxjStudid,jdbcType=INTEGER},
+      </if>
+      <if test="sjxjApplytime != null" >
+        #{sjxjApplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sjxjSjtpid != null" >
+        #{sjxjSjtpid,jdbcType=INTEGER},
+      </if>
+      <if test="sjxjAcademyopiniontime != null" >
+        #{sjxjAcademyopiniontime,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjShoolopiniontime != null" >
+        #{sjxjShoolopiniontime,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjWsflid != null" >
+        #{sjxjWsflid,jdbcType=INTEGER},
+      </if>
+      <if test="sjxjWorkid != null" >
+        #{sjxjWorkid,jdbcType=INTEGER},
+      </if>
+      <if test="sjxjAnnual != null" >
+        #{sjxjAnnual,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjInstructor != null" >
+        #{sjxjInstructor,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjBanknumber != null" >
+        #{sjxjBanknumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjIspoor != null" >
+        #{sjxjIspoor,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjPoorrank != null" >
+        #{sjxjPoorrank,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjState != null" >
+        #{sjxjState,jdbcType=INTEGER},
+      </if>
+      <if test="sjxjInstructorphone != null" >
+        #{sjxjInstructorphone,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjInstructorcall != null" >
+        #{sjxjInstructorcall,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjApplyreason != null" >
+        #{sjxjApplyreason,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="sjxjAwards != null" >
+        #{sjxjAwards,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="sjxjAcademyopinion != null" >
+        #{sjxjAcademyopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="sjxjShoolopinion != null" >
+        #{sjxjShoolopinion,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.ShjxjWithBLOBs" >
+    update shjxj
+    <set >
+      <if test="sjxjStudid != null" >
+        sjxj_studId = #{sjxjStudid,jdbcType=INTEGER},
+      </if>
+      <if test="sjxjApplytime != null" >
+        sjxj_applyTime = #{sjxjApplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sjxjSjtpid != null" >
+        sjxj_sjtpId = #{sjxjSjtpid,jdbcType=INTEGER},
+      </if>
+      <if test="sjxjAcademyopiniontime != null" >
+        sjxj_academyOpinionTime = #{sjxjAcademyopiniontime,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjShoolopiniontime != null" >
+        sjxj_shoolOpinionTime = #{sjxjShoolopiniontime,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjWsflid != null" >
+        sjxj_wsflId = #{sjxjWsflid,jdbcType=INTEGER},
+      </if>
+      <if test="sjxjWorkid != null" >
+        sjxj_workId = #{sjxjWorkid,jdbcType=INTEGER},
+      </if>
+      <if test="sjxjAnnual != null" >
+        sjxj_annual = #{sjxjAnnual,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjInstructor != null" >
+        sjxj_instructor = #{sjxjInstructor,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjBanknumber != null" >
+        sjxj_banknumber = #{sjxjBanknumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjIspoor != null" >
+        sjxj_isPoor = #{sjxjIspoor,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjPoorrank != null" >
+        sjxj_poorRank = #{sjxjPoorrank,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjState != null" >
+        sjxj_state = #{sjxjState,jdbcType=INTEGER},
+      </if>
+      <if test="sjxjInstructorphone != null" >
+        sjxj_instructorPhone = #{sjxjInstructorphone,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjInstructorcall != null" >
+        sjxj_instructorCall = #{sjxjInstructorcall,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjApplyreason != null" >
+        sjxj_applyReason = #{sjxjApplyreason,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="sjxjAwards != null" >
+        sjxj_awards = #{sjxjAwards,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="sjxjAcademyopinion != null" >
+        sjxj_academyOpinion = #{sjxjAcademyopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="sjxjShoolopinion != null" >
+        sjxj_shoolOpinion = #{sjxjShoolopinion,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where sjxj_id = #{sjxjId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="swust.edu.cn.zzxt.model.ShjxjWithBLOBs" >
+    update shjxj
+    set sjxj_studId = #{sjxjStudid,jdbcType=INTEGER},
+      sjxj_applyTime = #{sjxjApplytime,jdbcType=TIMESTAMP},
+      sjxj_sjtpId = #{sjxjSjtpid,jdbcType=INTEGER},
+      sjxj_academyOpinionTime = #{sjxjAcademyopiniontime,jdbcType=VARCHAR},
+      sjxj_shoolOpinionTime = #{sjxjShoolopiniontime,jdbcType=VARCHAR},
+      sjxj_wsflId = #{sjxjWsflid,jdbcType=INTEGER},
+      sjxj_workId = #{sjxjWorkid,jdbcType=INTEGER},
+      sjxj_annual = #{sjxjAnnual,jdbcType=VARCHAR},
+      sjxj_instructor = #{sjxjInstructor,jdbcType=VARCHAR},
+      sjxj_banknumber = #{sjxjBanknumber,jdbcType=VARCHAR},
+      sjxj_isPoor = #{sjxjIspoor,jdbcType=VARCHAR},
+      sjxj_poorRank = #{sjxjPoorrank,jdbcType=VARCHAR},
+      sjxj_state = #{sjxjState,jdbcType=INTEGER},
+      sjxj_instructorPhone = #{sjxjInstructorphone,jdbcType=VARCHAR},
+      sjxj_instructorCall = #{sjxjInstructorcall,jdbcType=VARCHAR},
+      sjxj_applyReason = #{sjxjApplyreason,jdbcType=LONGVARCHAR},
+      sjxj_awards = #{sjxjAwards,jdbcType=LONGVARCHAR},
+      sjxj_academyOpinion = #{sjxjAcademyopinion,jdbcType=LONGVARCHAR},
+      sjxj_shoolOpinion = #{sjxjShoolopinion,jdbcType=LONGVARCHAR}
+    where sjxj_id = #{sjxjId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Shjxj" >
+    update shjxj
+    set sjxj_studId = #{sjxjStudid,jdbcType=INTEGER},
+      sjxj_applyTime = #{sjxjApplytime,jdbcType=TIMESTAMP},
+      sjxj_sjtpId = #{sjxjSjtpid,jdbcType=INTEGER},
+      sjxj_academyOpinionTime = #{sjxjAcademyopiniontime,jdbcType=VARCHAR},
+      sjxj_shoolOpinionTime = #{sjxjShoolopiniontime,jdbcType=VARCHAR},
+      sjxj_wsflId = #{sjxjWsflid,jdbcType=INTEGER},
+      sjxj_workId = #{sjxjWorkid,jdbcType=INTEGER},
+      sjxj_annual = #{sjxjAnnual,jdbcType=VARCHAR},
+      sjxj_instructor = #{sjxjInstructor,jdbcType=VARCHAR},
+      sjxj_banknumber = #{sjxjBanknumber,jdbcType=VARCHAR},
+      sjxj_isPoor = #{sjxjIspoor,jdbcType=VARCHAR},
+      sjxj_poorRank = #{sjxjPoorrank,jdbcType=VARCHAR},
+      sjxj_state = #{sjxjState,jdbcType=INTEGER},
+      sjxj_instructorPhone = #{sjxjInstructorphone,jdbcType=VARCHAR},
+      sjxj_instructorCall = #{sjxjInstructorcall,jdbcType=VARCHAR}
+    where sjxj_id = #{sjxjId,jdbcType=INTEGER}
+  </update>
+  <!-- 自己写的方法：通过学生Id查找ShjxjWithBLOBs -->
+  <select id="selectShjxjByStuId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from shjxj
+    where sjxj_studId = #{sjxjStudid,jdbcType=INTEGER}
+  </select>
+  <!-- 自己写的方法：通过学生Id更新 -->
+  <update id="updateByStudIdSelective" parameterType="swust.edu.cn.zzxt.model.ShjxjWithBLOBs" >
+    update shjxj
+    <set >
+      <if test="sjxjStudid != null" >
+        sjxj_studId = #{sjxjStudid,jdbcType=INTEGER},
+      </if>
+      <if test="sjxjApplytime != null" >
+        sjxj_applyTime = #{sjxjApplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sjxjSjtpid != null" >
+        sjxj_sjtpId = #{sjxjSjtpid,jdbcType=INTEGER},
+      </if>
+      <if test="sjxjAcademyopiniontime != null" >
+        sjxj_academyOpinionTime = #{sjxjAcademyopiniontime,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjShoolopiniontime != null" >
+        sjxj_shoolOpinionTime = #{sjxjShoolopiniontime,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjWsflid != null" >
+        sjxj_wsflId = #{sjxjWsflid,jdbcType=INTEGER},
+      </if>
+      <if test="sjxjWorkid != null" >
+        sjxj_workId = #{sjxjWorkid,jdbcType=INTEGER},
+      </if>
+      <if test="sjxjAnnual != null" >
+        sjxj_annual = #{sjxjAnnual,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjInstructor != null" >
+        sjxj_instructor = #{sjxjInstructor,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjBanknumber != null" >
+        sjxj_banknumber = #{sjxjBanknumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjIspoor != null" >
+        sjxj_isPoor = #{sjxjIspoor,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjPoorrank != null" >
+        sjxj_poorRank = #{sjxjPoorrank,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjState != null" >
+        sjxj_state = #{sjxjState,jdbcType=INTEGER},
+      </if>
+      <if test="sjxjInstructorphone != null" >
+        sjxj_instructorPhone = #{sjxjInstructorphone,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjInstructorcall != null" >
+        sjxj_instructorCall = #{sjxjInstructorcall,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxjApplyreason != null" >
+        sjxj_applyReason = #{sjxjApplyreason,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="sjxjAwards != null" >
+        sjxj_awards = #{sjxjAwards,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="sjxjAcademyopinion != null" >
+        sjxj_academyOpinion = #{sjxjAcademyopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="sjxjShoolopinion != null" >
+        sjxj_shoolOpinion = #{sjxjShoolopinion,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where sjxj_studId = #{sjxjStudid,jdbcType=INTEGER}
+  </update> 
+  <!-- 自己写的方法：返回所有的社会奖学金列表 -->
+  <select id="selectAllShjxj" resultMap="ResultMapWithBLOBs" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from shjxj
+  </select>
+  
+</mapper>

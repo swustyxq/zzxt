@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.GjjxjMapper">
+	<resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Gjjxj">
+		<id column="gjxj_id" property="gjxjId" jdbcType="INTEGER" />
+		<result column="gjxj_studId" property="gjxjStudid" jdbcType="INTEGER" />
+		<result column="gjxj_wsflId" property="gjxjWsflid" jdbcType="INTEGER" />
+		<result column="gjxj_workId" property="gjxjWorkid" jdbcType="INTEGER" />
+		<result column="gjxj_politicState" property="gjxjPoliticstate"
+			jdbcType="VARCHAR" />
+		<result column="gjxj_ranking" property="gjxjRanking" jdbcType="VARCHAR" />
+		<result column="gjxj_comprehensive" property="gjxjComprehensive"
+			jdbcType="VARCHAR" />
+		<result column="gjxj_comprehensiveRanking" property="gjxjComprehensiveranking"
+			jdbcType="VARCHAR" />
+		<result column="gjxj_applyTime" property="gjxjApplytime"
+			jdbcType="TIMESTAMP" />
+		<result column="gjxj_recommendReasonTime" property="gjxjRecommendreasontime"
+			jdbcType="TIMESTAMP" />
+		<result column="gjxj_academyOpinionTime" property="gjxjAcademyopiniontime"
+			jdbcType="TIMESTAMP" />
+		<result column="gjxj_schoolOpinionTime" property="gjxjSchoolopiniontime"
+			jdbcType="TIMESTAMP" />
+		<result column="gjxj_annual" property="gjxjAnnual" jdbcType="VARCHAR" />
+		<result column="gjxj_state" property="gjxjState" jdbcType="INTEGER" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs" type="swust.edu.cn.zzxt.model.GjjxjWithBLOBs"
+		extends="BaseResultMap">
+		<result column="gjxj_applyReason" property="gjxjApplyreason"
+			jdbcType="LONGVARCHAR" />
+		<result column="gjxj_recommendReason" property="gjxjRecommendreason"
+			jdbcType="LONGVARCHAR" />
+		<result column="gjxj_academyOpinion" property="gjxjAcademyopinion"
+			jdbcType="LONGVARCHAR" />
+		<result column="gjxj_schoolOpinion" property="gjxjSchoolopinion"
+			jdbcType="LONGVARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		gjxj_id, gjxj_studId, gjxj_wsflId, gjxj_workId,
+		gjxj_politicState,
+		gjxj_ranking,
+		gjxj_comprehensive,
+		gjxj_comprehensiveRanking, gjxj_applyTime, gjxj_recommendReasonTime,
+		gjxj_academyOpinionTime, gjxj_schoolOpinionTime, gjxj_annual,
+		gjxj_state
+	</sql>
+	<sql id="Blob_Column_List">
+		gjxj_applyReason, gjxj_recommendReason,
+		gjxj_academyOpinion, gjxj_schoolOpinion
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from gjjxj
+		where gjxj_id = #{gjxjId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from gjjxj
+		where gjxj_id = #{gjxjId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="swust.edu.cn.zzxt.model.GjjxjWithBLOBs">
+		insert into gjjxj (gjxj_id,
+		gjxj_studId, gjxj_wsflId,
+		gjxj_workId, gjxj_politicState, gjxj_ranking,
+		gjxj_comprehensive, gjxj_comprehensiveRanking,
+		gjxj_applyTime,
+		gjxj_recommendReasonTime,
+		gjxj_academyOpinionTime,
+		gjxj_schoolOpinionTime,
+		gjxj_annual, gjxj_state, gjxj_applyReason,
+		gjxj_recommendReason, gjxj_academyOpinion,
+		gjxj_schoolOpinion)
+		values
+		(#{gjxjId,jdbcType=INTEGER}, #{gjxjStudid,jdbcType=INTEGER},
+		#{gjxjWsflid,jdbcType=INTEGER},
+		#{gjxjWorkid,jdbcType=INTEGER},
+		#{gjxjPoliticstate,jdbcType=VARCHAR},
+		#{gjxjRanking,jdbcType=VARCHAR},
+		#{gjxjComprehensive,jdbcType=VARCHAR},
+		#{gjxjComprehensiveranking,jdbcType=VARCHAR},
+		#{gjxjApplytime,jdbcType=TIMESTAMP},
+		#{gjxjRecommendreasontime,jdbcType=TIMESTAMP},
+		#{gjxjAcademyopiniontime,jdbcType=TIMESTAMP},
+		#{gjxjSchoolopiniontime,jdbcType=TIMESTAMP},
+		#{gjxjAnnual,jdbcType=VARCHAR}, #{gjxjState,jdbcType=INTEGER},
+		#{gjxjApplyreason,jdbcType=LONGVARCHAR},
+		#{gjxjRecommendreason,jdbcType=LONGVARCHAR},
+		#{gjxjAcademyopinion,jdbcType=LONGVARCHAR},
+		#{gjxjSchoolopinion,jdbcType=LONGVARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.GjjxjWithBLOBs">
+		insert into gjjxj
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="gjxjId != null">
+				gjxj_id,
+			</if>
+			<if test="gjxjStudid != null">
+				gjxj_studId,
+			</if>
+			<if test="gjxjWsflid != null">
+				gjxj_wsflId,
+			</if>
+			<if test="gjxjWorkid != null">
+				gjxj_workId,
+			</if>
+			<if test="gjxjPoliticstate != null">
+				gjxj_politicState,
+			</if>
+			<if test="gjxjRanking != null">
+				gjxj_ranking,
+			</if>
+			<if test="gjxjComprehensive != null">
+				gjxj_comprehensive,
+			</if>
+			<if test="gjxjComprehensiveranking != null">
+				gjxj_comprehensiveRanking,
+			</if>
+			<if test="gjxjApplytime != null">
+				gjxj_applyTime,
+			</if>
+			<if test="gjxjRecommendreasontime != null">
+				gjxj_recommendReasonTime,
+			</if>
+			<if test="gjxjAcademyopiniontime != null">
+				gjxj_academyOpinionTime,
+			</if>
+			<if test="gjxjSchoolopiniontime != null">
+				gjxj_schoolOpinionTime,
+			</if>
+			<if test="gjxjAnnual != null">
+				gjxj_annual,
+			</if>
+			<if test="gjxjState != null">
+				gjxj_state,
+			</if>
+			<if test="gjxjApplyreason != null">
+				gjxj_applyReason,
+			</if>
+			<if test="gjxjRecommendreason != null">
+				gjxj_recommendReason,
+			</if>
+			<if test="gjxjAcademyopinion != null">
+				gjxj_academyOpinion,
+			</if>
+			<if test="gjxjSchoolopinion != null">
+				gjxj_schoolOpinion,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="gjxjId != null">
+				#{gjxjId,jdbcType=INTEGER},
+			</if>
+			<if test="gjxjStudid != null">
+				#{gjxjStudid,jdbcType=INTEGER},
+			</if>
+			<if test="gjxjWsflid != null">
+				#{gjxjWsflid,jdbcType=INTEGER},
+			</if>
+			<if test="gjxjWorkid != null">
+				#{gjxjWorkid,jdbcType=INTEGER},
+			</if>
+			<if test="gjxjPoliticstate != null">
+				#{gjxjPoliticstate,jdbcType=VARCHAR},
+			</if>
+			<if test="gjxjRanking != null">
+				#{gjxjRanking,jdbcType=VARCHAR},
+			</if>
+			<if test="gjxjComprehensive != null">
+				#{gjxjComprehensive,jdbcType=VARCHAR},
+			</if>
+			<if test="gjxjComprehensiveranking != null">
+				#{gjxjComprehensiveranking,jdbcType=VARCHAR},
+			</if>
+			<if test="gjxjApplytime != null">
+				#{gjxjApplytime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="gjxjRecommendreasontime != null">
+				#{gjxjRecommendreasontime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="gjxjAcademyopiniontime != null">
+				#{gjxjAcademyopiniontime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="gjxjSchoolopiniontime != null">
+				#{gjxjSchoolopiniontime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="gjxjAnnual != null">
+				#{gjxjAnnual,jdbcType=VARCHAR},
+			</if>
+			<if test="gjxjState != null">
+				#{gjxjState,jdbcType=INTEGER},
+			</if>
+			<if test="gjxjApplyreason != null">
+				#{gjxjApplyreason,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="gjxjRecommendreason != null">
+				#{gjxjRecommendreason,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="gjxjAcademyopinion != null">
+				#{gjxjAcademyopinion,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="gjxjSchoolopinion != null">
+				#{gjxjSchoolopinion,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.GjjxjWithBLOBs">
+		update gjjxj
+		<set>
+			<if test="gjxjStudid != null">
+				gjxj_studId = #{gjxjStudid,jdbcType=INTEGER},
+			</if>
+			<if test="gjxjWsflid != null">
+				gjxj_wsflId = #{gjxjWsflid,jdbcType=INTEGER},
+			</if>
+			<if test="gjxjWorkid != null">
+				gjxj_workId = #{gjxjWorkid,jdbcType=INTEGER},
+			</if>
+			<if test="gjxjPoliticstate != null">
+				gjxj_politicState = #{gjxjPoliticstate,jdbcType=VARCHAR},
+			</if>
+			<if test="gjxjRanking != null">
+				gjxj_ranking = #{gjxjRanking,jdbcType=VARCHAR},
+			</if>
+			<if test="gjxjComprehensive != null">
+				gjxj_comprehensive =
+				#{gjxjComprehensive,jdbcType=VARCHAR},
+			</if>
+			<if test="gjxjComprehensiveranking != null">
+				gjxj_comprehensiveRanking =
+				#{gjxjComprehensiveranking,jdbcType=VARCHAR},
+			</if>
+			<if test="gjxjApplytime != null">
+				gjxj_applyTime = #{gjxjApplytime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="gjxjRecommendreasontime != null">
+				gjxj_recommendReasonTime =
+				#{gjxjRecommendreasontime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="gjxjAcademyopiniontime != null">
+				gjxj_academyOpinionTime =
+				#{gjxjAcademyopiniontime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="gjxjSchoolopiniontime != null">
+				gjxj_schoolOpinionTime =
+				#{gjxjSchoolopiniontime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="gjxjAnnual != null">
+				gjxj_annual = #{gjxjAnnual,jdbcType=VARCHAR},
+			</if>
+			<if test="gjxjState != null">
+				gjxj_state = #{gjxjState,jdbcType=INTEGER},
+			</if>
+			<if test="gjxjApplyreason != null">
+				gjxj_applyReason =
+				#{gjxjApplyreason,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="gjxjRecommendreason != null">
+				gjxj_recommendReason =
+				#{gjxjRecommendreason,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="gjxjAcademyopinion != null">
+				gjxj_academyOpinion =
+				#{gjxjAcademyopinion,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="gjxjSchoolopinion != null">
+				gjxj_schoolOpinion =
+				#{gjxjSchoolopinion,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where gjxj_id = #{gjxjId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="swust.edu.cn.zzxt.model.GjjxjWithBLOBs">
+		update
+		gjjxj
+		set gjxj_studId = #{gjxjStudid,jdbcType=INTEGER},
+		gjxj_wsflId =
+		#{gjxjWsflid,jdbcType=INTEGER},
+		gjxj_workId =
+		#{gjxjWorkid,jdbcType=INTEGER},
+		gjxj_politicState =
+		#{gjxjPoliticstate,jdbcType=VARCHAR},
+		gjxj_ranking =
+		#{gjxjRanking,jdbcType=VARCHAR},
+		gjxj_comprehensive =
+		#{gjxjComprehensive,jdbcType=VARCHAR},
+		gjxj_comprehensiveRanking =
+		#{gjxjComprehensiveranking,jdbcType=VARCHAR},
+		gjxj_applyTime =
+		#{gjxjApplytime,jdbcType=TIMESTAMP},
+		gjxj_recommendReasonTime =
+		#{gjxjRecommendreasontime,jdbcType=TIMESTAMP},
+		gjxj_academyOpinionTime
+		=
+		#{gjxjAcademyopiniontime,jdbcType=TIMESTAMP},
+		gjxj_schoolOpinionTime =
+		#{gjxjSchoolopiniontime,jdbcType=TIMESTAMP},
+		gjxj_annual =
+		#{gjxjAnnual,jdbcType=VARCHAR},
+		gjxj_state =
+		#{gjxjState,jdbcType=INTEGER},
+		gjxj_applyReason =
+		#{gjxjApplyreason,jdbcType=LONGVARCHAR},
+		gjxj_recommendReason =
+		#{gjxjRecommendreason,jdbcType=LONGVARCHAR},
+		gjxj_academyOpinion =
+		#{gjxjAcademyopinion,jdbcType=LONGVARCHAR},
+		gjxj_schoolOpinion =
+		#{gjxjSchoolopinion,jdbcType=LONGVARCHAR}
+		where gjxj_id =
+		#{gjxjId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Gjjxj">
+		update gjjxj
+		set
+		gjxj_studId = #{gjxjStudid,jdbcType=INTEGER},
+		gjxj_wsflId =
+		#{gjxjWsflid,jdbcType=INTEGER},
+		gjxj_workId =
+		#{gjxjWorkid,jdbcType=INTEGER},
+		gjxj_politicState =
+		#{gjxjPoliticstate,jdbcType=VARCHAR},
+		gjxj_ranking =
+		#{gjxjRanking,jdbcType=VARCHAR},
+		gjxj_comprehensive =
+		#{gjxjComprehensive,jdbcType=VARCHAR},
+		gjxj_comprehensiveRanking =
+		#{gjxjComprehensiveranking,jdbcType=VARCHAR},
+		gjxj_applyTime =
+		#{gjxjApplytime,jdbcType=TIMESTAMP},
+		gjxj_recommendReasonTime =
+		#{gjxjRecommendreasontime,jdbcType=TIMESTAMP},
+		gjxj_academyOpinionTime
+		=
+		#{gjxjAcademyopiniontime,jdbcType=TIMESTAMP},
+		gjxj_schoolOpinionTime =
+		#{gjxjSchoolopiniontime,jdbcType=TIMESTAMP},
+		gjxj_annual =
+		#{gjxjAnnual,jdbcType=VARCHAR},
+		gjxj_state =
+		#{gjxjState,jdbcType=INTEGER}
+		where gjxj_id =
+		#{gjxjId,jdbcType=INTEGER}
+	</update>
+	<select id="selectGjjxjByStudid" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from gjjxj
+		where gjxj_studId = #{gjxjStudid,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectByStudid" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from gjjxj
+		where gjxj_studId = #{gjxjStudid,jdbcType=INTEGER}
+	</select>
+	<!-- 查找所有list -->
+	<select id="selectClassAllList" resultType="swust.edu.cn.zzxt.selfmodel.ListModal"
+		parameterType="java.lang.Integer">
+		SELECT
+		student.stud_name AS NAME,
+		studentinfo.stin_sex AS
+		sex,
+		institution.inst_name AS academy,
+		institution.inst_id AS academyid,
+		major.majr_name AS major,
+		major.majr_id AS majorid,
+		studentclass.class_name AS stuclass,
+		studentclass.class_id AS
+		stuclassid,
+		gjjxj.gjxj_annual AS annual,
+
+		IF (
+		gjjxj.gjxj_wsflId =- 1,
+		"审核通过",
+		workstepflow.wsfl_name
+		) AS statusdescript,
+		gjjxj.gjxj_state AS
+		STATUS,
+		gjjxj.gjxj_id AS listid,
+		gjjxj.gjxj_studId AS stuid,
+		student.stud_number AS stunumber,
+
+		IF (
+		gjjxj.gjxj_wsflId =- 1,
+		1,
+
+		IF (
+		workstepflow.wsfl_roleId = 2,
+		2,
+		1
+		)
+		) AS type
+		FROM
+		`user`,student,studentclass,instructor,institution,studentinfo,major,gjjxj,workstepflow
+		WHERE
+		`user`.user_id = #{userId,jdbcType=INTEGER}
+		and
+		instructor.inst_userId = `user`.user_id
+		and
+		studentclass.class_instId =
+		instructor.inst_id
+		and student.stud_classId
+		= studentclass.class_id
+		and
+		studentinfo.stin_studId = student.stud_id
+		and institution.inst_id =
+		`user`.user_instId
+		and major.majr_id =
+		studentclass.class_majrId
+		and
+		gjjxj.gjxj_studId = student.stud_id
+		and
+		IF(gjjxj.gjxj_wsflId =-
+		1,workstepflow.wsfl_id=1,workstepflow.wsfl_id = gjjxj.gjxj_wsflId)
+	</select>
+
+	<select id="selectAcademyAllList" resultType="swust.edu.cn.zzxt.selfmodel.ListModal"
+		parameterType="java.lang.Integer">
+		SELECT
+		student.stud_name AS NAME,
+		studentinfo.stin_sex AS
+		sex,
+		institution.inst_name AS academy,
+		institution.inst_id AS academyid,
+		major.majr_name AS major,
+		major.majr_id AS majorid,
+		studentclass.class_name AS stuclass,
+		studentclass.class_id AS
+		stuclassid,
+		gjjxj.gjxj_annual AS annual,
+		IF (
+		gjjxj.gjxj_wsflId =- 1,
+		"审核通过",
+		workstepflow.wsfl_name
+		) AS statusdescript,
+		gjjxj.gjxj_state AS
+		status,
+		gjjxj.gjxj_id AS listid,
+		gjjxj.gjxj_studId AS stuid,
+		student.stud_number AS stuNumber,
+
+		IF (
+		gjjxj.gjxj_wsflId =- 1,
+		1,
+
+		IF (
+		workstepflow.wsfl_roleId = 10 || workstepflow.wsfl_roleId > 12,
+		2,
+		1
+		)
+		)
+		AS type
+		FROM
+		student,
+		studentclass,
+		institution,
+		studentinfo,
+		major,
+		gjjxj,
+		workstepflow
+
+		WHERE
+		institution.inst_id = #{userId,jdbcType=INTEGER}
+		AND major.majr_instId
+		=institution.inst_id
+		AND studentclass.class_majrId = major.majr_id
+		AND
+		student.stud_classId = studentclass.class_id
+		AND
+		studentinfo.stin_studId = student.stud_id
+		AND gjjxj.gjxj_studId =
+		student.stud_id
+		AND IF(gjjxj.gjxj_wsflId =-
+		1,gjjxj.gjxj_wsflId+2=workstepflow.wsfl_id,workstepflow.wsfl_id
+		=
+		gjjxj.gjxj_wsflId)
+	</select>
+	<select id="selectAllInfo" resultMap="ResultMapWithBLOBs">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from gjjxj
+	</select>
+</mapper>

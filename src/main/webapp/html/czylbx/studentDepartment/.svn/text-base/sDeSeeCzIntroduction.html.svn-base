@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="../../../images/favicon.png">
+
+<title>西南科技大学资助系统</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../css/bootstrap.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="../../../css/bootstrap-theme.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="../../../css/theme.css" rel="stylesheet">
+<link href="../../../css/docs.css" rel="stylesheet">
+<link href="../../../css/bootstrap.css" rel="stylesheet">
+<link href="../../../css/github.min.css" rel="stylesheet">
+<link href="../../../css/bootstrap.min.css" rel="stylesheet">
+
+<script src="../../../javascript/jquery.min.js"></script>
+<script src="../../../javascript/bootstrap.min.js"></script>
+<script src="../../../javascript/holder.min.js"></script>
+</head>
+
+<body>
+
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">西南科技大学学生资助系统</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><span id="current_user">学生处用户</span><b
+							class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li class="divider"></li>
+							<li class="dropdown-header">基本功能</li>
+							<li><a href="help.html">系统帮助</a></li>
+							<li><a href="changePassword.html">修改密码</a></li>
+							<li><a href="login.html">退出</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+	<div class="container theme-showcase">
+		<div class="col-md-12">
+			<div class="col-md-12">
+
+				<div id="location" class="page-header">
+					<small>当前位置导航：&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">首页</a>&gt;<a
+						href="#">使用说明</a></small>
+				</div>
+			</div>
+
+
+			<!-- 左侧导航栏    -->
+			<div class="col-md-3">
+				<div class="bs-example">
+					<div class="panel-group" id="accordion">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseOne">大学生城镇医疗保险</a>
+								</h4>
+							</div>
+							<div id="collapseOne" class="panel-collapse collapse in">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+								        <li><a href="sDeSeeCzIntroduction.html">查看保险介绍</a></li>
+								        <li><a href="sDeSeeCzBuy.html">查看保险购买情况</a></li>
+								    </ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseTwo">学生平安保险</a>
+								</h4>
+							</div>
+							<div id="collapseTwo" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+								        <li><a href="../../xspabx/studentDepartment/sDeSeeXpIntroduction.html">查看保险介绍</a></li>
+								        <li><a href="../../xspabx/studentDepartment/sDeSeeXpBuy.html">查看保险购买情况</a></li>
+								    </ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseThree">学费奖补</a>
+								</h4>
+							</div>
+							<div id="collapseThree" class="panel-collapse collapse">
+								<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+								    <li><a href="../../xfjb/studentDepartment/sDeSeeJbIntroduction.html">查看学费奖补公告</a></li>
+								     <li><a href="../../xfjb/studentDepartment/sDePublishJbDetail.html">发布学费奖补公告</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseFour">绿色通道</a>
+								</h4>
+							</div>
+							<div id="collapseFour" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="../../lstd/studentDepartment/sDeSetLsFlow.html">系统流程配置</a></li>
+										<li><a href="../../lstd/studentDepartment/sDeSetLsDeadline.html">设置系统开启截止时间</a></li>
+									    <li><a href="../../lstd/studentDepartment/sDeSeeLsIntroduction.html">查看绿色通道办理情况</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseFive">贫困生管理</a>
+								</h4>
+							</div>
+							<div id="collapseFive" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="../../pksgl/studentDepartment/sDeSetPkFlow.html">系统流程配置</a></li>
+										<li><a href="../../pksgl/studentDepartment/sDeSetPkDeadline.html">设置系统开启截止时间</a></li>
+									    <li><a href="../../pksgl/studentDepartment/sDeSeePkIntroduction.html">查看贫困生信息</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseSix">国家奖学金</a>
+								</h4>
+							</div>
+							<div id="collapseSix" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="../../gjjxj/studentDepartment/sDeFlowSystem.html">系统流程配置</a></li>
+										<li><a href="../../gjjxj/studentDepartment/sDeSetDeadline.html">设置系统开启截止时间</a></li>
+										<li><a href="../../gjjxj/studentDepartment/sDeAllotGj.html">分配名额</a></li>
+									    <li><a href="../../gjjxj/studentDepartment/sDeAuditGjApplication.html">审核国家奖学金</a></li>
+									    <li><a href="../../gjjxj/studentDepartment/sDeSeeGjApplication1.html">查看国家奖学金申请情况</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseSeven">社会奖学金</a>
+								</h4>
+							</div>
+							<div id="collapseSeven" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="../../shjxj/studentDepartment/sDeFlowSystem.html">系统流程配置</a></li>
+									    <li><a href="../../shjxj/studentDepartment/sDeSetDeadline.html">设置系统开启截止时间</a></li>
+										<li><a href="../../shjxj/studentDepartment/sDeAllotSj.html">分配名额</a></li>
+									    <li><a href="../../shjxj/studentDepartment/sDeAuditSjApplication.html">审核社会奖学金</a></li>
+									    <li><a href="../../shjxj/studentDepartment/sDeSeeSjApplication1.html">查看社会奖学金申请情况</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseEight">国家励志奖学金</a>
+								</h4>
+							</div>
+							<div id="collapseEight" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="../../gjlzjxj/studentDepartment/sDeFlowSystem.html">系统流程配置</a></li>
+									    <li><a href="../../gjlzjxj/studentDepartment/sDeSetDeadline.html">设置系统开启截止时间</a></li>
+										<li><a href="../../gjlzjxj/studentDepartment/sDeAllotLz.html">分配名额</a></li>
+									    <li><a href="../../gjlzjxj/studentDepartment/sDeAuditLzApplication.html">审核国家励志奖学金</a></li>
+									    <li><a href="../../gjlzjxj/studentDepartment/sDeSeeLzApplication1.html">查看国家励志奖学金申请情况</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseNine">国家助学金</a>
+								</h4>
+							</div>
+							<div id="collapseNine" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="../../gjzxj/studentDepartment/sDeFlowSystem.html">系统流程配置</a></li>
+									    <li><a href="../../gjzxj/studentDepartment/sDeSetDeadline.html">设置系统开启截止时间</a></li>
+										<li><a href="../../gjzxj/studentDepartment/sDeAllotZx.html">分配名额</a></li>
+									    <li><a href="../../gjzxj/studentDepartment/sDeAuditZxApplication.html">审核国家助学金</a></li>
+									    <li><a href="../../gjzxj/studentDepartment/sDeSeeZxApplication1.html">查看国家助学金申请情况</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseTen">行政部门勤工助学岗位申请</a>
+								</h4>
+							</div>
+							<div id="collapseTen" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="../../qgzx/studentDepartment/sDeSetQgFlow.html">系统流程配置</a></li>
+										<li><a href="../../qgzx/studentDepartment/sDeSetQgDeadline.html">设置系统开启截止时间</a></li>
+										<li><a href="../../qgzx/studentDepartment/sDeSeeQgApplication.html">查看部门申请状态</a></li>
+										<li><a href="../../qgzx/studentDepartment/sDeSetQgIntroduction.html">设置勤工助学岗位</a></li>
+										<li><a href="../../qgzx/studentDepartment/sDeSeeStuQgIntroduction.html">查看学生勤工助学岗位状态</a></li>
+									    <li><a href="../../qgzx/studentDepartment/sDeSeeQgIntroduction.html">查看已发布学生勤工岗位情况</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseEleven">大学生医疗补助</a>
+								</h4>
+							</div>
+							<div id="collapseEleven" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="../../ylbz/studentDepartment/sDeYlFlow.html">系统流程配置</a></li>
+									    <li><a href="../../ylbz/studentDepartment/sDeYlExport.html">数据导入</a></li>
+									    <li><a href="../../ylbz/studentDepartment/sDeSeeYlApply.html">查看申请状态</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseTwelve">系统管理</a>
+								</h4>
+							</div>
+							<div id="collapseTwelve" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+								        <li><a href="#">用户管理</a></li>
+								        <li><a href="#">角色管理</a></li>
+								        <li><a href="#">部门管理</a></li>
+								        <li><a href="#">信息发布</a></li>
+								        <li><a href="#">专业班级管理</a></li>
+								        <li><a href="#">辅导员带班管理</a></li>
+								      </ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="text-align: center;">
+				<h4>
+					<b>查看大学生城镇医疗保险介绍</b>
+				</h4>
+				<div style="text-align: center">
+					<span><b>发布人：</b></span> <span><b>校医院</b></span>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span><b>发布时间：</b></span>
+					<span><b>20140512</b></span>
+				</div>
+			</div>
+			<br>
+			<div class="col-xs-9">
+
+				<pre>（一）根据绵阳市政府绵府发［2009］40号文件精神，学生参加城镇居民基本医疗保险所需费用，由学生个人缴费、政府补助资金组成。学生每人每年按20元缴费标准，国家和省市政府补助金81元，共101元构成学生的普通门诊、住院、大病门诊、意外门诊相结合的双统筹保障方式。住院及大病门诊、意外门诊由绵阳市社保中心统筹管理，不设个人账户，普通门诊由社保中心从统筹资金中按每生每年20元的标准拨付给学校，由学校统一管理。
+（二）凡是参加了城镇居民基本医疗保险的学生，普通门诊在校医院就诊，每生每年普通门诊封顶线为200元，由校医院设立个人账户，超过部分个人自理。每次普通门诊医疗费由门诊统筹经费支付50%，个人自付50%。
+（三）参保学生患病首先应到校医院就诊，由医生开出处方，药房划价时将统筹部分收费直接计入个人账户（实行计算机管理）。
+（四）参保学生到外地实习期间的门诊费用，凭实习证明、门诊病情证明、复式处方、正规发票、学生门诊手册、身份证件到校医院报销。当年医疗费必须在当年内报销，年底发生的门诊费必须在次年1月放假前报销，超年度发票按规定不予报销。
+（五）参保学生寒暑假回家期间和因病休学期间所发生的门诊费用一律由个人自理。寒暑假期间因急重病住院或者是意外伤害，按绵阳城镇居民基本医疗保险规定执行。
+（六）凡是到校外医院就诊的普通门诊费用，一律由个人承担。
+（七）参保学生在校内和实习期间发生的自己无责任的意外伤害门急诊费用，由绵阳社保统筹资金支付，按50%报销，一个参保年度内最高支付不超过1500元/人。
+（八）普通门急诊中自行购药的费用一律由个人自理。
+（九）参保学生的普通门诊用药范围参照绵阳市社保门诊基本用药目录执行。
+（十）参保学生因病住院、大病门诊、意外伤害门诊的报销按绵阳城镇居民医疗保险有关规定执行。学生治疗结束后，将相关资料交校医院医保负责人办理报销。
+（十一）同时在学校参加了商业保险的学生因病住院，首先由社保报销（按第（十）条执行），社保报销不完的部分由商业保险报销，学生将住院发票、医药费清单、出院证复印件交校医院医保负责人办理报销，报销金额不超过实际发生的费用。
+（十二）参加了商业保险的学生因意外伤害门诊报销不完的部分由商业保险报销，最高金额不超过1000元。
+四、未尽事宜由校医院负责解释</pre>
+
+			</div>
+		</div>
+	</div>
+
+
+	<footer class="bs-footer" role="contentinfo">
+		<p class="pull-right">
+			<a href="#">回到页面顶部</a>
+		</p>
+		<div class="container">
+			<p>系统由XXXX公司开发</p>
+			<p>版权所有&nbsp;&nbsp;&nbsp;©2012&nbsp;&nbsp;&nbsp;西南科技大学学生工作部（处）</p>
+			<ul class="footer-links">
+				<li>当前版本：&nbsp;&nbsp; v3.0.3
+					&nbsp;&nbsp;&nbsp;系统更新时间：2014年4月25日&nbsp;&nbsp;&nbsp;&nbsp;西南科技大学学生资助系统</li>
+				<li class="muted">·</li>
+			</ul>
+		</div>
+	</footer>
+</body>
+</html>

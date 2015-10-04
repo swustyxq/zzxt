@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<!-- <meta http-equiv="Expires" CONTENT="0"> 
+<meta http-equiv="Cache-Control" CONTENT="no-cache"> 
+<meta http-equiv="Pragma" CONTENT="no-cache">  -->
+<link rel="shortcut icon" href="../images/favicon.png">
+<title>西南科技大学资助系统</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../css/bootstrap.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="../css/theme.css" rel="stylesheet">
+<link href="../css/docs.css" rel="stylesheet">
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/github.min.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="../javascript/jPaginate/css/style.css" media="screen" />
+
+<script src="../javascript/jquery.min.js"></script>
+<script src="../javascript/bootstrap.min.js"></script>
+<script src="../javascript/holder.min.js"></script>
+<script type="text/javascript"
+	src="../javascript/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript"
+	src="../javascript/jPaginate/jquery.paginate.js"></script>
+
+<script src="../js/stuInputDetailIfo.js"></script>
+
+<script src="../js/common.js"></script>
+<script src="../js/applyQysj.js"></script>   <!-- js -->
+
+<style>
+input {
+	border: none;
+	height: 100%;
+	width: 100%;
+	text-align:center;
+	text-vertical-align:middle;
+}
+textarea {
+	border: none;
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+	resize: none;
+}
+</style>
+
+</head>
+
+<body>
+
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">西南科技大学学生资助系统</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><span
+							id="current_user">学生用户</span> </a>
+						<ul class="dropdown-menu">
+							<li class="divider"></li>
+							<li class="dropdown-header">系统帮助</li>
+							<li><a href="help.html"><span
+									class="glyphicon glyphicon-book"></span>关于系统</a></li>
+							<li><a href="help.html"><span
+									class="glyphicon glyphicon-print"></span>使用说明</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">基本功能</li>
+							<li><a href="#" data-toggle="modal"
+								data-target="#changePassword"><span
+									class="glyphicon glyphicon-cog"></span>修改密码</a></li>
+							<li><a href="#" id="logout"><span
+									class="glyphicon glyphicon-log-out"></span>退出</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+	<div class="container theme-showcase">
+		<div class="col-xs-12">
+			<div class="col-xs-12">
+
+				<div class="page-header">
+					<small><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;当前位置导航：&nbsp;&nbsp;&nbsp;&nbsp;
+						<span id="location"> <a href="#">首页</a>&gt;<a href="#">使用说明</a>&gt;<a
+							href="#">学生信息</a>
+					</span> </small>
+				</div>
+			</div>
+
+			<!-- 左侧导航栏    -->
+			<div class="col-xs-3">
+				<div class="bs-example">
+					<div id="navigation" class="panel-group"></div>
+				</div>
+			</div>
+			
+			
+			<!-- 右侧申请表开始 -->
+			<div class="col-xs-9">
+				<div style="text-align: center">
+					<h3 style="font-weight: bold;">西南科技大学"xx奖"(企业)申请表</h3>					
+				</div>
+				<div style="text-align: center">
+					<table class="table table-bordered" id="qyshjxj_grxx">
+								<tr>
+									<td colspan="5" bgcolor="#B9B9B9">个&nbsp;人&nbsp;基&nbsp;本&nbsp;信&nbsp;息</td>
+								</tr>
+								<tr>
+									<td style="width: 80px;">姓&nbsp;&nbsp;&nbsp;&nbsp;名</td>
+									<td style="width: 100px;" id="qyshjxj_name"></td>
+									<td style="width: 80px;">性&nbsp;&nbsp;&nbsp;&nbsp;别</td>
+									<td style="width: 100px;" id="qyshjxj_sex"></td>
+									<td style="width: 90px;" rowspan="6"></td>
+								</tr>
+								<tr>
+									<td style="width: 80px;">学&nbsp;&nbsp;&nbsp;&nbsp;号</td>
+									<td style="width: 100px;" id="qyshjxj_number"></td>
+									<td style="width: 80px;">政&nbsp;治&nbsp;面&nbsp;貌</td>
+									<td style="width: 100px;" id="qyshjxj_politicState"></td>
+								</tr>
+								<tr>
+									<td style="width: 80px;">学&nbsp;&nbsp;&nbsp;&nbsp;院</td>
+									<td style="width: 100px;" id="qyshjxj_institution"></td>
+									<td style="width: 80px;">专&nbsp;&nbsp;&nbsp;&nbsp;业</td>
+									<td style="width: 100px;" id="qyshjxj_majorname"></td>
+								</tr>
+								<tr>
+									<td style="width: 80px;">出&nbsp;生&nbsp;年&nbsp;月</td>
+									<td style="width: 100px;" id="qyshjxj_birthday"></td>
+									<td style="width: 80px;">辅&nbsp;导&nbsp;员</td>
+									<td style="width: 100px;" id="qyshjxj_instructor"></td>
+								</tr>
+								<tr>
+									<td style="width: 80px;">联&nbsp;系&nbsp;电&nbsp;话</td>
+									<td style="width: 100px;" id="qyshjxj_phone"></td>
+									<td style="width: 80px;">英&nbsp;语&nbsp;等&nbsp;级</td>
+									<td style="width: 100px;" id="qyshjxj_englishRank"></td>
+								</tr>
+								<tr>
+									<td style="width: 80px;">E-mail</td>
+									<td style="width: 100px;" id="qyshjxj_E-mail"></td>
+									<td style="width: 80px;">籍&nbsp;&nbsp;&nbsp;&nbsp;贯</td>
+									<td style="width: 100px;" id="qyshjxj_nativePlace"></td>
+								</tr>
+								<tr>
+									<td style="width: 80px;"><br> <br>特&nbsp;长&nbsp;及&nbsp;爱&nbsp;好</td>
+									<td colspan="5"><textarea
+											placeholder="只能输入汉字、字母、数字、基本标点符号！" style="resize: none;"
+											class="form-control" rows="5" id="qyshjxj_hobbies"
+											></textarea></td>
+								</tr>
+								<tr>
+									<td rowspan="2" style="width: 80px;">教&nbsp;育&nbsp;经&nbsp;历</td>
+									<td style="width: 90px;">起&nbsp;止&nbsp;时&nbsp;间</td>
+									<td style="width: 90px;">学&nbsp;&nbsp;&nbsp;&nbsp;校</td>
+									<td style="width: 90px;">专&nbsp;&nbsp;&nbsp;&nbsp;业</td>
+									<td style="width: 90px;">学&nbsp;&nbsp;&nbsp;&nbsp;历</td>
+								</tr>
+								<tr>
+									<td style="width: 90px;" id=qyshjxj_start></td>
+									<td style="width: 90px;" id=qyshjxj_school></td>
+									<td style="width: 90px;" id=qyshjxj_major></td>
+									<td style="width: 90px;" id=qyshjxj_level></td>
+								</tr>
+								<tr>
+									<td style="width: 80px;"><br> <br>大学期间曾担任的学生职务</td>
+									<td colspan="5"><textarea
+											placeholder="只能输入汉字、字母、数字、基本标点符号！" style="resize: none;"
+											class="form-control" rows="5" id="qyshjxj_duties"
+											></textarea></td>
+								</tr>
+								<tr>
+									<td style="width: 80px;"><br> <br>社&nbsp;会&nbsp;实&nbsp;践</td>
+									<td colspan="5"><textarea
+											placeholder="只能输入汉字、字母、数字、基本标点符号！" style="resize: none;"
+											class="form-control" rows="5" id="qyshjxj_socialPractice"
+											></textarea></td>
+								</tr>
+								<tr>
+									<td style="width: 80px;"><br> <br>获&nbsp;奖&nbsp;情&nbsp;况</td>
+									<td colspan="5"><textarea
+											placeholder="只能输入汉字、字母、数字、基本标点符号！" style="resize: none;"
+											class="form-control" rows="5" id="qyshjxj_prize"
+											></textarea></td>
+								</tr>
+								<tr>
+									<td style="width: 80px;"><br> <br>参加科技文体活动情况</td>
+									<td colspan="5"><textarea
+											placeholder="只能输入汉字、字母、数字、基本标点符号！" style="resize: none;"
+											class="form-control" rows="5" id="qyshjxj_activities"
+											></textarea></td>
+								</tr>
+								<tr>
+									<td style="width: 80px;"><br> <br>个&nbsp;人&nbsp;评&nbsp;价</td>
+									<td colspan="5"><textarea
+											placeholder="只能输入汉字、字母、数字、基本标点符号！" style="resize: none;"
+											class="form-control" rows="5" id="qyshjxj_evaluation"
+											></textarea></td>
+								</tr>
+								<tr>
+									<td colspan="5" bgcolor="#B9B9B9">家&nbsp;庭&nbsp;情&nbsp;况</td>
+								</tr>
+								<tr>
+									<td style="width: 90px;">与&nbsp;本&nbsp;人&nbsp;关&nbsp;系</td>
+									<td style="width: 90px;">姓&nbsp;&nbsp;&nbsp;&nbsp;名</td>
+									<td style="width: 90px;">年&nbsp;&nbsp;&nbsp;&nbsp;龄</td>
+									<td style="width: 90px;">工&nbsp;作&nbsp;单&nbsp;位</td>
+									<td style="width: 90px;">担&nbsp;任&nbsp;职&nbsp;务</td>
+								</tr>
+								<tr>
+									<td id=qyshjxj_gx1 style="width: 90px;"></td>
+									<td id=qyshjxj_name1 style="width: 90px;"></td>
+									<td id=qyshjxj_age1 style="width: 90px;"></td>
+									<td id=qyshjxj_work1 style="width: 90px;"></td>
+									<td id=qyshjxj_nowPost style="width: 90px;"></td>
+								</tr>
+								<tr>
+									<td colspan="5" align="left">本人保证以上所填情况真实有效。
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;申请人签名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;年&nbsp;&nbsp;月&nbsp;&nbsp;日
+									</td>
+								</tr>
+							</table>
+					<!-- <table style="font-weight: bold; display:none;" class="table table-bordered"
+						id="shzxj_check">
+						<tr>
+							<td colspan="5" bgcolor="#B9B9B9">审&nbsp;批&nbsp;情&nbsp;况</td>
+						</tr>
+						<tr>
+							<td >辅&nbsp;导&nbsp;员&nbsp;意&nbsp;见</td>
+							<td id=fdy colspan="4"></td>
+						</tr>
+						<tr>
+							<td >学&nbsp;院&nbsp;评&nbsp;审&nbsp;意&nbsp;见</td>
+							<td  id=xy colspan="4"></td>
+						</tr>
+						<tr>
+							<td >学&nbsp;校&nbsp;评&nbsp;审&nbsp;意&nbsp;见</td>
+							<td  id=xx colspan="4"></td>
+						</tr>
+						<tr>
+							<td >公&nbsp;司&nbsp;评&nbsp;审&nbsp;意&nbsp;见</td>
+							<td  id=gs colspan="4"></td>
+						</tr>
+					</table> -->
+				</div>
+             <!-- 提交返回 -->
+				<div align="center">
+					<button type="button" class="btn btn-primary" data-toggle="modal"
+						id="qyshjxj_submit" onclick="apply()">
+						<b>提交</b>
+					</button>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="button" class="btn btn-primary" data-toggle="modal"
+						id="save" onclick="save()">
+						<b>保存</b>
+					</button>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="reset" class="btn btn-primary" id="returnToIndex"
+						onclick="history.go(-1)">
+						<b>返回</b>
+					</button>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+	<footer class="bs-footer" role="contentinfo">
+		<p class="pull-right">
+			<a href="#">回到页面顶部</a>
+		</p>
+		<div class="container" id="copyright"></div>
+	</footer>
+</body>
+<!-- <script src="../js/selectarea.js"></script> -->
+</html>

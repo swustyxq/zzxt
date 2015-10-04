@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="../images/favicon.png">
+
+<title>西南科技大学资助系统</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../css/bootstrap.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="../css/theme.css" rel="stylesheet">
+<link href="../css/docs.css" rel="stylesheet">
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/github.min.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="../javascript/jPaginate/css/style.css" media="screen" />
+<script src="../javascript/jquery.min.js"></script>
+<script src="../javascript/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="../javascript/jPaginate/jquery.paginate.js"></script>
+<script src="../javascript/dhtmlxchart.js"></script>
+<script src="../javascript/holder.min.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/auditStuInfo.js"></script>
+</head>
+<body>
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">西南科技大学学生资助系统</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><span
+							id="current_user">学生用户</span> </a>
+						<ul class="dropdown-menu">
+							<li class="divider"></li>
+							<li class="dropdown-header">系统帮助</li>
+							<li><a href="about.html"><span
+									class="glyphicon glyphicon-book"></span>关于系统</a></li>
+							<li><a href="help.html"><span
+									class="glyphicon glyphicon-print"></span>使用说明</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">基本功能</li>
+							<li><a href="#" data-toggle="modal"
+								data-target="#changePassword"><span
+									class="glyphicon glyphicon-cog"></span>修改密码</a></li>
+							<li><a href="#" id="logout"><span
+									class="glyphicon glyphicon-log-out"></span>退出</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+	<div class="container theme-showcase">
+		<div class="col-md-12">
+			<div class="col-md-12">
+
+				<div class="page-header">
+					<small><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;当前位置导航：&nbsp;&nbsp;&nbsp;&nbsp;
+						<span id="location"> <a href="#">首页</a>&gt;<a href="#">使用说明</a>&gt;<a
+							href="#">学生信息</a>
+					</span> </small>
+				</div>
+			</div>
+
+
+			<!-- 左侧导航栏    -->
+			<div class="col-md-3">
+				<div class="bs-example">
+					<div id="navigation" class="panel-group"></div>
+				</div>
+			</div>
+			<div class="col-md-9">	
+				<div class="bs-Shaozhou">
+					<div class="alert alert-warning alert-dismissible fade in"
+						role="alert">
+						<button type="button" class="close" data-dismiss="alert">
+							<span aria-hidden="true">×</span><span class="sr-only">Close</span>
+						</button>
+						<h4>温馨提示：</h4>
+
+						<table>
+							<tr>
+								<td>本次操作主要设置学生是否能修改自己的个人基本信息！</td>
+							</tr>
+							<tr>
+								<td>个人信息包括：（父母信息、获奖情况、学习情况、详细资料）！</td>
+							</tr>
+							<tr>
+								<td>设置为不可编辑后，学生将不能对自己的资料进行编辑或修改！</td>
+							</tr>
+						</table>
+					</div>
+					<h2 align="center">学生信息列表</h2>
+					<hr />
+					<form class="form-inline">
+						<div class="col-md-4">
+							<div class="form-group">
+								<b>学&nbsp;&nbsp;&nbsp;院：</b>
+							</div>
+							<div class="form-group">
+								<select id="colleage" class="form-control"
+									style="text-align: center; width: 150px;">
+								</select>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<div class="form-group">
+								<b>专&nbsp;&nbsp;&nbsp;业：</b>
+							</div>
+							<div class="form-group">
+								<select id="major" class="form-control"
+									style="text-align: center; width: 150px;"
+									onchange="majorChange()">
+									<!-- 	onchange="confirmMajor()"> -->
+
+									<option id="major1" value="0">全部</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<b>班&nbsp;&nbsp;&nbsp;级：</b>
+							</div>
+							<div class="form-group">
+								<select id="stuclass" class="form-control"
+									style="text-align: center; width: 150px;">
+									<option id="stuclass1" value="0">全部</option>
+								</select>
+							</div>
+						</div>
+					</form>
+					<br></br> <br>
+					<form class="form-inline">
+						<div class="col-md-5">
+							<input class="form-control" placeholder="学号/身份证号码/姓名"
+								id="seachKey"></input>
+						</div>
+
+						<div class="col-md-4">
+							<button type="button" class="btn btn-info" style="width: 150px;"
+								id="QueryByKey" onclick="javascript:searchBykey()">关键词查询</button>
+							<input id="hiddenText1" type="text" style="display: none" />
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<button type="button" class="btn btn-info" style="width: 150px;"
+									id="QueryByConditions" onclick="javascript:serch()">条件查询</button>
+							</div>
+						</div>
+					</form>
+
+					<br></br> <br></br>
+					   <div id="jindu" style="display:none">
+						<div class="alert alert-warning alert-dismissible fade in"
+						role="alert">
+						<button type="button" class="close" data-dismiss="alert">
+							<span aria-hidden="true">×</span><span class="sr-only">Close</span>
+						</button>
+						<h4>正在处理，请稍后……</h4>
+					  </div>
+					  </div>
+					<table id="buttons">
+						<tr>
+							<td><button type="button" class="btn btn-success btn-xs"
+									id="allyes">全选</button></td>
+							<td><button type="button" class="btn btn-success btn-xs"
+									id="allno">全不选</button></td>
+							<td><button type="button" class="btn btn-success btn-xs"
+									id="change" onclick="javascript:changeState()">批量修改</button></td>
+
+						</tr>
+					</table>
+					<table id="students" class="table table-hover">
+						<thead>
+							<tr>
+								<th>姓&nbsp;&nbsp;&nbsp;名</th>
+								<th>学&nbsp;&nbsp;&nbsp;号</th>
+								<th>民族</th>
+								<th>身份证号码</th>
+								<th>查看详细信息</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>加载中，请稍后…………</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="col-md-12" align="left" id="studentList">
+						<!-- 分页 -->
+					</div>
+
+					<br>
+					
+        	</div>
+			</div>
+		</div>
+
+		<br> <br>
+
+	</div>
+
+
+	<!-- 修改密码的模态对话框 Modal -->
+	<div class="modal fade" id="changePassword" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title">修改用户密码</h4>
+				</div>
+				<div class="modal-body">
+					<!-- 对话框里面的内容   -->
+					<form class="form-horizontal" role="form">
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-4 control-label">当前密码：</label>
+							<div class="col-sm-6">
+								<input type="password" class="form-control" id="inputPassword1"
+									placeholder="原始密码">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword3" class="col-sm-4 control-label">新密码：</label>
+							<div class="col-sm-6">
+								<input type="password" class="form-control" id="inputPassword2"
+									placeholder="新密码">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword3" class="col-sm-4 control-label">再次输入新密码：</label>
+							<div class="col-sm-6">
+								<input type="password" class="form-control" id="inputPassword3"
+									placeholder="重复新密码">
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button Id="changePWD" type="button" class="btn btn-primary">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="changeState" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel1" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title">批量修改学生编辑权限</h4>
+				</div>
+				<div class="modal-body">
+					<!-- 对话框里面的内容   -->
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>操作对象</th>
+								<th>学生是否可以编辑</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>获奖情况</td>
+								<td><label class="radio-inline"> <input
+										type="radio" name="prizeRadio" id="prizeRadio1" value="1">
+										是
+								</label> <label class="radio-inline"> <input type="radio"
+										name="prizeRadio" id="prizeRadio2" value="0"> 否
+								</label></td>
+
+							</tr>
+							<tr>
+								<td>家庭成员</td>
+								<td><label class="radio-inline"> <input
+										type="radio" name="parentRadio" id="parentRadio1" value="1">
+										是
+								</label> <label class="radio-inline"> <input type="radio"
+										name="parentRadio" id="parentRadio2" value="0"> 否
+								</label></td>
+
+							</tr>
+							<tr>
+								<td>学习情况</td>
+								<td><label class="radio-inline"> <input
+										type="radio" name="learningRadio" id="learningRadio1"
+										value="1"> 是
+								</label> <label class="radio-inline"> <input type="radio"
+										name="learningRadio" id="learningRadio2" value="0"> 否
+								</label></td>
+
+							</tr>
+							<tr>
+								<td>详细资料</td>
+								<td><label class="radio-inline"> <input
+										type="radio" name="detailRadio" id="detailRadio1" value="1">
+										是
+								</label> <label class="radio-inline"> <input type="radio"
+										name="detailRadio" id="detailRadio2" value="0"> 否
+								</label></td>
+
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button id="surechangeState" type="button"
+						class="surechangeState btn btn-primary">修改</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="changeOneState" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel1" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title">修改学生编辑权限</h4>
+				</div>
+				<div class="modal-body">
+					<!-- 对话框里面的内容   -->
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>操作对象</th>
+								<th>学生是否可以编辑</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>获奖情况</td>
+								<td><label class="radio-inline"> <input
+										type="radio" name="prizeRadio1" id="prizeRadio11" value="1">
+										是
+								</label> <label class="radio-inline"> <input type="radio"
+										name="prizeRadio1" id="prizeRadio22" value="0"> 否
+								</label></td>
+
+							</tr>
+							<tr>
+								<td>家庭成员</td>
+								<td><label class="radio-inline"> <input
+										type="radio" name="parentRadio1" id="parentRadio11" value="1">
+										是
+								</label> <label class="radio-inline"> <input type="radio"
+										name="parentRadio1" id="parentRadio22" value="0"> 否
+								</label></td>
+
+							</tr>
+							<tr>
+								<td>学习情况</td>
+								<td><label class="radio-inline"> <input
+										type="radio" name="learningRadio1" id="learningRadio11"
+										value="1"> 是
+								</label> <label class="radio-inline"> <input type="radio"
+										name="learningRadio1" id="learningRadio22" value="0">
+										否
+								</label></td>
+
+							</tr>
+							<tr>
+								<td>详细资料</td>
+								<td><label class="radio-inline"> <input
+										type="radio" name="detailRadio1" id="detailRadio11" value="1">
+										是
+								</label> <label class="radio-inline"> <input type="radio"
+										name="detailRadio1" id="detailRadio22" value="0"> 否
+								</label></td>
+
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button id="surechangeState1" type="button"
+						class="surechangeState1 btn btn-primary">修改</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="sureChange" tabindex="-1">
+		<div style="position: relative; top: 200px;">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+					    <h4 class="modal-title">提示信息：</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<br />
+					</div>
+					<div class="modal-body">
+						<div align="center">
+							<span><font
+								style="font-family: verdana; font-size: 180%; color: blue">你选择的学生数目：</font></span>
+							<span>&nbsp;</span> <span><font id="num"
+								style="font-family: verdana; font-size: 180%; color: red"></font></span>
+							<span>&nbsp;</span> <span><font
+								style="font-family: verdana; font-size: 180%; color: blue">您确定要批量修改吗？</font></span>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal"
+							id="confirm_change">确定</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="reminder" tabindex="-1">
+		<div style="position: relative; top: 200px;">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+					    <h4 class="modal-title">提示信息：</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<br />
+					</div>
+					<div class="modal-body">
+						<div align="center">
+							<span><font
+								style="font-family: verdana; font-size: 180%; color: blue">你没有选择任何学生！</font></span>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer class="bs-footer" role="contentinfo">
+		<p class="pull-right">
+			<a href="#">回到页面顶部</a>
+		</p>
+		<div class="container" id="copyright"></div>
+	</footer>
+</body>
+</html>

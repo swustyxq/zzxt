@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.SuggestionMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Suggestion" >
+    <id column="sugg_id" property="suggId" jdbcType="INTEGER" />
+    <result column="sugg_userId" property="suggUserId" jdbcType="INTEGER" />
+    <result column="sugg_content" property="suggContent" jdbcType="VARCHAR" />
+    <result column="sugg_time" property="suggTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sugg_id, sugg_userId, sugg_content, sugg_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+   <!--  ,
+    <include refid="Blob_Column_List" /> -->
+    from Suggestion
+    where sugg_id = #{suggId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from Suggestion
+    where sugg_id = #{suggId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.Suggestion" >
+    insert into Suggestion (sugg_id, sugg_userId, sugg_content, 
+      sugg_time)
+    values (#{suggId,jdbcType=INTEGER}, #{suggUserId,jdbcType=INTEGER}, #{suggContent,jdbcType=VARCHAR}, 
+      #{suggTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.Suggestion" >
+    insert into Suggestion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="suggId != null" >
+        sugg_id,
+      </if>
+      <if test="suggUserId != null" >
+        sugg_userId,
+      </if>
+      <if test="suggContent != null" >
+        sugg_content,
+      </if>
+      <if test="suggTime != null" >
+        sugg_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="suggId != null" >
+        #{suggId,jdbcType=INTEGER},
+      </if>
+      <if test="suggUserId != null" >
+        #{suggUserId,jdbcType=INTEGER},
+      </if>
+      <if test="suggContent != null" >
+        #{suggContent,jdbcType=VARCHAR},
+      </if>
+      <if test="suggTime != null" >
+        #{suggTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.Suggestion" >
+    update Suggestion
+    <set >
+      <if test="suggUserId != null" >
+        sugg_userId = #{suggUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="suggContent != null" >
+        sugg_content = #{suggContent,jdbcType=VARCHAR},
+      </if>
+      <if test="suggTime != null" >
+        sugg_time = #{suggTime,jdbcType=INTEGER},
+      </if>
+    </set>
+    where sugg_id = #{suggId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="swust.edu.cn.zzxt.model.Suggestion" >
+    update Suggestion
+    set sugg_userId = #{suggUserId,jdbcType=INTEGER},
+      sugg_content = #{suggContent,jdbcType=VARCHAR},
+      sugg_time = #{suggTime,jdbcType=TIMESTAMP},
+    where sugg_id = #{suggId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Suggestion" >
+    update Suggestion
+    set sugg_userId = #{suggUserId,jdbcType=INTEGER},
+      sugg_content = #{suggContent,jdbcType=VARCHAR},
+      sugg_time = #{suggTime,jdbcType=TIMESTAMP}
+    where sugg_id = #{suggId,jdbcType=INTEGER}
+  </update>
+</mapper>

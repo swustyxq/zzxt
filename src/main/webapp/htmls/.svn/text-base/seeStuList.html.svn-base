@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="../images/favicon.png">
+
+<title>西南科技大学资助系统</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../css/bootstrap.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="../css/theme.css" rel="stylesheet">
+<link href="../css/docs.css" rel="stylesheet">
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/github.min.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="../javascript/jPaginate/css/style.css" media="screen" />
+<script src="../javascript/jquery.min.js"></script>
+<script src="../javascript/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="../javascript/jPaginate/jquery.paginate.js"></script>
+<script src="../javascript/holder.min.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/searchAgency.js"></script>
+<script src="../js/seeStuList.js"></script>
+
+</head>
+<body>
+
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">西南科技大学学生资助系统</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><span
+							id="current_user">学生用户</span> </a>
+						<ul class="dropdown-menu">
+							<li class="divider"></li>
+							<li class="dropdown-header">系统帮助</li>
+							<li><a href="about.html"><span
+									class="glyphicon glyphicon-book"></span>关于系统</a></li>
+							<li><a href="help.html"><span
+									class="glyphicon glyphicon-print"></span>使用说明</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">基本功能</li>
+							<li><a href="#" data-toggle="modal"
+								data-target="#changePassword"><span
+									class="glyphicon glyphicon-cog"></span>修改密码</a></li>
+							<li><a href="#" id="logout"><span
+									class="glyphicon glyphicon-log-out"></span>退出</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+	<div class="container theme-showcase">
+		<div class="col-md-12">
+			<div class="col-md-12">
+
+				<div class="page-header">
+					<small><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;当前位置导航：&nbsp;&nbsp;&nbsp;&nbsp;
+						<span id="location"> <a href="#">首页</a>&gt;<a href="#">使用说明</a>&gt;<a
+							href="#">学生信息</a>
+					</span> </small>
+				</div>
+			</div>
+
+
+			<!-- 左侧导航栏    -->
+			<div class="col-md-3">
+				<div class="bs-example">
+					<div id="navigation" class="panel-group"></div>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div class="bs-Shaozhou">
+					<h2 align="center">学生信息</h2>
+					<hr />
+					<ul id="myTab" class="nav nav-tabs" role="tablist">
+						<li class="active"><a href="#seachByConditions" role="tab"
+							data-toggle="tab"  onfocus="empty2()">条件筛选</a></li>
+						<li class=""><a href="#seachByKey" role="tab"
+							data-toggle="tab" onfocus="empty1()">精确查找</a></li>
+						<!-- 	<li class="dropdown"><a href="#" id="myTabDrop1"
+							class="dropdown-toggle" data-toggle="dropdown" onfocus="empty4()">精确查找 <span
+								class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu"
+								aria-labelledby="myTabDrop1">
+								<li><a href="#seachByKey" role="tab" data-toggle="tab"
+									onfocus="empty1()">按学号/身份证查询</a></li>
+								<li><a href="#seachByName" role="tab" data-toggle="tab"
+									onfocus="empty2()">按姓名查询</a></li>
+							</ul></li> -->
+
+						<li class=" "><a href="#coutInfo" role="tab"
+							data-toggle="tab" onclick="tongji()">信息统计</a></li>
+					</ul>
+
+					<div id="myTabContent" class="tab-content">
+						<div id="seachByConditions" class="tab-pane fade active in">
+							<br />
+							<form class="form-inline">
+								<div class="col-md-4">
+									<div class="form-group">
+										<b>学&nbsp;&nbsp;&nbsp;院：</b>
+									</div>
+									<div class="form-group">
+										<select id="colleage" class="form-control"
+											style="text-align: center; width: 150px;"
+											onchange="javascript:academyChange()">
+										<option selected="selected" value="0">学院</option>
+										<option value="1">计科学院</option>
+										<option value="2">信息学院</option>
+										<option value="3">制造学院</option>
+										<option value="4">土建学院</option>
+										<option value="5">环资学院</option>
+										<option value="6">材料学院</option>
+										<option value="7">生命学院</option>
+										<option value="8">理学院</option>
+										<option value="9">经济管理学院</option>
+										<option value="10">文艺学院</option>
+										<option value="11">法学院</option>
+										<option value="12">政治学院</option>
+										<option value="13">外语学院</option>
+										<option value="14">体育学院</option>
+										<option value="15">成网</option>
+										<option value="16">应技学院</option>
+										<option value="17">国防学院</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="col-md-4">
+									<div class="form-group">
+										<b>专&nbsp;&nbsp;&nbsp;业：</b>
+									</div>
+									<div class="form-group">
+										<select id="major" class="form-control"
+											style="text-align: center; width: 150px;"
+											onchange="javascript:majorChange()">
+											<!-- 	onchange="confirmMajor()"> -->
+
+											<option selected="selected" value="0">全部</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<b>班&nbsp;&nbsp;&nbsp;级：</b>
+									</div>
+									<div class="form-group">
+										<select id="stuclass" class="form-control"
+											style="text-align: center; width: 150px;">
+											<option selected="selected" value="0">全部</option>
+										</select>
+									</div>
+								</div>
+							</form>
+							<br></br>
+							<form class="form-inline">
+								<div class="col-md-4">
+									<div class="form-group">
+										<b>性&nbsp;&nbsp;&nbsp;别：</b>
+									</div>
+									<div class="form-group">
+										<select id="stuSex" class="form-control"
+											style="text-align: center; width: 150px;">
+											<option value="0">全部</option>
+											<option value="1">男</option>
+											<option value="-1">女</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<b>民&nbsp;&nbsp;&nbsp;族：</b>
+									</div>
+									<div class="form-group">
+										<select id="stuNation" class="form-control"
+											style="text-align: center; width: 150px;">
+											<option value="全部" selected>全部</option>
+											<option value="汉族">汉族</option>
+											<option value="蒙古族">蒙古族</option>
+											<option value="回族">回族</option>
+											<option value="藏族">藏族</option>
+											<option value="维吾尔族">维吾尔族</option>
+											<option value="苗族">苗族</option>
+											<option value="彝族">彝族</option>
+											<option value="壮族">壮族</option>
+											<option value="布依族">布依族</option>
+											<option value="朝鲜族">朝鲜族</option>
+											<option value="满族">满族</option>
+											<option value="侗族">侗族</option>
+											<option value="瑶族">瑶族</option>
+											<option value="白族">白族</option>
+											<option value="土家族">土家族</option>
+											<option value="哈尼族">哈尼族</option>
+											<option value="哈萨克族">哈萨克族</option>
+											<option value="傣族">傣族</option>
+											<option value="黎族">黎族</option>
+											<option value="傈僳族">傈僳族</option>
+											<option value="佤族">佤族</option>
+											<option value="畲族">畲族</option>
+											<option value="高山族">高山族</option>
+											<option value="拉祜族">拉祜族</option>
+											<option value="水族">水族</option>
+											<option value="东乡族">东乡族</option>
+											<option value="纳西族">纳西族</option>
+											<option value="景颇族">景颇族</option>
+											<option value="柯尔克孜族">柯尔克孜族</option>
+											<option value="土族">土族</option>
+											<option value="达斡尔族">达斡尔族</option>
+											<option value="仫佬族">仫佬族</option>
+											<option value="羌族">羌族</option>
+											<option value="布朗族">布朗族</option>
+											<option value="撒拉族">撒拉族</option>
+											<option value="毛难族">毛难族</option>
+											<option value="仡佬族">仡佬族</option>
+											<option value="锡伯族">锡伯族</option>
+											<option value="阿昌族">阿昌族</option>
+											<option value="普米族">普米族</option>
+											<option value="塔吉克族">塔吉克族</option>
+											<option value="怒族">怒族</option>
+											<option value="乌孜别克族">乌孜别克族</option>
+											<option value="俄罗斯族">俄罗斯族</option>
+											<option value="鄂温克族">鄂温克族</option>
+											<option value="崩龙族">崩龙族</option>
+											<option value="保安族">保安族</option>
+											<option value="裕固族">裕固族</option>
+											<option value="京族">京族</option>
+											<option value="塔塔尔族">塔塔尔族</option>
+											<option value="独龙族">独龙族</option>
+											<option value="鄂伦春族">鄂伦春族</option>
+											<option value="赫哲族">赫哲族</option>
+											<option value="门巴族">门巴族</option>
+											<option value="珞巴族">珞巴族</option>
+											<option value="基诺族">基诺族</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="col-md-4">
+									<div class="form-group">
+										<button type="button" class="btn btn-info"
+											style="width: 215px;" id="QueryByConditions">条件查询</button>
+									</div>
+								</div>
+							</form>
+							<br> <br>
+							<table class="table table-hover">
+								<tr>
+									<th align="center" colspan="2">根据筛选条件导出：</th>
+									<td align="center"><div align="center">
+											<button type="button" class="btn btn-warning" id="download">
+												<span class="glyphicon glyphicon-share-alt"></span> 导出Excel
+											</button>
+										</div></td>
+									<th align="center" colspan="2">筛选条件下的数据统计：</th>
+									<td align="center"><div align="center">
+											<button type="button" class="btn btn-success"
+												onclick="javascript:count()">
+												<span class="glyphicon glyphicon-share-alt"></span> 显示数据
+											</button>
+										</div></td>
+								</tr>
+
+							</table>
+
+							<table id="students" class="table table-hover">
+								<thead>
+									<tr>
+										<th>姓&nbsp;&nbsp;&nbsp;名</th>
+										<th>学&nbsp;&nbsp;&nbsp;号</th>
+										<th>民族</th>
+										<th>身份证号码</th>
+										<th>查看详细信息</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>加载中，请稍后…………</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="col-md-12" align="left" id="studentList">
+								<!-- 分页 -->
+							</div>
+
+							<br>
+							<div align="center" id="reInfo">
+								<!--      当前条件返回按钮 -->
+							</div>
+						</div>
+						<div class="tab-pane fade" id="seachByKey">
+							<br /> <br />
+							<form class="form-inline">
+								<input class="form-control" style="width: 250px;"
+									placeholder="学号/身份证号码/姓名" id="seachKey" onfocus="empty1()"></input>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<button type="button" class="btn btn-info" style="width: 150px;"
+									id="QueryByKey">关键词查询</button>
+								<input id="hiddenText1" type="text" style="display: none" />
+							</form>
+							<br /> <br /> <br />
+							<table id="students1" class="table table-hover">
+							</table>
+							<div style="position: relative; left: 50px;">
+								<span style="display: none" id="validateId1"><font
+									color="red">学号或身份证号码输入不能为空！</font></span>
+							</div>
+							<div style="position: relative; left: 50px;">
+								<span style="display: none" id="noExist1"><font
+									color="red">该查询条件下查询结果为空！</font></span>
+							</div>
+						</div>
+
+						<!-- 		<div class="tab-pane fade" id="seachByName">
+							<br />
+							<form class="form-inline">
+								<input class="form-control" style="width: 250px;"
+									placeholder="请输入学生姓名" id="seachName" onfocus="empty2()"></input>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<button type="button" class="btn btn-info" style="width: 150px;"
+									id="QueryByName">关键词查询</button>
+								<input id="hiddenText2" type="text" style="display: none" />
+							</form>
+								<table id="students2" class="table table-hover">
+					        </table>
+					         <div style="position: relative; left: 50px;">
+							<span style="display: none" id="validateId2"><font
+								color="red">学号或身份证号码输入不能为空！</font></span>
+						    </div>	
+						    <div style="position: relative; left: 50px;">
+						      <span style="display: none"
+								id="noExist2"><font color="red">该查询条件下查询结果为空！</font></span>
+						</div>
+						</div> -->
+						<div class="tab-pane fade" id="coutInfo">
+							<br> <br>
+							<h3 align="center">学生信息统计数据</h3>
+							<!-- 	<div style="display: block; float: left" id="tongji">
+								&nbsp;&nbsp;&nbsp;
+								<button onclick="tongji()" id="coutByInstitution"
+									class="btn btn-warning" type="button">
+									<span class="glyphicon glyphicon-share-alt"></span> 按学院统计
+								</button>
+								&nbsp;&nbsp;&nbsp;
+								<button id="coutByProvience" class="btn btn-warning"
+									type="button">
+									<span class="glyphicon glyphicon-share-alt"></span> 按省统计
+								</button>
+							</div> -->
+							<br> <br>
+							<table id="studentTj" class="table table-hover">
+
+								<tbody>
+									<tr>
+										<td>加载中，请稍后…………</td>
+									</tr>
+								</tbody>
+							</table>
+
+						</div>
+					</div>
+
+					<br> <br>
+
+				</div>
+			</div>
+		</div>
+		<!-- 修改密码的模态对话框 Modal -->
+		<div class="modal fade" id="changePassword" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">修改用户密码</h4>
+					</div>
+					<div class="modal-body">
+						<!-- 对话框里面的内容   -->
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-4 control-label">当前密码：</label>
+								<div class="col-sm-6">
+									<input type="password" class="form-control" id="inputPassword1"
+										placeholder="原始密码">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword3" class="col-sm-4 control-label">新密码：</label>
+								<div class="col-sm-6">
+									<input type="password" class="form-control" id="inputPassword2"
+										placeholder="新密码">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword3" class="col-sm-4 control-label">再次输入新密码：</label>
+								<div class="col-sm-6">
+									<input type="password" class="form-control" id="inputPassword3"
+										placeholder="重复新密码">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button Id="changePWD" type="button" class="btn btn-primary">保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<footer class="bs-footer" role="contentinfo">
+		<p class="pull-right">
+			<a href="#">回到页面顶部</a>
+		</p>
+		<div class="container" id="copyright"></div>
+	</footer>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.ReuserroleMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Reuserrole" >
+    <id column="reur_id" property="reurId" jdbcType="INTEGER" />
+    <result column="reur_userId" property="reurUserid" jdbcType="INTEGER" />
+    <result column="reur_roleId" property="reurRoleid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    reur_id, reur_userId, reur_roleId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from reuserrole
+    where reur_id = #{reurId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from reuserrole
+    where reur_id = #{reurId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.Reuserrole" >
+    insert into reuserrole (reur_id, reur_userId, reur_roleId
+      )
+    values (#{reurId,jdbcType=INTEGER}, #{reurUserid,jdbcType=INTEGER}, #{reurRoleid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.Reuserrole" >
+    insert into reuserrole
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="reurId != null" >
+        reur_id,
+      </if>
+      <if test="reurUserid != null" >
+        reur_userId,
+      </if>
+      <if test="reurRoleid != null" >
+        reur_roleId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="reurId != null" >
+        #{reurId,jdbcType=INTEGER},
+      </if>
+      <if test="reurUserid != null" >
+        #{reurUserid,jdbcType=INTEGER},
+      </if>
+      <if test="reurRoleid != null" >
+        #{reurRoleid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.Reuserrole" >
+    update reuserrole
+    <set >
+      <if test="reurUserid != null" >
+        reur_userId = #{reurUserid,jdbcType=INTEGER},
+      </if>
+      <if test="reurRoleid != null" >
+        reur_roleId = #{reurRoleid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where reur_id = #{reurId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Reuserrole" >
+    update reuserrole
+    set reur_userId = #{reurUserid,jdbcType=INTEGER},
+      reur_roleId = #{reurRoleid,jdbcType=INTEGER}
+    where reur_id = #{reurId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 自己写的方法 -->
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from reuserrole
+    where reur_userId = #{reurUserid,jdbcType=INTEGER}
+  </select>  
+  <select id="selectByUserAndRole" resultMap="BaseResultMap" parameterType="swust.edu.cn.zzxt.model.Reuserrole" >
+    select 
+    <include refid="Base_Column_List" />
+    from reuserrole
+    where (reur_userId = #{reurUserid,jdbcType=INTEGER}) and (reur_roleId = #{reurRoleid,jdbcType=INTEGER})  
+  </select>  
+</mapper>

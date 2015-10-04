@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.InstitutionMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Institution" >
+    <id column="inst_id" property="instId" jdbcType="INTEGER" />
+    <result column="inst_name" property="instName" jdbcType="VARCHAR" />
+    <result column="inst_shortname" property="instShortname" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="swust.edu.cn.zzxt.model.Institution" extends="BaseResultMap" >
+    <result column="inst_description" property="instDescription" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    inst_id, inst_name, inst_shortname
+  </sql>
+  <sql id="Blob_Column_List" >
+    inst_description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from institution
+    where inst_id = #{instId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from institution
+    where inst_id = #{instId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.Institution" >
+    insert into institution (inst_id, inst_name, inst_shortname, 
+      inst_description)
+    values (#{instId,jdbcType=INTEGER}, #{instName,jdbcType=VARCHAR}, #{instShortname,jdbcType=VARCHAR}, 
+      #{instDescription,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.Institution" >
+    insert into institution
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="instId != null" >
+        inst_id,
+      </if>
+      <if test="instName != null" >
+        inst_name,
+      </if>
+      <if test="instShortname != null" >
+        inst_shortname,
+      </if>
+      <if test="instDescription != null" >
+        inst_description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="instId != null" >
+        #{instId,jdbcType=INTEGER},
+      </if>
+      <if test="instName != null" >
+        #{instName,jdbcType=VARCHAR},
+      </if>
+      <if test="instShortname != null" >
+        #{instShortname,jdbcType=VARCHAR},
+      </if>
+      <if test="instDescription != null" >
+        #{instDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.Institution" >
+    update institution
+    <set >
+      <if test="instName != null" >
+        inst_name = #{instName,jdbcType=VARCHAR},
+      </if>
+      <if test="instShortname != null" >
+        inst_shortname = #{instShortname,jdbcType=VARCHAR},
+      </if>
+      <if test="instDescription != null" >
+        inst_description = #{instDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where inst_id = #{instId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="swust.edu.cn.zzxt.model.Institution" >
+    update institution
+    set inst_name = #{instName,jdbcType=VARCHAR},
+      inst_shortname = #{instShortname,jdbcType=VARCHAR},
+      inst_description = #{instDescription,jdbcType=LONGVARCHAR}
+    where inst_id = #{instId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Institution" >
+    update institution
+    set inst_name = #{instName,jdbcType=VARCHAR},
+      inst_shortname = #{instShortname,jdbcType=VARCHAR}
+    where inst_id = #{instId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 自己写的方法，查找所有的机构 yangjunhui 20140724-->
+   <select id="selectAllInstitutions" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from institution
+  </select>
+</mapper>

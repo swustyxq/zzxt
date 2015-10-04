@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.QyshjxjMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Qyshjxj" >
+    <id column="qysj_id" property="qysjId" jdbcType="INTEGER" />
+    <result column="qysj_sjtpId" property="qysjSjtpid" jdbcType="INTEGER" />
+    <result column="qysj_studId" property="qysjStudid" jdbcType="INTEGER" />
+    <result column="qysj_politicState" property="qysjPoliticstate" jdbcType="VARCHAR" />
+    <result column="qysj_instructor" property="qysjInstructor" jdbcType="VARCHAR" />
+    <result column="qysj_englishRank" property="qysjEnglishrank" jdbcType="VARCHAR" />
+    <result column="qysj_nativePlace" property="qysjNativeplace" jdbcType="VARCHAR" />
+    <result column="qysj_hobbies" property="qysjHobbies" jdbcType="VARCHAR" />
+    <result column="qysj_applyTime" property="qysjApplytime" jdbcType="TIMESTAMP" />
+    <result column="qysj_instructorOpinionTime" property="qysjInstructoropiniontime" jdbcType="TIMESTAMP" />
+    <result column="qysj_academyOpinionTime" property="qysjAcademyopiniontime" jdbcType="TIMESTAMP" />
+    <result column="qysj_schoolOpinionTime" property="qysjSchoolopiniontime" jdbcType="TIMESTAMP" />
+    <result column="qysj_companyTime" property="qysjCompanytime" jdbcType="TIMESTAMP" />
+    <result column="qysj_state" property="qysjState" jdbcType="INTEGER" />
+    
+    <result column="qysj_wsflId" property="qysjWsflId" jdbcType="INTEGER" />      <!-- @ -->
+    <result column="qysj_workId" property="qysjWorkId" jdbcType="INTEGER" />
+    
+    <result column="qysj_annual" property="qysjAnnual" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="swust.edu.cn.zzxt.model.QyshjxjWithBLOBs" extends="BaseResultMap" >
+   <result column="qysj_eduExperience" property="qysjEduExperience" jdbcType="LONGVARCHAR" />     <!-- ### -->
+  
+    <result column="qysj_duties" property="qysjDuties" jdbcType="LONGVARCHAR" />
+    <result column="qysj_socialPractice" property="qysjSocialpractice" jdbcType="LONGVARCHAR" />
+    <result column="qysj_prize" property="qysjPrize" jdbcType="LONGVARCHAR" />
+    <result column="qysj_activities" property="qysjActivities" jdbcType="LONGVARCHAR" />
+    <result column="qysj_evaluation" property="qysjEvaluation" jdbcType="LONGVARCHAR" />
+    <result column="qysj_instructorOpinion" property="qysjInstructoropinion" jdbcType="LONGVARCHAR" />
+    <result column="qysj_academyOpinion" property="qysjAcademyopinion" jdbcType="LONGVARCHAR" />
+    <result column="qysj_schoolOpinion" property="qysjSchoolopinion" jdbcType="LONGVARCHAR" />
+    <result column="qysj_company" property="qysjCompany" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    qysj_id, qysj_sjtpId, qysj_studId, qysj_politicState, qysj_instructor, qysj_englishRank, 
+    qysj_nativePlace, qysj_hobbies, qysj_applyTime, qysj_instructorOpinionTime, qysj_academyOpinionTime, 
+    qysj_schoolOpinionTime, qysj_companyTime, qysj_state, qysj_wsflId, qysj_workId, qysj_annual               <!-- @ -->
+  </sql>
+  <sql id="Blob_Column_List" >
+    qysj_eduExperience, qysj_duties, qysj_socialPractice, qysj_prize, qysj_activities, qysj_evaluation, qysj_instructorOpinion, 
+    qysj_academyOpinion, qysj_schoolOpinion, qysj_company
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from qyshjxj
+    where qysj_id = #{qysjId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from qyshjxj
+    where qysj_id = #{qysjId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.QyshjxjWithBLOBs" >
+    insert into qyshjxj (qysj_id, qysj_sjtpId, qysj_studId, 
+      qysj_politicState, qysj_instructor, qysj_englishRank, 
+      qysj_nativePlace, qysj_hobbies, qysj_applyTime, 
+      qysj_instructorOpinionTime, qysj_academyOpinionTime, 
+      qysj_schoolOpinionTime, qysj_companyTime, 
+      qysj_state, qysj_wsflId, qysj_workId, qysj_annual, <!-- @ -->
+       qysj_eduExperience, qysj_duties,            <!-- ### -->
+      qysj_socialPractice, qysj_prize, 
+      qysj_activities, qysj_evaluation, 
+      qysj_instructorOpinion, qysj_academyOpinion, 
+      qysj_schoolOpinion, qysj_company)
+    values (#{qysjId,jdbcType=INTEGER}, #{qysjSjtpid,jdbcType=INTEGER}, #{qysjStudid,jdbcType=INTEGER}, 
+      #{qysjPoliticstate,jdbcType=VARCHAR}, #{qysjInstructor,jdbcType=VARCHAR}, #{qysjEnglishrank,jdbcType=VARCHAR}, 
+      #{qysjNativeplace,jdbcType=VARCHAR}, #{qysjHobbies,jdbcType=VARCHAR}, #{qysjApplytime,jdbcType=TIMESTAMP}, 
+      #{qysjInstructoropiniontime,jdbcType=TIMESTAMP}, #{qysjAcademyopiniontime,jdbcType=TIMESTAMP}, 
+      #{qysjSchoolopiniontime,jdbcType=TIMESTAMP}, #{qysjCompanytime,jdbcType=TIMESTAMP}, 
+      #{qysjState,jdbcType=INTEGER}, #{qysjWsflId,jdbcType=INTEGER}, #{qysjWorkId,jdbcType=INTEGER},   <!-- @ -->
+      #{qysjAnnual,jdbcType=VARCHAR}, #{qysjEduExperience,jdbcType=LONGVARCHAR},    <!-- ### -->
+       #{qysjDuties,jdbcType=LONGVARCHAR}, 
+      #{qysjSocialpractice,jdbcType=LONGVARCHAR}, #{qysjPrize,jdbcType=LONGVARCHAR}, 
+      #{qysjActivities,jdbcType=LONGVARCHAR}, #{qysjEvaluation,jdbcType=LONGVARCHAR}, 
+      #{qysjInstructoropinion,jdbcType=LONGVARCHAR}, #{qysjAcademyopinion,jdbcType=LONGVARCHAR}, 
+      #{qysjSchoolopinion,jdbcType=LONGVARCHAR}, #{qysjCompany,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.QyshjxjWithBLOBs" >
+    insert into qyshjxj
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="qysjId != null" >
+        qysj_id,
+      </if>
+      <if test="qysjSjtpid != null" >
+        qysj_sjtpId,
+      </if>
+      <if test="qysjStudid != null" >
+        qysj_studId,
+      </if>
+      <if test="qysjPoliticstate != null" >
+        qysj_politicState,
+      </if>
+      <if test="qysjInstructor != null" >
+        qysj_instructor,
+      </if>
+      <if test="qysjEnglishrank != null" >
+        qysj_englishRank,
+      </if>
+      <if test="qysjNativeplace != null" >
+        qysj_nativePlace,
+      </if>
+      <if test="qysjHobbies != null" >
+        qysj_hobbies,
+      </if>
+      <if test="qysjApplytime != null" >
+        qysj_applyTime,
+      </if>
+      <if test="qysjInstructoropiniontime != null" >
+        qysj_instructorOpinionTime,
+      </if>
+      <if test="qysjAcademyopiniontime != null" >
+        qysj_academyOpinionTime,
+      </if>
+      <if test="qysjSchoolopiniontime != null" >
+        qysj_schoolOpinionTime,
+      </if>
+      <if test="qysjCompanytime != null" >
+        qysj_companyTime,
+      </if>
+      <if test="qysjState != null" >
+        qysj_state,
+      </if>
+      
+      <if test="qysjWsflId != null" >  <!-- @ -->
+        qysj_wsflId,
+      </if>
+      <if test="qysjWorkId != null" >  <!-- @ -->
+        qysj_workId,
+      </if>
+      
+      <if test="qysjAnnual != null" >
+        qysj_annual,
+      </if>
+      
+      <if test="qysjEduExperience != null" >  <!-- ### -->
+        qysj_eduExperience,
+      </if>
+      <if test="qysjDuties != null" >
+        qysj_duties,
+      </if>
+      <if test="qysjSocialpractice != null" >
+        qysj_socialPractice,
+      </if>
+      <if test="qysjPrize != null" >
+        qysj_prize,
+      </if>
+      <if test="qysjActivities != null" >
+        qysj_activities,
+      </if>
+      <if test="qysjEvaluation != null" >
+        qysj_evaluation,
+      </if>
+      <if test="qysjInstructoropinion != null" >
+        qysj_instructorOpinion,
+      </if>
+      <if test="qysjAcademyopinion != null" >
+        qysj_academyOpinion,
+      </if>
+      <if test="qysjSchoolopinion != null" >
+        qysj_schoolOpinion,
+      </if>
+      <if test="qysjCompany != null" >
+        qysj_company,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="qysjId != null" >
+        #{qysjId,jdbcType=INTEGER},
+      </if>
+      <if test="qysjSjtpid != null" >
+        #{qysjSjtpid,jdbcType=INTEGER},
+      </if>
+      <if test="qysjStudid != null" >
+        #{qysjStudid,jdbcType=INTEGER},
+      </if>
+      <if test="qysjPoliticstate != null" >
+        #{qysjPoliticstate,jdbcType=VARCHAR},
+      </if>
+      <if test="qysjInstructor != null" >
+        #{qysjInstructor,jdbcType=VARCHAR},
+      </if>
+      <if test="qysjEnglishrank != null" >
+        #{qysjEnglishrank,jdbcType=VARCHAR},
+      </if>
+      <if test="qysjNativeplace != null" >
+        #{qysjNativeplace,jdbcType=VARCHAR},
+      </if>
+      <if test="qysjHobbies != null" >
+        #{qysjHobbies,jdbcType=VARCHAR},
+      </if>
+      <if test="qysjApplytime != null" >
+        #{qysjApplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qysjInstructoropiniontime != null" >
+        #{qysjInstructoropiniontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qysjAcademyopiniontime != null" >
+        #{qysjAcademyopiniontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qysjSchoolopiniontime != null" >
+        #{qysjSchoolopiniontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qysjCompanytime != null" >
+        #{qysjCompanytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qysjState != null" >
+        #{qysjState,jdbcType=INTEGER},
+      </if>
+      
+      <if test="qysjWsflId != null" >
+        #{qysjWsflId,jdbcType=INTEGER},
+      </if>
+       <if test="qysjWorkId != null" >
+        #{qysjWorkId,jdbcType=INTEGER},
+      </if>      
+      
+      <if test="qysjAnnual != null" >
+        #{qysjAnnual,jdbcType=VARCHAR},
+      </if>
+      
+      <if test="qysjEduExperience != null" >        <!-- ### -->
+        #{qysjEduExperience,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qysjDuties != null" >
+        #{qysjDuties,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qysjSocialpractice != null" >
+        #{qysjSocialpractice,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qysjPrize != null" >
+        #{qysjPrize,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qysjActivities != null" >
+        #{qysjActivities,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qysjEvaluation != null" >
+        #{qysjEvaluation,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qysjInstructoropinion != null" >
+        #{qysjInstructoropinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qysjAcademyopinion != null" >
+        #{qysjAcademyopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qysjSchoolopinion != null" >
+        #{qysjSchoolopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qysjCompany != null" >
+        #{qysjCompany,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.QyshjxjWithBLOBs" >
+    update qyshjxj
+    <set >
+      <if test="qysjSjtpid != null" >
+        qysj_sjtpId = #{qysjSjtpid,jdbcType=INTEGER},
+      </if>
+      <if test="qysjStudid != null" >
+        qysj_studId = #{qysjStudid,jdbcType=INTEGER},
+      </if>
+      <if test="qysjPoliticstate != null" >
+        qysj_politicState = #{qysjPoliticstate,jdbcType=VARCHAR},
+      </if>
+      <if test="qysjInstructor != null" >
+        qysj_instructor = #{qysjInstructor,jdbcType=VARCHAR},
+      </if>
+      <if test="qysjEnglishrank != null" >
+        qysj_englishRank = #{qysjEnglishrank,jdbcType=VARCHAR},
+      </if>
+      <if test="qysjNativeplace != null" >
+        qysj_nativePlace = #{qysjNativeplace,jdbcType=VARCHAR},
+      </if>
+      <if test="qysjHobbies != null" >
+        qysj_hobbies = #{qysjHobbies,jdbcType=VARCHAR},
+      </if>
+      <if test="qysjApplytime != null" >
+        qysj_applyTime = #{qysjApplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qysjInstructoropiniontime != null" >
+        qysj_instructorOpinionTime = #{qysjInstructoropiniontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qysjAcademyopiniontime != null" >
+        qysj_academyOpinionTime = #{qysjAcademyopiniontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qysjSchoolopiniontime != null" >
+        qysj_schoolOpinionTime = #{qysjSchoolopiniontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qysjCompanytime != null" >
+        qysj_companyTime = #{qysjCompanytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qysjState != null" >
+        qysj_state = #{qysjState,jdbcType=INTEGER},
+      </if>      
+      
+      
+      <if test="qysjWsflId != null" >
+        qysj_wsflId = #{qysjWsflId,jdbcType=INTEGER},    <!-- @ -->
+      </if>
+      <if test="qysjWorkId != null" >
+        qysj_workId = #{qysjWorkId,jdbcType=INTEGER},    <!-- @ -->
+      </if>
+      
+      <if test="qysjAnnual != null" >
+        qysj_annual = #{qysjAnnual,jdbcType=VARCHAR},
+      </if>
+      
+      <if test="qysjEduExperience != null" >
+        qysj_eduExperience = #{qysjEduExperience,jdbcType=LONGVARCHAR}, <!-- ### -->
+      </if>
+      <if test="qysjDuties != null" >
+        qysj_duties = #{qysjDuties,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qysjSocialpractice != null" >
+        qysj_socialPractice = #{qysjSocialpractice,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qysjPrize != null" >
+        qysj_prize = #{qysjPrize,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qysjActivities != null" >
+        qysj_activities = #{qysjActivities,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qysjEvaluation != null" >
+        qysj_evaluation = #{qysjEvaluation,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qysjInstructoropinion != null" >
+        qysj_instructorOpinion = #{qysjInstructoropinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qysjAcademyopinion != null" >
+        qysj_academyOpinion = #{qysjAcademyopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qysjSchoolopinion != null" >
+        qysj_schoolOpinion = #{qysjSchoolopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qysjCompany != null" >
+        qysj_company = #{qysjCompany,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where qysj_id = #{qysjId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="swust.edu.cn.zzxt.model.QyshjxjWithBLOBs" >
+    update qyshjxj
+    set qysj_sjtpId = #{qysjSjtpid,jdbcType=INTEGER},
+      qysj_studId = #{qysjStudid,jdbcType=INTEGER},
+      qysj_politicState = #{qysjPoliticstate,jdbcType=VARCHAR},
+      qysj_instructor = #{qysjInstructor,jdbcType=VARCHAR},
+      qysj_englishRank = #{qysjEnglishrank,jdbcType=VARCHAR},
+      qysj_nativePlace = #{qysjNativeplace,jdbcType=VARCHAR},
+      qysj_hobbies = #{qysjHobbies,jdbcType=VARCHAR},
+      qysj_applyTime = #{qysjApplytime,jdbcType=TIMESTAMP},
+      qysj_instructorOpinionTime = #{qysjInstructoropiniontime,jdbcType=TIMESTAMP},
+      qysj_academyOpinionTime = #{qysjAcademyopiniontime,jdbcType=TIMESTAMP},
+      qysj_schoolOpinionTime = #{qysjSchoolopiniontime,jdbcType=TIMESTAMP},
+      qysj_companyTime = #{qysjCompanytime,jdbcType=TIMESTAMP},
+      qysj_state = #{qysjState,jdbcType=INTEGER},
+      
+      qysj_wsflId = #{qysjWsflId,jdbcType=INTEGER}, <!-- @ -->
+      qysj_workId = #{qysjWorkId,jdbcType=INTEGER}, <!-- @ -->
+      
+      qysj_annual = #{qysjAnnual,jdbcType=VARCHAR},
+      
+      qysj_eduExperience = #{qysjEduExperience,jdbcType=LONGVARCHAR},  <!-- ### -->
+      qysj_duties = #{qysjDuties,jdbcType=LONGVARCHAR},
+      qysj_socialPractice = #{qysjSocialpractice,jdbcType=LONGVARCHAR},
+      qysj_prize = #{qysjPrize,jdbcType=LONGVARCHAR},
+      qysj_activities = #{qysjActivities,jdbcType=LONGVARCHAR},
+      qysj_evaluation = #{qysjEvaluation,jdbcType=LONGVARCHAR},
+      qysj_instructorOpinion = #{qysjInstructoropinion,jdbcType=LONGVARCHAR},
+      qysj_academyOpinion = #{qysjAcademyopinion,jdbcType=LONGVARCHAR},
+      qysj_schoolOpinion = #{qysjSchoolopinion,jdbcType=LONGVARCHAR},
+      qysj_company = #{qysjCompany,jdbcType=LONGVARCHAR}
+    where qysj_id = #{qysjId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Qyshjxj" >
+    update qyshjxj
+    set qysj_sjtpId = #{qysjSjtpid,jdbcType=INTEGER},
+      qysj_studId = #{qysjStudid,jdbcType=INTEGER},
+      qysj_politicState = #{qysjPoliticstate,jdbcType=VARCHAR},
+      qysj_instructor = #{qysjInstructor,jdbcType=VARCHAR},
+      qysj_englishRank = #{qysjEnglishrank,jdbcType=VARCHAR},
+      qysj_nativePlace = #{qysjNativeplace,jdbcType=VARCHAR},
+      qysj_hobbies = #{qysjHobbies,jdbcType=VARCHAR},
+      qysj_applyTime = #{qysjApplytime,jdbcType=TIMESTAMP},
+      qysj_instructorOpinionTime = #{qysjInstructoropiniontime,jdbcType=TIMESTAMP},
+      qysj_academyOpinionTime = #{qysjAcademyopiniontime,jdbcType=TIMESTAMP},
+      qysj_schoolOpinionTime = #{qysjSchoolopiniontime,jdbcType=TIMESTAMP},
+      qysj_companyTime = #{qysjCompanytime,jdbcType=TIMESTAMP},
+      qysj_state = #{qysjState,jdbcType=INTEGER},
+      
+      qysj_wsflId = #{qysjWsflId,jdbcType=INTEGER}, <!-- @ -->
+      qysj_workId = #{qysjWorkId,jdbcType=INTEGER}, <!-- @ -->
+      
+      qysj_annual = #{qysjAnnual,jdbcType=VARCHAR}
+    where qysj_id = #{qysjId,jdbcType=INTEGER}
+  </update>
+<!--   通过学生ID查找 -->
+  <select id="selectQyshjxjByStuId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from qyshjxj
+    where qysj_studId = #{studentId,jdbcType=INTEGER}
+  </select>
+</mapper>

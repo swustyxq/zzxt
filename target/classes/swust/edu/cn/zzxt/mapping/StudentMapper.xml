@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.StudentMapper">
+	<resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Student">
+		<id column="stud_id" property="studId" jdbcType="INTEGER" />
+		<result column="stud_name" property="studName" jdbcType="VARCHAR" />
+		<result column="stud_number" property="studNumber" jdbcType="VARCHAR" />
+		<result column="stud_classId" property="studClassid" jdbcType="INTEGER" />
+		<result column="stud_userId" property="studUserid" jdbcType="INTEGER" />
+		<result column="stud_ksh" property="studKsh" jdbcType="VARCHAR" />
+		<result column="stud_IDNumber" property="studIdnumber"
+			jdbcType="VARCHAR" />
+		<result column="stud_admissionTime" property="studAdmissiontime"
+			jdbcType="VARCHAR" />
+		<result column="stud_birthday" property="studBirthday"
+			jdbcType="VARCHAR" />
+		<result column="stud_previousClassId" property="studPreviousclassid"
+			jdbcType="INTEGER" />
+		<result column="stud_nation" property="studNation" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		stud_id, stud_name, stud_number, stud_classId, stud_userId, stud_ksh,
+		stud_IDNumber,
+		stud_admissionTime, stud_birthday, stud_previousClassId, stud_nation
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from student
+		where stud_id = #{studId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from student
+		where stud_id = #{studId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="swust.edu.cn.zzxt.model.Student">
+		insert into student (stud_id, stud_name, stud_number,
+		stud_classId, stud_userId, stud_ksh,
+		stud_IDNumber, stud_admissionTime, stud_birthday,
+		stud_previousClassId, stud_nation)
+		values (#{studId,jdbcType=INTEGER}, #{studName,jdbcType=VARCHAR},
+		#{studNumber,jdbcType=VARCHAR},
+		#{studClassid,jdbcType=INTEGER}, #{studUserid,jdbcType=INTEGER}, #{studKsh,jdbcType=VARCHAR},
+		#{studIdnumber,jdbcType=VARCHAR},
+		#{studAdmissiontime,jdbcType=VARCHAR},
+		#{studBirthday,jdbcType=VARCHAR},
+		#{studPreviousclassid,jdbcType=INTEGER},
+		#{studNation,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.Student">
+		insert into student
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="studId != null">
+				stud_id,
+			</if>
+			<if test="studName != null">
+				stud_name,
+			</if>
+			<if test="studNumber != null">
+				stud_number,
+			</if>
+			<if test="studClassid != null">
+				stud_classId,
+			</if>
+			<if test="studUserid != null">
+				stud_userId,
+			</if>
+			<if test="studKsh != null">
+				stud_ksh,
+			</if>
+			<if test="studIdnumber != null">
+				stud_IDNumber,
+			</if>
+			<if test="studAdmissiontime != null">
+				stud_admissionTime,
+			</if>
+			<if test="studBirthday != null">
+				stud_birthday,
+			</if>
+			<if test="studPreviousclassid != null">
+				stud_previousClassId,
+			</if>
+			<if test="studNation != null">
+				stud_nation,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="studId != null">
+				#{studId,jdbcType=INTEGER},
+			</if>
+			<if test="studName != null">
+				#{studName,jdbcType=VARCHAR},
+			</if>
+			<if test="studNumber != null">
+				#{studNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="studClassid != null">
+				#{studClassid,jdbcType=INTEGER},
+			</if>
+			<if test="studUserid != null">
+				#{studUserid,jdbcType=INTEGER},
+			</if>
+			<if test="studKsh != null">
+				#{studKsh,jdbcType=VARCHAR},
+			</if>
+			<if test="studIdnumber != null">
+				#{studIdnumber,jdbcType=VARCHAR},
+			</if>
+			<if test="studAdmissiontime != null">
+				#{studAdmissiontime,jdbcType=VARCHAR},
+			</if>
+			<if test="studBirthday != null">
+				#{studBirthday,jdbcType=VARCHAR},
+			</if>
+			<if test="studPreviousclassid != null">
+				#{studPreviousclassid,jdbcType=INTEGER},
+			</if>
+			<if test="studNation != null">
+				#{studNation,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.Student">
+		update student
+		<set>
+			<if test="studName != null">
+				stud_name = #{studName,jdbcType=VARCHAR},
+			</if>
+			<if test="studNumber != null">
+				stud_number = #{studNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="studClassid != null">
+				stud_classId = #{studClassid,jdbcType=INTEGER},
+			</if>
+			<if test="studUserid != null">
+				stud_userId = #{studUserid,jdbcType=INTEGER},
+			</if>
+			<if test="studKsh != null">
+				stud_ksh = #{studKsh,jdbcType=VARCHAR},
+			</if>
+			<if test="studIdnumber != null">
+				stud_IDNumber = #{studIdnumber,jdbcType=VARCHAR},
+			</if>
+			<if test="studAdmissiontime != null">
+				stud_admissionTime = #{studAdmissiontime,jdbcType=VARCHAR},
+			</if>
+			<if test="studBirthday != null">
+				stud_birthday = #{studBirthday,jdbcType=VARCHAR},
+			</if>
+			<if test="studPreviousclassid != null">
+				stud_previousClassId = #{studPreviousclassid,jdbcType=INTEGER},
+			</if>
+			<if test="studNation != null">
+				stud_nation = #{studNation,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where stud_id = #{studId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Student">
+		update student
+		set stud_name = #{studName,jdbcType=VARCHAR},
+		stud_number = #{studNumber,jdbcType=VARCHAR},
+		stud_classId = #{studClassid,jdbcType=INTEGER},
+		stud_userId = #{studUserid,jdbcType=INTEGER},
+		stud_ksh = #{studKsh,jdbcType=VARCHAR},
+		stud_IDNumber = #{studIdnumber,jdbcType=VARCHAR},
+		stud_admissionTime = #{studAdmissiontime,jdbcType=VARCHAR},
+		stud_birthday = #{studBirthday,jdbcType=VARCHAR},
+		stud_previousClassId = #{studPreviousclassid,jdbcType=INTEGER},
+		stud_nation = #{studNation,jdbcType=VARCHAR}
+		where stud_id = #{studId,jdbcType=INTEGER}
+	</update>
+
+	<!-- 根据学号查询学生信息 -->
+	<select id="selectByStudNumber" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from student
+		where stud_number = #{studNumber,jdbcType=VARCHAR}
+	</select>
+	<!-- 自己写的方法 -->
+	<select id="selectByUserId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from student
+		where stud_userId = #{studUserid,jdbcType=INTEGER}
+	</select>
+	<!-- 按班级id查找学生 -->
+	<select id="selectByClassId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from student
+		where stud_classId = #{classId,jdbcType=INTEGER}
+	</select>
+	<!-- 按userId查找学生 -->
+	<select id="selectInfoByUserId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from student
+		where stud_userId = #{userId,jdbcType=INTEGER}
+	</select>
+	<!-- 按stuId查找学生 -->
+	<select id="selectInfoByStuId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from student
+		where stud_id = #{stuId,jdbcType=INTEGER}
+	</select>
+	<!-- 查找所有学生 -->
+	<select id="selectAllStuInfo" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from student
+	</select>
+	<select id="findStudentByUserId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from student
+		where stud_userId = #{studUserid,jdbcType=INTEGER}
+	</select>
+	<!-- wj通过辅导员userid查找其所带的学生(绿色通道) -->
+	<select id="selectInfoByinstUserId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM user,
+		instructor,
+		studentclass ,
+		student,
+		lstd
+		WHERE user.user_id= #{userId,jdbcType=INTEGER} AND
+		user.user_id=instructor.inst_userId
+		AND instructor.inst_id=studentclass.class_instId
+		AND studentclass.class_id=student.stud_classId
+		AND student.stud_id=lstd.lstd_studId
+	</select>
+	<!-- wj通过辅导员userid查找其所带的学生(国家励志奖学金) -->
+	<select id="selectInfoByinstUserId1" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM user,
+		instructor,
+		studentclass ,
+		student,
+		gjlzjxj
+		WHERE user.user_id= #{userId,jdbcType=INTEGER} AND
+		user.user_id=instructor.inst_userId
+		AND instructor.inst_id=studentclass.class_instId
+		AND studentclass.class_id=student.stud_classId
+		AND student.stud_id=gjlzjxj.gjlz_studId
+	</select>
+	<!-- 通过学院id查找学院中所有申请了的学生(绿色通道) -->
+	<select id="selectByinstId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM institution,
+		major,
+		studentclass,
+		student,
+		lstd
+		WHERE institution.inst_id = #{instId,jdbcType=INTEGER}
+		AND institution.inst_id=major.majr_instId
+		AND major.majr_id=studentclass.class_majrId
+		AND studentclass.class_id=student.stud_classId
+		AND student.stud_id=lstd.lstd_studId
+	</select>
+	<!-- 通过学院id查找学院中所有申请了的学生(国家励志奖学金) -->
+	<select id="selectByinstId1" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM institution,
+		major,
+		studentclass,
+		student,
+		gjlzjxj
+		WHERE institution.inst_id = #{instId,jdbcType=INTEGER}
+		AND institution.inst_id=major.majr_instId
+		AND major.majr_id=studentclass.class_majrId
+		AND studentclass.class_id=student.stud_classId
+		AND student.stud_id=gjlzjxj.gjlz_studId
+	</select>
+	<select id="selectAllstud" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM student,
+		lstd
+		WHERE student.stud_id=lstd.lstd_studId
+	</select>
+	<select id="selectAllstud1" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM student,
+		gjlzjxj
+		WHERE student.stud_id=gjlzjxj.gjlz_studId
+	</select>
+	<!-- 通过辅导员userid查找其所带的学生(所有) -->
+	<select id="selectAllStuInfoByinstUserId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM user,
+		instructor,
+		studentclass ,
+		student
+		WHERE user.user_id= #{userId,jdbcType=INTEGER} AND
+		user.user_id=instructor.inst_userId
+		AND instructor.inst_id=studentclass.class_instId
+		AND studentclass.class_id=student.stud_classId
+	</select>
+
+	<select id="selectAllStuInfoByInstUserId" resultType="swust.edu.cn.zzxt.selfmodel.Studentbasiinfo"
+		parameterType="java.lang.Integer">
+		select
+		s.stin_sex as stuSex,
+		m.stud_nation as studentNation,
+		m.stud_name as studentName,
+		m.stud_id as studentId,
+		m.stud_number as studentNumber,
+		m.stud_IDNumber as studentIDNumber,
+		m.stud_classId as classId,
+		n.class_name as className,
+		n.class_shortname as classShortName,
+		o.majr_id as majrId,
+		o.majr_name as majrName,
+		o.majr_shortname as majrShortName,
+		p.inst_id as instId,
+		p.inst_name as instName,
+		p.inst_shortname as instShortName,
+		s.stin_politicState as politicState,
+		s.stin_areaDeatilHome as areaDetailOrigin,
+		s.stin_bankNumber as bankNumber,
+		s.stin_mailCode as mailCode,
+		s.stin_residence as residence,
+		s.stin_phone as phone,
+		s.stin_incomeType as incomeType
+		from
+		user u,
+		instructor i,
+		studentinfo s,
+		student m,
+		studentclass n,
+		major o,
+		institution p
+		where
+		u.user_id=#{userId,jdbcType=INTEGER}
+		AND u.user_id=i.inst_userId
+		AND i.inst_id=n.class_instId
+		AND n.class_id=m.stud_classId
+		and p.inst_id = o.majr_instId
+		and o.majr_id = n.class_majrId
+		and n.class_id = m.stud_classId
+		and s.stin_studId = m.stud_id
+
+	</select>
+	<!-- 通过学院id查找学院中所有申请了的学生(所有) -->
+	<select id="selectAllStuInfoByinstId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM institution,
+		major,
+		studentclass,
+		student
+		WHERE institution.inst_id = #{instId,jdbcType=INTEGER}
+		AND institution.inst_id=major.majr_instId
+		AND major.majr_id=studentclass.class_majrId
+		AND studentclass.class_id=student.stud_classId
+	</select>
+
+	<!-- 测试 -->
+	<select id="selectAllStuInfoByAll" resultMap="BaseResultMap"
+		parameterType="swust.edu.cn.zzxt.selfmodel.Studentbasiinfo">
+		select
+		<include refid="Base_Column_List" />
+		from
+		student m,
+		studentclass n,
+		major o,
+		institution p
+		where p.inst_id = o.majr_instId
+		and o.majr_id = n.class_majrId
+		and n.class_id = m.stud_classId
+		and if(0=#{instId,jdbcType=INTEGER},true,p.inst_id =
+		#{instId,jdbcType=INTEGER})
+		and if(0=#{classId,jdbcType=INTEGER},true,n.class_id =
+		#{classId,jdbcType=INTEGER})
+		and if(0=#{majrId,jdbcType=INTEGER},true,o.majr_id =
+		#{majrId,jdbcType=INTEGER})
+		and
+		if(0=#{studentSex,jdbcType=INTEGER},true,if(1=#{studentSex,jdbcType=INTEGER},substring(m.stud_IDNumber,
+		17,1)%2=1,substring(m.stud_IDNumber, 17,1)%2=0))
+		and
+		if("全部"=#{studentNation,jdbcType=VARCHAR},true,m.stud_nation=#{studentNation,jdbcType=VARCHAR})
+	</select>
+	<!-- 按筛选条件查询学生 -->
+	<select id="selectAllStuInfoByStudentbasiinfo" resultType="swust.edu.cn.zzxt.selfmodel.Studentbasiinfo"
+		parameterType="swust.edu.cn.zzxt.selfmodel.Studentbasiinfo">
+		select
+		s.stin_sex as stuSex,
+		m.stud_nation as studentNation,
+		m.stud_name as studentName,
+		m.stud_id as studentId,
+		m.stud_number as studentNumber,
+		m.stud_IDNumber as studentIDNumber,
+		m.stud_classId as classId,
+		n.class_name as className,
+		n.class_shortname as classShortName,
+		o.majr_id as majrId,
+		o.majr_name as majrName,
+		o.majr_shortname as majrShortName,
+		p.inst_id as instId,
+		p.inst_name as instName,
+		p.inst_shortname as instShortName,
+		s.stin_politicState as politicState,
+		s.stin_areaDeatilHome as areaDetailOrigin,
+		s.stin_bankNumber as bankNumber,
+		s.stin_mailCode as mailCode,
+		s.stin_residence as residence,
+		s.stin_phone as phone,
+		s.stin_incomeType as incomeType
+		from
+		studentinfo s,
+		student m,
+		studentclass n,
+		major o,
+		institution p
+		where p.inst_id = o.majr_instId
+		and o.majr_id = n.class_majrId
+		and n.class_id = m.stud_classId
+		and s.stin_studId = m.stud_id
+		and if(0=#{instId,jdbcType=INTEGER},true,p.inst_id =
+		#{instId,jdbcType=INTEGER})
+		and if(0=#{classId,jdbcType=INTEGER},true,n.class_id =
+		#{classId,jdbcType=INTEGER})
+		and if(0=#{majrId,jdbcType=INTEGER},true,o.majr_id =
+		#{majrId,jdbcType=INTEGER})
+		and
+		if(0=#{studentSex,jdbcType=INTEGER},true,if(1=#{studentSex,jdbcType=INTEGER},substring(m.stud_IDNumber,
+		17,1)%2=1,substring(m.stud_IDNumber, 17,1)%2=0))
+		and
+		if("全部"=#{studentNation,jdbcType=VARCHAR},true,m.stud_nation=#{studentNation,jdbcType=VARCHAR})
+	</select>
+	<!-- -->
+
+	<select id="selectByIDnumber" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from student
+		where stud_IDNumber = #{studIdnumber,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 根据身份证号码查询学生信息 -->
+	<select id="selectByStudIdNumber" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from student
+		where stud_IDNumber = #{studIdnumber,jdbcType=VARCHAR}
+	</select>
+	<!-- 通过学生姓名查找 -->
+	<select id="selectByStuName" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from student
+		where stud_name = #{studName,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectByMajorId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		FROM
+		major,
+		studentclass,
+		student
+		WHERE major.majr_id = #{majrId,jdbcType=INTEGER}
+		AND major.majr_id=studentclass.class_majrId
+		AND studentclass.class_id=student.stud_classId
+	</select>
+
+
+	<!-- 查找一个专业的所以学生 -->
+	<select id="selectOneMajor" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		FROM
+		major,
+		studentclass,
+		student
+		WHERE major.majr_id = #{majorId,jdbcType=INTEGER}
+		AND major.majr_id=studentclass.class_majrId
+		AND studentclass.class_id=student.stud_classId
+	</select>
+</mapper>

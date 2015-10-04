@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.CzylbxMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Czylbx" >
+    <id column="czyl_id" property="czylId" jdbcType="INTEGER" />
+    <result column="czyl_studId" property="czylStudid" jdbcType="INTEGER" />
+    <result column="czly_isNeed" property="czlyIsneed" jdbcType="INTEGER" />
+    <result column="czly_isSuccess" property="czlyIssuccess" jdbcType="INTEGER" />
+    <result column="czly_money" property="czlyMoney" jdbcType="DOUBLE" />
+    <result column="czly_buyTime" property="czlyBuytime" jdbcType="VARCHAR" />
+    <result column="czly_buyAnnual" property="czlyBuyannual" jdbcType="VARCHAR" />
+    <result column="czyl_workId" property="czylWorkid" jdbcType="INTEGER" />
+    <result column="czyl_wsflId" property="czylWsflid" jdbcType="INTEGER" />
+    <result column="czyl_formTime" property="czylFormtime" jdbcType="TIMESTAMP" />
+    <result column="czyl_toTime" property="czylTotime" jdbcType="TIMESTAMP" />
+    <result column="czyl_isEditable" property="czylIseditable" jdbcType="INTEGER" />
+    <result column="czly_description" property="czlyDescription" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="swust.edu.cn.zzxt.model.Czylbx" extends="BaseResultMap" >
+    <result column="czly_note" property="czlyNote" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    czyl_id, czyl_studId, czly_isNeed, czly_isSuccess, czly_money, czly_buyTime, czly_buyAnnual, 
+    czyl_workId, czyl_wsflId, czyl_formTime, czyl_toTime, czyl_isEditable, czly_description
+  </sql>
+  <sql id="Blob_Column_List" >
+    czly_note
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from czylbx
+    where czyl_id = #{czylId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from czylbx
+    where czyl_id = #{czylId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.Czylbx" >
+    insert into czylbx (czyl_id, czyl_studId, czly_isNeed, 
+      czly_isSuccess, czly_money, czly_buyTime, 
+      czly_buyAnnual, czyl_workId, czyl_wsflId, 
+      czyl_formTime, czyl_toTime, czyl_isEditable, 
+      czly_description, czly_note)
+    values (#{czylId,jdbcType=INTEGER}, #{czylStudid,jdbcType=INTEGER}, #{czlyIsneed,jdbcType=INTEGER}, 
+      #{czlyIssuccess,jdbcType=INTEGER}, #{czlyMoney,jdbcType=DOUBLE}, #{czlyBuytime,jdbcType=VARCHAR}, 
+      #{czlyBuyannual,jdbcType=VARCHAR}, #{czylWorkid,jdbcType=INTEGER}, #{czylWsflid,jdbcType=INTEGER}, 
+      #{czylFormtime,jdbcType=TIMESTAMP}, #{czylTotime,jdbcType=TIMESTAMP}, #{czylIseditable,jdbcType=INTEGER}, 
+      #{czlyDescription,jdbcType=VARCHAR}, #{czlyNote,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.Czylbx" >
+    insert into czylbx
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="czylId != null" >
+        czyl_id,
+      </if>
+      <if test="czylStudid != null" >
+        czyl_studId,
+      </if>
+      <if test="czlyIsneed != null" >
+        czly_isNeed,
+      </if>
+      <if test="czlyIssuccess != null" >
+        czly_isSuccess,
+      </if>
+      <if test="czlyMoney != null" >
+        czly_money,
+      </if>
+      <if test="czlyBuytime != null" >
+        czly_buyTime,
+      </if>
+      <if test="czlyBuyannual != null" >
+        czly_buyAnnual,
+      </if>
+      <if test="czylWorkid != null" >
+        czyl_workId,
+      </if>
+      <if test="czylWsflid != null" >
+        czyl_wsflId,
+      </if>
+      <if test="czylFormtime != null" >
+        czyl_formTime,
+      </if>
+      <if test="czylTotime != null" >
+        czyl_toTime,
+      </if>
+      <if test="czylIseditable != null" >
+        czyl_isEditable,
+      </if>
+      <if test="czlyDescription != null" >
+        czly_description,
+      </if>
+      <if test="czlyNote != null" >
+        czly_note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="czylId != null" >
+        #{czylId,jdbcType=INTEGER},
+      </if>
+      <if test="czylStudid != null" >
+        #{czylStudid,jdbcType=INTEGER},
+      </if>
+      <if test="czlyIsneed != null" >
+        #{czlyIsneed,jdbcType=INTEGER},
+      </if>
+      <if test="czlyIssuccess != null" >
+        #{czlyIssuccess,jdbcType=INTEGER},
+      </if>
+      <if test="czlyMoney != null" >
+        #{czlyMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="czlyBuytime != null" >
+        #{czlyBuytime,jdbcType=VARCHAR},
+      </if>
+      <if test="czlyBuyannual != null" >
+        #{czlyBuyannual,jdbcType=VARCHAR},
+      </if>
+      <if test="czylWorkid != null" >
+        #{czylWorkid,jdbcType=INTEGER},
+      </if>
+      <if test="czylWsflid != null" >
+        #{czylWsflid,jdbcType=INTEGER},
+      </if>
+      <if test="czylFormtime != null" >
+        #{czylFormtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="czylTotime != null" >
+        #{czylTotime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="czylIseditable != null" >
+        #{czylIseditable,jdbcType=INTEGER},
+      </if>
+      <if test="czlyDescription != null" >
+        #{czlyDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="czlyNote != null" >
+        #{czlyNote,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.Czylbx" >
+    update czylbx
+    <set >
+      <if test="czylStudid != null" >
+        czyl_studId = #{czylStudid,jdbcType=INTEGER},
+      </if>
+      <if test="czlyIsneed != null" >
+        czly_isNeed = #{czlyIsneed,jdbcType=INTEGER},
+      </if>
+      <if test="czlyIssuccess != null" >
+        czly_isSuccess = #{czlyIssuccess,jdbcType=INTEGER},
+      </if>
+      <if test="czlyMoney != null" >
+        czly_money = #{czlyMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="czlyBuytime != null" >
+        czly_buyTime = #{czlyBuytime,jdbcType=VARCHAR},
+      </if>
+      <if test="czlyBuyannual != null" >
+        czly_buyAnnual = #{czlyBuyannual,jdbcType=VARCHAR},
+      </if>
+      <if test="czylWorkid != null" >
+        czyl_workId = #{czylWorkid,jdbcType=INTEGER},
+      </if>
+      <if test="czylWsflid != null" >
+        czyl_wsflId = #{czylWsflid,jdbcType=INTEGER},
+      </if>
+      <if test="czylFormtime != null" >
+        czyl_formTime = #{czylFormtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="czylTotime != null" >
+        czyl_toTime = #{czylTotime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="czylIseditable != null" >
+        czyl_isEditable = #{czylIseditable,jdbcType=INTEGER},
+      </if>
+      <if test="czlyDescription != null" >
+        czly_description = #{czlyDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="czlyNote != null" >
+        czly_note = #{czlyNote,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where czyl_id = #{czylId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="swust.edu.cn.zzxt.model.Czylbx" >
+    update czylbx
+    set czyl_studId = #{czylStudid,jdbcType=INTEGER},
+      czly_isNeed = #{czlyIsneed,jdbcType=INTEGER},
+      czly_isSuccess = #{czlyIssuccess,jdbcType=INTEGER},
+      czly_money = #{czlyMoney,jdbcType=DOUBLE},
+      czly_buyTime = #{czlyBuytime,jdbcType=VARCHAR},
+      czly_buyAnnual = #{czlyBuyannual,jdbcType=VARCHAR},
+      czyl_workId = #{czylWorkid,jdbcType=INTEGER},
+      czyl_wsflId = #{czylWsflid,jdbcType=INTEGER},
+      czyl_formTime = #{czylFormtime,jdbcType=TIMESTAMP},
+      czyl_toTime = #{czylTotime,jdbcType=TIMESTAMP},
+      czyl_isEditable = #{czylIseditable,jdbcType=INTEGER},
+      czly_description = #{czlyDescription,jdbcType=VARCHAR},
+      czly_note = #{czlyNote,jdbcType=LONGVARCHAR}
+    where czyl_id = #{czylId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Czylbx" >
+    update czylbx
+    set czyl_studId = #{czylStudid,jdbcType=INTEGER},
+      czly_isNeed = #{czlyIsneed,jdbcType=INTEGER},
+      czly_isSuccess = #{czlyIssuccess,jdbcType=INTEGER},
+      czly_money = #{czlyMoney,jdbcType=DOUBLE},
+      czly_buyTime = #{czlyBuytime,jdbcType=VARCHAR},
+      czly_buyAnnual = #{czlyBuyannual,jdbcType=VARCHAR},
+      czyl_workId = #{czylWorkid,jdbcType=INTEGER},
+      czyl_wsflId = #{czylWsflid,jdbcType=INTEGER},
+      czyl_formTime = #{czylFormtime,jdbcType=TIMESTAMP},
+      czyl_toTime = #{czylTotime,jdbcType=TIMESTAMP},
+      czyl_isEditable = #{czylIseditable,jdbcType=INTEGER},
+      czly_description = #{czlyDescription,jdbcType=VARCHAR}
+    where czyl_id = #{czylId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 自己写的方法 -->
+  <select id="findCzylbxsByczylStudid" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer"  >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from czylbx
+    where czyl_studId = #{czylStudid,jdbcType=INTEGER}
+  </select>
+  <!-- 按年度以及学生id查找-->
+  <select id="findCzylbxsByczylStudidAndYear" resultMap="ResultMapWithBLOBs" parameterType="swust.edu.cn.zzxt.model.Czylbx">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from czylbx
+    where (czyl_studId = #{czylStudid,jdbcType=INTEGER}) and (czly_buyAnnual = #{czlyBuyannual,jdbcType=VARCHAR})
+  </select>
+  
+  <!--   通过学生Id查找list -->
+  <select id="selectCzylbxbasiinfoByStudId" resultType="swust.edu.cn.zzxt.selfmodel.Czylbxbasicinfo" parameterType="java.lang.Integer" >
+    select 
+    	l.czyl_id as czylbxId,
+    	m.stud_id as studentId,
+    	m.stud_name as studentName,
+    	m.stud_number as studentNumber,
+    	n.class_name as className,
+    	n.class_shortname as classShortName,
+    	o.majr_name as majrName,
+    	o.majr_shortname as majrShortName,
+    	p.inst_name as instName,
+    	p.inst_shortname as instShortName,
+    	l.czly_buyAnnual as czlyBuyAnnual,
+    	l.czly_buyTime as czylBuyTime,
+    	l.czly_money as czlyMoney,
+    	l.czly_isNeed as czlyIsneed,
+    	l.czly_isSuccess as czlyIssuccess,
+    	l.czyl_isEditable as czylIseditable
+    from 
+    	czylbx l,
+    	student m,
+    	studentclass n,
+    	major o,
+    	institution p
+    	where p.inst_id = o.majr_instId
+	    and o.majr_id = n.class_majrId
+	    and n.class_id = m.stud_classId
+	    and m.stud_id = l.czyl_studId
+	    and l.czyl_studId = #{studId,jdbcType=INTEGER}
+	    
+  </select>
+  <!--   通过學院Id查找list -->
+ <select id="selectCzylbxbasiinfoByInstId" resultType="swust.edu.cn.zzxt.selfmodel.Czylbxbasicinfo" parameterType="java.lang.Integer" >
+   select 
+    	l.czyl_id as czylbxId,
+    	m.stud_id as studentId,
+    	m.stud_name as studentName,
+    	m.stud_number as studentNumber,
+    	n.class_name as className,
+    	n.class_shortname as classShortName,
+    	o.majr_name as majrName,
+    	o.majr_shortname as majrShortName,
+    	p.inst_name as instName,
+    	p.inst_shortname as instShortName,
+    	l.czly_buyAnnual as czlyBuyAnnual,
+    	l.czly_buyTime as czylBuyTime,
+    	l.czly_money as czlyMoney,
+    	l.czly_isNeed as czlyIsneed,
+    	l.czly_isSuccess as czlyIssuccess,
+    	l.czyl_isEditable as czylIseditable 	
+    from 
+    	czylbx l,
+    	student m,
+    	studentclass n,
+    	major o,
+    	institution p
+    	where p.inst_id = o.majr_instId
+	    and o.majr_id = n.class_majrId
+	    and n.class_id = m.stud_classId
+	    and m.stud_id = l.czyl_studId
+	    and p.inst_id = #{instId,jdbcType=INTEGER}	 
+  </select>
+    <!--   通过专业Id查找list --> 
+ <select id="selectCzylbxbasiinfoByMajrId" resultType="swust.edu.cn.zzxt.selfmodel.Czylbxbasicinfo" parameterType="java.lang.Integer" >
+    select 
+    	l.czyl_id as czylbxId,
+    	m.stud_id as studentId,
+    	m.stud_name as studentName,
+    	m.stud_number as studentNumber,
+    	n.class_name as className,
+    	n.class_shortname as classShortName,
+    	o.majr_name as majrName,
+    	o.majr_shortname as majrShortName,
+    	p.inst_name as instName,
+    	p.inst_shortname as instShortName,
+        l.czly_buyAnnual as czlyBuyAnnual,
+    	l.czly_buyTime as czylBuyTime,
+    	l.czly_money as czlyMoney,
+    	l.czly_isNeed as czlyIsneed,
+    	l.czly_isSuccess as czlyIssuccess,
+    	l.czyl_isEditable as czylIseditable
+    	
+    from 
+    	czylbx l,
+    	student m,
+    	studentclass n,
+    	major o,
+    	institution p
+    	where p.inst_id = o.majr_instId
+	    and o.majr_id = n.class_majrId
+	    and n.class_id = m.stud_classId
+	    and m.stud_id = l.czyl_studId
+	    and o.majr_id = #{majrId,jdbcType=INTEGER}
+	    </select>
+  <!--   通过班级Id查找list -->
+  <select id="selectCzylbxbasiinfoByClassId" resultType="swust.edu.cn.zzxt.selfmodel.Czylbxbasicinfo" parameterType="java.lang.Integer" >
+    select
+l.czyl_id as czylbxId,
+    	m.stud_id as studentId,
+    	m.stud_name as studentName,
+    	m.stud_number as studentNumber,
+    	n.class_name as className,
+    	n.class_shortname as classShortName,
+    	o.majr_name as majrName,
+    	o.majr_shortname as majrShortName,
+    	p.inst_name as instName,
+    	p.inst_shortname as instShortName,
+        l.czly_buyAnnual as czlyBuyAnnual,
+    	l.czly_buyTime as czylBuyTime,
+    	l.czly_money as czlyMoney,
+    	l.czly_isNeed as czlyIsneed,
+    	l.czly_isSuccess as czlyIssuccess,
+    	l.czyl_isEditable as czylIseditable
+    from
+    	czylbx l,
+    	student m,
+    	studentclass n,
+    	major o,
+    	institution p
+    	where p.inst_id = o.majr_instId
+	    and o.majr_id = n.class_majrId
+	    and n.class_id = m.stud_classId
+	    and m.stud_id = l.czyl_studId
+	    and n.class_id = #{classId,jdbcType=INTEGER}
+  </select>
+  <!--   查找所有list -->
+  <select id="selectAllCzylbxbasiinfo" resultType="swust.edu.cn.zzxt.selfmodel.Czylbxbasicinfo">
+    select
+    	l.czyl_id as czylbxId,
+    	m.stud_id as studentId,
+    	m.stud_name as studentName,
+    	m.stud_number as studentNumber,
+    	n.class_name as className,
+    	n.class_shortname as classShortName,
+    	o.majr_name as majrName,
+    	o.majr_shortname as majrShortName,
+    	p.inst_name as instName,
+    	p.inst_shortname as instShortName,
+    	l.czly_buyAnnual as czlyBuyAnnual,
+    	l.czly_buyTime as czylBuyTime,
+    	l.czly_money as czlyMoney,
+    	l.czly_isNeed as czlyIsneed,
+    	l.czly_isSuccess as czlyIssuccess,
+    	l.czyl_isEditable as czylIseditable
+    from
+    	czylbx l,
+    	student m,
+    	studentclass n,
+    	major o,
+    	institution p
+    	where p.inst_id = o.majr_instId
+	    and o.majr_id = n.class_majrId
+	    and n.class_id = m.stud_classId
+	    and m.stud_id = l.czyl_studId
+  </select>
+  
+</mapper>

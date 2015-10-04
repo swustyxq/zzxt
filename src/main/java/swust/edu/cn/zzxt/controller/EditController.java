@@ -1,0 +1,318 @@
+package swust.edu.cn.zzxt.controller;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.json.MappingJacksonJsonView;
+
+import swust.edu.cn.zzxt.model.Function;
+import swust.edu.cn.zzxt.model.Rerolefunction;
+import swust.edu.cn.zzxt.model.Reuserrole;
+import swust.edu.cn.zzxt.model.Role;
+import swust.edu.cn.zzxt.model.User;
+import swust.edu.cn.zzxt.selfmodel.AuthorityMsg;
+import swust.edu.cn.zzxt.selfmodel.AuthorityTopLevelModel;
+import swust.edu.cn.zzxt.service.FunctionService;
+import swust.edu.cn.zzxt.service.RerolefunctionService;
+import swust.edu.cn.zzxt.service.ReuserroleService;
+import swust.edu.cn.zzxt.service.RoleService;
+import swust.edu.cn.zzxt.service.UserService;
+
+@Controller
+@RequestMapping("/editController")
+public class EditController {
+    private RoleService roleService;
+    private UserService userService;
+    private ReuserroleService reuserroleService;
+    private RerolefunctionService rerolefunctionService;
+    private FunctionService functionService;
+    
+     public FunctionService getFunctionService() {
+         return functionService;
+     }
+     @Autowired
+     public void setFunctionService(FunctionService functionService) {
+         this.functionService = functionService;
+     }
+
+    
+    public RoleService getRoleService() {
+        return roleService;
+    }
+    @Autowired
+    public void setRoleService(RoleService roleService) {
+        this.roleService = roleService;
+    }
+    public UserService getUserService() {
+        return userService;
+    }
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+    public ReuserroleService getReuserroleService() {
+        return reuserroleService;
+    }
+    @Autowired
+    public void setReuserroleService(ReuserroleService reuserroleService) {
+        this.reuserroleService = reuserroleService;
+    }
+    public RerolefunctionService getRerolefunctionService() {
+        return rerolefunctionService;
+    }
+    @Autowired
+    public void setRerolefunctionService(RerolefunctionService rerolefunctionService) {
+        this.rerolefunctionService = rerolefunctionService;
+    }
+    
+    @SuppressWarnings({ "rawtypes", "unchecked", "finally" })
+    @RequestMapping("/showMessage")
+    public ModelAndView showMessage(HttpServletRequest request,HttpServletResponse response) {
+        ModelAndView mav = new ModelAndView();
+        MappingJacksonJsonView view = new MappingJacksonJsonView();
+        Map map = new HashMap();
+        try {           
+            List<AuthorityTopLevelModel> authorityTopLevelModel=new ArrayList<AuthorityTopLevelModel>();
+            List<Role> allRole=roleService.findAllRole();//所有的角色      
+            List<Rerolefunction> list=new ArrayList<Rerolefunction>();//角色功能表
+            List<Function> allfunction=functionService.findAllFunction();//所有的function
+            List<Function> function= new ArrayList<Function>(); //角色的function  
+            
+            for (int i = 0; i < allRole.size(); i++) {
+                
+                AuthorityTopLevelModel authorityTopLevel=new AuthorityTopLevelModel();                
+                int roleId = allRole.get(i).getRoleId();// 获取角色的roleId
+                Role role = roleService.findRoleById(roleId); // 获取角色表
+                list = rerolefunctionService.findRolefunctionByRoleId(roleId);// 找到Rerolefunction表
+                List<AuthorityMsg> authorityMsg=new ArrayList<AuthorityMsg>();//封装的新类
+                for (int k = 0; k < allfunction.size(); k++) {
+                    AuthorityMsg authority = new AuthorityMsg();
+                    int funcid = allfunction.get(k).getFuncId();
+                    for (int j = 0; j < list.size(); j++) {
+                       /*if(funcid ==list.get(j).getRerfFuncid()){
+                           authority.setChecked("noChecked");
+                       }            */            
+                    }
+                    Function fun = functionService.findFunctionById(funcid);
+                    function.add(fun);// 获取所有的function
+                    authority.setId(funcid);
+                    authority.setpId(roleId);
+                    authority.setName(fun.getFuncName());
+                    authority.setNocheck("false");
+                    authority.setChecked("checked");
+                    authorityMsg.add(authority);
+                }
+                authorityTopLevel.setName(role.getRoleName());
+                authorityTopLevel.setNocheck("true");
+                authorityTopLevel.setId(roleId);
+                authorityTopLevel.setpId(0);// 父节点Id  
+                authorityTopLevel.setNodes(authorityMsg);                
+                authorityTopLevelModel.add(authorityTopLevel);
+              /*  authorityTopLevel.setOpen(true);*/
+            }
+            
+            map.put("result", Boolean.TRUE);
+            map.put("oneRolefunction", function);           
+            map.put("role", allRole);
+            map.put("allrole", allRole);
+            map.put("zNodes", authorityTopLevelModel);            
+            map.put("message", "执行成功！");
+        }catch (Exception e) {
+            map.put("result", Boolean.FALSE);
+            map.put("message", "执行出现出错！");
+            e.printStackTrace();
+        }finally{
+            view.setAttributesMap(map);
+            mav.setView(view);
+            return mav;
+        }
+    }
+/*    @SuppressWarnings({ "rawtypes", "unchecked", "finally" })
+    @RequestMapping("/showMessage")
+    public ModelAndView showMessage(HttpServletRequest request,HttpServletResponse response) {
+        ModelAndView mav = new ModelAndView();
+        MappingJacksonJsonView view = new MappingJacksonJsonView();
+        Map map = new HashMap();
+        try {
+             int userId=1;
+            User user=userService.findUserInfoByUserId(userId); 
+            List<Reuserrole> list= reuserroleService.findReuserroleById(userId);//找到Reuserrole表            
+            List<AuthorityTopLevelModel> authorityTopLevelModel=new ArrayList<AuthorityTopLevelModel>();
+            List<Rerolefunction> list1=new ArrayList<Rerolefunction>();//角色功能表
+            List<Function> function= new ArrayList<Function>(); //角色的function
+            List<Role> allRole=roleService.findAllRole();//所有的角色
+            List<Role> role1=new ArrayList<Role>(); //获取当前用户的角色名称              
+            for (int i = 0; i < allRole.size(); i++) {
+                
+                AuthorityTopLevelModel authorityTopLevel=new AuthorityTopLevelModel();                
+                int roleId = allRole.get(i).getRoleId();// 获取角色的roleId
+                Role role = roleService.findRoleById(roleId); // 获取角色表
+                list1 = rerolefunctionService.findRolefunctionByRoleId(roleId);// 找到Rerolefunction表
+                List<AuthorityMsg> authorityMsg=new ArrayList<AuthorityMsg>();//封装的新类
+               
+                for (int j = 0; j < list1.size(); j++) {
+                    AuthorityMsg authority = new AuthorityMsg();
+                    int funcid = list1.get(j).getRerfFuncid();
+                    Function fun = functionService.findFunctionById(funcid);
+                    function.add(fun);// 获取所有的function                    
+                    authority.setId(funcid);
+                    authority.setpId(roleId);
+                    authority.setName(fun.getFuncName());
+                    authority.setNocheck("false");
+                    authority.setChecked("checked");
+                    authorityMsg.add(authority);
+                }
+               for (int k = 0; k < list.size(); k++){
+                    if(list.get(k).getReurRoleid()==roleId){
+                        authorityTopLevel.setChecked("checked");
+                    }else{
+                        authorityTopLevel.setChecked("checked");
+                    }
+                        
+                }
+                authorityTopLevel.setName(role.getRoleName());
+                authorityTopLevel.setNocheck("true");
+                authorityTopLevel.setId(roleId);
+                authorityTopLevel.setpId(0);// 父节点Id  
+                authorityTopLevel.setNodes(authorityMsg);                
+                authorityTopLevelModel.add(authorityTopLevel);
+                authorityTopLevel.setOpen(true);
+            }
+            
+            map.put("result", Boolean.TRUE);
+            map.put("user", user);
+            map.put("oneRolefunction", function);           
+            map.put("role", allRole);
+            map.put("allrole", allRole);
+            map.put("zNodes", authorityTopLevelModel);            
+            map.put("message", "执行成功！");
+        }catch (Exception e) {
+            map.put("result", Boolean.FALSE);
+            map.put("message", "执行出现出错！");
+            e.printStackTrace();
+        }finally{
+            view.setAttributesMap(map);
+            mav.setView(view);
+            return mav;
+        }
+    }*/
+    
+    @SuppressWarnings({ "rawtypes", "unchecked", "finally" })
+    @RequestMapping("/showRoleMessage")
+    public ModelAndView showRoleMessage(int roleId, HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView mav = new ModelAndView();
+        MappingJacksonJsonView view = new MappingJacksonJsonView();
+        Map map = new HashMap();
+        try {
+            
+            Role role= roleService.findRoleById(roleId);
+            
+            List<Rerolefunction> rerolefunction=new ArrayList<Rerolefunction>();//找到Reuserrole表
+            List<Rerolefunction> list= rerolefunctionService.findRolefunctionByRoleId(roleId);
+            System.out.println(list.size());
+            
+            if (list!=null && list.size()>0) {                
+                rerolefunction.addAll(list);
+            }else{
+                rerolefunction=null;
+            }
+            
+            List<Function> function= new ArrayList<Function>(); 
+            for(int i=0;i<list.size();i++){
+                Function list1= functionService.findFunctionById(list.get(i).getRerfFuncid());
+                function.add(list1);
+            }           
+            map.put("result", Boolean.TRUE);
+            map.put("role", role);
+            map.put("rerolefunction", rerolefunction);
+            map.put("function1", function);
+            map.put("message", "执行成功！");
+        } catch (Exception e) {
+            map.put("result", Boolean.FALSE);
+            map.put("message", "执行出现出错！");
+            e.printStackTrace();
+        } finally {
+            view.setAttributesMap(map);
+            mav.setView(view);
+            return mav;
+        }
+    }
+    @SuppressWarnings({ "rawtypes", "unchecked", "finally" })
+    @RequestMapping("/addRole")
+    public ModelAndView addRole(int userId,int roleId, HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView mav = new ModelAndView();
+        MappingJacksonJsonView view = new MappingJacksonJsonView();
+        Map map = new HashMap();
+        try { 
+            reuserroleService.addaReuserrole(userId,roleId);            
+            map.put("result", Boolean.TRUE);
+            map.put("message", "执行成功！");            
+        } catch (Exception e) {
+            map.put("result", Boolean.FALSE);
+            map.put("message", "执行出现出错！");
+            e.printStackTrace();
+        } finally {
+            view.setAttributesMap(map);
+            mav.setView(view);
+            return mav;
+        }
+    }
+    @SuppressWarnings({ "rawtypes", "unchecked", "finally" })
+    @RequestMapping("/deleteRole")
+    public ModelAndView deleteRole(int userId,int roleId, HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView mav = new ModelAndView();
+        MappingJacksonJsonView view = new MappingJacksonJsonView();
+        Map map = new HashMap();
+        try { 
+            
+            reuserroleService.deleteaReuserrole(userId,roleId);
+            System.out.println(userId+"  "+roleId);
+            map.put("result", Boolean.TRUE);
+            map.put("message", "执行成功！");            
+        } catch (Exception e) {
+            map.put("result", Boolean.FALSE);
+            map.put("message", "执行出现出错！");
+            e.printStackTrace();
+        } finally {
+            view.setAttributesMap(map);
+            mav.setView(view);
+            return mav;
+        }
+    }
+    @SuppressWarnings({ "rawtypes", "unchecked", "finally" })
+    @RequestMapping("/checkbox")
+    public ModelAndView checkbox(HttpServletRequest request,HttpServletResponse response) {
+        ModelAndView mav = new ModelAndView();
+        MappingJacksonJsonView view = new MappingJacksonJsonView();
+        Map map = new HashMap();
+        try {
+            List<Role> role1=new ArrayList<Role>(); //获取角色          
+            for (int i = 1; i < 30; i++) {
+                Role list2 = roleService.findRoleById(i);
+                if (list2 != null) {
+                    role1.add(list2);
+                }
+            }
+            map.put("result", Boolean.TRUE);
+            map.put("role1", role1);
+            map.put("message", "执行成功！");
+        }catch (Exception e) {
+            map.put("result", Boolean.FALSE);
+            map.put("message", "执行出现出错！");
+            e.printStackTrace();
+        }finally{
+            view.setAttributesMap(map);
+            mav.setView(view);
+            return mav;
+        }
+    }
+}

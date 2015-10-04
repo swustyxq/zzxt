@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.WorkMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Work" >
+    <id column="work_id" property="workId" jdbcType="INTEGER" />
+    <result column="work_flag" property="workFlag" jdbcType="INTEGER" />
+    <result column="work_startTime" property="workStarttime" jdbcType="TIMESTAMP" />
+    <result column="work_endTime" property="workEndtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="swust.edu.cn.zzxt.model.WorkWithBLOBs" extends="BaseResultMap" >
+    <result column="work_name" property="workName" jdbcType="LONGVARCHAR" />
+    <result column="work_description" property="workDescription" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    work_id, work_flag, work_startTime, work_endTime
+  </sql>
+  <sql id="Blob_Column_List" >
+    work_name, work_description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from work
+    where work_id = #{workId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from work
+    where work_id = #{workId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.WorkWithBLOBs" >
+    insert into work (work_id, work_flag, work_startTime, 
+      work_endTime, work_name, work_description
+      )
+    values (#{workId,jdbcType=INTEGER}, #{workFlag,jdbcType=INTEGER}, #{workStarttime,jdbcType=TIMESTAMP}, 
+      #{workEndtime,jdbcType=TIMESTAMP}, #{workName,jdbcType=LONGVARCHAR}, #{workDescription,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.WorkWithBLOBs" >
+    insert into work
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="workId != null" >
+        work_id,
+      </if>
+      <if test="workFlag != null" >
+        work_flag,
+      </if>
+      <if test="workStarttime != null" >
+        work_startTime,
+      </if>
+      <if test="workEndtime != null" >
+        work_endTime,
+      </if>
+      <if test="workName != null" >
+        work_name,
+      </if>
+      <if test="workDescription != null" >
+        work_description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="workId != null" >
+        #{workId,jdbcType=INTEGER},
+      </if>
+      <if test="workFlag != null" >
+        #{workFlag,jdbcType=INTEGER},
+      </if>
+      <if test="workStarttime != null" >
+        #{workStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="workEndtime != null" >
+        #{workEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="workName != null" >
+        #{workName,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="workDescription != null" >
+        #{workDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.WorkWithBLOBs" >
+    update work
+    <set >
+      <if test="workFlag != null" >
+        work_flag = #{workFlag,jdbcType=INTEGER},
+      </if>
+      <if test="workStarttime != null" >
+        work_startTime = #{workStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="workEndtime != null" >
+        work_endTime = #{workEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="workName != null" >
+        work_name = #{workName,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="workDescription != null" >
+        work_description = #{workDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where work_id = #{workId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="swust.edu.cn.zzxt.model.WorkWithBLOBs" >
+    update work
+    set work_flag = #{workFlag,jdbcType=INTEGER},
+      work_startTime = #{workStarttime,jdbcType=TIMESTAMP},
+      work_endTime = #{workEndtime,jdbcType=TIMESTAMP},
+      work_name = #{workName,jdbcType=LONGVARCHAR},
+      work_description = #{workDescription,jdbcType=LONGVARCHAR}
+    where work_id = #{workId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Work" >
+    update work
+    set work_flag = #{workFlag,jdbcType=INTEGER},
+      work_startTime = #{workStarttime,jdbcType=TIMESTAMP},
+      work_endTime = #{workEndtime,jdbcType=TIMESTAMP}
+    where work_id = #{workId,jdbcType=INTEGER}
+  </update>
+  <select id="selectAllWork" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from work
+  </select>
+</mapper>

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.ParentMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Parent" >
+    <id column="pare_id" property="pareId" jdbcType="INTEGER" />
+    <result column="pare_name" property="pareName" jdbcType="VARCHAR" />
+    <result column="pare_role" property="pareRole" jdbcType="VARCHAR" />
+    <result column="pare_phone" property="parePhone" jdbcType="VARCHAR" />
+    <result column="pare_work" property="pareWork" jdbcType="VARCHAR" />
+    <result column="pare_duties" property="pareDuties" jdbcType="VARCHAR" />
+    <result column="pare_studId" property="pareStudid" jdbcType="INTEGER" />
+    <result column="pare_relation" property="pareRelation" jdbcType="VARCHAR" />
+    <result column="pare_occupation" property="pareOccupation" jdbcType="VARCHAR" />
+    <result column="pare_IDNumber" property="pareIdnumber" jdbcType="VARCHAR" />
+    <result column="pare_state" property="pareState" jdbcType="INTEGER" />
+    <result column="pare_isEditable" property="pareIseditable" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pare_id, pare_name, pare_role, pare_phone, pare_work, pare_duties, pare_studId, pare_relation, 
+    pare_occupation, pare_IDNumber, pare_state, pare_isEditable
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from parent
+    where pare_id = #{pareId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from parent
+    where pare_id = #{pareId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.Parent" >
+    insert into parent (pare_id, pare_name, pare_role, 
+      pare_phone, pare_work, pare_duties, 
+      pare_studId, pare_relation, pare_occupation, 
+      pare_IDNumber, pare_state, pare_isEditable
+      )
+    values (#{pareId,jdbcType=INTEGER}, #{pareName,jdbcType=VARCHAR}, #{pareRole,jdbcType=VARCHAR}, 
+      #{parePhone,jdbcType=VARCHAR}, #{pareWork,jdbcType=VARCHAR}, #{pareDuties,jdbcType=VARCHAR}, 
+      #{pareStudid,jdbcType=INTEGER}, #{pareRelation,jdbcType=VARCHAR}, #{pareOccupation,jdbcType=VARCHAR}, 
+      #{pareIdnumber,jdbcType=VARCHAR}, #{pareState,jdbcType=INTEGER}, #{pareIseditable,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.Parent" >
+    insert into parent
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pareId != null" >
+        pare_id,
+      </if>
+      <if test="pareName != null" >
+        pare_name,
+      </if>
+      <if test="pareRole != null" >
+        pare_role,
+      </if>
+      <if test="parePhone != null" >
+        pare_phone,
+      </if>
+      <if test="pareWork != null" >
+        pare_work,
+      </if>
+      <if test="pareDuties != null" >
+        pare_duties,
+      </if>
+      <if test="pareStudid != null" >
+        pare_studId,
+      </if>
+      <if test="pareRelation != null" >
+        pare_relation,
+      </if>
+      <if test="pareOccupation != null" >
+        pare_occupation,
+      </if>
+      <if test="pareIdnumber != null" >
+        pare_IDNumber,
+      </if>
+      <if test="pareState != null" >
+        pare_state,
+      </if>
+      <if test="pareIseditable != null" >
+        pare_isEditable,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pareId != null" >
+        #{pareId,jdbcType=INTEGER},
+      </if>
+      <if test="pareName != null" >
+        #{pareName,jdbcType=VARCHAR},
+      </if>
+      <if test="pareRole != null" >
+        #{pareRole,jdbcType=VARCHAR},
+      </if>
+      <if test="parePhone != null" >
+        #{parePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="pareWork != null" >
+        #{pareWork,jdbcType=VARCHAR},
+      </if>
+      <if test="pareDuties != null" >
+        #{pareDuties,jdbcType=VARCHAR},
+      </if>
+      <if test="pareStudid != null" >
+        #{pareStudid,jdbcType=INTEGER},
+      </if>
+      <if test="pareRelation != null" >
+        #{pareRelation,jdbcType=VARCHAR},
+      </if>
+      <if test="pareOccupation != null" >
+        #{pareOccupation,jdbcType=VARCHAR},
+      </if>
+      <if test="pareIdnumber != null" >
+        #{pareIdnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="pareState != null" >
+        #{pareState,jdbcType=INTEGER},
+      </if>
+      <if test="pareIseditable != null" >
+        #{pareIseditable,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.Parent" >
+    update parent
+    <set >
+      <if test="pareName != null" >
+        pare_name = #{pareName,jdbcType=VARCHAR},
+      </if>
+      <if test="pareRole != null" >
+        pare_role = #{pareRole,jdbcType=VARCHAR},
+      </if>
+      <if test="parePhone != null" >
+        pare_phone = #{parePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="pareWork != null" >
+        pare_work = #{pareWork,jdbcType=VARCHAR},
+      </if>
+      <if test="pareDuties != null" >
+        pare_duties = #{pareDuties,jdbcType=VARCHAR},
+      </if>
+      <if test="pareStudid != null" >
+        pare_studId = #{pareStudid,jdbcType=INTEGER},
+      </if>
+      <if test="pareRelation != null" >
+        pare_relation = #{pareRelation,jdbcType=VARCHAR},
+      </if>
+      <if test="pareOccupation != null" >
+        pare_occupation = #{pareOccupation,jdbcType=VARCHAR},
+      </if>
+      <if test="pareIdnumber != null" >
+        pare_IDNumber = #{pareIdnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="pareState != null" >
+        pare_state = #{pareState,jdbcType=INTEGER},
+      </if>
+      <if test="pareIseditable != null" >
+        pare_isEditable = #{pareIseditable,jdbcType=INTEGER},
+      </if>
+    </set>
+    where pare_id = #{pareId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Parent" >
+    update parent
+    set pare_name = #{pareName,jdbcType=VARCHAR},
+      pare_role = #{pareRole,jdbcType=VARCHAR},
+      pare_phone = #{parePhone,jdbcType=VARCHAR},
+      pare_work = #{pareWork,jdbcType=VARCHAR},
+      pare_duties = #{pareDuties,jdbcType=VARCHAR},
+      pare_studId = #{pareStudid,jdbcType=INTEGER},
+      pare_relation = #{pareRelation,jdbcType=VARCHAR},
+      pare_occupation = #{pareOccupation,jdbcType=VARCHAR},
+      pare_IDNumber = #{pareIdnumber,jdbcType=VARCHAR},
+      pare_state = #{pareState,jdbcType=INTEGER},
+      pare_isEditable = #{pareIseditable,jdbcType=INTEGER}
+    where pare_id = #{pareId,jdbcType=INTEGER}
+  </update>
+  <!-- author:赵学融
+     2014.07.06
+     通过名字查找父母信息 -->
+  <select id="selectByPrimaryName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from parent
+    where pare_name = #{pareName,jdbcType=VARCHAR}
+  </select>
+  <!-- author:zxr
+       20140709
+       通过stuid查找父母信息 -->
+  <select id="selectByStuId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from parent
+    where pare_studId = #{stuId,jdbcType=VARCHAR}
+  </select>
+  <insert id="insertParent" parameterType="swust.edu.cn.zzxt.model.Parent" >
+    insert into parent
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pareId != null" >
+        pare_id,
+      </if>
+      <if test="pareName != null" >
+        pare_name,
+      </if>
+      <if test="pareRole != null" >
+        pare_role,
+      </if>
+      <if test="parePhone != null" >
+        pare_phone,
+      </if>
+      <if test="pareWork != null" >
+        pare_work,
+      </if>
+      <if test="pareDuties != null" >
+        pare_duties,
+      </if>
+      <if test="pareStudid != null" >
+        pare_studId,
+      </if>
+      <if test="pareRelation != null" >
+        pare_relation,
+      </if>
+      <if test="pareOccupation != null" >
+        pare_occupation,
+      </if>
+      <if test="pareIdnumber != null" >
+        pare_IDNumber,
+      </if>
+      <if test="pareState != null" >
+        pare_state,
+      </if>
+      <if test="pareIseditable != null" >
+        pare_isEditable,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pareId != null" >
+        #{pareId,jdbcType=INTEGER},
+      </if>
+      <if test="pareName != null" >
+        #{pareName,jdbcType=VARCHAR},
+      </if>
+      <if test="pareRole != null" >
+        #{pareRole,jdbcType=VARCHAR},
+      </if>
+      <if test="parePhone != null" >
+        #{parePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="pareWork != null" >
+        #{pareWork,jdbcType=VARCHAR},
+      </if>
+      <if test="pareDuties != null" >
+        #{pareDuties,jdbcType=VARCHAR},
+      </if>
+      <if test="pareStudid != null" >
+        #{pareStudid,jdbcType=INTEGER},
+      </if>
+      <if test="pareRelation != null" >
+        #{pareRelation,jdbcType=VARCHAR},
+      </if>
+      <if test="pareOccupation != null" >
+        #{pareOccupation,jdbcType=VARCHAR},
+      </if>
+      <if test="pareIdnumber != null" >
+        #{pareIdnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="pareState != null" >
+        #{pareState,jdbcType=INTEGER},
+      </if>
+      <if test="pareIseditable != null" >
+        #{pareIseditable,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <!-- 通过studId更新父母信息 -->
+  <update id="updateBypareId" parameterType="swust.edu.cn.zzxt.model.Parent" >
+    update parent
+    <set >
+      <if test="pareName != null" >
+        pare_name = #{pareName,jdbcType=VARCHAR},
+      </if>
+      <if test="pareRole != null" >
+        pare_role = #{pareRole,jdbcType=VARCHAR},
+      </if>
+      <if test="parePhone != null" >
+        pare_phone = #{parePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="pareWork != null" >
+        pare_work = #{pareWork,jdbcType=VARCHAR},
+      </if>
+      <if test="pareDuties != null" >
+        pare_duties = #{pareDuties,jdbcType=VARCHAR},
+      </if>
+      <if test="pareStudid != null" >
+        pare_studId = #{pareStudid,jdbcType=INTEGER},
+      </if>
+      <if test="pareRelation != null" >
+        pare_relation = #{pareRelation,jdbcType=VARCHAR},
+      </if>
+      <if test="pareOccupation != null" >
+        pare_occupation = #{pareOccupation,jdbcType=VARCHAR},
+      </if>
+      <if test="pareIdnumber != null" >
+        pare_IDNumber = #{pareIdnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="pareState != null" >
+        pare_state = #{pareState,jdbcType=INTEGER},
+      </if>
+      <if test="pareIseditable != null" >
+        pare_isEditable = #{pareIseditable,jdbcType=INTEGER},
+      </if>
+    </set>
+    where pare_id = #{pareId,jdbcType=INTEGER}
+  </update>
+</mapper>

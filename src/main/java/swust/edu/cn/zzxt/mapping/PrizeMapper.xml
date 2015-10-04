@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.PrizeMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Prize" >
+    <id column="priz_id" property="prizId" jdbcType="INTEGER" />
+    <result column="priz_name" property="prizName" jdbcType="VARCHAR" />
+    <result column="priz_level" property="prizLevel" jdbcType="VARCHAR" />
+    <result column="priz_time" property="prizTime" jdbcType="VARCHAR" />
+    <result column="priz_isIndividual" property="prizIsindividual" jdbcType="INTEGER" />
+    <result column="priz_awarded" property="prizAwarded" jdbcType="VARCHAR" />
+    <result column="priz_studId" property="prizStudid" jdbcType="INTEGER" />
+    <result column="priz_state" property="prizState" jdbcType="INTEGER" />
+    <result column="priz_isEditable" property="prizIseditable" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    priz_id, priz_name, priz_level, priz_time, priz_isIndividual, priz_awarded, priz_studId, 
+    priz_state, priz_isEditable
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from prize
+    where priz_id = #{prizId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from prize
+    where priz_id = #{prizId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.Prize" >
+    insert into prize (priz_id, priz_name, priz_level, 
+      priz_time, priz_isIndividual, priz_awarded, 
+      priz_studId, priz_state, priz_isEditable
+      )
+    values (#{prizId,jdbcType=INTEGER}, #{prizName,jdbcType=VARCHAR}, #{prizLevel,jdbcType=VARCHAR}, 
+      #{prizTime,jdbcType=VARCHAR}, #{prizIsindividual,jdbcType=INTEGER}, #{prizAwarded,jdbcType=VARCHAR}, 
+      #{prizStudid,jdbcType=INTEGER}, #{prizState,jdbcType=INTEGER}, #{prizIseditable,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.Prize" >
+    insert into prize
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="prizId != null" >
+        priz_id,
+      </if>
+      <if test="prizName != null" >
+        priz_name,
+      </if>
+      <if test="prizLevel != null" >
+        priz_level,
+      </if>
+      <if test="prizTime != null" >
+        priz_time,
+      </if>
+      <if test="prizIsindividual != null" >
+        priz_isIndividual,
+      </if>
+      <if test="prizAwarded != null" >
+        priz_awarded,
+      </if>
+      <if test="prizStudid != null" >
+        priz_studId,
+      </if>
+      <if test="prizState != null" >
+        priz_state,
+      </if>
+      <if test="prizIseditable != null" >
+        priz_isEditable,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="prizId != null" >
+        #{prizId,jdbcType=INTEGER},
+      </if>
+      <if test="prizName != null" >
+        #{prizName,jdbcType=VARCHAR},
+      </if>
+      <if test="prizLevel != null" >
+        #{prizLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="prizTime != null" >
+        #{prizTime,jdbcType=VARCHAR},
+      </if>
+      <if test="prizIsindividual != null" >
+        #{prizIsindividual,jdbcType=INTEGER},
+      </if>
+      <if test="prizAwarded != null" >
+        #{prizAwarded,jdbcType=VARCHAR},
+      </if>
+      <if test="prizStudid != null" >
+        #{prizStudid,jdbcType=INTEGER},
+      </if>
+      <if test="prizState != null" >
+        #{prizState,jdbcType=INTEGER},
+      </if>
+      <if test="prizIseditable != null" >
+        #{prizIseditable,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.Prize" >
+    update prize
+    <set >
+      <if test="prizName != null" >
+        priz_name = #{prizName,jdbcType=VARCHAR},
+      </if>
+      <if test="prizLevel != null" >
+        priz_level = #{prizLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="prizTime != null" >
+        priz_time = #{prizTime,jdbcType=VARCHAR},
+      </if>
+      <if test="prizIsindividual != null" >
+        priz_isIndividual = #{prizIsindividual,jdbcType=INTEGER},
+      </if>
+      <if test="prizAwarded != null" >
+        priz_awarded = #{prizAwarded,jdbcType=VARCHAR},
+      </if>
+      <if test="prizStudid != null" >
+        priz_studId = #{prizStudid,jdbcType=INTEGER},
+      </if>
+      <if test="prizState != null" >
+        priz_state = #{prizState,jdbcType=INTEGER},
+      </if>
+      <if test="prizIseditable != null" >
+        priz_isEditable = #{prizIseditable,jdbcType=INTEGER},
+      </if>
+    </set>
+    where priz_id = #{prizId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Prize" >
+    update prize
+    set priz_name = #{prizName,jdbcType=VARCHAR},
+      priz_level = #{prizLevel,jdbcType=VARCHAR},
+      priz_time = #{prizTime,jdbcType=VARCHAR},
+      priz_isIndividual = #{prizIsindividual,jdbcType=INTEGER},
+      priz_awarded = #{prizAwarded,jdbcType=VARCHAR},
+      priz_studId = #{prizStudid,jdbcType=INTEGER},
+      priz_state = #{prizState,jdbcType=INTEGER},
+      priz_isEditable = #{prizIseditable,jdbcType=INTEGER}
+    where priz_id = #{prizId,jdbcType=INTEGER}
+  </update>
+  <!-- 通过获奖学生的id查询奖励表 -->
+	<select id="selectByPrizStudId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from prize
+		where priz_studId = #{prizStudId,jdbcType=INTEGER}
+	</select>
+</mapper>

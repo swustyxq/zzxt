@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="../images/favicon.png">
+
+<title>西南科技大学资助系统</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../css/bootstrap.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="../css/theme.css" rel="stylesheet">
+<link href="../css/docs.css" rel="stylesheet">
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/github.min.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+
+<script src="../javascript/jquery.min.js"></script>
+<script src="../javascript/bootstrap.min.js"></script>
+<script src="../javascript/holder.min.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/applyBuyYlbx.js"></script>
+<script src="../js/seeCzIntroduction.js"></script>
+<script src="../js/seeCzWorkIntroduction.js"></script>
+  <script src="../js/seeCzState.js"></script>
+<script src="../js/seeMyselfCzList.js"></script>
+
+
+</head>
+
+<body>
+
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">西南科技大学学生资助系统</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><span
+							id="current_user">学生用户</span> </a>
+						<ul class="dropdown-menu">
+							<li class="divider"></li>
+							<li class="dropdown-header">系统帮助</li>
+							<li><a href="about.html"><span
+									class="glyphicon glyphicon-book"></span>关于系统</a></li>
+							<li><a href="help.html"><span
+									class="glyphicon glyphicon-print"></span>使用说明</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">基本功能</li>
+							<li><a href="#" data-toggle="modal"
+								data-target="#changePassword"><span
+									class="glyphicon glyphicon-cog"></span>修改密码</a></li>
+							<li><a href="#" id="logout"><span
+									class="glyphicon glyphicon-log-out"></span>退出</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+	<div class="container theme-showcase">
+		<div class="col-md-12">
+			<div class="col-md-12">
+
+				<div class="page-header">
+					<small><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;当前位置导航：&nbsp;&nbsp;&nbsp;&nbsp;
+						<span id="location"> <a href="index.html">首页</a>&gt;<a href="help.html">使用说明</a>&gt;<a
+							href="applyBuyYlbx.html">申请购买大学生医疗保险</a>
+					</span> </small>
+				</div>
+			</div>
+
+
+			<!-- 左侧导航栏    -->
+			<div class="col-md-3">
+				<div class="bs-example">
+					<div id="navigation" class="panel-group"></div>
+				</div>
+			</div>
+
+
+			<div class="col-md-9">
+				<div class="bs-Shaozhou">
+					<!-- 显示大学生医疗保险状态 Modal -->
+					<div style="text-align: center">
+						<h2>大学生城镇医疗保险相关信息</h2>
+					</div>
+					
+						<ul id="myTab" class="nav nav-tabs" role="tablist">
+							<li class=""><a data-toggle="tab" role="tab"
+								href="#introduction">城镇医疗介绍</a></li>
+							<li class=""><a data-toggle="tab" role="tab" href="#work">城镇医疗工作安排</a>
+							</li>
+							<li class="active"><a data-toggle="tab" role="tab"
+								href="#apply">城镇医疗申请</a></li>
+							<li class=""><a data-toggle="tab" role="tab" href="#state" >申请的城镇医疗状态</a>
+							</li>
+							<li class=""><a data-toggle="tab" role="tab" href="#before1"  onclick="seebefore()">往年城镇医疗信息</a>
+							</li>
+							
+						</ul>
+
+						<div id="myTabContent" class="tab-content">
+							<div id="introduction" class="tab-pane fade ">
+								<div class="bs-Shaozhou" id="czIntroduction"></div>
+							</div>
+							<div id="work" class="tab-pane fade ">
+								<div class="bs-Shaozhou" id="czWorkIntroduction"></div>
+							</div>
+							<div id="apply" class="tab-pane fade active in" >
+								<br> <br>
+								<!-- 提示农行卡号是否正确模态对话框 Modal -->
+								<div class="modal fade" id="checkcare" tabindex="-1"
+									role="dialog" aria-labelledby="myModalLabel1"
+									aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">
+													<span aria-hidden="true">&times;</span><span
+														class="sr-only">Close</span>
+												</button>
+												<h4 class="modal-title">注意!!!</h4>
+											</div>
+											<div class="modal-body">
+												<!-- 对话框里面的内容   -->
+												<form class="form-horizontal" role="form">
+													<label class="col-sm-5  control-label">你的农行卡号为：</label>
+													<table>
+														<tr>
+															<td style="width: 150px;" id="care"></td>
+														</tr>
+													</table>
+													<br /> <label class="col-sm-5  control-label">是否正确：</label>
+													<div class="col-sm-6">
+														<input type="radio" class="noborder" name="will1"
+															id="yes1" value=1> 是&nbsp;&nbsp; <input
+															type="radio" class="noborder" name="will1" id="no1"
+															value=0> 否
+													</div>
+												</form>
+												<br />
+											</div>
+											<div class="modal-footer">
+												<!-- <button type="button" class="btn btn-default"
+												data-dismiss="modal">关闭</button> -->
+												<button Id="surecare" type="button"
+													class="surecheck btn btn-primary">确定</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<form class="form-horizontal" role="form">
+
+									<h4>
+										<label class="col-sm-5  control-label">
+											<table>
+												<tr>
+													<td width="20px"></td>
+													<td><b>是否购买</b></td>
+													<td id="buyAnnual" width="40px"></td>
+													<td><b>年度医疗保险：</b></td>
+												</tr>
+											</table>
+										</label>
+										<div class="col-sm-6">
+											<input type="radio" class="noborder" name="will" id="yes"
+												value=1 disabled="disabled"> 是&nbsp;&nbsp; <input
+												type="radio" class="noborder" name="will" id="no" value=0
+												disabled="disabled"> 否
+										</div>
+									</h4>
+
+								</form>
+
+								<br /> <br /> <br />
+								<div align="right">
+									<button Id="input" type="button"
+										class="sureFillOrEdit1 btn btn-primary" disabled="disabled">提交</button>
+
+								</div>
+							</div>
+							<div id="state" class="tab-pane fade " >
+								<div class="alert alert-success  alert-dismissible fade in"
+									role="alert">
+									<button type="button" class="close" data-dismiss="alert">
+										<span aria-hidden="true">×</span><span class="sr-only">Close</span>
+									</button>
+									<h4>提示：</h4>
+							
+									<table >
+										<tr>
+										<!--	<td>距离财务处进行城镇医疗保险代购还有</td>-->
+											<td text-align="center" id="day" ></td>
+										<!--  	<td>天</td>-->
+										</tr>
+									</table>
+								
+									<p>
+										<!--  <button type="button" class="btn btn-danger">确定</button>-->
+
+									</p>
+								</div>
+								<!-- 显示城镇医疗保险状态 Modal -->
+								<div style="text-align: center;">
+									<h4>
+
+										<table>
+											<tr>
+												<td width="150px"></td>
+												<td id="buyAnnual1" width="40px"></td>
+												<td><b>年度大学生城镇医疗保险购买情况查询结果：</b></td>
+											</tr>
+										</table>
+									</h4>
+								</div>
+								<br> <br>
+								<div>
+									<table class="table table-hover" id="State1">
+									</table>
+
+									<table class="table table-hover" id="State2">
+
+									</table>
+
+								<!--  <table class="table table-hover" id="State3">
+
+									</table>
+									<table class="table table-hover" id="State4">
+
+									</table>-->	
+	
+									<br>
+									<div align="center">
+										<button type="button" class="btn btn-primary" id="fillOrEdit"
+											disabled="disabled">修改意愿</button>
+									</div>
+									<br>
+								</div>
+								<!-- 修改意愿的模态对话框 Modal -->
+								<div class="modal fade" id="fillOrEditWill" tabindex="-1"
+									role="dialog" aria-labelledby="myModalLabel1"
+									aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">
+													<span aria-hidden="true">&times;</span><span
+														class="sr-only">Close</span>
+												</button>
+												<h4 class="modal-title">修改意愿</h4>
+											</div>
+											<div class="modal-body">
+												<!-- 对话框里面的内容   -->
+												<form class="form-horizontal" role="form">
+													<label class="col-sm-5  control-label">前一次的选择：</label>
+													<table>
+														<tr>
+															<td style="width: 150px;" id="before"></td>
+														</tr>
+													</table>
+													<br /> <label class="col-sm-5  control-label">是否需要购买：</label>
+													<div class="col-sm-6">
+														<input type="radio" class="noborder" name="will" id="yes"
+															value=1> 是&nbsp;&nbsp; <input type="radio"
+															class="noborder" name="will" id="no" value=0> 否
+													</div>
+												</form>
+												<br />
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default"
+													data-dismiss="modal">关闭</button>
+												<button Id="sure" type="button"
+													class="sureFillOrEdit btn btn-primary">确定</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="before1" class="tab-pane fade " >
+								<!-- 按年度查询城镇医疗保险 -->
+								<br><br>
+								<form class="form-horizontal" role="form">
+									<div class="form-group">
+										<label for="year" class="col-sm-4 control-label">大学生城镇医疗保险所属年度：</label>
+										<div class="col-sm-2">
+											<select class="form-control" id="year">
+												<option>2014</option>
+												<option>2013</option>
+												<option>2012</option>
+												<option>2011</option>
+												<option>所有</option>
+											</select>
+										</div>
+										<button type="button" class="btn btn-primary" id="check">按年度查询</button>
+									</div>
+								</form>
+								<br /> <br />
+								<!-- 显示城镇医疗保险状态 Modal -->
+								<div style="text-align: center;">
+									<h4>
+										<b>大学生城镇医疗保险购买情况查询结果：</b>
+									</h4>
+								</div>
+								<br> <br>
+								<div>
+									<table class="table table-hover"
+										id="czylState11">
+										<thead>
+											<tr>
+												<th width="200px">&nbsp;姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;</th>
+												<th width="200px">&nbsp;学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;</th>
+												<th width="200px">保&nbsp;险&nbsp;金&nbsp;额</th>
+												<th width="200px">是否需要购买</th>
+												<th width="200px">是否购买成功</th>
+
+
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+
+											</tr>
+										</tbody>
+									</table>
+									<table class="table table-hover"
+										id="czylState22">
+										<thead>
+											<tr>
+												<th width="200px">购&nbsp;买&nbsp;年&nbsp;度</th>
+												<th width="200px">购&nbsp;买&nbsp;时&nbsp;间</th>
+												<th width="200px">保险的开始时间</th>
+												<th width="200px">保险的截止时间</th>
+												<th width="200px">是否能修改意愿</th>
+											</tr>
+										</thead>
+										<tbody>
+
+
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+
+										</tbody>
+									</table>
+								<!--  	<table class="table table-hover"
+										id="czylState33">
+										<thead>
+											<tr>
+												<th width="400px">描&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;述</th>
+											
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td height="40px"></td>
+											
+											</tr>
+										</tbody>
+									</table>
+									<table class="table table-hover"
+										id="czylState44">
+										<thead>
+											<tr>
+												<th width="400px">备&nbsp;&nbsp;&nbsp;注</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td height="40px"></td>
+											</tr>
+										</tbody>
+									</table>-->
+									<br>
+
+								</div>
+
+							</div>
+						</div>
+				
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+	<!-- 修改密码的模态对话框 Modal -->
+	<div class="modal fade" id="changePassword" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title">修改用户密码</h4>
+				</div>
+				<div class="modal-body">
+					<!-- 对话框里面的内容   -->
+					<form class="form-horizontal" role="form">
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-4 control-label">当前密码：</label>
+							<div class="col-sm-6">
+								<input type="password" class="form-control" id="inputPassword1"
+									placeholder="原始密码">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword3" class="col-sm-4 control-label">新密码：</label>
+							<div class="col-sm-6">
+								<input type="password" class="form-control" id="inputPassword2"
+									placeholder="新密码">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword3" class="col-sm-4 control-label">再次输入新密码：</label>
+							<div class="col-sm-6">
+								<input type="password" class="form-control" id="inputPassword3"
+									placeholder="重复新密码">
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button Id="changePWD" type="button" class="btn btn-primary">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<footer class="bs-footer" role="contentinfo">
+		<p class="pull-right">
+			<a href="#">回到页面顶部</a>
+		</p>
+		<div class="container" id="copyright"></div>
+	</footer>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.MajorMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Major" >
+    <id column="majr_id" property="majrId" jdbcType="INTEGER" />
+    <result column="majr_name" property="majrName" jdbcType="VARCHAR" />
+    <result column="majr_shortname" property="majrShortname" jdbcType="VARCHAR" />
+    <result column="majr_instId" property="majrInstid" jdbcType="INTEGER" />
+    <result column="majr_educationSystem" property="majrEducationsystem" jdbcType="VARCHAR" />
+    <result column="majr_level" property="majrLevel" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="swust.edu.cn.zzxt.model.Major" extends="BaseResultMap" >
+    <result column="majr_description" property="majrDescription" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    majr_id, majr_name, majr_shortname, majr_instId, majr_educationSystem, majr_level
+  </sql>
+  <sql id="Blob_Column_List" >
+    majr_description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from major
+    where majr_id = #{majrId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from major
+    where majr_id = #{majrId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.Major" >
+    insert into major (majr_id, majr_name, majr_shortname, 
+      majr_instId, majr_educationSystem, majr_level, 
+      majr_description)
+    values (#{majrId,jdbcType=INTEGER}, #{majrName,jdbcType=VARCHAR}, #{majrShortname,jdbcType=VARCHAR}, 
+      #{majrInstid,jdbcType=INTEGER}, #{majrEducationsystem,jdbcType=VARCHAR}, #{majrLevel,jdbcType=VARCHAR}, 
+      #{majrDescription,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.Major" >
+    insert into major
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="majrId != null" >
+        majr_id,
+      </if>
+      <if test="majrName != null" >
+        majr_name,
+      </if>
+      <if test="majrShortname != null" >
+        majr_shortname,
+      </if>
+      <if test="majrInstid != null" >
+        majr_instId,
+      </if>
+      <if test="majrEducationsystem != null" >
+        majr_educationSystem,
+      </if>
+      <if test="majrLevel != null" >
+        majr_level,
+      </if>
+      <if test="majrDescription != null" >
+        majr_description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="majrId != null" >
+        #{majrId,jdbcType=INTEGER},
+      </if>
+      <if test="majrName != null" >
+        #{majrName,jdbcType=VARCHAR},
+      </if>
+      <if test="majrShortname != null" >
+        #{majrShortname,jdbcType=VARCHAR},
+      </if>
+      <if test="majrInstid != null" >
+        #{majrInstid,jdbcType=INTEGER},
+      </if>
+      <if test="majrEducationsystem != null" >
+        #{majrEducationsystem,jdbcType=VARCHAR},
+      </if>
+      <if test="majrLevel != null" >
+        #{majrLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="majrDescription != null" >
+        #{majrDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.Major" >
+    update major
+    <set >
+      <if test="majrName != null" >
+        majr_name = #{majrName,jdbcType=VARCHAR},
+      </if>
+      <if test="majrShortname != null" >
+        majr_shortname = #{majrShortname,jdbcType=VARCHAR},
+      </if>
+      <if test="majrInstid != null" >
+        majr_instId = #{majrInstid,jdbcType=INTEGER},
+      </if>
+      <if test="majrEducationsystem != null" >
+        majr_educationSystem = #{majrEducationsystem,jdbcType=VARCHAR},
+      </if>
+      <if test="majrLevel != null" >
+        majr_level = #{majrLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="majrDescription != null" >
+        majr_description = #{majrDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where majr_id = #{majrId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="swust.edu.cn.zzxt.model.Major" >
+    update major
+    set majr_name = #{majrName,jdbcType=VARCHAR},
+      majr_shortname = #{majrShortname,jdbcType=VARCHAR},
+      majr_instId = #{majrInstid,jdbcType=INTEGER},
+      majr_educationSystem = #{majrEducationsystem,jdbcType=VARCHAR},
+      majr_level = #{majrLevel,jdbcType=VARCHAR},
+      majr_description = #{majrDescription,jdbcType=LONGVARCHAR}
+    where majr_id = #{majrId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Major" >
+    update major
+    set majr_name = #{majrName,jdbcType=VARCHAR},
+      majr_shortname = #{majrShortname,jdbcType=VARCHAR},
+      majr_instId = #{majrInstid,jdbcType=INTEGER},
+      majr_educationSystem = #{majrEducationsystem,jdbcType=VARCHAR},
+      majr_level = #{majrLevel,jdbcType=VARCHAR}
+    where majr_id = #{majrId,jdbcType=INTEGER}
+  </update>
+  	<!-- 通过学院id查询专业 -->
+  <select id="selectByInstId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from major
+    where majr_instId = #{instId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectByMajorId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from major
+    where majr_id = #{majrId,jdbcType=INTEGER}
+  </select>
+  <!-- wj通过userid查辅导员所带的专业 -->
+  <select id="selectClassByUserId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+	SELECT 
+	<include refid="Base_Column_List" />
+    ,
+	<include refid="Blob_Column_List" />
+	FROM user,studentclass,instructor,major
+	WHERE user.user_id = #{userId,jdbcType=INTEGER}
+			AND user.user_id = inst_userId
+			AND inst_id = studentclass.class_instId
+			AND studentclass.class_majrId = major.majr_id
+  </select>
+</mapper>

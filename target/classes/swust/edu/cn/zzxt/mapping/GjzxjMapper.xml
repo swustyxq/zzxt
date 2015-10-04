@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.GjzxjMapper">
+	<resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Gjzxj">
+		<id column="gzxj_id" property="gzxjId" jdbcType="INTEGER" />
+		<result column="gzxj_studId" property="gzxjStudid" jdbcType="INTEGER" />
+		<result column="gzxj_wsflId" property="gzxjWsflid" jdbcType="INTEGER" />
+		<result column="gzxj_applyTime" property="gzxjApplytime"
+			jdbcType="TIMESTAMP" />
+		<result column="gzxj_classOpinionTime" property="gzxjClassopiniontime"
+			jdbcType="VARCHAR" />
+		<result column="gzxj_academyOpinionTime" property="gzxjAcademyopiniontime"
+			jdbcType="VARCHAR" />
+		<result column="gzxj_rank" property="gzxjRank" jdbcType="VARCHAR" />
+		<result column="gzxj_workId" property="gzxjWorkid" jdbcType="INTEGER" />
+		<result column="gzxj_politicState" property="gzxjPoliticstate"
+			jdbcType="VARCHAR" />
+		<result column="gzxj_classDetail" property="gzxjClassdetail"
+			jdbcType="VARCHAR" />
+		<result column="gzxj_residence" property="gzxjResidence"
+			jdbcType="VARCHAR" />
+		<result column="gzxj_population" property="gzxjPopulation"
+			jdbcType="INTEGER" />
+		<result column="gzxj_allIncomes" property="gzxjAllincomes"
+			jdbcType="VARCHAR" />
+		<result column="gzxj_incomeType" property="gzxjIncometype"
+			jdbcType="VARCHAR" />
+		<result column="gzxj_home" property="gzxjHome" jdbcType="VARCHAR" />
+		<result column="gzxj_mailcode" property="gzxjMailcode"
+			jdbcType="VARCHAR" />
+		<result column="gzxj_annual" property="gzxjAnnual" jdbcType="VARCHAR" />
+		<result column="gzxj_state" property="gzxjState" jdbcType="INTEGER" />
+		<result column="gzxj_level" property="gzxjLevel" jdbcType="INTEGER" />
+		<result column="gzxj_money" property="gzxjMoney" jdbcType="DOUBLE" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs" type="swust.edu.cn.zzxt.model.GjzxjWithBLOBs"
+		extends="BaseResultMap">
+		<result column="gzxj_applyReason" property="gzxjApplyreason"
+			jdbcType="LONGVARCHAR" />
+		<result column="gzxj_classOpinion" property="gzxjClassopinion"
+			jdbcType="LONGVARCHAR" />
+		<result column="gzxj_academyOpinion" property="gzxjAcademyopinion"
+			jdbcType="LONGVARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		gzxj_id, gzxj_studId, gzxj_wsflId, gzxj_applyTime,
+		gzxj_classOpinionTime,
+		gzxj_academyOpinionTime,
+		gzxj_rank, gzxj_workId,
+		gzxj_politicState, gzxj_classDetail, gzxj_residence,
+		gzxj_population,
+		gzxj_allIncomes, gzxj_incomeType, gzxj_home, gzxj_mailcode,
+		gzxj_annual, gzxj_state, gzxj_level, gzxj_money
+	</sql>
+	<sql id="Blob_Column_List">
+		gzxj_applyReason, gzxj_classOpinion, gzxj_academyOpinion
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from gjzxj
+		where gzxj_id = #{gzxjId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from gjzxj
+		where gzxj_id = #{gzxjId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="swust.edu.cn.zzxt.model.GjzxjWithBLOBs">
+		insert into gjzxj (gzxj_id,
+		gzxj_studId, gzxj_wsflId,
+		gzxj_applyTime, gzxj_classOpinionTime,
+		gzxj_academyOpinionTime, gzxj_rank, gzxj_workId,
+		gzxj_politicState,
+		gzxj_classDetail, gzxj_residence,
+		gzxj_population, gzxj_allIncomes,
+		gzxj_incomeType,
+		gzxj_home, gzxj_mailcode, gzxj_annual,
+		gzxj_state,
+		gzxj_applyReason, gzxj_classOpinion,
+		gzxj_academyOpinion, gzxj_level, gzxj_money)
+		values
+		(#{gzxjId,jdbcType=INTEGER}, #{gzxjStudid,jdbcType=INTEGER},
+		#{gzxjWsflid,jdbcType=INTEGER},
+		#{gzxjApplytime,jdbcType=TIMESTAMP},
+		#{gzxjClassopiniontime,jdbcType=VARCHAR},
+		#{gzxjAcademyopiniontime,jdbcType=VARCHAR},
+		#{gzxjRank,jdbcType=VARCHAR}, #{gzxjWorkid,jdbcType=INTEGER},
+		#{gzxjPoliticstate,jdbcType=VARCHAR},
+		#{gzxjClassdetail,jdbcType=VARCHAR},
+		#{gzxjResidence,jdbcType=VARCHAR},
+		#{gzxjPopulation,jdbcType=INTEGER},
+		#{gzxjAllincomes,jdbcType=VARCHAR},
+		#{gzxjIncometype,jdbcType=VARCHAR},
+		#{gzxjHome,jdbcType=VARCHAR},
+		#{gzxjMailcode,jdbcType=VARCHAR}, #{gzxjAnnual,jdbcType=VARCHAR},
+		#{gzxjState,jdbcType=INTEGER},
+		#{gzxjApplyreason,jdbcType=LONGVARCHAR},
+		#{gzxjClassopinion,jdbcType=LONGVARCHAR},
+		#{gzxjAcademyopinion,jdbcType=LONGVARCHAR},
+		#{gzxjLevel,jdbcType=INTEGER},
+		#{gzxjMoney,jdbcType=DOUBLE})
+	</insert>
+	<insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.GjzxjWithBLOBs">
+		insert into gjzxj
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="gzxjId != null">
+				gzxj_id,
+			</if>
+			<if test="gzxjStudid != null">
+				gzxj_studId,
+			</if>
+			<if test="gzxjWsflid != null">
+				gzxj_wsflId,
+			</if>
+			<if test="gzxjApplytime != null">
+				gzxj_applyTime,
+			</if>
+			<if test="gzxjClassopiniontime != null">
+				gzxj_classOpinionTime,
+			</if>
+			<if test="gzxjAcademyopiniontime != null">
+				gzxj_academyOpinionTime,
+			</if>
+			<if test="gzxjRank != null">
+				gzxj_rank,
+			</if>
+			<if test="gzxjWorkid != null">
+				gzxj_workId,
+			</if>
+			<if test="gzxjPoliticstate != null">
+				gzxj_politicState,
+			</if>
+			<if test="gzxjClassdetail != null">
+				gzxj_classDetail,
+			</if>
+			<if test="gzxjResidence != null">
+				gzxj_residence,
+			</if>
+			<if test="gzxjPopulation != null">
+				gzxj_population,
+			</if>
+			<if test="gzxjAllincomes != null">
+				gzxj_allIncomes,
+			</if>
+			<if test="gzxjIncometype != null">
+				gzxj_incomeType,
+			</if>
+			<if test="gzxjHome != null">
+				gzxj_home,
+			</if>
+			<if test="gzxjMailcode != null">
+				gzxj_mailcode,
+			</if>
+			<if test="gzxjAnnual != null">
+				gzxj_annual,
+			</if>
+			<if test="gzxjState != null">
+				gzxj_state,
+			</if>
+			<if test="gzxjApplyreason != null">
+				gzxj_applyReason,
+			</if>
+			<if test="gzxjClassopinion != null">
+				gzxj_classOpinion,
+			</if>
+			<if test="gzxjAcademyopinion != null">
+				gzxj_academyOpinion,
+			</if>
+			<if test="gzxjLevel != null">
+				gzxj_level,
+			</if>
+			<if test="gzxjMoney != null">
+				gzxj_money,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="gzxjId != null">
+				#{gzxjId,jdbcType=INTEGER},
+			</if>
+			<if test="gzxjStudid != null">
+				#{gzxjStudid,jdbcType=INTEGER},
+			</if>
+			<if test="gzxjWsflid != null">
+				#{gzxjWsflid,jdbcType=INTEGER},
+			</if>
+			<if test="gzxjApplytime != null">
+				#{gzxjApplytime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="gzxjClassopiniontime != null">
+				#{gzxjClassopiniontime,jdbcType=VARCHAR},
+			</if>
+			<if test="gzxjAcademyopiniontime != null">
+				#{gzxjAcademyopiniontime,jdbcType=VARCHAR},
+			</if>
+			<if test="gzxjRank != null">
+				#{gzxjRank,jdbcType=VARCHAR},
+			</if>
+			<if test="gzxjWorkid != null">
+				#{gzxjWorkid,jdbcType=INTEGER},
+			</if>
+			<if test="gzxjPoliticstate != null">
+				#{gzxjPoliticstate,jdbcType=VARCHAR},
+			</if>
+			<if test="gzxjClassdetail != null">
+				#{gzxjClassdetail,jdbcType=VARCHAR},
+			</if>
+			<if test="gzxjResidence != null">
+				#{gzxjResidence,jdbcType=VARCHAR},
+			</if>
+			<if test="gzxjPopulation != null">
+				#{gzxjPopulation,jdbcType=INTEGER},
+			</if>
+			<if test="gzxjAllincomes != null">
+				#{gzxjAllincomes,jdbcType=VARCHAR},
+			</if>
+			<if test="gzxjIncometype != null">
+				#{gzxjIncometype,jdbcType=VARCHAR},
+			</if>
+			<if test="gzxjHome != null">
+				#{gzxjHome,jdbcType=VARCHAR},
+			</if>
+			<if test="gzxjMailcode != null">
+				#{gzxjMailcode,jdbcType=VARCHAR},
+			</if>
+			<if test="gzxjAnnual != null">
+				#{gzxjAnnual,jdbcType=VARCHAR},
+			</if>
+			<if test="gzxjState != null">
+				#{gzxjState,jdbcType=INTEGER},
+			</if>
+			<if test="gzxjApplyreason != null">
+				#{gzxjApplyreason,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="gzxjClassopinion != null">
+				#{gzxjClassopinion,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="gzxjAcademyopinion != null">
+				#{gzxjAcademyopinion,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="gzxjLevel != null">
+				#{gzxjLevel,jdbcType=INTEGER},
+			</if>
+			<if test="gzxjMoney != null">
+				#{gzxjMoney,jdbcType=DOUBLE},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.GjzxjWithBLOBs">
+		update gjzxj
+		<set>
+			<if test="gzxjStudid != null">
+				gzxj_studId = #{gzxjStudid,jdbcType=INTEGER},
+			</if>
+			<if test="gzxjWsflid != null">
+				gzxj_wsflId = #{gzxjWsflid,jdbcType=INTEGER},
+			</if>
+			<if test="gzxjApplytime != null">
+				gzxj_applyTime = #{gzxjApplytime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="gzxjClassopiniontime != null">
+				gzxj_classOpinionTime =
+				#{gzxjClassopiniontime,jdbcType=VARCHAR},
+			</if>
+			<if test="gzxjAcademyopiniontime != null">
+				gzxj_academyOpinionTime =
+				#{gzxjAcademyopiniontime,jdbcType=VARCHAR},
+			</if>
+			<if test="gzxjRank != null">
+				gzxj_rank = #{gzxjRank,jdbcType=VARCHAR},
+			</if>
+			<if test="gzxjWorkid != null">
+				gzxj_workId = #{gzxjWorkid,jdbcType=INTEGER},
+			</if>
+			<if test="gzxjPoliticstate != null">
+				gzxj_politicState = #{gzxjPoliticstate,jdbcType=VARCHAR},
+			</if>
+			<if test="gzxjClassdetail != null">
+				gzxj_classDetail = #{gzxjClassdetail,jdbcType=VARCHAR},
+			</if>
+			<if test="gzxjResidence != null">
+				gzxj_residence = #{gzxjResidence,jdbcType=VARCHAR},
+			</if>
+			<if test="gzxjPopulation != null">
+				gzxj_population = #{gzxjPopulation,jdbcType=INTEGER},
+			</if>
+			<if test="gzxjAllincomes != null">
+				gzxj_allIncomes = #{gzxjAllincomes,jdbcType=VARCHAR},
+			</if>
+			<if test="gzxjIncometype != null">
+				gzxj_incomeType = #{gzxjIncometype,jdbcType=VARCHAR},
+			</if>
+			<if test="gzxjHome != null">
+				gzxj_home = #{gzxjHome,jdbcType=VARCHAR},
+			</if>
+			<if test="gzxjMailcode != null">
+				gzxj_mailcode = #{gzxjMailcode,jdbcType=VARCHAR},
+			</if>
+			<if test="gzxjAnnual != null">
+				gzxj_annual = #{gzxjAnnual,jdbcType=VARCHAR},
+			</if>
+			<if test="gzxjState != null">
+				gzxj_state = #{gzxjState,jdbcType=INTEGER},
+			</if>
+			<if test="gzxjApplyreason != null">
+				gzxj_applyReason =
+				#{gzxjApplyreason,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="gzxjClassopinion != null">
+				gzxj_classOpinion =
+				#{gzxjClassopinion,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="gzxjAcademyopinion != null">
+				gzxj_academyOpinion =
+				#{gzxjAcademyopinion,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="gzxjLevel != null">
+				gzxj_level = #{gzxjLevel,jdbcType=INTEGER},
+			</if>
+			<if test="gzxjMoney != null">
+				gzxj_money = #{gzxjMoney,jdbcType=DOUBLE},
+			</if>
+		</set>
+		where gzxj_id = #{gzxjId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="swust.edu.cn.zzxt.model.GjzxjWithBLOBs">
+		update
+		gjzxj
+		set gzxj_studId = #{gzxjStudid,jdbcType=INTEGER},
+		gzxj_wsflId =
+		#{gzxjWsflid,jdbcType=INTEGER},
+		gzxj_applyTime =
+		#{gzxjApplytime,jdbcType=TIMESTAMP},
+		gzxj_classOpinionTime =
+		#{gzxjClassopiniontime,jdbcType=VARCHAR},
+		gzxj_academyOpinionTime =
+		#{gzxjAcademyopiniontime,jdbcType=VARCHAR},
+		gzxj_rank =
+		#{gzxjRank,jdbcType=VARCHAR},
+		gzxj_workId =
+		#{gzxjWorkid,jdbcType=INTEGER},
+		gzxj_politicState =
+		#{gzxjPoliticstate,jdbcType=VARCHAR},
+		gzxj_classDetail =
+		#{gzxjClassdetail,jdbcType=VARCHAR},
+		gzxj_residence =
+		#{gzxjResidence,jdbcType=VARCHAR},
+		gzxj_population =
+		#{gzxjPopulation,jdbcType=INTEGER},
+		gzxj_allIncomes =
+		#{gzxjAllincomes,jdbcType=VARCHAR},
+		gzxj_incomeType =
+		#{gzxjIncometype,jdbcType=VARCHAR},
+		gzxj_home =
+		#{gzxjHome,jdbcType=VARCHAR},
+		gzxj_mailcode =
+		#{gzxjMailcode,jdbcType=VARCHAR},
+		gzxj_annual =
+		#{gzxjAnnual,jdbcType=VARCHAR},
+		gzxj_state =
+		#{gzxjState,jdbcType=INTEGER},
+		gzxj_applyReason =
+		#{gzxjApplyreason,jdbcType=LONGVARCHAR},
+		gzxj_classOpinion =
+		#{gzxjClassopinion,jdbcType=LONGVARCHAR},
+		gzxj_academyOpinion =
+		#{gzxjAcademyopinion,jdbcType=LONGVARCHAR},
+		gzxj_level =
+		#{gzxjLevel,jdbcType=INTEGER},
+		gzxj_money =
+		#{gzxjMoney,jdbcType=DOUBLE}
+		where gzxj_id =
+		#{gzxjId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Gjzxj">
+		update gjzxj
+		set
+		gzxj_studId = #{gzxjStudid,jdbcType=INTEGER},
+		gzxj_wsflId =
+		#{gzxjWsflid,jdbcType=INTEGER},
+		gzxj_applyTime =
+		#{gzxjApplytime,jdbcType=TIMESTAMP},
+		gzxj_classOpinionTime =
+		#{gzxjClassopiniontime,jdbcType=VARCHAR},
+		gzxj_academyOpinionTime =
+		#{gzxjAcademyopiniontime,jdbcType=VARCHAR},
+		gzxj_rank =
+		#{gzxjRank,jdbcType=VARCHAR},
+		gzxj_workId =
+		#{gzxjWorkid,jdbcType=INTEGER},
+		gzxj_politicState =
+		#{gzxjPoliticstate,jdbcType=VARCHAR},
+		gzxj_classDetail =
+		#{gzxjClassdetail,jdbcType=VARCHAR},
+		gzxj_residence =
+		#{gzxjResidence,jdbcType=VARCHAR},
+		gzxj_population =
+		#{gzxjPopulation,jdbcType=INTEGER},
+		gzxj_allIncomes =
+		#{gzxjAllincomes,jdbcType=VARCHAR},
+		gzxj_incomeType =
+		#{gzxjIncometype,jdbcType=VARCHAR},
+		gzxj_home =
+		#{gzxjHome,jdbcType=VARCHAR},
+		gzxj_mailcode =
+		#{gzxjMailcode,jdbcType=VARCHAR},
+		gzxj_annual =
+		#{gzxjAnnual,jdbcType=VARCHAR},
+		gzxj_state =
+		#{gzxjState,jdbcType=INTEGER},
+		gzxj_level =
+		#{gzxjLevel,jdbcType=INTEGER},
+		gzxj_money =
+		#{gzxjMoney,jdbcType=DOUBLE}
+		where gzxj_id =
+		#{gzxjId,jdbcType=INTEGER}
+	</update>
+
+	<!-- 作者：赵学融 20140712 通过学生id查表 -->
+	<select id="selectByStuId" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from gjzxj
+		where gzxj_studId = #{gzxjStuId,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectAllInfo" resultMap="ResultMapWithBLOBs">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from gjzxj
+	</select>
+	<!-- 联合查询 ZXR 20140801 -->
+	<resultMap id="ListModelMap" type="swust.edu.cn.zzxt.selfmodel.ListModal">
+		<id column="name" property="name" jdbcType="VARCHAR" />
+		<result column="sex" property="sex" jdbcType="VARCHAR" />
+		<result column="academy" property="academy" jdbcType="VARCHAR" />
+		<result column="academyid" property="academyid" jdbcType="INTEGER" />
+		<result column="major" property="major" jdbcType="VARCHAR" />
+		<result column="majorid" property="majorid" jdbcType="INTEGER" />
+		<result column="stuclass" property="stuclass" jdbcType="VARCHAR" />
+		<result column="stuclassid" property="stuclassid" jdbcType="INTEGER" />
+		<result column="annual" property="annual" jdbcType="VARCHAR" />
+		<result column="statusdescript" property="statusdescript"
+			jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="listid" property="listid" jdbcType="INTEGER" />
+		<result column="stuid" property="stuid" jdbcType="INTEGER" />
+		<result column="stuNumber" property="stuNumber" jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="List_Column_List">
+		name, sex, academy, academyid, major, majorid,
+		stuclass,
+		stuclassid, annual, statusdescript, status, listid,
+		stuid, stuNumber,
+		type,
+	</sql>
+
+	<!-- 查找所有list -->
+	<select id="selectClassAllList" resultType="swust.edu.cn.zzxt.selfmodel.ListModal"
+		parameterType="java.lang.Integer">
+		SELECT
+		student.stud_name AS NAME,
+		studentinfo.stin_sex AS
+		sex,
+		institution.inst_name AS academy,
+		institution.inst_id AS academyid,
+		major.majr_name AS major,
+		major.majr_id AS majorid,
+		studentclass.class_name AS stuclass,
+		studentclass.class_id AS
+		stuclassid,
+		gjzxj.gzxj_annual AS annual,
+		
+		studentinfo.stin_bankNumber AS bankNumber,
+		student.stud_IDNumber AS idNumber,
+		gjzxj.gzxj_level AS level,
+		gjzxj.gzxj_money AS money,
+		
+		IF (
+		gjzxj.gzxj_wsflId =- 1,
+		"审核通过",
+		workstepflow.wsfl_name
+		) AS statusdescript,
+		gjzxj.gzxj_state AS
+		STATUS,
+		gjzxj.gzxj_id AS listid,
+		gjzxj.gzxj_studId AS stuid,
+		student.stud_number AS stunumber,
+
+		IF (
+		gjzxj.gzxj_wsflId =- 1,
+		1,
+
+		IF (
+		workstepflow.wsfl_roleId = 2,
+		2,
+		1
+		)
+		) AS type
+		FROM
+		`user`,student,studentclass,instructor,institution,studentinfo,major,gjzxj,workstepflow
+		WHERE
+		`user`.user_id = #{userId,jdbcType=INTEGER}
+		and
+		instructor.inst_userId = `user`.user_id
+		and
+		studentclass.class_instId =
+		instructor.inst_id
+		and student.stud_classId
+		= studentclass.class_id
+		and
+		studentinfo.stin_studId = student.stud_id
+		and institution.inst_id =
+		`user`.user_instId
+		and major.majr_id =
+		studentclass.class_majrId
+		and
+		gjzxj.gzxj_studId = student.stud_id
+		and
+		IF(gjzxj.gzxj_wsflId =-
+		1,workstepflow.wsfl_id=1,workstepflow.wsfl_id = gjzxj.gzxj_wsflId)
+	</select>
+
+	<select id="selectAcademyAllList" resultType="swust.edu.cn.zzxt.selfmodel.ListModal"
+		parameterType="java.lang.Integer">
+				SELECT
+		student.stud_name AS NAME,
+		studentinfo.stin_sex AS sex,
+		institution.inst_name AS academy,
+		institution.inst_id AS academyid,
+		major.majr_name AS major,
+		major.majr_id AS majorid,
+		studentclass.class_name AS stuclass,
+		studentclass.class_id AS stuclassid,
+		gjzxj.gzxj_annual AS annual,
+		studentinfo.stin_bankNumber AS bankNumber,
+		student.stud_IDNumber AS idNumber,
+		gjzxj.gzxj_level AS level,
+		gjzxj.gzxj_money AS money,
+		IF (
+		gjzxj.gzxj_wsflId =- 1,
+		"审核通过",
+		workstepflow.wsfl_name
+		) AS statusdescript,
+		gjzxj.gzxj_state AS status,
+		gjzxj.gzxj_id AS listid,
+		gjzxj.gzxj_studId AS stuid,
+		student.stud_number AS stuNumber,
+
+		IF (
+		gjzxj.gzxj_wsflId =- 1,
+		1,
+
+		IF (
+		workstepflow.wsfl_roleId = 10 || workstepflow.wsfl_roleId > 12,
+		2,
+		1
+		)
+		) AS type
+		FROM
+		student,
+		studentclass,
+		institution,
+		studentinfo,
+		major,
+		gjzxj,
+		workstepflow
+
+		WHERE
+		institution.inst_id = #{instId,jdbcType=INTEGER}
+		AND major.majr_instId = institution.inst_id
+		AND studentclass.class_majrId = major.majr_id
+		AND student.stud_classId = studentclass.class_id
+		AND studentinfo.stin_studId = student.stud_id
+		AND gjzxj.gzxj_studId = student.stud_id
+		AND IF(gjzxj.gzxj_wsflId =- 1,gjzxj.gzxj_wsflId+2=workstepflow.wsfl_id,workstepflow.wsfl_id
+		= gjzxj.gzxj_wsflId)
+	</select>
+</mapper>

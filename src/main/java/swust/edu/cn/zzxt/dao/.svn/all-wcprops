@@ -1,0 +1,269 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/QTTest/!svn/ver/3674/zzxt/src/main/java/swust/edu/cn/zzxt/dao
+END
+AreaMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/QTTest/!svn/ver/2621/zzxt/src/main/java/swust/edu/cn/zzxt/dao/AreaMapper.java
+END
+SxpabxMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/QTTest/!svn/ver/3536/zzxt/src/main/java/swust/edu/cn/zzxt/dao/SxpabxMapper.java
+END
+UserMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/QTTest/!svn/ver/3420/zzxt/src/main/java/swust/edu/cn/zzxt/dao/UserMapper.java
+END
+GjlzjxjMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/QTTest/!svn/ver/3397/zzxt/src/main/java/swust/edu/cn/zzxt/dao/GjlzjxjMapper.java
+END
+ParentMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/QTTest/!svn/ver/3512/zzxt/src/main/java/swust/edu/cn/zzxt/dao/ParentMapper.java
+END
+AnnouncementMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/QTTest/!svn/ver/3428/zzxt/src/main/java/swust/edu/cn/zzxt/dao/AnnouncementMapper.java
+END
+XfjbMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/QTTest/!svn/ver/3582/zzxt/src/main/java/swust/edu/cn/zzxt/dao/XfjbMapper.java
+END
+AnnouncementtypeMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/QTTest/!svn/ver/3415/zzxt/src/main/java/swust/edu/cn/zzxt/dao/AnnouncementtypeMapper.java
+END
+RerolefunctionMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/QTTest/!svn/ver/3472/zzxt/src/main/java/swust/edu/cn/zzxt/dao/RerolefunctionMapper.java
+END
+RefunctionactionMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/QTTest/!svn/ver/2476/zzxt/src/main/java/swust/edu/cn/zzxt/dao/RefunctionactionMapper.java
+END
+PgsglMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/QTTest/!svn/ver/3199/zzxt/src/main/java/swust/edu/cn/zzxt/dao/PgsglMapper.java
+END
+CzylbxMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/QTTest/!svn/ver/3354/zzxt/src/main/java/swust/edu/cn/zzxt/dao/CzylbxMapper.java
+END
+WorkinstitutiontemoneyamountMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/QTTest/!svn/ver/3674/zzxt/src/main/java/swust/edu/cn/zzxt/dao/WorkinstitutiontemoneyamountMapper.java
+END
+QyshjxjMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/QTTest/!svn/ver/3287/zzxt/src/main/java/swust/edu/cn/zzxt/dao/QyshjxjMapper.java
+END
+LearningMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/QTTest/!svn/ver/2973/zzxt/src/main/java/swust/edu/cn/zzxt/dao/LearningMapper.java
+END
+StudentMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/QTTest/!svn/ver/3620/zzxt/src/main/java/swust/edu/cn/zzxt/dao/StudentMapper.java
+END
+MajorMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/QTTest/!svn/ver/3251/zzxt/src/main/java/swust/edu/cn/zzxt/dao/MajorMapper.java
+END
+FunctionMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/QTTest/!svn/ver/2476/zzxt/src/main/java/swust/edu/cn/zzxt/dao/FunctionMapper.java
+END
+LstdMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/QTTest/!svn/ver/3427/zzxt/src/main/java/swust/edu/cn/zzxt/dao/LstdMapper.java
+END
+ReqyshjxjparentMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/QTTest/!svn/ver/2650/zzxt/src/main/java/swust/edu/cn/zzxt/dao/ReqyshjxjparentMapper.java
+END
+QgzxMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/QTTest/!svn/ver/2650/zzxt/src/main/java/swust/edu/cn/zzxt/dao/QgzxMapper.java
+END
+PrizeMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/QTTest/!svn/ver/2804/zzxt/src/main/java/swust/edu/cn/zzxt/dao/PrizeMapper.java
+END
+EducationexperienceMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/QTTest/!svn/ver/2650/zzxt/src/main/java/swust/edu/cn/zzxt/dao/EducationexperienceMapper.java
+END
+WorkstepfolwMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/QTTest/!svn/ver/3011/zzxt/src/main/java/swust/edu/cn/zzxt/dao/WorkstepfolwMapper.java
+END
+RewardMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/QTTest/!svn/ver/3145/zzxt/src/main/java/swust/edu/cn/zzxt/dao/RewardMapper.java
+END
+YlbzMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/QTTest/!svn/ver/3304/zzxt/src/main/java/swust/edu/cn/zzxt/dao/YlbzMapper.java
+END
+GjzxjMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/QTTest/!svn/ver/3242/zzxt/src/main/java/swust/edu/cn/zzxt/dao/GjzxjMapper.java
+END
+QgzxjobMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/QTTest/!svn/ver/2650/zzxt/src/main/java/swust/edu/cn/zzxt/dao/QgzxjobMapper.java
+END
+StudentinfoMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/QTTest/!svn/ver/3513/zzxt/src/main/java/swust/edu/cn/zzxt/dao/StudentinfoMapper.java
+END
+ShjxjMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/QTTest/!svn/ver/3183/zzxt/src/main/java/swust/edu/cn/zzxt/dao/ShjxjMapper.java
+END
+SuggestionMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/QTTest/!svn/ver/3581/zzxt/src/main/java/swust/edu/cn/zzxt/dao/SuggestionMapper.java
+END
+AttachmentMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/QTTest/!svn/ver/2476/zzxt/src/main/java/swust/edu/cn/zzxt/dao/AttachmentMapper.java
+END
+AssessmentMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/QTTest/!svn/ver/2650/zzxt/src/main/java/swust/edu/cn/zzxt/dao/AssessmentMapper.java
+END
+ShjxjtypeMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/QTTest/!svn/ver/2650/zzxt/src/main/java/swust/edu/cn/zzxt/dao/ShjxjtypeMapper.java
+END
+RegjzxjparentMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/QTTest/!svn/ver/2621/zzxt/src/main/java/swust/edu/cn/zzxt/dao/RegjzxjparentMapper.java
+END
+SituationMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/QTTest/!svn/ver/2476/zzxt/src/main/java/swust/edu/cn/zzxt/dao/SituationMapper.java
+END
+StudentclassMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/QTTest/!svn/ver/3345/zzxt/src/main/java/swust/edu/cn/zzxt/dao/StudentclassMapper.java
+END
+InstructorMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/QTTest/!svn/ver/3344/zzxt/src/main/java/swust/edu/cn/zzxt/dao/InstructorMapper.java
+END
+GjjxjMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/QTTest/!svn/ver/3289/zzxt/src/main/java/swust/edu/cn/zzxt/dao/GjjxjMapper.java
+END
+InstitutionMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/QTTest/!svn/ver/3088/zzxt/src/main/java/swust/edu/cn/zzxt/dao/InstitutionMapper.java
+END
+RoleMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/QTTest/!svn/ver/3600/zzxt/src/main/java/swust/edu/cn/zzxt/dao/RoleMapper.java
+END
+ActionMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/QTTest/!svn/ver/2650/zzxt/src/main/java/swust/edu/cn/zzxt/dao/ActionMapper.java
+END
+ReuserroleMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/QTTest/!svn/ver/3505/zzxt/src/main/java/swust/edu/cn/zzxt/dao/ReuserroleMapper.java
+END
+WorkMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/QTTest/!svn/ver/3471/zzxt/src/main/java/swust/edu/cn/zzxt/dao/WorkMapper.java
+END

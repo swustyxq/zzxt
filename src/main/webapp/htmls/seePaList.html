@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="../images/favicon.png">
+
+
+
+<title>西南科技大学资助系统</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../css/bootstrap.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="../css/theme.css" rel="stylesheet">
+<link href="../css/docs.css" rel="stylesheet">
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/github.min.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="../javascript/jPaginate/css/style.css" media="screen" />
+<script src="../javascript/jquery.min.js"></script>
+<script src="../javascript/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="../javascript/jPaginate/jquery.paginate.js"></script>
+<script src="../javascript/holder.min.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/seePaList.js"></script> 
+<script src="../js/paJudge.js"></script>  
+<script src="../js/seePaIntroduction.js"></script>
+<script src="../js/seePaPlan.js"></script>
+</head>
+
+<body>
+
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">西南科技大学学生资助系统</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><span
+							id="current_user">学生用户</span> </a>
+						<ul class="dropdown-menu">
+							<li class="divider"></li>
+							<li class="dropdown-header">系统帮助</li>
+							<li><a href="help.html"><span
+									class="glyphicon glyphicon-book"></span>关于系统</a></li>
+							<li><a href="help.html"><span
+									class="glyphicon glyphicon-print"></span>使用说明</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">基本功能</li>
+							<li><a href="#" data-toggle="modal"
+								data-target="#changePassword"><span
+									class="glyphicon glyphicon-cog"></span>修改密码</a></li>
+							<li><a href="#" id="logout"><span
+									class="glyphicon glyphicon-log-out"></span>退出</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+	<div class="container theme-showcase">
+		<div class="col-md-12">
+			<div class="col-md-12">
+
+				<div class="page-header">
+					<small><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;当前位置导航：&nbsp;&nbsp;&nbsp;&nbsp;
+						<span id="location"> <a href="#">首页</a>&gt;<a href="#">使用说明</a>&gt;<a
+							href="#">学生信息</a>
+					</span> </small>
+				</div>
+			</div>
+
+
+			<!-- 左侧导航栏    -->
+			<div class="col-md-3">
+				<div class="bs-example">
+					<div id="navigation" class="panel-group"></div>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div class="bs-Shaozhou">
+					<div style="text-align: center">
+						<h2 style="text-align: center">大学生平安保险信息</h2>
+					</div>
+					<ul id="myTab" class="nav nav-tabs" role="tablist">
+						<li class="active"><a data-toggle="tab" role="tab" href="#detail">平安保险购买情况</a></li>
+						<li class=""><a data-toggle="tab" role="tab"
+							href="#introduction">平安保险介绍</a></li>
+						<li class=""><a data-toggle="tab" role="tab" href="#plan">平安保险安排</a></li>
+					</ul>
+					<div id="myTabContent" class="tab-content">	
+						<div id="introduction" class="tab-pane fade">
+							<div class="bs-Shaozhou" id="paIntroduction"></div>
+						</div>
+						<div id="plan" class="tab-pane fade">
+							<div class="bs-Shaozhou" id="paPlan"></div>
+						</div>
+						<div id="detail" class="tab-pane fade active in">
+							<br>
+							<h3 style="text-align: center">
+								<b>大学生平安保险购买情况</b>
+							</h3>
+							<br />
+							<table id="table" class="table table-hover">
+								<tr>
+									<td>
+										<div>
+											<select id="annual" class="form-control" style="width: 150px;">
+												<option >2014-2015</option>
+												<option >2015-2016</option>
+												<option >2016-2017</option>
+												<option >2017-2018</option>
+											</select>
+										</div>
+									</td>
+									<td>
+										<div>
+											<select id="colleage" class="form-control"
+												onchange="showMajor()" style="width: 150px;">
+												<option id="annual1" value="0">学院</option>
+											</select>
+										</div>
+									</td>
+									<td>
+										<div>
+											<select id="major" class="form-control"
+												onchange="showClass()" style="width: 150px;">
+												<option id="major1" value="0">专业</option>
+											</select>
+										</div>
+									</td>
+									<td>
+										<div>
+											<select id="stuclass" class="form-control" 												style="width: 150px;">
+												<option id="stuclass1" value="0">班级</option>
+											</select>
+										</div>
+									</td>
+									<td>
+										<div>
+											<button type="submit" class="btn btn-primary"
+												data-toggle="modal" id="Query">查询</button>
+										</div>
+									</td>
+								</tr>
+							</table>
+							<table id="table2" class="table table-hover">
+								<tr style="vertical-align: middle;">
+									<td>
+										<div class="form-group" align="left">
+											<button type="button" class="btn btn-warning"
+												onclick="export1()">
+												<span class="glyphicon glyphicon-share-alt"></span> 导出Excel
+											</button>
+										</div>
+									</td>
+									<td> 
+										<div class="form-group" align="right" id=count1>
+											<button type="button" class="btn btn-success"
+												onclick="javascript:countone()">
+												<span class="glyphicon glyphicon-share-alt"></span> 按学院统计
+											</button>
+										</div>
+									</td>
+									<td>
+										<div class="form-group" align="right" id=count2>
+											<button type="button" class="btn btn-success"
+												onclick="javascript:counttwo()">
+												<span class="glyphicon glyphicon-share-alt"></span> 按专业统计
+											</button>
+										</div>
+									</td>
+									<td>
+										<div class="form-group" align="right" id=count3>
+											<button type="button" class="btn btn-success"
+												onclick="javascript:countthree()">
+												<span class="glyphicon glyphicon-share-alt"></span> 按班级统计
+											</button>
+										</div>
+									</td>
+								</tr>
+							</table>
+							<!-- <table border="0" cellpadding="0" cellspacing="0" width="100%"
+								height="100%" id="loader_container">
+								<tr>
+									<td align="center" id="infoword"></td>
+								</tr>
+							</table> -->
+							<table id="info" class="table table-hover">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>姓名</th>
+										<th>年度</th>
+										<th>学院</th>
+										<th>专业</th>
+										<th>班级</th>
+										<th>操作</th>
+									</tr>
+								</thead>
+								<tbody id="studentPaListTable">
+								</tbody>
+							</table>
+							<table id=tabled class="table table-hover">
+							</table>
+							<div class="col-md-12" align="left" id="studentList">
+								<!-- 分页 -->
+							</div>
+							<br></br>
+						</div>
+					</div>
+				</div>
+				<!-- bs-Shaozhou -->
+
+		</div>
+		<!-- 修改密码的模态对话框 Modal -->
+		<div class="modal fade" id="changePassword" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">修改用户密码</h4>
+					</div>
+					<div class="modal-body">
+						<!-- 对话框里面的内容   -->
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-4 control-label">当前密码：</label>
+								<div class="col-sm-6">
+									<input type="password" class="form-control" id="inputPassword1"
+										placeholder="Email">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword3" class="col-sm-4 control-label">新密码：</label>
+								<div class="col-sm-6">
+									<input type="password" class="form-control" id="inputPassword2"
+										placeholder="Password">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword3" class="col-sm-4 control-label">再次输入新密码：</label>
+								<div class="col-sm-6">
+									<input type="password" class="form-control" id="inputPassword3"
+										placeholder="Password">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button Id="changePWD" type="button" class="btn btn-primary">保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<footer class="bs-footer" role="contentinfo">
+		<p class="pull-right">
+			<a href="#">回到页面顶部</a>
+		</p>
+		<div class="container" id="copyright"></div>
+	</footer>
+</body>
+</html>

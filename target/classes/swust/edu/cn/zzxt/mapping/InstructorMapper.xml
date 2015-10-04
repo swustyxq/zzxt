@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.InstructorMapper">
+	<resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Instructor">
+		<id column="inst_id" property="instId" jdbcType="INTEGER" />
+		<result column="inst_userId" property="instUserid" jdbcType="INTEGER" />
+		<result column="inst_phoneNumber" property="instPhonenumber"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs" type="swust.edu.cn.zzxt.model.Instructor"
+		extends="BaseResultMap">
+		<result column="inst_description" property="instDescription"
+			jdbcType="LONGVARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		inst_id, inst_userId, inst_phoneNumber
+	</sql>
+	<sql id="Blob_Column_List">
+		inst_description
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from instructor
+		where inst_id = #{instId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		instructor
+		where inst_id = #{instId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="swust.edu.cn.zzxt.model.Instructor">
+		insert into instructor
+		(inst_id, inst_userId, inst_phoneNumber,
+		inst_description)
+		values
+		(#{instId,jdbcType=INTEGER}, #{instUserid,jdbcType=INTEGER},
+		#{instPhonenumber,jdbcType=VARCHAR},
+		#{instDescription,jdbcType=LONGVARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.Instructor">
+		insert into instructor
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="instId != null">
+				inst_id,
+			</if>
+			<if test="instUserid != null">
+				inst_userId,
+			</if>
+			<if test="instPhonenumber != null">
+				inst_phoneNumber,
+			</if>
+			<if test="instDescription != null">
+				inst_description,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="instId != null">
+				#{instId,jdbcType=INTEGER},
+			</if>
+			<if test="instUserid != null">
+				#{instUserid,jdbcType=INTEGER},
+			</if>
+			<if test="instPhonenumber != null">
+				#{instPhonenumber,jdbcType=VARCHAR},
+			</if>
+			<if test="instDescription != null">
+				#{instDescription,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.Instructor">
+		update instructor
+		<set>
+			<if test="instUserid != null">
+				inst_userId = #{instUserid,jdbcType=INTEGER},
+			</if>
+			<if test="instPhonenumber != null">
+				inst_phoneNumber = #{instPhonenumber,jdbcType=VARCHAR},
+			</if>
+			<if test="instDescription != null">
+				inst_description =
+				#{instDescription,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where inst_id = #{instId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="swust.edu.cn.zzxt.model.Instructor">
+		update
+		instructor
+		set inst_userId = #{instUserid,jdbcType=INTEGER},
+		inst_phoneNumber = #{instPhonenumber,jdbcType=VARCHAR},
+		inst_description = #{instDescription,jdbcType=LONGVARCHAR}
+		where
+		inst_id = #{instId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Instructor">
+		update instructor
+		set inst_userId = #{instUserid,jdbcType=INTEGER},
+		inst_phoneNumber =
+		#{instPhonenumber,jdbcType=VARCHAR}
+		where inst_id =
+		#{instId,jdbcType=INTEGER}
+	</update>
+	<select id="selectByUserId" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from instructor
+		where inst_userId = #{userId,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectTeacherByInstid" resultType="swust.edu.cn.zzxt.selfmodel.TeacherModal"
+		parameterType="java.lang.Integer">
+		SELECT
+		`user`.user_name AS name,
+		instructor.inst_id as
+		instid
+		FROM
+		`user`,
+		instructor
+		WHERE
+		`user`.user_id =
+		instructor.inst_userId
+		AND user_instId = #{instid,jdbcType=INTEGER}
+	</select>
+</mapper>

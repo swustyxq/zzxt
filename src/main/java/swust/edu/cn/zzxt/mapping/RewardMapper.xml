@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.RewardMapper">
+	<resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Reward">
+		<id column="rewr_id" property="rewrId" jdbcType="INTEGER" />
+		<result column="rewr_workId" property="rewrWorkid" jdbcType="INTEGER" />
+		<result column="rewr_scholarshipId" property="rewrScholarshipid"
+			jdbcType="VARCHAR" />
+		<result column="rewr_time" property="rewrTime" jdbcType="VARCHAR" />
+		<result column="rewr_name" property="rewrName" jdbcType="VARCHAR" />
+		<result column="rewr_awarded" property="rewrAwarded" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		rewr_id, rewr_workId, rewr_scholarshipId, rewr_time, rewr_name, rewr_awarded
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from reward
+		where rewr_id = #{rewrId,jdbcType=INTEGER}
+	</select>
+
+
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from reward
+		where rewr_id = #{rewrId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="swust.edu.cn.zzxt.model.Reward">
+		insert into reward (rewr_id, rewr_workId, rewr_scholarshipId,
+		rewr_time, rewr_name, rewr_awarded
+		)
+		values (#{rewrId,jdbcType=INTEGER}, #{rewrWorkid,jdbcType=INTEGER},
+		#{rewrScholarshipid,jdbcType=VARCHAR},
+		#{rewrTime,jdbcType=VARCHAR}, #{rewrName,jdbcType=VARCHAR}, #{rewrAwarded,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.Reward">
+		insert into reward
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="rewrId != null">
+				rewr_id,
+			</if>
+			<if test="rewrWorkid != null">
+				rewr_workId,
+			</if>
+			<if test="rewrScholarshipid != null">
+				rewr_scholarshipId,
+			</if>
+			<if test="rewrTime != null">
+				rewr_time,
+			</if>
+			<if test="rewrName != null">
+				rewr_name,
+			</if>
+			<if test="rewrAwarded != null">
+				rewr_awarded,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="rewrId != null">
+				#{rewrId,jdbcType=INTEGER},
+			</if>
+			<if test="rewrWorkid != null">
+				#{rewrWorkid,jdbcType=INTEGER},
+			</if>
+			<if test="rewrScholarshipid != null">
+				#{rewrScholarshipid,jdbcType=VARCHAR},
+			</if>
+			<if test="rewrTime != null">
+				#{rewrTime,jdbcType=VARCHAR},
+			</if>
+			<if test="rewrName != null">
+				#{rewrName,jdbcType=VARCHAR},
+			</if>
+			<if test="rewrAwarded != null">
+				#{rewrAwarded,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.Reward">
+		update reward
+		<set>
+			<if test="rewrWorkid != null">
+				rewr_workId = #{rewrWorkid,jdbcType=INTEGER},
+			</if>
+			<if test="rewrScholarshipid != null">
+				rewr_scholarshipId = #{rewrScholarshipid,jdbcType=VARCHAR},
+			</if>
+			<if test="rewrTime != null">
+				rewr_time = #{rewrTime,jdbcType=VARCHAR},
+			</if>
+			<if test="rewrName != null">
+				rewr_name = #{rewrName,jdbcType=VARCHAR},
+			</if>
+			<if test="rewrAwarded != null">
+				rewr_awarded = #{rewrAwarded,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where rewr_id = #{rewrId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Reward">
+		update reward
+		set rewr_workId = #{rewrWorkid,jdbcType=INTEGER},
+		rewr_scholarshipId = #{rewrScholarshipid,jdbcType=VARCHAR},
+		rewr_time = #{rewrTime,jdbcType=VARCHAR},
+		rewr_name = #{rewrName,jdbcType=VARCHAR},
+		rewr_awarded = #{rewrAwarded,jdbcType=VARCHAR}
+		where rewr_id = #{rewrId,jdbcType=INTEGER}
+	</update>
+
+<!-- 赵学融
+	20140718 -->
+	<select id="selectByWorkId" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from reward
+		where rewr_workId = #{workId,jdbcType=INTEGER}
+		and rewr_scholarshipId=#{schoolershipId,jdbcType=INTEGER}
+	</select>
+  <!-- wj自己写的方法findRewardBywAW 通过schoolshipid查找记录-->
+  <select id="findRewardByWAW" resultMap="BaseResultMap"
+		parameterType="swust.edu.cn.zzxt.model.Reward">
+		select
+		<include refid="Base_Column_List" />
+		from reward
+		where rewr_workId = #{rewrWorkid,jdbcType=INTEGER}
+		and rewr_scholarshipId=#{rewrScholarshipid,jdbcType=INTEGER}
+	</select>
+</mapper>

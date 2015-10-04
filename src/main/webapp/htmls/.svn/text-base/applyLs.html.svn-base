@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="../images/favicon.png">
+
+<title>西南科技大学资助系统</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../css/bootstrap.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="../css/theme.css" rel="stylesheet">
+<link href="../css/docs.css" rel="stylesheet">
+<link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/github.min.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+
+<script src="../javascript/jquery.min.js"></script>
+<script src="../javascript/bootstrap.min.js"></script>
+<script src="../javascript/holder.min.js"></script>
+<script src="../js/common.js"></script>
+<style>
+	textarea{
+		width:100%;
+		height:100%;
+		Resize:none;
+	}
+	input{
+		border:1;
+	}
+</style>
+
+</head>
+<body>
+
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">西南科技大学学生资助系统</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle"
+							data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><span id="current_user">学生用户</span>
+						</a>
+						<ul class="dropdown-menu">
+							<li class="divider"></li>
+							<li class="dropdown-header">系统帮助</li>
+							<li><a href="about.html"><span class="glyphicon glyphicon-book"></span>关于系统</a></li>
+							<li><a href="help.html"><span class="glyphicon glyphicon-print"></span>使用说明</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">基本功能</li>
+							<li><a href="#" data-toggle="modal" data-target="#changePassword"><span class="glyphicon glyphicon-cog"></span>修改密码</a></li>
+							<li><a href="#" id="logout"><span class="glyphicon glyphicon-log-out"></span>退出</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+	<div class="container theme-showcase">
+		<div class="col-md-12">
+			<div class="col-md-12">
+
+				<div class="page-header">
+					<small><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;&nbsp;&nbsp;当前位置导航：&nbsp;&nbsp;&nbsp;&nbsp;
+						<span id="location">
+							<a href="#">首页</a>&gt;<a href="#">使用说明</a>&gt;<a href="#">学生信息</a>
+						</span>
+					</small>
+				</div>
+			</div>
+
+
+			<!-- 左侧导航栏    -->
+			<div class="col-md-3">
+				<div class="bs-example">
+					<div id="navigation" class="panel-group">
+						
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div class="bs-Shaozhou"style="text-align:center">
+					<table>
+						<tr>
+							<td>
+								<div class="input-group input-group-xm">
+									<input type="text"class="form-control"id="stuNumber"placeholder="请输入学号或身份证号码"/>
+								</div>
+							</td>
+							<td>&nbsp;&nbsp;
+								<button  type="button" class="btn btn-primary"id="select">查询</button>
+							</td>
+							<td id="studNumberyy" style="visibility:hidden">
+								<font color="red">请输入正确的学号或身份证号</font>
+							</td>
+						</tr>
+					</table>
+					<h3>西南科技大学2014 级新生“绿色通道”入学申请表</h3>	
+					
+					<table class="table table-bordered" id="lstdtable">
+						<tr>
+							<td width="100"><b>姓名</b></td>
+							<td width="100" id="studName"></td>
+							<td><b>性别</b></td>
+							<td id="studSex"colspan="2"></td>
+							<td><b>学号</b></td>
+							<td colspan="3"id="studNumber"></td>
+							
+						</tr>
+						<tr>
+							<th colspan="2">所在学院</th>
+							<td colspan="3"id="instName"></td>
+							<td><b>专业班级</b></td>
+							<td colspan="2"id="studClass"></td>
+						</tr>
+						<tr>
+							<td><b>应缴学费总额</b></td>
+							<td>5555</td>
+							<td colspan="6">4355元，住宿费1200元，其 他 费 用355元。</td>
+						</tr>
+						<tr>
+							<td><b>申请缓缴费金额</b></td>
+							<td id="zonge"></td>
+							<td colspan="4" style="text-align:left">
+								<form class="form-inline">其中：学费
+									<input class="form-control"id="lstdApplytuition"
+											style="width:20%" id=""onblur="jisuan()"/>元，住宿费
+									<input class="form-control"id="lstdApplyaccommodation"
+											style="width:20%"onblur="jisuan()"/>元
+								</form>
+							</td>
+							<td><b>缓缴费期限</b></td>
+							<td >
+								<select class="form-control"id="lstdLimittime">
+									<option value="一个月" id="ygy">一个月</option>
+									<option value="两个月" id="lgy">两个月</option>
+									<option value="三个月" id="sgy">三个月</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="3"><br /><b>办理助学贷款情况</b></td>
+							<td colspan="4">已签订生源地信用助学贷款合同：
+								<input type="radio" name="radio2"value="已签订生源地信用助学贷款合同"onclick="daikuan()"/>
+								&nbsp;&nbsp;&nbsp;&nbsp;
+							</td>
+							<td colspan="3"rowspan="3">
+								<form class="form-inline"><b>申请生源地信用助学贷款金额：</b><br />
+									<input class="form-control" style="width:20%"id="inputdaikuan"/>元/学年
+									其中：学费<p style="display:inline"id="lstdtion1"></p>元，
+								住宿费<p style="display:inline"id="lstdtion2"></p>元<br/>
+								<b>生源地信用助学贷款办理银行</b>&nbsp;&nbsp;&nbsp;<br />
+								农村信用合作社<input type="radio" name="radio4"id="radio41"value="农村信用合作社"
+												onclick="kaifabank()"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<br />国家开发银行<input type="radio" name="radio4"id="radio42"
+													value="国家开发银行"onclick="kaifabank()"/>
+								回执码<input class="form-control"style="display:inline;width:43%;"id="lstdReturncode"/>
+								</form>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4">正在办理生源地信用助学贷款：
+								<input type="radio" name="radio2"value="正在办理生源地信用助学贷款"onclick="daikuan()"/>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4">打算申请校园地助学贷款：
+								<input type="radio" name="radio2"value="打算申请校园地助学贷款"onclick="daikuan()"/>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3"><b>生源所在地（省、市、县（区））</b></td>
+							<td colspan="5" id="stinAreadeatilhome"></td>
+							
+						</tr>
+						<tr>
+							<td colspan="2"><b>目前家庭地址</b></td>
+							<td colspan="6" >
+								<form class="form-inline">
+									<select class="form-control"style="width:16%"id="province"onchange="cityChange()"></select>
+									<select class="form-control"style="width:18%"id="city"onchange="countyChange()"></select>
+									<select class="form-control"style="width:20%"id="county"onchange="townChange()"></select>
+									<select class="form-control"style="width:27%"id="town"></select>
+									<input class="form-control" style="width:16%"id="vallige"placeholder="村/社"/>
+								</form>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><b>入学来源</b></td>
+							<td colspan="2">
+								<input type="radio"value="城镇"name="radio1"/>城镇
+								<input type="radio"value="农村 "name="radio1"/>农村
+							</td>
+							<td colspan="2"><b>家庭联系电话</b></td>
+							<td colspan="2" >
+								<input id="phoneNumber"class="form-control"onblur="checkPhoneForm()"/>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><b>父亲姓名</b></td>
+							<td colspan="2" >
+								<input class="form-control"id="fatherName"/>
+							</td>
+							<td><b>身份证号码</b></td>
+							<td colspan="2">
+								<input class="form-control"id="FIdNumber"/>
+							</td>
+							<td rowspan="2">2014年家庭<br />是否受灾&nbsp;&nbsp;<br />
+								<input type="radio"name="radio3"value="受灾"/>是&nbsp;&nbsp;
+								<input type="radio"name="radio3"value="没有受灾"checked="checked"/>否
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><b>母亲姓名</b></td>
+							<td colspan="2">
+								<input class="form-control"id="motherName"/>
+							</td>
+							<td><b>身份证号码</b></td>
+							<td colspan="2">
+								<input class="form-control"id="MIdNumber"/>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="8"style="text-align:left"><b>申请理由及家庭经济主要来源、经济状况</b>
+							<textarea rows="7"style="width:100%;height:100%"class="form-control"id="lstdApplyReason"></textarea></td>
+						</tr>
+						<tr>
+							<td colspan="8"height="200"style="text-align:left">
+								<b>缓缴费用承诺</b><br /><br />
+								本人在入学时应缴各种费用5555元，因 <input style="display:inline;width:65%"class="form-control"id="lstdPaymentReason"/> 
+								<br /><br />原因，不能在入学时缴齐费用，现申请缓缴学费<p style="display:inline"id="lstdApplytuition1"></p>元，住宿费
+								<p style="display:inline"id="lstdApplyaccommodation1"></p>元，合计费用<p style="display:inline"id="zonge1"></p>元，
+								本人承诺将通过<br /><br />（<input type="radio"name="radio5"value="生源地信用助学贷款"/>生源地信用助学贷款，
+											<input type="radio"name="radio5"value="分期付款"/>分期付款，
+											<input type="radio"name="radio5"checked="checked"value="其他"/>其他    ）的方式尽快缴清所欠费用,请批准。
+							</td>
+						</tr>
+						<tr style="display:table-row" id="xueyuanyijian">
+							<td colspan="8"style="text-align:left">
+								<b>学院负责人意见</b>
+								<textarea id="classopinion"class="form-control"rows="7">经审核，该生符合申请绿色通道办理条件的第     条款，同意通过绿色通道办理该生入学手续。并督促该生按照承诺缴清费用。</textarea>
+							</td>
+						</tr>
+					</table>
+					<div align="left">
+						<div id="bitian" style="display:none">
+							<font color="red">请完善所有必填信息！</font>
+						</div>
+					</div>
+					<div align="right" id="nonebutton">
+							<button type="button" class="btn btn-primary" id="save">
+									<b>保存</b>
+							</button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<button type="button" class="btn btn-success" id="submit">
+									<b>提交</b>
+							</button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<button type="button" id="returnToIndex"class="btn btn-info" onclick="javascript: history.go(-1);">
+									<span class="glyphicon glyphicon-arrow-left"></span>
+									返回
+							</button>
+								
+					</div>
+			</div>
+			
+		</div>
+		<!-- 修改密码的模态对话框 Modal -->
+		<div class="modal fade" id="changePassword" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title">修改用户密码</h4>
+					</div>
+					<div class="modal-body">
+						<!-- 对话框里面的内容   -->
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-4 control-label">当前密码：</label>
+								<div class="col-sm-6">
+									<input type="password" class="form-control" id="inputPassword1"
+										placeholder="原始密码">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword3" class="col-sm-4 control-label">新密码：</label>
+								<div class="col-sm-6">
+									<input type="password" class="form-control" id="inputPassword2"
+										placeholder="新密码">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword3" class="col-sm-4 control-label">再次输入新密码：</label>
+								<div class="col-sm-6">
+									<input type="password" class="form-control" id="inputPassword3"
+										placeholder="重复新密码">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button Id="changePWD" type="button" class="btn btn-primary">保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+	<footer class="bs-footer" role="contentinfo">
+		<p class="pull-right">
+			<a href="#">回到页面顶部</a>
+		</p>
+		<div class="container" id="copyright">
+			
+		</div>
+	</footer>
+</body>
+<script src="../js/applyLs.js"></script>
+</html>

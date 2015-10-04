@@ -1,0 +1,737 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.LstdMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Lstd" >
+    <id column="lstd_id" property="lstdId" jdbcType="INTEGER" />
+    <result column="lstd_studId" property="lstdStudid" jdbcType="INTEGER" />
+    <result column="lstd_applyTuition" property="lstdApplytuition" jdbcType="DOUBLE" />
+    <result column="lstd_applyAccommodation" property="lstdApplyaccommodation" jdbcType="DOUBLE" />
+    <result column="lstd_limitTime" property="lstdLimittime" jdbcType="VARCHAR" />
+    <result column="lstd_loans" property="lstdLoans" jdbcType="VARCHAR" />
+    <result column="lstd_onGoing" property="lstdOngoing" jdbcType="INTEGER" />
+    <result column="lstd_bank" property="lstdBank" jdbcType="VARCHAR" />
+    <result column="lstd_returnCode" property="lstdReturncode" jdbcType="VARCHAR" />
+    <result column="lstd_appliedOnline" property="lstdAppliedonline" jdbcType="VARCHAR" />
+    <result column="lstd_classOpinionTime" property="lstdClassopiniontime" jdbcType="TIMESTAMP" />
+    <result column="lstd_academyOpinionTime" property="lstdAcademyopiniontime" jdbcType="TIMESTAMP" />
+    <result column="lstd_wsflId" property="lstdWsflid" jdbcType="INTEGER" />
+    <result column="lstd_workId" property="lstdWorkid" jdbcType="INTEGER" />
+    <result column="lstd_state" property="lstdState" jdbcType="INTEGER" />
+     <result column="lstd_applyRole" property="lstdApplyRole" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="swust.edu.cn.zzxt.model.LstdWithBLOBs" extends="BaseResultMap" >
+    <result column="lstd_notLoan" property="lstdNotloan" jdbcType="LONGVARCHAR" />
+    <result column="lstd_classOpinion" property="lstdClassopinion" jdbcType="LONGVARCHAR" />
+    <result column="lstd_academyOpinion" property="lstdAcademyopinion" jdbcType="LONGVARCHAR" />
+    <result column="lstd_applyReason" property="lstdApplyReason" jdbcType="LONGVARCHAR" />
+    <result column="lstd_repayWay" property="lstdRepayWay" jdbcType="VARCHAR" />
+    <result column="lstd_disaster" property="lstdDisaster" jdbcType="VARCHAR" />
+    <result column="lstd_paymentReason" property="lstdPaymentReason" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    lstd_id, lstd_studId, lstd_applyTuition, lstd_applyAccommodation, lstd_limitTime, 
+    lstd_loans, lstd_onGoing, lstd_bank, lstd_returnCode, lstd_appliedOnline, lstd_classOpinionTime, 
+    lstd_academyOpinionTime, lstd_wsflId, lstd_workId, lstd_state,lstd_applyRole
+  </sql>
+  <sql id="Blob_Column_List" >
+    lstd_notLoan, lstd_classOpinion, lstd_academyOpinion,lstd_academyOpinion,
+    lstd_applyReason,lstd_repayWay,lstd_disaster,lstd_paymentReason
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from lstd
+    where lstd_id = #{lstdId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lstd
+    where lstd_id = #{lstdId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.LstdWithBLOBs" >
+    insert into lstd (lstd_id, lstd_studId, lstd_applyTuition, 
+      lstd_applyAccommodation, lstd_limitTime, lstd_loans, 
+      lstd_onGoing, lstd_bank, lstd_returnCode, 
+      lstd_appliedOnline, lstd_classOpinionTime, 
+      lstd_academyOpinionTime, lstd_wsflId, lstd_workId, 
+      lstd_state, lstd_applyRole, lstd_notLoan, lstd_classOpinion, 
+      lstd_academyOpinion,lstd_applyReason,lstd_repayWay,lstd_disaster,lstd_paymentReason)
+    values (#{lstdId,jdbcType=INTEGER}, #{lstdStudid,jdbcType=INTEGER}, #{lstdApplytuition,jdbcType=DOUBLE}, 
+      #{lstdApplyaccommodation,jdbcType=DOUBLE}, #{lstdLimittime,jdbcType=VARCHAR}, #{lstdLoans,jdbcType=VARCHAR}, 
+      #{lstdOngoing,jdbcType=INTEGER}, #{lstdBank,jdbcType=VARCHAR}, #{lstdReturncode,jdbcType=VARCHAR}, 
+      #{lstdAppliedonline,jdbcType=VARCHAR}, #{lstdClassopiniontime,jdbcType=TIMESTAMP}, 
+      #{lstdAcademyopiniontime,jdbcType=TIMESTAMP}, #{lstdWsflid,jdbcType=INTEGER}, #{lstdWorkid,jdbcType=INTEGER}, 
+      #{lstdState,jdbcType=INTEGER},#{lstdApplyRole,jbdcType=INTEGER}, #{lstdNotloan,jdbcType=LONGVARCHAR}, #{lstdClassopinion,jdbcType=LONGVARCHAR}, 
+      #{lstdAcademyopinion,jdbcType=LONGVARCHAR}, 
+      #{lstdApplyReason,jdbcType=LONGVARCHAR},#{lstdRepayWay,jdbcType=VARCHAR},
+      #{lstdDisaster,jdbcType=VARCHAR},#{lstdPaymentReason,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.LstdWithBLOBs" >
+    insert into lstd
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lstdId != null" >
+        lstd_id,
+      </if>
+      <if test="lstdStudid != null" >
+        lstd_studId,
+      </if>
+      <if test="lstdApplytuition != null" >
+        lstd_applyTuition,
+      </if>
+      <if test="lstdApplyaccommodation != null" >
+        lstd_applyAccommodation,
+      </if>
+      <if test="lstdLimittime != null" >
+        lstd_limitTime,
+      </if>
+      <if test="lstdLoans != null" >
+        lstd_loans,
+      </if>
+      <if test="lstdOngoing != null" >
+        lstd_onGoing,
+      </if>
+      <if test="lstdBank != null" >
+        lstd_bank,
+      </if>
+      <if test="lstdReturncode != null" >
+        lstd_returnCode,
+      </if>
+      <if test="lstdAppliedonline != null" >
+        lstd_appliedOnline,
+      </if>
+      <if test="lstdClassopiniontime != null" >
+        lstd_classOpinionTime,
+      </if>
+      <if test="lstdAcademyopiniontime != null" >
+        lstd_academyOpinionTime,
+      </if>
+      <if test="lstdWsflid != null" >
+        lstd_wsflId,
+      </if>
+      <if test="lstdWorkid != null" >
+        lstd_workId,
+      </if>
+      <if test="lstdState != null" >
+        lstd_state,
+      </if>
+      <if test="lstdApplyRole != null">
+      	lstd_applyRole,
+      </if>
+      <if test="lstdNotloan != null" >
+        lstd_notLoan,
+      </if>
+      <if test="lstdClassopinion != null" >
+        lstd_classOpinion,
+      </if>
+      <if test="lstdAcademyopinion != null" >
+        lstd_academyOpinion,
+      </if>
+      <if test="lstdApplyReason != null">
+      	lstd_applyReason,
+      </if>
+      <if test="lstdRepayWay != null">
+      	lstd_repayWay,
+      </if>
+      <if test="lstdDisaster != null">
+      	lstd_disaster,
+      </if>
+      <if test="lstdPaymentReason != null">
+      	lstd_paymentReason,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lstdId != null" >
+        #{lstdId,jdbcType=INTEGER},
+      </if>
+      <if test="lstdStudid != null" >
+        #{lstdStudid,jdbcType=INTEGER},
+      </if>
+      <if test="lstdApplytuition != null" >
+        #{lstdApplytuition,jdbcType=DOUBLE},
+      </if>
+      <if test="lstdApplyaccommodation != null" >
+        #{lstdApplyaccommodation,jdbcType=DOUBLE},
+      </if>
+      <if test="lstdLimittime != null" >
+        #{lstdLimittime,jdbcType=VARCHAR},
+      </if>
+      <if test="lstdLoans != null" >
+        #{lstdLoans,jdbcType=VARCHAR},
+      </if>
+      <if test="lstdOngoing != null" >
+        #{lstdOngoing,jdbcType=INTEGER},
+      </if>
+      <if test="lstdBank != null" >
+        #{lstdBank,jdbcType=VARCHAR},
+      </if>
+      <if test="lstdReturncode != null" >
+        #{lstdReturncode,jdbcType=VARCHAR},
+      </if>
+      <if test="lstdAppliedonline != null" >
+        #{lstdAppliedonline,jdbcType=VARCHAR},
+      </if>
+      <if test="lstdClassopiniontime != null" >
+        #{lstdClassopiniontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lstdAcademyopiniontime != null" >
+        #{lstdAcademyopiniontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lstdWsflid != null" >
+        #{lstdWsflid,jdbcType=INTEGER},
+      </if>
+      <if test="lstdWorkid != null" >
+        #{lstdWorkid,jdbcType=INTEGER},
+      </if>
+      <if test="lstdState != null" >
+        #{lstdState,jdbcType=INTEGER},
+      </if>
+      <if test="lstdApplyRole !=null">
+      	#{lstdApplyRole,jdbcType=INTEGER},
+      </if>
+      <if test="lstdNotloan != null" >
+        #{lstdNotloan,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="lstdClassopinion != null" >
+        #{lstdClassopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="lstdAcademyopinion != null" >
+        #{lstdAcademyopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="lstdApplyReason != null">
+      	#{lstdApplyReason,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="lstdRepayWay != null">
+      	 #{lstdRepayWay,jdbcType=VARCHAR},
+      </if>
+      <if test="lstdDisaster != null">
+      	#{lstdDisaster,jdbcType=VARCHAR},
+      </if>
+      <if test="lstdPaymentReason != null">
+      	#{lstdPaymentReason,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.LstdWithBLOBs" >
+    update lstd
+    <set >
+      <if test="lstdStudid != null" >
+        lstd_studId = #{lstdStudid,jdbcType=INTEGER},
+      </if>
+      <if test="lstdApplytuition != null" >
+        lstd_applyTuition = #{lstdApplytuition,jdbcType=DOUBLE},
+      </if>
+      <if test="lstdApplyaccommodation != null" >
+        lstd_applyAccommodation = #{lstdApplyaccommodation,jdbcType=DOUBLE},
+      </if>
+      <if test="lstdLimittime != null" >
+        lstd_limitTime = #{lstdLimittime,jdbcType=VARCHAR},
+      </if>
+      <if test="lstdLoans != null" >
+        lstd_loans = #{lstdLoans,jdbcType=VARCHAR},
+      </if>
+      <if test="lstdOngoing != null" >
+        lstd_onGoing = #{lstdOngoing,jdbcType=INTEGER},
+      </if>
+      <if test="lstdBank != null" >
+        lstd_bank = #{lstdBank,jdbcType=VARCHAR},
+      </if>
+      <if test="lstdReturncode != null" >
+        lstd_returnCode = #{lstdReturncode,jdbcType=VARCHAR},
+      </if>
+      <if test="lstdAppliedonline != null" >
+        lstd_appliedOnline = #{lstdAppliedonline,jdbcType=VARCHAR},
+      </if>
+      <if test="lstdClassopiniontime != null" >
+        lstd_classOpinionTime = #{lstdClassopiniontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lstdAcademyopiniontime != null" >
+        lstd_academyOpinionTime = #{lstdAcademyopiniontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lstdWsflid != null" >
+        lstd_wsflId = #{lstdWsflid,jdbcType=INTEGER},
+      </if>
+      <if test="lstdWorkid != null" >
+        lstd_workId = #{lstdWorkid,jdbcType=INTEGER},
+      </if>
+      <if test="lstdState != null" >
+        lstd_state = #{lstdState,jdbcType=INTEGER},
+      </if>
+      <if test="lstdApplyRole != null">
+      	lstd_applyRole = #{lstdApplyRole,jbdcType=INTEGER},
+      </if>
+      <if test="lstdNotloan != null" >
+        lstd_notLoan = #{lstdNotloan,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="lstdClassopinion != null" >
+        lstd_classOpinion = #{lstdClassopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="lstdAcademyopinion != null" >
+        lstd_academyOpinion = #{lstdAcademyopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="lstdApplyReason != null">
+      	lstd_applyReason = #{lstdApplyReason,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="lstdRepayWay != null">
+      	lstd_repayWay = #{lstdRepayWay,jdbcType=VARCHAR},
+      </if>
+      <if test="lstdDisaster != null">
+      	lstd_disaster = #{lstdDisaster,jdbcType=VARCHAR},
+      </if>
+      <if test="lstdPaymentReason != null">
+      	lstd_paymentReason = #{lstdPaymentReason,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where lstd_id = #{lstdId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="swust.edu.cn.zzxt.model.LstdWithBLOBs" >
+    update lstd
+    set lstd_studId = #{lstdStudid,jdbcType=INTEGER},
+      lstd_applyTuition = #{lstdApplytuition,jdbcType=DOUBLE},
+      lstd_applyAccommodation = #{lstdApplyaccommodation,jdbcType=DOUBLE},
+      lstd_limitTime = #{lstdLimittime,jdbcType=VARCHAR},
+      lstd_loans = #{lstdLoans,jdbcType=VARCHAR},
+      lstd_onGoing = #{lstdOngoing,jdbcType=INTEGER},
+      lstd_bank = #{lstdBank,jdbcType=VARCHAR},
+      lstd_returnCode = #{lstdReturncode,jdbcType=VARCHAR},
+      lstd_appliedOnline = #{lstdAppliedonline,jdbcType=VARCHAR},
+      lstd_classOpinionTime = #{lstdClassopiniontime,jdbcType=TIMESTAMP},
+      lstd_academyOpinionTime = #{lstdAcademyopiniontime,jdbcType=TIMESTAMP},
+      lstd_wsflId = #{lstdWsflid,jdbcType=INTEGER},
+      lstd_workId = #{lstdWorkid,jdbcType=INTEGER},
+      lstd_state = #{lstdState,jdbcType=INTEGER},
+      lstd_applyRole = #{lstdApplyRole,jbdcType=INTEGER},
+      lstd_notLoan = #{lstdNotloan,jdbcType=LONGVARCHAR},
+      lstd_classOpinion = #{lstdClassopinion,jdbcType=LONGVARCHAR},
+      lstd_academyOpinion = #{lstdAcademyopinion,jdbcType=LONGVARCHAR},
+      lstd_applyReason = #{lstdApplyReason,jdbcType=LONGVARCHAR},
+      lstd_repayWay = #{lstdRepayWay,jdbcType=VARCHAR},
+      lstd_disaster = #{lstdDisaster,jdbcType=VARCHAR},
+      lstd_paymentReason = #{lstdPaymentReason,jdbcType=LONGVARCHAR}
+    where lstd_id = #{lstdId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Lstd" >
+    update lstd
+    set lstd_studId = #{lstdStudid,jdbcType=INTEGER},
+      lstd_applyTuition = #{lstdApplytuition,jdbcType=DOUBLE},
+      lstd_applyAccommodation = #{lstdApplyaccommodation,jdbcType=DOUBLE},
+      lstd_limitTime = #{lstdLimittime,jdbcType=VARCHAR},
+      lstd_loans = #{lstdLoans,jdbcType=VARCHAR},
+      lstd_onGoing = #{lstdOngoing,jdbcType=INTEGER},
+      lstd_bank = #{lstdBank,jdbcType=VARCHAR},
+      lstd_returnCode = #{lstdReturncode,jdbcType=VARCHAR},
+      lstd_appliedOnline = #{lstdAppliedonline,jdbcType=VARCHAR},
+      lstd_classOpinionTime = #{lstdClassopiniontime,jdbcType=TIMESTAMP},
+      lstd_academyOpinionTime = #{lstdAcademyopiniontime,jdbcType=TIMESTAMP},
+      lstd_wsflId = #{lstdWsflid,jdbcType=INTEGER},
+      lstd_workId = #{lstdWorkid,jdbcType=INTEGER},
+      lstd_state = #{lstdState,jdbcType=INTEGER},
+      lstd_applyRole = #{lstdApplyRole,jdbcType=INTEGER},
+      lstd_applyReason = #{lstdApplyReason,jdbcType=LONGVARCHAR},
+      lstd_repayWay = #{lstdRepayWay,jdbcType=VARCHAR},
+      lstd_disaster = #{lstdDisaster,jdbcType=VARCHAR},
+      lstd_paymentReason = #{lstdPaymentReason,jdbcType=LONGVARCHAR}
+    where lstd_id = #{lstdId,jdbcType=INTEGER}
+  </update>
+  <!-- 通过studid查找lstd中有没有这条记录 -->
+  <select id="selectByStudId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from lstd
+    where lstd_studId = #{lstdStudid,jdbcType=INTEGER}
+  </select>
+  <!-- 通过studid更新lstd的信息 -->
+  <update id="updateByStudId" parameterType="swust.edu.cn.zzxt.model.LstdWithBLOBs" >
+    update lstd
+    <set >
+      <if test="lstdStudid != null" >
+        lstd_studId = #{lstdStudid,jdbcType=INTEGER},
+      </if>
+      <if test="lstdApplytuition != null" >
+        lstd_applyTuition = #{lstdApplytuition,jdbcType=DOUBLE},
+      </if>
+      <if test="lstdApplyaccommodation != null" >
+        lstd_applyAccommodation = #{lstdApplyaccommodation,jdbcType=DOUBLE},
+      </if>
+      <if test="lstdLimittime != null" >
+        lstd_limitTime = #{lstdLimittime,jdbcType=VARCHAR},
+      </if>
+      <if test="lstdLoans != null" >
+        lstd_loans = #{lstdLoans,jdbcType=VARCHAR},
+      </if>
+      <if test="lstdOngoing != null" >
+        lstd_onGoing = #{lstdOngoing,jdbcType=INTEGER},
+      </if>
+      <if test="lstdBank != null" >
+        lstd_bank = #{lstdBank,jdbcType=VARCHAR},
+      </if>
+      <if test="lstdReturncode != null" >
+        lstd_returnCode = #{lstdReturncode,jdbcType=VARCHAR},
+      </if>
+      <if test="lstdAppliedonline != null" >
+        lstd_appliedOnline = #{lstdAppliedonline,jdbcType=VARCHAR},
+      </if>
+      <if test="lstdClassopiniontime != null" >
+        lstd_classOpinionTime = #{lstdClassopiniontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lstdAcademyopiniontime != null" >
+        lstd_academyOpinionTime = #{lstdAcademyopiniontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lstdWsflid != null" >
+        lstd_wsflId = #{lstdWsflid,jdbcType=INTEGER},
+      </if>
+      <if test="lstdWorkid != null" >
+        lstd_workId = #{lstdWorkid,jdbcType=INTEGER},
+      </if>
+      <if test="lstdState != null" >
+        lstd_state = #{lstdState,jdbcType=INTEGER},
+      </if>
+      <if test="lstdApplyRole !=null">
+      	lstd_applyRole = #{lstdApplyRole,jbdctype=INTEGER},
+      </if>
+      <if test="lstdNotloan != null" >
+        lstd_notLoan = #{lstdNotloan,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="lstdClassopinion != null" >
+        lstd_classOpinion = #{lstdClassopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="lstdAcademyopinion != null" >
+        lstd_academyOpinion = #{lstdAcademyopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="lstdApplyReason != null">
+      	lstd_applyReason = #{lstdApplyReason,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="lstdRepayWay != null">
+      	lstd_repayWay = #{lstdRepayWay,jdbcType=VARCHAR},
+      </if>
+      <if test="lstdDisaster != null">
+      	lstd_disaster = #{lstdDisaster,jdbcType=VARCHAR},
+      </if>
+      <if test="lstdPaymentReason != null">
+      	lstd_paymentReason = #{lstdPaymentReason,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where lstd_studId = #{lstdStudid,jdbcType=INTEGER}
+  </update>
+  <!--接下来写sql selectinfoByStudId  -->
+  <select id="selectinfoByStudId" resultType="swust.edu.cn.zzxt.selfmodel.LstdListModel" parameterType="java.lang.Integer">
+	 SELECT l.lstd_id AS lstdId,
+	  		l.lstd_studId AS lstdStudid,
+	  		l.lstd_applyTuition AS lstdApplytuition,
+	  		l.lstd_applyAccommodation AS lstdApplyaccommodation,
+	  		l.lstd_limitTime AS lstdLimittime,
+	  		l.lstd_loans AS lstdLoans,
+	  		l.lstd_onGoing AS lstdOngoing,
+	  		l.lstd_bank AS lstdBank,
+	  		l.lstd_returnCode AS lstdReturncode,
+	  		l.lstd_appliedOnline AS lstdAppliedonline,
+	  		l.lstd_classOpinion AS lstdClassopinion,
+	  		l.lstd_classOpinionTime AS lstdClassopiniontime,
+	  		l.lstd_academyOpinion AS lstdAcademyopinion,
+	  		l.lstd_academyOpinionTime AS lstdAcademyopiniontime,
+	  		l.lstd_wsflId AS lstdWsflid,
+	  		l.lstd_workId AS lstdWorkid,
+	  		l.lstd_state AS lstdState,
+	  		l.lstd_applyRole AS lstdApplyRole,
+	  		l.lstd_applyReason AS lstdApplyReason,
+			l.lstd_repayWay AS lstdRepayWay,
+			l.lstd_disaster AS lstdDisaster,
+			l.lstd_paymentReason AS lstdPaymentReason,
+	
+			i.inst_name AS stuDepartment,
+			i.inst_shortname AS Departmentshortname,
+			i.inst_id AS DepartmentId,
+	  		m.majr_name AS stuMajor,
+	  		m.majr_id AS majorId,
+	  		m.majr_shortname AS Majorshortname,
+	  		sc.	class_name AS stuClass,
+	  		sc.class_id AS classId,
+	  		s.stud_name AS stuName,
+	  		s.stud_number AS stuNumber,
+	  		if(l.lstd_wsflId=-1,0,w.wsfl_roleId) as roleId
+	FROM 	lstd l,
+			institution i,
+	  		major m,
+	  		studentclass sc,
+	  		student s,
+			workstepflow w
+	WHERE s.stud_id=#{lstdStudid,jdbcType=INTEGER}
+		AND i.inst_id=m.majr_instId 
+	 	AND m.majr_id=sc.class_majrId 
+	 	AND sc.class_id=s.stud_classId
+  		AND l.lstd_studId=s.stud_id 
+  		AND IF(l.lstd_wsflId =-1,l.lstd_wsflId+2= w.wsfl_id,l.lstd_wsflId = w.wsfl_id) 
+  </select>
+  <select id="selectinfoByStudNumber" resultType="swust.edu.cn.zzxt.selfmodel.LstdListModel" parameterType="java.lang.String">
+	 SELECT l.lstd_id AS lstdId,
+	  		l.lstd_studId AS lstdStudid,
+	  		l.lstd_applyTuition AS lstdApplytuition,
+	  		l.lstd_applyAccommodation AS lstdApplyaccommodation,
+	  		l.lstd_limitTime AS lstdLimittime,
+	  		l.lstd_loans AS lstdLoans,
+	  		l.lstd_onGoing AS lstdOngoing,
+	  		l.lstd_bank AS lstdBank,
+	  		l.lstd_returnCode AS lstdReturncode,
+	  		l.lstd_appliedOnline AS lstdAppliedonline,
+	  		l.lstd_classOpinion AS lstdClassopinion,
+	  		l.lstd_classOpinionTime AS lstdClassopiniontime,
+	  		l.lstd_academyOpinion AS lstdAcademyopinion,
+	  		l.lstd_academyOpinionTime AS lstdAcademyopiniontime,
+	  		l.lstd_wsflId AS lstdWsflid,
+	  		l.lstd_workId AS lstdWorkid,
+	  		l.lstd_state AS lstdState,
+	  		l.lstd_applyRole AS lstdApplyRole,
+	  		l.lstd_applyReason AS lstdApplyReason,
+			l.lstd_repayWay AS lstdRepayWay,
+			l.lstd_disaster AS lstdDisaster,
+			l.lstd_paymentReason AS lstdPaymentReason,
+	
+			i.inst_name AS stuDepartment,
+			i.inst_shortname AS Departmentshortname,
+	  		m.majr_name AS stuMajor,
+	  		m.majr_id AS majorId,
+	  		m.majr_shortname AS Majorshortname,
+	  		sc.	class_name AS stuClass,
+	  		sc.class_id AS classId,
+	  		s.stud_name AS stuName,
+	  		s.stud_number AS stuNumber,
+	  		if(l.lstd_wsflId=-1,0,w.wsfl_roleId) as roleId
+	FROM 	lstd l,
+			institution i,
+	  		major m,
+	  		studentclass sc,
+	  		student s,
+			workstepflow w
+	WHERE s.stud_number=#{StuNumber,jdbcType=VARCHAR}
+		AND i.inst_id=m.majr_instId 
+	 	AND m.majr_id=sc.class_majrId 
+	 	AND sc.class_id=s.stud_classId
+  		AND l.lstd_studId=s.stud_id 
+  		AND IF(l.lstd_wsflId =-1,l.lstd_wsflId+2= w.wsfl_id,l.lstd_wsflId = w.wsfl_id) 
+  </select>
+  <select id="selectinfoByacademyid" resultType="swust.edu.cn.zzxt.selfmodel.LstdListModel" parameterType="java.lang.Integer">
+	 SELECT l.lstd_id AS lstdId,
+	  		l.lstd_studId AS lstdStudid,
+	  		l.lstd_applyTuition AS lstdApplytuition,
+	  		l.lstd_applyAccommodation AS lstdApplyaccommodation,
+	  		l.lstd_limitTime AS lstdLimittime,
+	  		l.lstd_loans AS lstdLoans,
+	  		l.lstd_onGoing AS lstdOngoing,
+	  		l.lstd_bank AS lstdBank,
+	  		l.lstd_returnCode AS lstdReturncode,
+	  		l.lstd_appliedOnline AS lstdAppliedonline,
+	  		l.lstd_classOpinion AS lstdClassopinion,
+	  		l.lstd_classOpinionTime AS lstdClassopiniontime,
+	  		l.lstd_academyOpinion AS lstdAcademyopinion,
+	  		l.lstd_academyOpinionTime AS lstdAcademyopiniontime,
+	  		l.lstd_wsflId AS lstdWsflid,
+	  		l.lstd_workId AS lstdWorkid,
+	  		l.lstd_state AS lstdState,
+	  		l.lstd_applyRole AS lstdApplyRole,
+	  		l.lstd_applyReason AS lstdApplyReason,
+			l.lstd_repayWay AS lstdRepayWay,
+			l.lstd_disaster AS lstdDisaster,
+			l.lstd_paymentReason AS lstdPaymentReason,
+	
+			i.inst_name AS stuDepartment,
+			i.inst_shortname AS Departmentshortname,
+	  		m.majr_name AS stuMajor,
+	  		m.majr_id AS majorId,
+	  		m.majr_shortname AS Majorshortname,
+	  		sc.	class_name AS stuClass,
+	  		sc.class_id AS classId,
+	  		s.stud_name AS stuName,
+	  		s.stud_number AS stuNumber,
+	  		if(l.lstd_wsflId=-1,0,w.wsfl_roleId) as roleId
+	FROM 	lstd l,
+			institution i,
+	  		major m,
+	  		studentclass sc,
+	  		student s,
+			workstepflow w
+	WHERE i.inst_id=#{academyid,jdbcType=INTEGER}
+		AND i.inst_id=m.majr_instId 
+	 	AND m.majr_id=sc.class_majrId 
+	 	AND sc.class_id=s.stud_classId
+  		AND l.lstd_studId=s.stud_id
+  		AND IF(l.lstd_wsflId =-1,l.lstd_wsflId+2= w.wsfl_id,l.lstd_wsflId = w.wsfl_id) 
+  </select>
+  <select id="selectinfoBymajorid" resultType="swust.edu.cn.zzxt.selfmodel.LstdListModel" parameterType="java.lang.Integer">
+	 SELECT l.lstd_id AS lstdId,
+	  		l.lstd_studId AS lstdStudid,
+	  		l.lstd_applyTuition AS lstdApplytuition,
+	  		l.lstd_applyAccommodation AS lstdApplyaccommodation,
+	  		l.lstd_limitTime AS lstdLimittime,
+	  		l.lstd_loans AS lstdLoans,
+	  		l.lstd_onGoing AS lstdOngoing,
+	  		l.lstd_bank AS lstdBank,
+	  		l.lstd_returnCode AS lstdReturncode,
+	  		l.lstd_appliedOnline AS lstdAppliedonline,
+	  		l.lstd_classOpinion AS lstdClassopinion,
+	  		l.lstd_classOpinionTime AS lstdClassopiniontime,
+	  		l.lstd_academyOpinion AS lstdAcademyopinion,
+	  		l.lstd_academyOpinionTime AS lstdAcademyopiniontime,
+	  		l.lstd_wsflId AS lstdWsflid,
+	  		l.lstd_workId AS lstdWorkid,
+	  		l.lstd_state AS lstdState,
+	  		l.lstd_applyRole AS lstdApplyRole,
+	  		l.lstd_applyReason AS lstdApplyReason,
+			l.lstd_repayWay AS lstdRepayWay,
+			l.lstd_disaster AS lstdDisaster,
+			l.lstd_paymentReason AS lstdPaymentReason,
+	
+			i.inst_name AS stuDepartment,
+			i.inst_shortname AS Departmentshortname,
+	  		m.majr_name AS stuMajor,
+	  		m.majr_id AS majorId,
+	  		m.majr_shortname AS Majorshortname,
+	  		sc.	class_name AS stuClass,
+	  		sc.class_id AS classId,
+	  		s.stud_name AS stuName,
+	  		s.stud_number AS stuNumber,
+	  		if(l.lstd_wsflId=-1,0,w.wsfl_roleId) as roleId
+	FROM 	lstd l,
+			institution i,
+	  		major m,
+	  		studentclass sc,
+	  		student s,
+			workstepflow w
+	WHERE m.majr_id=#{majorid,jdbcType=INTEGER}
+		AND i.inst_id=m.majr_instId 
+	 	AND m.majr_id=sc.class_majrId 
+	 	AND sc.class_id=s.stud_classId
+  		AND l.lstd_studId=s.stud_id
+  		AND IF(l.lstd_wsflId =-1,l.lstd_wsflId+2= w.wsfl_id,l.lstd_wsflId = w.wsfl_id) 
+  </select>
+  <select id="selectinfoByclassid" resultType="swust.edu.cn.zzxt.selfmodel.LstdListModel" parameterType="java.lang.Integer">
+	 SELECT l.lstd_id AS lstdId,
+	  		l.lstd_studId AS lstdStudid,
+	  		l.lstd_applyTuition AS lstdApplytuition,
+	  		l.lstd_applyAccommodation AS lstdApplyaccommodation,
+	  		l.lstd_limitTime AS lstdLimittime,
+	  		l.lstd_loans AS lstdLoans,
+	  		l.lstd_onGoing AS lstdOngoing,
+	  		l.lstd_bank AS lstdBank,
+	  		l.lstd_returnCode AS lstdReturncode,
+	  		l.lstd_appliedOnline AS lstdAppliedonline,
+	  		l.lstd_classOpinion AS lstdClassopinion,
+	  		l.lstd_classOpinionTime AS lstdClassopiniontime,
+	  		l.lstd_academyOpinion AS lstdAcademyopinion,
+	  		l.lstd_academyOpinionTime AS lstdAcademyopiniontime,
+	  		l.lstd_wsflId AS lstdWsflid,
+	  		l.lstd_workId AS lstdWorkid,
+	  		l.lstd_state AS lstdState,
+	  		l.lstd_applyRole AS lstdApplyRole,
+	  		l.lstd_applyReason AS lstdApplyReason,
+			l.lstd_repayWay AS lstdRepayWay,
+			l.lstd_disaster AS lstdDisaster,
+			l.lstd_paymentReason AS lstdPaymentReason,
+	
+			i.inst_name AS stuDepartment,
+			i.inst_shortname AS Departmentshortname,
+	  		m.majr_name AS stuMajor,
+	  		m.majr_id AS majorId,
+	  		m.majr_shortname AS Majorshortname,
+	  		sc.	class_name AS stuClass,
+	  		sc.class_id AS classId,
+	  		s.stud_name AS stuName,
+	  		s.stud_number AS stuNumber,
+	  		if(l.lstd_wsflId=-1,0,w.wsfl_roleId) as roleId
+	FROM 	lstd l,
+			institution i,
+	  		major m,
+	  		studentclass sc,
+	  		student s,
+			workstepflow w
+	WHERE sc.class_id=#{classid,jdbcType=INTEGER}
+		AND i.inst_id=m.majr_instId 
+	 	AND m.majr_id=sc.class_majrId 
+	 	AND sc.class_id=s.stud_classId
+  		AND l.lstd_studId=s.stud_id 
+  		AND IF(l.lstd_wsflId =-1,l.lstd_wsflId+2= w.wsfl_id,l.lstd_wsflId = w.wsfl_id) 
+  </select>
+  <select id="findStudentByUserId" resultType="swust.edu.cn.zzxt.selfmodel.LstdListModel" parameterType="java.lang.Integer">
+	 SELECT l.lstd_id AS lstdId,
+	  		l.lstd_studId AS lstdStudid,
+	  		l.lstd_applyTuition AS lstdApplytuition,
+	  		l.lstd_applyAccommodation AS lstdApplyaccommodation,
+	  		l.lstd_limitTime AS lstdLimittime,
+	  		l.lstd_loans AS lstdLoans,
+	  		l.lstd_onGoing AS lstdOngoing,
+	  		l.lstd_bank AS lstdBank,
+	  		l.lstd_returnCode AS lstdReturncode,
+	  		l.lstd_appliedOnline AS lstdAppliedonline,
+	  		l.lstd_classOpinion AS lstdClassopinion,
+	  		l.lstd_classOpinionTime AS lstdClassopiniontime,
+	  		l.lstd_academyOpinion AS lstdAcademyopinion,
+	  		l.lstd_academyOpinionTime AS lstdAcademyopiniontime,
+	  		l.lstd_wsflId AS lstdWsflid,
+	  		l.lstd_workId AS lstdWorkid,
+	  		l.lstd_state AS lstdState,
+	  		l.lstd_applyRole AS lstdApplyRole,
+	  		l.lstd_applyReason AS lstdApplyReason,
+			l.lstd_repayWay AS lstdRepayWay,
+			l.lstd_disaster AS lstdDisaster,
+			l.lstd_paymentReason AS lstdPaymentReason,
+	
+			i.inst_name AS stuDepartment,
+			i.inst_id AS DepartmentId,
+			i.inst_shortname AS Departmentshortname,
+	  		m.majr_name AS stuMajor,
+	  		m.majr_id AS majorId,
+	  		m.majr_shortname AS Majorshortname,
+	  		sc.	class_name AS stuClass,
+	  		sc.class_id AS classId,
+	  		s.stud_name AS stuName,
+	  		s.stud_number AS stuNumber,
+	  		if(l.lstd_wsflId=-1,0,w.wsfl_roleId) as roleId
+	FROM 	lstd l,
+			institution i,
+	  		major m,
+	  		studentclass sc,
+	  		student s,
+			workstepflow w,
+	  		user
+	WHERE user.user_id=#{userId,jdbcType=INTEGER}
+		AND user.user_id = l.lstd_applyRole
+		AND i.inst_id = m.majr_instId
+		AND m.majr_id = sc.class_majrId
+		AND sc.class_id = s.stud_id
+		AND s.stud_id = l.lstd_studId
+  </select>
+  	<!-- 按学院统计 -->
+ 	 <select id="selectAcademyAllList" resultType="swust.edu.cn.zzxt.selfmodel.LstdListModel" parameterType="java.lang.Integer">
+		SELECT
+		student.stud_name AS stuName,		
+		institution.inst_name AS stuDepartment,
+		institution.inst_id AS DepartmentId,
+		major.majr_name AS stuMajor,
+		studentclass.class_name AS stuClass,
+		
+		lstd.lstd_state AS	lstdState,
+		lstd.lstd_id AS lstdId,
+		lstd.lstd_studId AS lstdStudid,
+		student.stud_number AS stuNumber
+
+		
+		FROM
+		student,
+		studentclass,
+		institution,
+		major,
+		lstd
+		
+
+		WHERE
+		institution.inst_id=#{academyid,jdbcType=INTEGER}
+		AND major.majr_instId = institution.inst_id
+		AND studentclass.class_majrId = major.majr_id
+		AND student.stud_classId = studentclass.class_id
+		AND lstd.lstd_studId = student.stud_id
+		
+
+	</select>
+</mapper>

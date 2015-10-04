@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.UserMapper">
+	<resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.User">
+		<id column="user_id" property="userId" jdbcType="INTEGER" />
+		<result column="user_instId" property="userInstid" jdbcType="INTEGER" />
+		<result column="user_name" property="userName" jdbcType="VARCHAR" />
+		<result column="user_loginname" property="userLoginname"
+			jdbcType="VARCHAR" />
+		<result column="user_password" property="userPassword"
+			jdbcType="VARCHAR" />
+		<result column="user_lastLoginTime" property="userLastlogintime"
+			jdbcType="TIMESTAMP" />
+		<result column="user_type" property="userType" jdbcType="INTEGER" />
+		<result column="user_isDelete" property="userIsdelete"
+			jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		user_id, user_instId, user_name, user_loginname,
+		user_password,
+		user_lastLoginTime,
+		user_type, user_isDelete
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		where user_id = #{userId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from user
+		where user_id = #{userId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="swust.edu.cn.zzxt.model.User">
+		insert into user (user_id,
+		user_instId, user_name,
+		user_loginname, user_password,
+		user_lastLoginTime,
+		user_type, user_isDelete)
+		values
+		(#{userId,jdbcType=INTEGER}, #{userInstid,jdbcType=INTEGER},
+		#{userName,jdbcType=VARCHAR},
+		#{userLoginname,jdbcType=VARCHAR},
+		#{userPassword,jdbcType=VARCHAR},
+		#{userLastlogintime,jdbcType=TIMESTAMP},
+		#{userType,jdbcType=INTEGER},
+		#{userIsdelete,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.User">
+		insert into user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="userInstid != null">
+				user_instId,
+			</if>
+			<if test="userName != null">
+				user_name,
+			</if>
+			<if test="userLoginname != null">
+				user_loginname,
+			</if>
+			<if test="userPassword != null">
+				user_password,
+			</if>
+			<if test="userLastlogintime != null">
+				user_lastLoginTime,
+			</if>
+			<if test="userType != null">
+				user_type,
+			</if>
+			<if test="userIsdelete != null">
+				user_isDelete,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				#{userId,jdbcType=INTEGER},
+			</if>
+			<if test="userInstid != null">
+				#{userInstid,jdbcType=INTEGER},
+			</if>
+			<if test="userName != null">
+				#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="userLoginname != null">
+				#{userLoginname,jdbcType=VARCHAR},
+			</if>
+			<if test="userPassword != null">
+				#{userPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="userLastlogintime != null">
+				#{userLastlogintime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userType != null">
+				#{userType,jdbcType=INTEGER},
+			</if>
+			<if test="userIsdelete != null">
+				#{userIsdelete,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.User">
+		update user
+		<set>
+			<if test="userInstid != null">
+				user_instId = #{userInstid,jdbcType=INTEGER},
+			</if>
+			<if test="userName != null">
+				user_name = #{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="userLoginname != null">
+				user_loginname = #{userLoginname,jdbcType=VARCHAR},
+			</if>
+			<if test="userPassword != null">
+				user_password = #{userPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="userLastlogintime != null">
+				user_lastLoginTime =
+				#{userLastlogintime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userType != null">
+				user_type = #{userType,jdbcType=INTEGER},
+			</if>
+			<if test="userIsdelete != null">
+				user_isDelete = #{userIsdelete,jdbcType=INTEGER},
+			</if>
+		</set>
+		where user_id = #{userId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.User">
+		update user
+		set
+		user_instId = #{userInstid,jdbcType=INTEGER},
+		user_name =
+		#{userName,jdbcType=VARCHAR},
+		user_loginname =
+		#{userLoginname,jdbcType=VARCHAR},
+		user_password =
+		#{userPassword,jdbcType=VARCHAR},
+		user_lastLoginTime =
+		#{userLastlogintime,jdbcType=TIMESTAMP},
+		user_type =
+		#{userType,jdbcType=INTEGER},
+		user_isDelete =
+		#{userIsdelete,jdbcType=INTEGER}
+		where user_id =
+		#{userId,jdbcType=INTEGER}
+	</update>
+
+	<!-- 自己写的方法 -->
+	<!-- 登录时调用 -->
+	<select id="findUserByNAP" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		where user_loginName = #{userLoginname,jdbcType=VARCHAR} and
+		user_password
+		= #{userPassword,jdbcType=VARCHAR}
+	</select>
+	<!-- 显示所有用户信息 -->
+	<select id="findUsersByUserIsDelete" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		where user_isDelete = #{userIsdelete,jdbcType=INTEGER}
+	</select>
+
+	<!-- author:yangjunhui Time:20140725 根据机构Id查找用户 -->
+	<select id="selectByInstId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		where user_instId = #{userInstid,jdbcType=INTEGER}
+	</select>
+
+	<!-- author:zxr Time:20140727 根据机构Id和类型查找用户 -->
+	<select id="selectByInstIdAndType" resultMap="BaseResultMap"
+		parameterType="swust.edu.cn.zzxt.model.User">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		where user_instId = #{userInstid,jdbcType=INTEGER}
+		and
+		user_type = #{userType,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectTeacher" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		user
+		WHERE
+		user_instId = #{instid,jdbcType=INTEGER}
+		AND (user_type =
+		3 OR user_type = 2)
+	</select>
+
+	<select id="selectLaoshi" resultMap="BaseResultMap"
+		parameterType="swust.edu.cn.zzxt.selfmodel.TiaoJianModal">
+		select
+		<include refid="Base_Column_List" />
+		from user,
+		reuserrole
+		where reuserrole.reur_roleId =
+		#{roleid,jdbcType=INTEGER}
+		and user_id = reuserrole.reur_userId
+		and
+		user_instId = #{instid,jdbcType=INTEGER}
+	</select>
+
+	<!-- author:yangjunhui Time:20140725 根据学院Id查找学生用户 -->
+	<select id="selectStuUserByInstId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		where
+		user_instId = #{instid,jdbcType=INTEGER}
+		AND `user`.user_type = 1
+	</select>
+
+	<!-- author:yangjunhui Time:20140725 根据专业Id查找学生用户 -->
+	<select id="selectStuUserByMajorId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		FROM `user`,
+		student,
+		studentclass,
+		major
+		WHERE
+		IF(majorid != 0,major.majr_id = #{majorid,jdbcType=INTEGER},major.majr_id = major.majr_id)
+		AND studentclass.class_majrId = major.majr_id
+		AND student.stud_classId
+		= studentclass.class_id
+		AND `user`.user_id=stud_userId
+		AND
+		`user`.user_type = 1
+	</select>
+	
+		<!-- author:yangjunhui Time:20140725 根据classId查找学生用户 -->
+	<select id="selectStuUserByClassId" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		FROM `user`,
+		student
+		WHERE
+		student.stud_classId = #{classid,jdbcType=INTEGER}
+		AND `user`.user_id=stud_userId
+		AND `user`.user_type = 1
+	</select>
+</mapper>

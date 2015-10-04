@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/QTTest/!svn/ver/3330/zzxt/src/main/resources
+END
+config.properties
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/QTTest/!svn/ver/3330/zzxt/src/main/resources/config.properties
+END
+spring.xml
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/QTTest/!svn/ver/2477/zzxt/src/main/resources/spring.xml
+END
+spring-mvc.xml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/QTTest/!svn/ver/2476/zzxt/src/main/resources/spring-mvc.xml
+END
+spring-mybatis.xml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/QTTest/!svn/ver/2476/zzxt/src/main/resources/spring-mybatis.xml
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/QTTest/!svn/ver/2476/zzxt/src/main/resources/log4j.properties
+END

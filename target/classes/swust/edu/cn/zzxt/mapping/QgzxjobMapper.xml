@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.QgzxjobMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Qgzxjob" >
+    <id column="qjob_id" property="qjobId" jdbcType="INTEGER" />
+    <result column="qjob_applyUser" property="qjobApplyuser" jdbcType="INTEGER" />
+    <result column="qjob_title" property="qjobTitle" jdbcType="VARCHAR" />
+    <result column="qjob_number" property="qjobNumber" jdbcType="INTEGER" />
+    <result column="qjob_applyTime" property="qjobApplytime" jdbcType="TIMESTAMP" />
+    <result column="qjob_majorIds" property="qjobMajorids" jdbcType="VARCHAR" />
+    <result column="qjob_useInstitution" property="qjobUseinstitution" jdbcType="INTEGER" />
+    <result column="qjob_fundsInstitution" property="qjobFundsinstitution" jdbcType="INTEGER" />
+    <result column="qjob_auditTime" property="qjobAudittime" jdbcType="TIMESTAMP" />
+    <result column="qjob_workId" property="qjobWorkid" jdbcType="INTEGER" />
+    <result column="qjob_forcePoor" property="qjobForcepoor" jdbcType="INTEGER" />
+    <result column="qjob_wsflId" property="qjobWsflid" jdbcType="INTEGER" />
+    <result column="qjob_state" property="qjobState" jdbcType="INTEGER" />
+    <result column="qjob_annual" property="qjobAnnual" jdbcType="VARCHAR" />
+    <result column="qjob_money" property="qjobMoney" jdbcType="DOUBLE" />
+    <result column="qjob_fundSource" property="qjobFundsource" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="swust.edu.cn.zzxt.model.QgzxjobWithBLOBs" extends="BaseResultMap" >
+    <result column="qjob_applyContent" property="qjobApplycontent" jdbcType="LONGVARCHAR" />
+    <result column="qjob_auditcontent" property="qjobAuditcontent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    qjob_id, qjob_applyUser, qjob_title, qjob_number, qjob_applyTime, qjob_majorIds, 
+    qjob_useInstitution, qjob_fundsInstitution, qjob_auditTime, qjob_workId, qjob_forcePoor, 
+    qjob_wsflId, qjob_state, qjob_annual, qjob_money, qjob_fundSource
+  </sql>
+  <sql id="Blob_Column_List" >
+    qjob_applyContent, qjob_auditcontent
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from qgzxjob
+    where qjob_id = #{qjobId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from qgzxjob
+    where qjob_id = #{qjobId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.QgzxjobWithBLOBs" >
+    insert into qgzxjob (qjob_id, qjob_applyUser, qjob_title, 
+      qjob_number, qjob_applyTime, qjob_majorIds, 
+      qjob_useInstitution, qjob_fundsInstitution, 
+      qjob_auditTime, qjob_workId, qjob_forcePoor, 
+      qjob_wsflId, qjob_state, qjob_annual, 
+      qjob_money, qjob_fundSource, qjob_applyContent, 
+      qjob_auditcontent)
+    values (#{qjobId,jdbcType=INTEGER}, #{qjobApplyuser,jdbcType=INTEGER}, #{qjobTitle,jdbcType=VARCHAR}, 
+      #{qjobNumber,jdbcType=INTEGER}, #{qjobApplytime,jdbcType=TIMESTAMP}, #{qjobMajorids,jdbcType=VARCHAR}, 
+      #{qjobUseinstitution,jdbcType=INTEGER}, #{qjobFundsinstitution,jdbcType=INTEGER}, 
+      #{qjobAudittime,jdbcType=TIMESTAMP}, #{qjobWorkid,jdbcType=INTEGER}, #{qjobForcepoor,jdbcType=INTEGER}, 
+      #{qjobWsflid,jdbcType=INTEGER}, #{qjobState,jdbcType=INTEGER}, #{qjobAnnual,jdbcType=VARCHAR}, 
+      #{qjobMoney,jdbcType=DOUBLE}, #{qjobFundsource,jdbcType=VARCHAR}, #{qjobApplycontent,jdbcType=LONGVARCHAR}, 
+      #{qjobAuditcontent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.QgzxjobWithBLOBs" >
+    insert into qgzxjob
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="qjobId != null" >
+        qjob_id,
+      </if>
+      <if test="qjobApplyuser != null" >
+        qjob_applyUser,
+      </if>
+      <if test="qjobTitle != null" >
+        qjob_title,
+      </if>
+      <if test="qjobNumber != null" >
+        qjob_number,
+      </if>
+      <if test="qjobApplytime != null" >
+        qjob_applyTime,
+      </if>
+      <if test="qjobMajorids != null" >
+        qjob_majorIds,
+      </if>
+      <if test="qjobUseinstitution != null" >
+        qjob_useInstitution,
+      </if>
+      <if test="qjobFundsinstitution != null" >
+        qjob_fundsInstitution,
+      </if>
+      <if test="qjobAudittime != null" >
+        qjob_auditTime,
+      </if>
+      <if test="qjobWorkid != null" >
+        qjob_workId,
+      </if>
+      <if test="qjobForcepoor != null" >
+        qjob_forcePoor,
+      </if>
+      <if test="qjobWsflid != null" >
+        qjob_wsflId,
+      </if>
+      <if test="qjobState != null" >
+        qjob_state,
+      </if>
+      <if test="qjobAnnual != null" >
+        qjob_annual,
+      </if>
+      <if test="qjobMoney != null" >
+        qjob_money,
+      </if>
+      <if test="qjobFundsource != null" >
+        qjob_fundSource,
+      </if>
+      <if test="qjobApplycontent != null" >
+        qjob_applyContent,
+      </if>
+      <if test="qjobAuditcontent != null" >
+        qjob_auditcontent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="qjobId != null" >
+        #{qjobId,jdbcType=INTEGER},
+      </if>
+      <if test="qjobApplyuser != null" >
+        #{qjobApplyuser,jdbcType=INTEGER},
+      </if>
+      <if test="qjobTitle != null" >
+        #{qjobTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="qjobNumber != null" >
+        #{qjobNumber,jdbcType=INTEGER},
+      </if>
+      <if test="qjobApplytime != null" >
+        #{qjobApplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qjobMajorids != null" >
+        #{qjobMajorids,jdbcType=VARCHAR},
+      </if>
+      <if test="qjobUseinstitution != null" >
+        #{qjobUseinstitution,jdbcType=INTEGER},
+      </if>
+      <if test="qjobFundsinstitution != null" >
+        #{qjobFundsinstitution,jdbcType=INTEGER},
+      </if>
+      <if test="qjobAudittime != null" >
+        #{qjobAudittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qjobWorkid != null" >
+        #{qjobWorkid,jdbcType=INTEGER},
+      </if>
+      <if test="qjobForcepoor != null" >
+        #{qjobForcepoor,jdbcType=INTEGER},
+      </if>
+      <if test="qjobWsflid != null" >
+        #{qjobWsflid,jdbcType=INTEGER},
+      </if>
+      <if test="qjobState != null" >
+        #{qjobState,jdbcType=INTEGER},
+      </if>
+      <if test="qjobAnnual != null" >
+        #{qjobAnnual,jdbcType=VARCHAR},
+      </if>
+      <if test="qjobMoney != null" >
+        #{qjobMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="qjobFundsource != null" >
+        #{qjobFundsource,jdbcType=VARCHAR},
+      </if>
+      <if test="qjobApplycontent != null" >
+        #{qjobApplycontent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qjobAuditcontent != null" >
+        #{qjobAuditcontent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.QgzxjobWithBLOBs" >
+    update qgzxjob
+    <set >
+      <if test="qjobApplyuser != null" >
+        qjob_applyUser = #{qjobApplyuser,jdbcType=INTEGER},
+      </if>
+      <if test="qjobTitle != null" >
+        qjob_title = #{qjobTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="qjobNumber != null" >
+        qjob_number = #{qjobNumber,jdbcType=INTEGER},
+      </if>
+      <if test="qjobApplytime != null" >
+        qjob_applyTime = #{qjobApplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qjobMajorids != null" >
+        qjob_majorIds = #{qjobMajorids,jdbcType=VARCHAR},
+      </if>
+      <if test="qjobUseinstitution != null" >
+        qjob_useInstitution = #{qjobUseinstitution,jdbcType=INTEGER},
+      </if>
+      <if test="qjobFundsinstitution != null" >
+        qjob_fundsInstitution = #{qjobFundsinstitution,jdbcType=INTEGER},
+      </if>
+      <if test="qjobAudittime != null" >
+        qjob_auditTime = #{qjobAudittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qjobWorkid != null" >
+        qjob_workId = #{qjobWorkid,jdbcType=INTEGER},
+      </if>
+      <if test="qjobForcepoor != null" >
+        qjob_forcePoor = #{qjobForcepoor,jdbcType=INTEGER},
+      </if>
+      <if test="qjobWsflid != null" >
+        qjob_wsflId = #{qjobWsflid,jdbcType=INTEGER},
+      </if>
+      <if test="qjobState != null" >
+        qjob_state = #{qjobState,jdbcType=INTEGER},
+      </if>
+      <if test="qjobAnnual != null" >
+        qjob_annual = #{qjobAnnual,jdbcType=VARCHAR},
+      </if>
+      <if test="qjobMoney != null" >
+        qjob_money = #{qjobMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="qjobFundsource != null" >
+        qjob_fundSource = #{qjobFundsource,jdbcType=VARCHAR},
+      </if>
+      <if test="qjobApplycontent != null" >
+        qjob_applyContent = #{qjobApplycontent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qjobAuditcontent != null" >
+        qjob_auditcontent = #{qjobAuditcontent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where qjob_id = #{qjobId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="swust.edu.cn.zzxt.model.QgzxjobWithBLOBs" >
+    update qgzxjob
+    set qjob_applyUser = #{qjobApplyuser,jdbcType=INTEGER},
+      qjob_title = #{qjobTitle,jdbcType=VARCHAR},
+      qjob_number = #{qjobNumber,jdbcType=INTEGER},
+      qjob_applyTime = #{qjobApplytime,jdbcType=TIMESTAMP},
+      qjob_majorIds = #{qjobMajorids,jdbcType=VARCHAR},
+      qjob_useInstitution = #{qjobUseinstitution,jdbcType=INTEGER},
+      qjob_fundsInstitution = #{qjobFundsinstitution,jdbcType=INTEGER},
+      qjob_auditTime = #{qjobAudittime,jdbcType=TIMESTAMP},
+      qjob_workId = #{qjobWorkid,jdbcType=INTEGER},
+      qjob_forcePoor = #{qjobForcepoor,jdbcType=INTEGER},
+      qjob_wsflId = #{qjobWsflid,jdbcType=INTEGER},
+      qjob_state = #{qjobState,jdbcType=INTEGER},
+      qjob_annual = #{qjobAnnual,jdbcType=VARCHAR},
+      qjob_money = #{qjobMoney,jdbcType=DOUBLE},
+      qjob_fundSource = #{qjobFundsource,jdbcType=VARCHAR},
+      qjob_applyContent = #{qjobApplycontent,jdbcType=LONGVARCHAR},
+      qjob_auditcontent = #{qjobAuditcontent,jdbcType=LONGVARCHAR}
+    where qjob_id = #{qjobId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Qgzxjob" >
+    update qgzxjob
+    set qjob_applyUser = #{qjobApplyuser,jdbcType=INTEGER},
+      qjob_title = #{qjobTitle,jdbcType=VARCHAR},
+      qjob_number = #{qjobNumber,jdbcType=INTEGER},
+      qjob_applyTime = #{qjobApplytime,jdbcType=TIMESTAMP},
+      qjob_majorIds = #{qjobMajorids,jdbcType=VARCHAR},
+      qjob_useInstitution = #{qjobUseinstitution,jdbcType=INTEGER},
+      qjob_fundsInstitution = #{qjobFundsinstitution,jdbcType=INTEGER},
+      qjob_auditTime = #{qjobAudittime,jdbcType=TIMESTAMP},
+      qjob_workId = #{qjobWorkid,jdbcType=INTEGER},
+      qjob_forcePoor = #{qjobForcepoor,jdbcType=INTEGER},
+      qjob_wsflId = #{qjobWsflid,jdbcType=INTEGER},
+      qjob_state = #{qjobState,jdbcType=INTEGER},
+      qjob_annual = #{qjobAnnual,jdbcType=VARCHAR},
+      qjob_money = #{qjobMoney,jdbcType=DOUBLE},
+      qjob_fundSource = #{qjobFundsource,jdbcType=VARCHAR}
+    where qjob_id = #{qjobId,jdbcType=INTEGER}
+  </update>
+</mapper>

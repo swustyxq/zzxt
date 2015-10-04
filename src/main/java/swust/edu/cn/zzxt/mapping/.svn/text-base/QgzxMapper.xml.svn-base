@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.QgzxMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Qgzx" >
+    <id column="qgzx_id" property="qgzxId" jdbcType="INTEGER" />
+    <result column="qgzx_studId" property="qgzxStudid" jdbcType="INTEGER" />
+    <result column="qgzx_qjobId" property="qgzxQjobid" jdbcType="INTEGER" />
+    <result column="qgzx_workId" property="qgzxWorkid" jdbcType="INTEGER" />
+    <result column="qgzx_wsflId" property="qgzxWsflid" jdbcType="INTEGER" />
+    <result column="qgzx_applyTime" property="qgzxApplytime" jdbcType="TIMESTAMP" />
+    <result column="qgzx_auditTime" property="qgzxAudittime" jdbcType="TIMESTAMP" />
+    <result column="qgzx_state" property="qgzxState" jdbcType="INTEGER" />
+    <result column="qgzx_dismissal" property="qgzxDismissal" jdbcType="INTEGER" />
+    <result column="qgzx_annual" property="qgzxAnnual" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="swust.edu.cn.zzxt.model.QgzxWithBLOBs" extends="BaseResultMap" >
+    <result column="qgzx_applyContent" property="qgzxApplycontent" jdbcType="LONGVARCHAR" />
+    <result column="qgzx_auditContent" property="qgzxAuditcontent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    qgzx_id, qgzx_studId, qgzx_qjobId, qgzx_workId, qgzx_wsflId, qgzx_applyTime, qgzx_auditTime, 
+    qgzx_state, qgzx_dismissal, qgzx_annual
+  </sql>
+  <sql id="Blob_Column_List" >
+    qgzx_applyContent, qgzx_auditContent
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from qgzx
+    where qgzx_id = #{qgzxId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from qgzx
+    where qgzx_id = #{qgzxId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.QgzxWithBLOBs" >
+    insert into qgzx (qgzx_id, qgzx_studId, qgzx_qjobId, 
+      qgzx_workId, qgzx_wsflId, qgzx_applyTime, 
+      qgzx_auditTime, qgzx_state, qgzx_dismissal, 
+      qgzx_annual, qgzx_applyContent, qgzx_auditContent
+      )
+    values (#{qgzxId,jdbcType=INTEGER}, #{qgzxStudid,jdbcType=INTEGER}, #{qgzxQjobid,jdbcType=INTEGER}, 
+      #{qgzxWorkid,jdbcType=INTEGER}, #{qgzxWsflid,jdbcType=INTEGER}, #{qgzxApplytime,jdbcType=TIMESTAMP}, 
+      #{qgzxAudittime,jdbcType=TIMESTAMP}, #{qgzxState,jdbcType=INTEGER}, #{qgzxDismissal,jdbcType=INTEGER}, 
+      #{qgzxAnnual,jdbcType=VARCHAR}, #{qgzxApplycontent,jdbcType=LONGVARCHAR}, #{qgzxAuditcontent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.QgzxWithBLOBs" >
+    insert into qgzx
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="qgzxId != null" >
+        qgzx_id,
+      </if>
+      <if test="qgzxStudid != null" >
+        qgzx_studId,
+      </if>
+      <if test="qgzxQjobid != null" >
+        qgzx_qjobId,
+      </if>
+      <if test="qgzxWorkid != null" >
+        qgzx_workId,
+      </if>
+      <if test="qgzxWsflid != null" >
+        qgzx_wsflId,
+      </if>
+      <if test="qgzxApplytime != null" >
+        qgzx_applyTime,
+      </if>
+      <if test="qgzxAudittime != null" >
+        qgzx_auditTime,
+      </if>
+      <if test="qgzxState != null" >
+        qgzx_state,
+      </if>
+      <if test="qgzxDismissal != null" >
+        qgzx_dismissal,
+      </if>
+      <if test="qgzxAnnual != null" >
+        qgzx_annual,
+      </if>
+      <if test="qgzxApplycontent != null" >
+        qgzx_applyContent,
+      </if>
+      <if test="qgzxAuditcontent != null" >
+        qgzx_auditContent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="qgzxId != null" >
+        #{qgzxId,jdbcType=INTEGER},
+      </if>
+      <if test="qgzxStudid != null" >
+        #{qgzxStudid,jdbcType=INTEGER},
+      </if>
+      <if test="qgzxQjobid != null" >
+        #{qgzxQjobid,jdbcType=INTEGER},
+      </if>
+      <if test="qgzxWorkid != null" >
+        #{qgzxWorkid,jdbcType=INTEGER},
+      </if>
+      <if test="qgzxWsflid != null" >
+        #{qgzxWsflid,jdbcType=INTEGER},
+      </if>
+      <if test="qgzxApplytime != null" >
+        #{qgzxApplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qgzxAudittime != null" >
+        #{qgzxAudittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qgzxState != null" >
+        #{qgzxState,jdbcType=INTEGER},
+      </if>
+      <if test="qgzxDismissal != null" >
+        #{qgzxDismissal,jdbcType=INTEGER},
+      </if>
+      <if test="qgzxAnnual != null" >
+        #{qgzxAnnual,jdbcType=VARCHAR},
+      </if>
+      <if test="qgzxApplycontent != null" >
+        #{qgzxApplycontent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qgzxAuditcontent != null" >
+        #{qgzxAuditcontent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.QgzxWithBLOBs" >
+    update qgzx
+    <set >
+      <if test="qgzxStudid != null" >
+        qgzx_studId = #{qgzxStudid,jdbcType=INTEGER},
+      </if>
+      <if test="qgzxQjobid != null" >
+        qgzx_qjobId = #{qgzxQjobid,jdbcType=INTEGER},
+      </if>
+      <if test="qgzxWorkid != null" >
+        qgzx_workId = #{qgzxWorkid,jdbcType=INTEGER},
+      </if>
+      <if test="qgzxWsflid != null" >
+        qgzx_wsflId = #{qgzxWsflid,jdbcType=INTEGER},
+      </if>
+      <if test="qgzxApplytime != null" >
+        qgzx_applyTime = #{qgzxApplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qgzxAudittime != null" >
+        qgzx_auditTime = #{qgzxAudittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qgzxState != null" >
+        qgzx_state = #{qgzxState,jdbcType=INTEGER},
+      </if>
+      <if test="qgzxDismissal != null" >
+        qgzx_dismissal = #{qgzxDismissal,jdbcType=INTEGER},
+      </if>
+      <if test="qgzxAnnual != null" >
+        qgzx_annual = #{qgzxAnnual,jdbcType=VARCHAR},
+      </if>
+      <if test="qgzxApplycontent != null" >
+        qgzx_applyContent = #{qgzxApplycontent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="qgzxAuditcontent != null" >
+        qgzx_auditContent = #{qgzxAuditcontent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where qgzx_id = #{qgzxId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="swust.edu.cn.zzxt.model.QgzxWithBLOBs" >
+    update qgzx
+    set qgzx_studId = #{qgzxStudid,jdbcType=INTEGER},
+      qgzx_qjobId = #{qgzxQjobid,jdbcType=INTEGER},
+      qgzx_workId = #{qgzxWorkid,jdbcType=INTEGER},
+      qgzx_wsflId = #{qgzxWsflid,jdbcType=INTEGER},
+      qgzx_applyTime = #{qgzxApplytime,jdbcType=TIMESTAMP},
+      qgzx_auditTime = #{qgzxAudittime,jdbcType=TIMESTAMP},
+      qgzx_state = #{qgzxState,jdbcType=INTEGER},
+      qgzx_dismissal = #{qgzxDismissal,jdbcType=INTEGER},
+      qgzx_annual = #{qgzxAnnual,jdbcType=VARCHAR},
+      qgzx_applyContent = #{qgzxApplycontent,jdbcType=LONGVARCHAR},
+      qgzx_auditContent = #{qgzxAuditcontent,jdbcType=LONGVARCHAR}
+    where qgzx_id = #{qgzxId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Qgzx" >
+    update qgzx
+    set qgzx_studId = #{qgzxStudid,jdbcType=INTEGER},
+      qgzx_qjobId = #{qgzxQjobid,jdbcType=INTEGER},
+      qgzx_workId = #{qgzxWorkid,jdbcType=INTEGER},
+      qgzx_wsflId = #{qgzxWsflid,jdbcType=INTEGER},
+      qgzx_applyTime = #{qgzxApplytime,jdbcType=TIMESTAMP},
+      qgzx_auditTime = #{qgzxAudittime,jdbcType=TIMESTAMP},
+      qgzx_state = #{qgzxState,jdbcType=INTEGER},
+      qgzx_dismissal = #{qgzxDismissal,jdbcType=INTEGER},
+      qgzx_annual = #{qgzxAnnual,jdbcType=VARCHAR}
+    where qgzx_id = #{qgzxId,jdbcType=INTEGER}
+  </update>
+</mapper>

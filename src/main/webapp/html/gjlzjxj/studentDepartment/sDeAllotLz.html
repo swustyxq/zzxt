@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="../../../images/favicon.png">
+
+<title>西南科技大学资助系统</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../css/bootstrap.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="../../../css/bootstrap-theme.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="../../../css/theme.css" rel="stylesheet">
+<link href="../../../css/docs.css" rel="stylesheet">
+<link href="../../../css/bootstrap.css" rel="stylesheet">
+<link href="../../../css/github.min.css" rel="stylesheet">
+<link href="../../../css/bootstrap.min.css" rel="stylesheet">
+
+<script src="../../../javascript/jquery.min.js"></script>
+<script src="../../../javascript/bootstrap.min.js"></script>
+<script src="../../../javascript/holder.min.js"></script>
+</head>
+
+<body>
+
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">西南科技大学学生资助系统</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><span id="current_user">学生处用户</span><b
+							class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li class="divider"></li>
+							<li class="dropdown-header">基本功能</li>
+							<li><a href="help.html">系统帮助</a></li>
+							<li><a href="changePassword.html">修改密码</a></li>
+							<li><a href="login.html">退出</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+	<div class="container theme-showcase">
+		<div class="col-md-12">
+			<div class="col-md-12">
+
+				<div id="location" class="page-header">
+					<small>当前位置导航：&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">首页</a>&gt;<a
+						href="#">使用说明</a></small>
+				</div>
+			</div>
+
+
+			<!-- 左侧导航栏    -->
+			<div class="col-md-3">
+				<div class="bs-example">
+					<div class="panel-group" id="accordion">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseOne">大学生城镇医疗保险</a>
+								</h4>
+							</div>
+							<div id="collapseOne" class="panel-collapse collapse in">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+								        <li><a href="../../czylbx/studentDepartment/sDeSeeCzIntroduction.html">查看保险介绍</a></li>
+								     	<li><a href="../../czylbx/studentDepartment/sDeSeeCzBuy.html">保险购买情况</a></li>
+								    </ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseTwo">学生平安保险</a>
+								</h4>
+							</div>
+							<div id="collapseTwo" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+								        <li><a href="../../xspabx/studentDepartment/sDeSeeXpIntroduction.html">查看保险介绍</a></li>
+								        <li><a href="../../xspabx/studentDepartment/sDeSeeXpBuy.html">保险购买情况</a></li>
+								    </ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseThree">学费奖补</a>
+								</h4>
+							</div>
+							<div id="collapseThree" class="panel-collapse collapse">
+								<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+								    <li><a href="../../xfjb/studentDepartment/sDeSeeJbIntroduction.html">查看学费奖补公告</a></li>
+								     <li><a href="../../xfjb/studentDepartment/sDePublishJbDetail.html">发布学费奖补公告</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseFour">绿色通道</a>
+								</h4>
+							</div>
+							<div id="collapseFour" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="../../lstd/studentDepartment/sDeSetLsFlow.html">系统流程配置</a></li>
+										<li><a href="../../lstd/studentDepartment/sDeSetLsDeadline.html">设置系统开启截止时间</a></li>
+									    <li><a href="../../lstd/studentDepartment/sDeSeeLsIntroduction.html">查看绿色通道办理情况</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseFive">贫困生管理</a>
+								</h4>
+							</div>
+							<div id="collapseFive" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="../../pksgl/studentDepartment/sDeSetPkFlow.html">系统流程配置</a></li>
+										<li><a href="../../pksgl/studentDepartment/sDeSetPkDeadline.html">设置系统开启截止时间</a></li>
+									    <li><a href="../../pksgl/studentDepartment/sDeSeePkIntroduction.html">查看贫困生信息</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseSix">国家奖学金</a>
+								</h4>
+							</div>
+							<div id="collapseSix" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="../../gjjxj/studentDepartment/sDeFlowSystem.html">系统流程配置</a></li>
+										<li><a href="../../gjjxj/studentDepartment/sDeSetDeadline.html">设置系统开启截止时间</a></li>
+										<li><a href="../../gjjxj/studentDepartment/sDeAllotGj.html">分配名额</a></li>
+									    <li><a href="../../gjjxj/studentDepartment/sDeAuditGjApplication.html">审核国家奖学金</a></li>
+									    <li><a href="../../gjjxj/studentDepartment/sDeSeeGjApplication1.html">查看国家奖学金申请情况</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseSeven">社会奖学金</a>
+								</h4>
+							</div>
+							<div id="collapseSeven" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="../../shjxj/studentDepartment/sDeFlowSystem.html">系统流程配置</a></li>
+									    <li><a href="../../shjxj/studentDepartment/sDeSetDeadline.html">设置系统开启截止时间</a></li>
+										<li><a href="../../shjxj/studentDepartment/sDeAllotSj.html">分配名额</a></li>
+									    <li><a href="../../shjxj/studentDepartment/sDeAuditSjApplication.html">审核社会奖学金</a></li>
+									    <li><a href="../../shjxj/studentDepartment/sDeSeeSjApplication1.html">查看社会奖学金申请情况</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseEight">国家励志奖学金</a>
+								</h4>
+							</div>
+							<div id="collapseEight" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="sDeFlowSystem.html">系统流程配置</a></li>
+									    <li><a href="sDeSetDeadline.html">设置系统开启截止时间</a></li>
+										<li><a href="sDeAllotLz.html">分配名额</a></li>
+									    <li><a href="sDeAuditLzApplication.html">审核国家励志奖学金</a></li>
+									    <li><a href="sDeSeeLzApplication1.html">查看国家励志奖学金申请情况</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseNine">国家助学金</a>
+								</h4>
+							</div>
+							<div id="collapseNine" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="../../gjzxj/studentDepartment/sDeFlowSystem.html">系统流程配置</a></li>
+									    <li><a href="../../gjzxj/studentDepartment/sDeSetDeadline.html">设置系统开启截止时间</a></li>
+										<li><a href="../../gjzxj/studentDepartment/sDeAllotZx.html">分配名额</a></li>
+									    <li><a href="../../gjzxj/studentDepartment/sDeAuditZxApplication.html">审核国家助学金</a></li>
+									    <li><a href="../../gjzxj/studentDepartment/sDeSeeZxApplication1.html">查看国家助学金申请情况</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseTen">行政部门勤工助学岗位申请</a>
+								</h4>
+							</div>
+							<div id="collapseTen" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="../../qgzx/studentDepartment/sDeSetQgFlow.html">系统流程配置</a></li>
+										<li><a href="../../qgzx/studentDepartment/sDeSetQgDeadline.html">设置系统开启截止时间</a></li>
+										<li><a href="../../qgzx/studentDepartment/sDeSeeQgApplication.html">查看部门申请状态</a></li>
+										<li><a href="../../qgzx/studentDepartment/sDeSetQgIntroduction.html">设置勤工助学岗位</a></li>
+										<li><a href="../../qgzx/studentDepartment/sDeSeeStuQgIntroduction.html">查看学生勤工助学岗位状态</a></li>
+									    <li><a href="../../qgzx/studentDepartment/sDeSeeQgIntroduction.html">查看已发布学生勤工岗位情况</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseEleven">大学生医疗补助</a>
+								</h4>
+							</div>
+							<div id="collapseEleven" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="../../ylbz/studentDepartment/sDeYlFlow.html">系统流程配置</a></li>
+									    <li><a href="../../ylbz/studentDepartment/sDeYlExport.html">数据导入</a></li>
+									    <li><a href="../../ylbz/studentDepartment/sDeSeeYlApply.html">查看申请状态</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseTwelve">系统管理</a>
+								</h4>
+							</div>
+							<div id="collapseTwelve" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+								        <li><a href="#">用户管理</a></li>
+								        <li><a href="#">角色管理</a></li>
+								        <li><a href="#">部门管理</a></li>
+								        <li><a href="#">信息发布</a></li>
+								        <li><a href="#">专业班级管理</a></li>
+								        <li><a href="#">辅导员带班管理</a></li>
+								      </ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div class="highlight">
+					
+					<div class="form-control" style="background-color: #3162BB; color: #FFFFFF; text-align: left">
+					<font size="3"><b>国家励志奖学金名额分配</b></font>
+				</div>
+				<div style="position: relative; bottom: -4px;">
+				<hr>
+				</div>
+				<div style="position: relative; bottom: -10px;">
+				<form class="form-inline">
+				
+					<div class="col-md-4">
+					<div style="position: relative;right:14px;">
+						<div class="form-group">
+							年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级：
+						</div>
+						<div class="form-group">
+							
+							<select id="year" style="width:150px;" class="form-control">
+								<option>全部</option>
+								<option>2014</option>
+								<option>2013</option>
+				                <option>2012</option>
+				                <option>2011</option>       
+							</select>
+						</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+					<div style="position: relative;right:14px;">
+						<div class="form-group">
+							学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;院：
+						</div>
+						<div class="form-group">
+							
+							<select id="school" style="width:150px;" class="form-control">
+							
+							   <option>全部</option>
+								<option>国防科技学院</option>
+								<option>信息工程学院
+								</option>
+				                <option>计算机科学与技术学院
+				                </option>
+				                <option>制造科学与工程学院</option>
+				                <option>土木工程与建筑学院
+				                </option>
+								<option>环境与资源学院
+								</option>
+				                <option>材料科学与工程学院</option>
+				                <option>生命科学与工程学院
+				                </option>  
+				                <option>理学院
+				                </option>
+								<option>经济管理学院
+								</option>
+				                <option>文学与艺术学院
+				                </option>
+				                <option>法学院
+				                </option>  
+				                <option>政治学院
+				                </option>
+				                <option>外国语学院
+				                </option> 
+				                <option>成人教育学院
+				                </option>
+				                <option>网络教育学院
+				                </option>  
+				                       
+							</select>
+						</div>
+						</div>
+					</div>
+				
+					<div class="col-md-4">
+						<div class="form-group">
+							专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业：
+								
+						</div>
+						<div class="form-group">
+							
+							<select  style="width:150px;" class="form-control">
+							<option>全部</option>
+							<option>软件工程</option>
+							<option>信息安全</option>
+							<option>计算机科学与技术</option>
+							<option></option>
+							<option></option>
+							<option></option></select>
+							
+						</div>
+					</div>
+				</form>
+				<br>
+				<br></br>
+				</div>
+					<div style="position: relative; bottom: -10px;">
+				<form class="form-inline">
+				<div style="position: relative;right:14px;" bottom: -10px;>
+					
+						<div class="col-xs-4">
+						<div class="form-group">
+							名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;额：
+						</div>
+						<div class="form-group">
+						
+				              <input type="text"   style="width:150px;" class="form-control">
+				            
+						</div>
+					</div>
+				
+					<div class="col-xs-4" >
+						<div style="position: relative;right:14px;">
+						<div class="form-group">
+							个
+						</div>
+					   </div>
+					</div>
+					<br></br>
+					<br></br>
+					</div>
+				</form>
+				</div>
+				<br><br>
+					</div>
+					<div style="position: relative;right:-16px;">
+					<div class="col-xs-12" align="right">
+					<button type="submit" class="btn btn-primary" data-toggle="modal" id="setting"><b>设置</b></button>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<button type="reset" class="btn btn-primary" id="cancel"><b>取消</b></button>
+					</div>
+					</div>
+				        
+				    </div>
+				</div>
+				</div>
+		
+
+
+
+
+
+
+	<footer class="bs-footer" role="contentinfo">
+		<p class="pull-right">
+			<a href="#">回到页面顶部</a>
+		</p>
+		<div class="container">
+			<p>系统由XXXX公司开发</p>
+			<p>版权所有&nbsp;&nbsp;&nbsp;©2012&nbsp;&nbsp;&nbsp;西南科技大学学生工作部（处）</p>
+			<ul class="footer-links">
+				<li>当前版本：&nbsp;&nbsp; v3.0.3
+					&nbsp;&nbsp;&nbsp;系统更新时间：2014年4月25日&nbsp;&nbsp;&nbsp;&nbsp;西南科技大学学生资助系统</li>
+				<li class="muted">·</li>
+			</ul>
+		</div>
+	</footer>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.RefunctionactionMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Refunctionaction" >
+    <id column="refa_id" property="refaId" jdbcType="INTEGER" />
+    <result column="refa_funcId" property="refaFuncid" jdbcType="INTEGER" />
+    <result column="refa_atonId" property="refaAtonid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    refa_id, refa_funcId, refa_atonId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from refunctionaction
+    where refa_id = #{refaId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from refunctionaction
+    where refa_id = #{refaId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.Refunctionaction" >
+    insert into refunctionaction (refa_id, refa_funcId, refa_atonId
+      )
+    values (#{refaId,jdbcType=INTEGER}, #{refaFuncid,jdbcType=INTEGER}, #{refaAtonid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.Refunctionaction" >
+    insert into refunctionaction
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="refaId != null" >
+        refa_id,
+      </if>
+      <if test="refaFuncid != null" >
+        refa_funcId,
+      </if>
+      <if test="refaAtonid != null" >
+        refa_atonId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="refaId != null" >
+        #{refaId,jdbcType=INTEGER},
+      </if>
+      <if test="refaFuncid != null" >
+        #{refaFuncid,jdbcType=INTEGER},
+      </if>
+      <if test="refaAtonid != null" >
+        #{refaAtonid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.Refunctionaction" >
+    update refunctionaction
+    <set >
+      <if test="refaFuncid != null" >
+        refa_funcId = #{refaFuncid,jdbcType=INTEGER},
+      </if>
+      <if test="refaAtonid != null" >
+        refa_atonId = #{refaAtonid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where refa_id = #{refaId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Refunctionaction" >
+    update refunctionaction
+    set refa_funcId = #{refaFuncid,jdbcType=INTEGER},
+      refa_atonId = #{refaAtonid,jdbcType=INTEGER}
+    where refa_id = #{refaId,jdbcType=INTEGER}
+  </update>
+</mapper>

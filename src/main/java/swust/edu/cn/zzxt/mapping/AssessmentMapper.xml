@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.AssessmentMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Assessment" >
+    <id column="asse_id" property="asseId" jdbcType="INTEGER" />
+    <result column="asse_qgzxId" property="asseQgzxid" jdbcType="INTEGER" />
+    <result column="asse_user" property="asseUser" jdbcType="INTEGER" />
+    <result column="asse_time" property="asseTime" jdbcType="TIMESTAMP" />
+    <result column="asse_annual" property="asseAnnual" jdbcType="VARCHAR" />
+    <result column="asse_money" property="asseMoney" jdbcType="DOUBLE" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="swust.edu.cn.zzxt.model.Assessment" extends="BaseResultMap" >
+    <result column="asse_content" property="asseContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    asse_id, asse_qgzxId, asse_user, asse_time, asse_annual, asse_money
+  </sql>
+  <sql id="Blob_Column_List" >
+    asse_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from assessment
+    where asse_id = #{asseId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from assessment
+    where asse_id = #{asseId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.Assessment" >
+    insert into assessment (asse_id, asse_qgzxId, asse_user, 
+      asse_time, asse_annual, asse_money, 
+      asse_content)
+    values (#{asseId,jdbcType=INTEGER}, #{asseQgzxid,jdbcType=INTEGER}, #{asseUser,jdbcType=INTEGER}, 
+      #{asseTime,jdbcType=TIMESTAMP}, #{asseAnnual,jdbcType=VARCHAR}, #{asseMoney,jdbcType=DOUBLE}, 
+      #{asseContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.Assessment" >
+    insert into assessment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="asseId != null" >
+        asse_id,
+      </if>
+      <if test="asseQgzxid != null" >
+        asse_qgzxId,
+      </if>
+      <if test="asseUser != null" >
+        asse_user,
+      </if>
+      <if test="asseTime != null" >
+        asse_time,
+      </if>
+      <if test="asseAnnual != null" >
+        asse_annual,
+      </if>
+      <if test="asseMoney != null" >
+        asse_money,
+      </if>
+      <if test="asseContent != null" >
+        asse_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="asseId != null" >
+        #{asseId,jdbcType=INTEGER},
+      </if>
+      <if test="asseQgzxid != null" >
+        #{asseQgzxid,jdbcType=INTEGER},
+      </if>
+      <if test="asseUser != null" >
+        #{asseUser,jdbcType=INTEGER},
+      </if>
+      <if test="asseTime != null" >
+        #{asseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="asseAnnual != null" >
+        #{asseAnnual,jdbcType=VARCHAR},
+      </if>
+      <if test="asseMoney != null" >
+        #{asseMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="asseContent != null" >
+        #{asseContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.Assessment" >
+    update assessment
+    <set >
+      <if test="asseQgzxid != null" >
+        asse_qgzxId = #{asseQgzxid,jdbcType=INTEGER},
+      </if>
+      <if test="asseUser != null" >
+        asse_user = #{asseUser,jdbcType=INTEGER},
+      </if>
+      <if test="asseTime != null" >
+        asse_time = #{asseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="asseAnnual != null" >
+        asse_annual = #{asseAnnual,jdbcType=VARCHAR},
+      </if>
+      <if test="asseMoney != null" >
+        asse_money = #{asseMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="asseContent != null" >
+        asse_content = #{asseContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where asse_id = #{asseId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="swust.edu.cn.zzxt.model.Assessment" >
+    update assessment
+    set asse_qgzxId = #{asseQgzxid,jdbcType=INTEGER},
+      asse_user = #{asseUser,jdbcType=INTEGER},
+      asse_time = #{asseTime,jdbcType=TIMESTAMP},
+      asse_annual = #{asseAnnual,jdbcType=VARCHAR},
+      asse_money = #{asseMoney,jdbcType=DOUBLE},
+      asse_content = #{asseContent,jdbcType=LONGVARCHAR}
+    where asse_id = #{asseId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Assessment" >
+    update assessment
+    set asse_qgzxId = #{asseQgzxid,jdbcType=INTEGER},
+      asse_user = #{asseUser,jdbcType=INTEGER},
+      asse_time = #{asseTime,jdbcType=TIMESTAMP},
+      asse_annual = #{asseAnnual,jdbcType=VARCHAR},
+      asse_money = #{asseMoney,jdbcType=DOUBLE}
+    where asse_id = #{asseId,jdbcType=INTEGER}
+  </update>
+</mapper>

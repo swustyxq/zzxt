@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="../../images/favicon.png">
+
+<title>西南科技大学资助系统</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../../css/bootstrap.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="../../css/bootstrap-theme.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="../../css/theme.css" rel="stylesheet">
+<link href="../../css/docs.css" rel="stylesheet">
+<link href="../../css/bootstrap.css" rel="stylesheet">
+<link href="../../css/github.min.css" rel="stylesheet">
+<link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+<script src="../../javascript/jquery.min.js"></script>
+<script src="../../javascript/bootstrap.min.js"></script>
+<script src="../../javascript/holder.min.js"></script>
+</head>
+
+<body>
+
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">西南科技大学学生资助系统</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><span id="current_user">学生用户</span><b
+							class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li class="divider"></li>
+							<li class="dropdown-header">基本功能</li>
+							<li><a href="help.html">系统帮助</a></li>
+							<li><a href="changePassword.html">修改密码</a></li>
+							<li><a href="login.html">退出</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+	<div class="container theme-showcase">
+		<div class="col-md-12">
+			<div class="col-md-12">
+
+				<div id="location" class="page-header">
+					<small>当前位置导航：&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">首页</a>&gt;<a
+						href="#">使用说明</a>&gt;<a href="#">学生信息</a></small>
+				</div>
+			</div>
+
+
+			<!-- 左侧导航栏    -->
+			<div class="col-md-3">
+				<div class="bs-example">
+					<div class="panel-group" id="accordion">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseOne">学生信息</a>
+								</h4>
+							</div>
+							<div id="collapseOne" class="panel-collapse collapse in">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="stuSeeInfo.html">基本信息</a></li>
+										<li><a href="stuSeeInfo.html">修改信息</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseOne">大学生城镇医疗保险</a>
+								</h4>
+							</div>
+							<div id="collapseOne" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="#">查看保险介绍</a></li>
+										<li><a href="#">保险购买进度</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseTwo">学生平安保险</a>
+								</h4>
+							</div>
+							<div id="collapseTwo" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="#">查看保险介绍</a></li>
+										<li><a href="#">保险购买进度</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseThree">学费奖补</a>
+								</h4>
+							</div>
+							<div id="collapseThree" class="panel-collapse collapse">
+								<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+									<li><a href="#">查看学费奖补公告</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseFour">绿色通道</a>
+								</h4>
+							</div>
+							<div id="collapseFour" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="#">查看绿色通道信息</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseFive">贫困生管理</a>
+								</h4>
+							</div>
+							<div id="collapseFive" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="#">申请贫困生</a></li>
+										<li><a href="#">查看贫困生状态</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseSix">国家奖学金</a>
+								</h4>
+							</div>
+							<div id="collapseSix" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="#">申请国家奖学金</a></li>
+										<li><a href="#">查看申请状态</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseSeven">社会奖学金</a>
+								</h4>
+							</div>
+							<div id="collapseSeven" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="#">申请社会奖学金</a></li>
+										<li><a href="#">查看申请状态</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseEight">国家励志奖学金</a>
+								</h4>
+							</div>
+							<div id="collapseEight" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="#">申请国家励志奖学金</a></li>
+										<li><a href="#">查看申请状态</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseNine">国家助学金</a>
+								</h4>
+							</div>
+							<div id="collapseNine" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="#">申请国家奖学金</a></li>
+										<li><a href="#">查看申请状态</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseTen">行政部门勤工助学岗位申请</a>
+								</h4>
+							</div>
+							<div id="collapseTen" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="#">查看勤工助学岗位</a></li>
+										<li><a href="#">申请勤工助学岗位</a></li>
+										<li><a href="#">查看申请状态</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-toggle="collapse"
+										data-parent="#accordion" href="#collapseEleven">大学生医疗补助</a>
+								</h4>
+							</div>
+							<div id="collapseEleven" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+										<li><a href="#">查看大学生医疗补助介绍</a></li>
+										<li><a href="#">申请大学生医疗补助</a></li>
+										<li><a href="#">查看申请状态</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div style="text-align: center">
+					<br />
+					<h2>学生基本信息</h2>
+				</div>
+				<div>
+					<br /> <br />
+					<div style="text-align: left;">
+						<h4>
+							<b>学生基本信息查询结果：</b>
+						</h4>
+					</div>
+					<table class="table table-striped table-bordered" align="center">
+						<tr>
+							<th>姓名</th>
+							<td>赵学融</td>
+							<th>学号</th>
+							<td>20121230</td>
+							<th>民族</th>
+							<td>汉族</td>
+						</tr>
+						<tr>
+							<th>专业</th>
+							<td>软件工程</td>
+							<th>班级</th>
+							<td>卓越软件1201</td>
+							<th>贫困等级</th>
+							<td><font color="red">特级贫困</font></td>
+						</tr>
+						<tr>
+							<th>身份证</th>
+							<td>500110199309224035</td>
+							<th>手机</th>
+							<td>18181768385</td>
+							<th>QQ</th>
+							<td>471543734</td>
+						</tr>
+						<tr>
+							<th>邮箱</th>
+							<td>471543734@qq.com</td>
+							<th>家庭住址</th>
+							<td colspan=3>西南科技大学新区东六宿舍楼B103</td>
+						</tr>
+						<tr>
+							<th>父亲姓名</th>
+							<td>XXX</td>
+							<th>联系方式</th>
+							<td>1234567890</td>
+							<th>工作</th>
+							<td>XXXXX</td>
+						</tr>
+						<tr>
+							<th>母亲姓名</th>
+							<td>XXX</td>
+							<th>联系方式</th>
+							<td>1234567890</td>
+							<th>工作</th>
+							<td>XXXXX</td>
+						</tr>
+						<tr>
+							<th rowspan="2" valign="middle">家庭情况</th>
+							<td colspan="5" rowspan="2"></td>
+						</tr>
+						<tr>
+						</tr>
+						<tr>
+							<th rowspan="2" valign="middle">获奖情况</th>
+							<td colspan="5" rowspan="2"></td>
+						</tr>
+						<tr>
+						</tr>
+						<tr>
+							<th valign="middle">已报销医疗补助</th>
+							<td colspan="5">XXXXXXXXXXXXXXXXXXX</td>
+						</tr>
+					</table>
+				</div>
+
+				<div style="position: relative;">
+					<div class="col-md-12" align="center">
+						<a href="stuSetInfo.html" class="btn btn-default btn-sm "
+							role="button">修改资料</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<footer class="bs-footer" role="contentinfo">
+		<p class="pull-right">
+			<a href="#">回到页面顶部</a>
+		</p>
+		<div class="container">
+			<p>系统由XXXX公司开发</p>
+			<p>版权所有&nbsp;&nbsp;&nbsp;©2012&nbsp;&nbsp;&nbsp;西南科技大学学生工作部（处）</p>
+			<ul class="footer-links">
+				<li>当前版本：&nbsp;&nbsp; v3.0.3
+					&nbsp;&nbsp;&nbsp;系统更新时间：2014年4月25日&nbsp;&nbsp;&nbsp;&nbsp;西南科技大学学生资助系统</li>
+				<li class="muted">·</li>
+			</ul>
+		</div>
+	</footer>
+</body>
+</html>

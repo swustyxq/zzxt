@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.WorkinstitutiontemoneyamountMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Workinstitutiontemoneyamount" >
+    <id column="wima_id" property="wimaId" jdbcType="INTEGER" />
+    <result column="wima_workid" property="wimaWorkid" jdbcType="INTEGER" />
+    <result column="wima_institutionid" property="wimaInstitutionid" jdbcType="INTEGER" />
+    <result column="wima_money" property="wimaMoney" jdbcType="DOUBLE" />
+    <result column="wima_amount" property="wimaAmount" jdbcType="INTEGER" />
+    <result column="wima_note" property="wimaNote" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    wima_id, wima_workid, wima_institutionid, wima_money, wima_amount, wima_note
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from workinstitutiontemoneyamount
+    where wima_id = #{wimaId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from workinstitutiontemoneyamount
+    where wima_id = #{wimaId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.Workinstitutiontemoneyamount" >
+    insert into workinstitutiontemoneyamount (wima_id, wima_workid, wima_institutionid, 
+      wima_money, wima_amount, wima_note
+      )
+    values (#{wimaId,jdbcType=INTEGER}, #{wimaWorkid,jdbcType=INTEGER}, #{wimaInstitutionid,jdbcType=INTEGER}, 
+      #{wimaMoney,jdbcType=DOUBLE}, #{wimaAmount,jdbcType=INTEGER}, #{wimaNote,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.Workinstitutiontemoneyamount" >
+    insert into workinstitutiontemoneyamount
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="wimaId != null" >
+        wima_id,
+      </if>
+      <if test="wimaWorkid != null" >
+        wima_workid,
+      </if>
+      <if test="wimaInstitutionid != null" >
+        wima_institutionid,
+      </if>
+      <if test="wimaMoney != null" >
+        wima_money,
+      </if>
+      <if test="wimaAmount != null" >
+        wima_amount,
+      </if>
+      <if test="wimaNote != null" >
+        wima_note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="wimaId != null" >
+        #{wimaId,jdbcType=INTEGER},
+      </if>
+      <if test="wimaWorkid != null" >
+        #{wimaWorkid,jdbcType=INTEGER},
+      </if>
+      <if test="wimaInstitutionid != null" >
+        #{wimaInstitutionid,jdbcType=INTEGER},
+      </if>
+      <if test="wimaMoney != null" >
+        #{wimaMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="wimaAmount != null" >
+        #{wimaAmount,jdbcType=INTEGER},
+      </if>
+      <if test="wimaNote != null" >
+        #{wimaNote,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.Workinstitutiontemoneyamount" >
+    update workinstitutiontemoneyamount
+    <set >
+      <if test="wimaWorkid != null" >
+        wima_workid = #{wimaWorkid,jdbcType=INTEGER},
+      </if>
+      <if test="wimaInstitutionid != null" >
+        wima_institutionid = #{wimaInstitutionid,jdbcType=INTEGER},
+      </if>
+      <if test="wimaMoney != null" >
+        wima_money = #{wimaMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="wimaAmount != null" >
+        wima_amount = #{wimaAmount,jdbcType=INTEGER},
+      </if>
+      <if test="wimaNote != null" >
+        wima_note = #{wimaNote,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where wima_id = #{wimaId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Workinstitutiontemoneyamount" >
+    update workinstitutiontemoneyamount
+    set wima_workid = #{wimaWorkid,jdbcType=INTEGER},
+      wima_institutionid = #{wimaInstitutionid,jdbcType=INTEGER},
+      wima_money = #{wimaMoney,jdbcType=DOUBLE},
+      wima_amount = #{wimaAmount,jdbcType=INTEGER},
+      wima_note = #{wimaNote,jdbcType=VARCHAR}
+    where wima_id = #{wimaId,jdbcType=INTEGER}
+  </update>
+  <!-- 赵学融
+      通过工作id和学院id获取信息
+      20140831 -->
+    <select id="selectByInstAndWork" resultMap="BaseResultMap" parameterType="swust.edu.cn.zzxt.model.Workinstitutiontemoneyamount" >
+    select 
+    <include refid="Base_Column_List" />
+    from workinstitutiontemoneyamount
+    where wima_workid = #{wimaWorkid,jdbcType=INTEGER}
+    and wima_institutionid = #{wimaInstitutionid,jdbcType=INTEGER}
+  </select>
+</mapper>

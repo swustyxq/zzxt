@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.AnnouncementtypeMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Announcementtype" >
+    <id column="antp_id" property="antpId" jdbcType="INTEGER" />
+    <result column="antp_name" property="antpName" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="swust.edu.cn.zzxt.model.Announcementtype" extends="BaseResultMap" >
+    <result column="antp_description" property="antpDescription" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    antp_id, antp_name
+  </sql>
+  <sql id="Blob_Column_List" >
+    antp_description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from announcementtype
+    where antp_id = #{antpId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from announcementtype
+    where antp_id = #{antpId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.Announcementtype" >
+    insert into announcementtype (antp_id, antp_name, antp_description
+      )
+    values (#{antpId,jdbcType=INTEGER}, #{antpName,jdbcType=VARCHAR}, #{antpDescription,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.Announcementtype" >
+    insert into announcementtype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="antpId != null" >
+        antp_id,
+      </if>
+      <if test="antpName != null" >
+        antp_name,
+      </if>
+      <if test="antpDescription != null" >
+        antp_description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="antpId != null" >
+        #{antpId,jdbcType=INTEGER},
+      </if>
+      <if test="antpName != null" >
+        #{antpName,jdbcType=VARCHAR},
+      </if>
+      <if test="antpDescription != null" >
+        #{antpDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.Announcementtype" >
+    update announcementtype
+    <set >
+      <if test="antpName != null" >
+        antp_name = #{antpName,jdbcType=VARCHAR},
+      </if>
+      <if test="antpDescription != null" >
+        antp_description = #{antpDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where antp_id = #{antpId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="swust.edu.cn.zzxt.model.Announcementtype" >
+    update announcementtype
+    set antp_name = #{antpName,jdbcType=VARCHAR},
+      antp_description = #{antpDescription,jdbcType=LONGVARCHAR}
+    where antp_id = #{antpId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Announcementtype" >
+    update announcementtype
+    set antp_name = #{antpName,jdbcType=VARCHAR}
+    where antp_id = #{antpId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 查找所有的类型  -->
+  <select id="selectAllAnnoucementtype" resultMap="BaseResultMap" parameterType="swust.edu.cn.zzxt.model.Announcementtype" >
+    select 
+    <include refid="Base_Column_List" />
+    from announcementtype
+  </select>
+</mapper>

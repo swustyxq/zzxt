@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.PgsglMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Pgsgl" >
+    <id column="pksg_id" property="pksgId" jdbcType="INTEGER" />
+    <result column="pksg_studId" property="pksgStudid" jdbcType="INTEGER" />
+    <result column="pksg_rank" property="pksgRank" jdbcType="VARCHAR" />
+    <result column="pksg_admittime" property="pksgAdmittime" jdbcType="VARCHAR" />
+    <result column="pksg_isDisable" property="pksgIsdisable" jdbcType="INTEGER" />
+    <result column="pksg_opinion" property="pksgOpinion" jdbcType="VARCHAR" />
+    <result column="pksg_applyTime" property="pksgApplytime" jdbcType="TIMESTAMP" />
+    <result column="pksg_communityOpinionTime" property="pksgCommunityopiniontime" jdbcType="TIMESTAMP" />
+    <result column="pksg_recommendGrade" property="pksgRecommendgrade" jdbcType="VARCHAR" />
+    <result column="pksg_leaderOpinionTime" property="pksgLeaderopiniontime" jdbcType="TIMESTAMP" />
+    <result column="pksg_academyOpinionTime" property="pksgAcademyopiniontime" jdbcType="TIMESTAMP" />
+    <result column="pksg_workId" property="pksgWorkid" jdbcType="INTEGER" />
+    <result column="pksg_wsflId" property="pksgWsflid" jdbcType="INTEGER" />
+    <result column="pksg_isDeleted" property="pksgIsdeleted" jdbcType="INTEGER" />
+    <result column="pksg_politicState" property="pksgPoliticstate" jdbcType="VARCHAR" />
+    <result column="pksg_allIncomePerYear" property="pksgAllincomeperyear" jdbcType="DOUBLE" />
+    <result column="pksg_home" property="pksgHome" jdbcType="VARCHAR" />
+    <result column="pksg_mailcode" property="pksgMailcode" jdbcType="VARCHAR" />
+    <result column="pksg_state" property="pksgState" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="swust.edu.cn.zzxt.model.PgsglWithBLOBs" extends="BaseResultMap" >
+    <result column="pksg_situation" property="pksgSituation" jdbcType="LONGVARCHAR" />
+    <result column="pksg_applyReason" property="pksgApplyreason" jdbcType="LONGVARCHAR" />
+    <result column="pksg_communityOpinion" property="pksgCommunityopinion" jdbcType="LONGVARCHAR" />
+    <result column="pksg_academyOpinion" property="pksgAcademyopinion" jdbcType="LONGVARCHAR" />
+    <result column="pksg_note" property="pksgNote" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pksg_id, pksg_studId, pksg_rank, pksg_admittime, pksg_isDisable, pksg_opinion, pksg_applyTime, 
+    pksg_communityOpinionTime, pksg_recommendGrade, pksg_leaderOpinionTime, pksg_academyOpinionTime, 
+    pksg_workId, pksg_wsflId, pksg_isDeleted, pksg_politicState, pksg_allIncomePerYear, 
+    pksg_home, pksg_mailcode, pksg_state
+  </sql>
+  <sql id="Blob_Column_List" >
+    pksg_situation, pksg_applyReason, pksg_communityOpinion, pksg_academyOpinion, pksg_note
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from pksgl
+    where pksg_id = #{pksgId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from pksgl
+    where pksg_id = #{pksgId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.PgsglWithBLOBs" >
+    insert into pksgl (pksg_id, pksg_studId, pksg_rank, 
+      pksg_admittime, pksg_isDisable, pksg_opinion, 
+      pksg_applyTime, pksg_communityOpinionTime, 
+      pksg_recommendGrade, pksg_leaderOpinionTime, 
+      pksg_academyOpinionTime, pksg_workId, pksg_wsflId, 
+      pksg_isDeleted, pksg_politicState, pksg_allIncomePerYear, 
+      pksg_home, pksg_mailcode, pksg_state, 
+      pksg_situation, pksg_applyReason, 
+      pksg_communityOpinion, pksg_academyOpinion, 
+      pksg_note)
+    values (#{pksgId,jdbcType=INTEGER}, #{pksgStudid,jdbcType=INTEGER}, #{pksgRank,jdbcType=VARCHAR}, 
+      #{pksgAdmittime,jdbcType=VARCHAR}, #{pksgIsdisable,jdbcType=INTEGER}, #{pksgOpinion,jdbcType=VARCHAR}, 
+      #{pksgApplytime,jdbcType=TIMESTAMP}, #{pksgCommunityopiniontime,jdbcType=TIMESTAMP}, 
+      #{pksgRecommendgrade,jdbcType=VARCHAR}, #{pksgLeaderopiniontime,jdbcType=TIMESTAMP}, 
+      #{pksgAcademyopiniontime,jdbcType=TIMESTAMP}, #{pksgWorkid,jdbcType=INTEGER}, #{pksgWsflid,jdbcType=INTEGER}, 
+      #{pksgIsdeleted,jdbcType=INTEGER}, #{pksgPoliticstate,jdbcType=VARCHAR}, #{pksgAllincomeperyear,jdbcType=DOUBLE}, 
+      #{pksgHome,jdbcType=VARCHAR}, #{pksgMailcode,jdbcType=VARCHAR}, #{pksgState,jdbcType=INTEGER}, 
+      #{pksgSituation,jdbcType=LONGVARCHAR}, #{pksgApplyreason,jdbcType=LONGVARCHAR}, 
+      #{pksgCommunityopinion,jdbcType=LONGVARCHAR}, #{pksgAcademyopinion,jdbcType=LONGVARCHAR}, 
+      #{pksgNote,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.PgsglWithBLOBs" >
+    insert into pksgl
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pksgId != null" >
+        pksg_id,
+      </if>
+      <if test="pksgStudid != null" >
+        pksg_studId,
+      </if>
+      <if test="pksgRank != null" >
+        pksg_rank,
+      </if>
+      <if test="pksgAdmittime != null" >
+        pksg_admittime,
+      </if>
+      <if test="pksgIsdisable != null" >
+        pksg_isDisable,
+      </if>
+      <if test="pksgOpinion != null" >
+        pksg_opinion,
+      </if>
+      <if test="pksgApplytime != null" >
+        pksg_applyTime,
+      </if>
+      <if test="pksgCommunityopiniontime != null" >
+        pksg_communityOpinionTime,
+      </if>
+      <if test="pksgRecommendgrade != null" >
+        pksg_recommendGrade,
+      </if>
+      <if test="pksgLeaderopiniontime != null" >
+        pksg_leaderOpinionTime,
+      </if>
+      <if test="pksgAcademyopiniontime != null" >
+        pksg_academyOpinionTime,
+      </if>
+      <if test="pksgWorkid != null" >
+        pksg_workId,
+      </if>
+      <if test="pksgWsflid != null" >
+        pksg_wsflId,
+      </if>
+      <if test="pksgIsdeleted != null" >
+        pksg_isDeleted,
+      </if>
+      <if test="pksgPoliticstate != null" >
+        pksg_politicState,
+      </if>
+      <if test="pksgAllincomeperyear != null" >
+        pksg_allIncomePerYear,
+      </if>
+      <if test="pksgHome != null" >
+        pksg_home,
+      </if>
+      <if test="pksgMailcode != null" >
+        pksg_mailcode,
+      </if>
+      <if test="pksgState != null" >
+        pksg_state,
+      </if>
+      <if test="pksgSituation != null" >
+        pksg_situation,
+      </if>
+      <if test="pksgApplyreason != null" >
+        pksg_applyReason,
+      </if>
+      <if test="pksgCommunityopinion != null" >
+        pksg_communityOpinion,
+      </if>
+      <if test="pksgAcademyopinion != null" >
+        pksg_academyOpinion,
+      </if>
+      <if test="pksgNote != null" >
+        pksg_note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pksgId != null" >
+        #{pksgId,jdbcType=INTEGER},
+      </if>
+      <if test="pksgStudid != null" >
+        #{pksgStudid,jdbcType=INTEGER},
+      </if>
+      <if test="pksgRank != null" >
+        #{pksgRank,jdbcType=VARCHAR},
+      </if>
+      <if test="pksgAdmittime != null" >
+        #{pksgAdmittime,jdbcType=VARCHAR},
+      </if>
+      <if test="pksgIsdisable != null" >
+        #{pksgIsdisable,jdbcType=INTEGER},
+      </if>
+      <if test="pksgOpinion != null" >
+        #{pksgOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="pksgApplytime != null" >
+        #{pksgApplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pksgCommunityopiniontime != null" >
+        #{pksgCommunityopiniontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pksgRecommendgrade != null" >
+        #{pksgRecommendgrade,jdbcType=VARCHAR},
+      </if>
+      <if test="pksgLeaderopiniontime != null" >
+        #{pksgLeaderopiniontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pksgAcademyopiniontime != null" >
+        #{pksgAcademyopiniontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pksgWorkid != null" >
+        #{pksgWorkid,jdbcType=INTEGER},
+      </if>
+      <if test="pksgWsflid != null" >
+        #{pksgWsflid,jdbcType=INTEGER},
+      </if>
+      <if test="pksgIsdeleted != null" >
+        #{pksgIsdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="pksgPoliticstate != null" >
+        #{pksgPoliticstate,jdbcType=VARCHAR},
+      </if>
+      <if test="pksgAllincomeperyear != null" >
+        #{pksgAllincomeperyear,jdbcType=DOUBLE},
+      </if>
+      <if test="pksgHome != null" >
+        #{pksgHome,jdbcType=VARCHAR},
+      </if>
+      <if test="pksgMailcode != null" >
+        #{pksgMailcode,jdbcType=VARCHAR},
+      </if>
+      <if test="pksgState != null" >
+        #{pksgState,jdbcType=INTEGER},
+      </if>
+      <if test="pksgSituation != null" >
+        #{pksgSituation,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="pksgApplyreason != null" >
+        #{pksgApplyreason,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="pksgCommunityopinion != null" >
+        #{pksgCommunityopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="pksgAcademyopinion != null" >
+        #{pksgAcademyopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="pksgNote != null" >
+        #{pksgNote,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.PgsglWithBLOBs" >
+    update pksgl
+    <set >
+      <if test="pksgStudid != null" >
+        pksg_studId = #{pksgStudid,jdbcType=INTEGER},
+      </if>
+      <if test="pksgRank != null" >
+        pksg_rank = #{pksgRank,jdbcType=VARCHAR},
+      </if>
+      <if test="pksgAdmittime != null" >
+        pksg_admittime = #{pksgAdmittime,jdbcType=VARCHAR},
+      </if>
+      <if test="pksgIsdisable != null" >
+        pksg_isDisable = #{pksgIsdisable,jdbcType=INTEGER},
+      </if>
+      <if test="pksgOpinion != null" >
+        pksg_opinion = #{pksgOpinion,jdbcType=VARCHAR},
+      </if>
+      <if test="pksgApplytime != null" >
+        pksg_applyTime = #{pksgApplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pksgCommunityopiniontime != null" >
+        pksg_communityOpinionTime = #{pksgCommunityopiniontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pksgRecommendgrade != null" >
+        pksg_recommendGrade = #{pksgRecommendgrade,jdbcType=VARCHAR},
+      </if>
+      <if test="pksgLeaderopiniontime != null" >
+        pksg_leaderOpinionTime = #{pksgLeaderopiniontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pksgAcademyopiniontime != null" >
+        pksg_academyOpinionTime = #{pksgAcademyopiniontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pksgWorkid != null" >
+        pksg_workId = #{pksgWorkid,jdbcType=INTEGER},
+      </if>
+      <if test="pksgWsflid != null" >
+        pksg_wsflId = #{pksgWsflid,jdbcType=INTEGER},
+      </if>
+      <if test="pksgIsdeleted != null" >
+        pksg_isDeleted = #{pksgIsdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="pksgPoliticstate != null" >
+        pksg_politicState = #{pksgPoliticstate,jdbcType=VARCHAR},
+      </if>
+      <if test="pksgAllincomeperyear != null" >
+        pksg_allIncomePerYear = #{pksgAllincomeperyear,jdbcType=DOUBLE},
+      </if>
+      <if test="pksgHome != null" >
+        pksg_home = #{pksgHome,jdbcType=VARCHAR},
+      </if>
+      <if test="pksgMailcode != null" >
+        pksg_mailcode = #{pksgMailcode,jdbcType=VARCHAR},
+      </if>
+      <if test="pksgState != null" >
+        pksg_state = #{pksgState,jdbcType=INTEGER},
+      </if>
+      <if test="pksgSituation != null" >
+        pksg_situation = #{pksgSituation,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="pksgApplyreason != null" >
+        pksg_applyReason = #{pksgApplyreason,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="pksgCommunityopinion != null" >
+        pksg_communityOpinion = #{pksgCommunityopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="pksgAcademyopinion != null" >
+        pksg_academyOpinion = #{pksgAcademyopinion,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="pksgNote != null" >
+        pksg_note = #{pksgNote,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where pksg_id = #{pksgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="swust.edu.cn.zzxt.model.PgsglWithBLOBs" >
+    update pksgl
+    set pksg_studId = #{pksgStudid,jdbcType=INTEGER},
+      pksg_rank = #{pksgRank,jdbcType=VARCHAR},
+      pksg_admittime = #{pksgAdmittime,jdbcType=VARCHAR},
+      pksg_isDisable = #{pksgIsdisable,jdbcType=INTEGER},
+      pksg_opinion = #{pksgOpinion,jdbcType=VARCHAR},
+      pksg_applyTime = #{pksgApplytime,jdbcType=TIMESTAMP},
+      pksg_communityOpinionTime = #{pksgCommunityopiniontime,jdbcType=TIMESTAMP},
+      pksg_recommendGrade = #{pksgRecommendgrade,jdbcType=VARCHAR},
+      pksg_leaderOpinionTime = #{pksgLeaderopiniontime,jdbcType=TIMESTAMP},
+      pksg_academyOpinionTime = #{pksgAcademyopiniontime,jdbcType=TIMESTAMP},
+      pksg_workId = #{pksgWorkid,jdbcType=INTEGER},
+      pksg_wsflId = #{pksgWsflid,jdbcType=INTEGER},
+      pksg_isDeleted = #{pksgIsdeleted,jdbcType=INTEGER},
+      pksg_politicState = #{pksgPoliticstate,jdbcType=VARCHAR},
+      pksg_allIncomePerYear = #{pksgAllincomeperyear,jdbcType=DOUBLE},
+      pksg_home = #{pksgHome,jdbcType=VARCHAR},
+      pksg_mailcode = #{pksgMailcode,jdbcType=VARCHAR},
+      pksg_state = #{pksgState,jdbcType=INTEGER},
+      pksg_situation = #{pksgSituation,jdbcType=LONGVARCHAR},
+      pksg_applyReason = #{pksgApplyreason,jdbcType=LONGVARCHAR},
+      pksg_communityOpinion = #{pksgCommunityopinion,jdbcType=LONGVARCHAR},
+      pksg_academyOpinion = #{pksgAcademyopinion,jdbcType=LONGVARCHAR},
+      pksg_note = #{pksgNote,jdbcType=LONGVARCHAR}
+    where pksg_id = #{pksgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Pgsgl" >
+    update pksgl
+    set pksg_studId = #{pksgStudid,jdbcType=INTEGER},
+      pksg_rank = #{pksgRank,jdbcType=VARCHAR},
+      pksg_admittime = #{pksgAdmittime,jdbcType=VARCHAR},
+      pksg_isDisable = #{pksgIsdisable,jdbcType=INTEGER},
+      pksg_opinion = #{pksgOpinion,jdbcType=VARCHAR},
+      pksg_applyTime = #{pksgApplytime,jdbcType=TIMESTAMP},
+      pksg_communityOpinionTime = #{pksgCommunityopiniontime,jdbcType=TIMESTAMP},
+      pksg_recommendGrade = #{pksgRecommendgrade,jdbcType=VARCHAR},
+      pksg_leaderOpinionTime = #{pksgLeaderopiniontime,jdbcType=TIMESTAMP},
+      pksg_academyOpinionTime = #{pksgAcademyopiniontime,jdbcType=TIMESTAMP},
+      pksg_workId = #{pksgWorkid,jdbcType=INTEGER},
+      pksg_wsflId = #{pksgWsflid,jdbcType=INTEGER},
+      pksg_isDeleted = #{pksgIsdeleted,jdbcType=INTEGER},
+      pksg_politicState = #{pksgPoliticstate,jdbcType=VARCHAR},
+      pksg_allIncomePerYear = #{pksgAllincomeperyear,jdbcType=DOUBLE},
+      pksg_home = #{pksgHome,jdbcType=VARCHAR},
+      pksg_mailcode = #{pksgMailcode,jdbcType=VARCHAR},
+      pksg_state = #{pksgState,jdbcType=INTEGER}
+    where pksg_id = #{pksgId,jdbcType=INTEGER}
+  </update>
+<!--   通过学生Id查找 -->
+  <select id="selectByStudId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from pksgl
+    where pksg_studId = #{studId,jdbcType=INTEGER}
+  </select>
+  <!--   通过学生Id查找list -->
+  <select id="selectPksgbasiinfoByStudId" resultType="swust.edu.cn.zzxt.selfmodel.Pksglbasicinfo" parameterType="java.lang.Integer" >
+    select 
+    	l.pksg_id as pksglId,
+    	m.stud_id as studentId,
+    	m.stud_name as studentName,
+    	m.stud_number as studentNumber,
+    	n.class_name as className,
+    	n.class_shortname as classShortName,
+    	o.majr_name as majrName,
+    	o.majr_shortname as majrShortName,
+    	p.inst_name as instName,
+    	p.inst_shortname as instShortName,
+    	l.pksg_rank as pksgRank,
+    	l.pksg_admittime as admitTime,
+    	l.pksg_applytime as applyTime,
+    	l.pksg_state as state,
+    	l.pksg_politicState as politicState,
+    	if(l.pksg_wsflId=-1,0,q.wsfl_roleId) as roleId
+    from 
+    	pksgl l,
+    	student m,
+    	studentclass n,
+    	major o,
+    	institution p,
+    	workstepflow q
+    	where p.inst_id = o.majr_instId
+	    and o.majr_id = n.class_majrId
+	    and n.class_id = m.stud_classId
+	    and m.stud_id = l.pksg_studId
+	    and l.pksg_studId = #{studId,jdbcType=INTEGER}
+	    and IF(l.pksg_wsflId =-1,l.pksg_wsflId+2= q.wsfl_id,l.pksg_wsflId = q.wsfl_id)
+  </select>
+  <!--   通过學院Id查找list -->
+  <select id="selectPksgbasiinfoByInstId" resultType="swust.edu.cn.zzxt.selfmodel.Pksglbasicinfo" parameterType="java.lang.Integer" >
+    select 
+    	l.pksg_id as pksglId,
+    	m.stud_id as studentId,
+    	m.stud_name as studentName,
+    	m.stud_number as studentNumber,
+    	n.class_name as className,
+    	n.class_shortname as classShortName,
+    	o.majr_name as majrName,
+    	o.majr_shortname as majrShortName,
+    	p.inst_name as instName,
+    	p.inst_shortname as instShortName,
+    	l.pksg_rank as pksgRank,
+    	l.pksg_admittime as admitTime,
+    	l.pksg_applytime as applyTime,
+    	l.pksg_state as state,
+    	l.pksg_politicState as politicState,
+    	if(l.pksg_wsflId=-1,0,q.wsfl_roleId) as roleId
+    from 
+    	pksgl l,
+    	student m,
+    	studentclass n,
+    	major o,
+    	institution p,
+    	workstepflow q
+    	where p.inst_id = o.majr_instId
+	    and o.majr_id = n.class_majrId
+	    and n.class_id = m.stud_classId
+	    and m.stud_id = l.pksg_studId
+	    and p.inst_id = #{instId,jdbcType=INTEGER}
+	    and IF(l.pksg_wsflId =-1,l.pksg_wsflId+2= q.wsfl_id,l.pksg_wsflId = q.wsfl_id)
+  </select>
+    <!--   通过专业Id查找list -->
+  <select id="selectPksgbasiinfoByMajrId" resultType="swust.edu.cn.zzxt.selfmodel.Pksglbasicinfo" parameterType="java.lang.Integer" >
+    select 
+    	l.pksg_id as pksglId,
+    	m.stud_id as studentId,
+    	m.stud_name as studentName,
+    	m.stud_number as studentNumber,
+    	n.class_name as className,
+    	n.class_shortname as classShortName,
+    	o.majr_name as majrName,
+    	o.majr_shortname as majrShortName,
+    	p.inst_name as instName,
+    	p.inst_shortname as instShortName,
+    	l.pksg_rank as pksgRank,
+    	l.pksg_admittime as admitTime,
+    	l.pksg_applytime as applyTime,
+    	l.pksg_state as state,
+    	l.pksg_politicState as politicState,
+    	if(l.pksg_wsflId=-1,0,q.wsfl_roleId) as roleId
+    from 
+    	pksgl l,
+    	student m,
+    	studentclass n,
+    	major o,
+    	institution p,
+    	workstepflow q
+    	where p.inst_id = o.majr_instId
+	    and o.majr_id = n.class_majrId
+	    and n.class_id = m.stud_classId
+	    and m.stud_id = l.pksg_studId
+	    and o.majr_id = #{majrId,jdbcType=INTEGER}
+	    and IF(l.pksg_wsflId =-1,l.pksg_wsflId+2= q.wsfl_id,l.pksg_wsflId = q.wsfl_id)
+  </select>
+  <!--   通过班级Id查找list -->
+  <select id="selectPksgbasiinfoByClassId" resultType="swust.edu.cn.zzxt.selfmodel.Pksglbasicinfo" parameterType="java.lang.Integer" >
+    select
+    	l.pksg_id as pksglId,
+    	m.stud_id as studentId,
+    	m.stud_name as studentName,
+    	m.stud_number as studentNumber,
+    	n.class_name as className,
+    	n.class_shortname as classShortName,
+    	o.majr_name as majrName,
+    	o.majr_shortname as majrShortName,
+    	p.inst_name as instName,
+    	p.inst_shortname as instShortName,
+    	l.pksg_rank as pksgRank,
+    	l.pksg_admittime as admitTime,
+    	l.pksg_applytime as applyTime,
+    	l.pksg_state as state,
+    	l.pksg_politicState as politicState,
+    	if(l.pksg_wsflId=-1,0,q.wsfl_roleId) as roleId
+    from
+    	pksgl l,
+    	student m,
+    	studentclass n,
+    	major o,
+    	institution p,
+    	workstepflow q
+    	where p.inst_id = o.majr_instId
+	    and o.majr_id = n.class_majrId
+	    and n.class_id = m.stud_classId
+	    and m.stud_id = l.pksg_studId
+	    and n.class_id = #{classId,jdbcType=INTEGER}
+	    and IF(l.pksg_wsflId =-1,l.pksg_wsflId+2= q.wsfl_id,l.pksg_wsflId = q.wsfl_id)
+  </select>
+  <!--   查找所有list -->
+  <select id="selectAllPksgbasiinfo" resultType="swust.edu.cn.zzxt.selfmodel.Pksglbasicinfo">
+    select
+    	l.pksg_id as pksglId,
+    	m.stud_id as studentId,
+    	m.stud_name as studentName,
+    	m.stud_number as studentNumber,
+    	n.class_name as className,
+    	n.class_shortname as classShortName,
+    	o.majr_name as majrName,
+    	o.majr_shortname as majrShortName,
+    	p.inst_name as instName,
+    	p.inst_shortname as instShortName,
+    	l.pksg_rank as pksgRank,
+    	l.pksg_admittime as admitTime,
+    	l.pksg_applytime as applyTime,
+    	l.pksg_state as state,
+    	l.pksg_politicState as politicState,
+    	if(l.pksg_wsflId=-1,0,q.wsfl_roleId) as roleId
+    from
+    	pksgl l,
+    	student m,
+    	studentclass n,
+    	major o,
+    	institution p,
+    	workstepflow q
+    	where p.inst_id = o.majr_instId
+	    and o.majr_id = n.class_majrId
+	    and n.class_id = m.stud_classId
+	    and m.stud_id = l.pksg_studId
+	    and IF(l.pksg_wsflId =-1,l.pksg_wsflId+2= q.wsfl_id,l.pksg_wsflId = q.wsfl_id)
+  </select>
+</mapper>

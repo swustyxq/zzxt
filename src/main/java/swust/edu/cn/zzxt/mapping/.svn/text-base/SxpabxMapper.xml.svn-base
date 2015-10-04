@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.SxpabxMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Sxpabx" >
+    <id column="xspa_id" property="xspaId" jdbcType="INTEGER" />
+    <result column="xspa_studId" property="xspaStudid" jdbcType="INTEGER" />
+    <result column="xspa_buyAnnual" property="xspaBuyannual" jdbcType="VARCHAR" />
+    <result column="xspa_buyTime" property="xspaBuytime" jdbcType="VARCHAR" />
+    <result column="xspa_money" property="xspaMoney" jdbcType="DOUBLE" />
+    <result column="xspa_wsflId" property="xspaWsflid" jdbcType="INTEGER" />
+    <result column="xspa_workId" property="xspaWorkid" jdbcType="INTEGER" />
+    <result column="xspa_fromTime" property="xspaFromtime" jdbcType="TIMESTAMP" />
+    <result column="xspa_toTime" property="xspaTotime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="swust.edu.cn.zzxt.model.Sxpabx" extends="BaseResultMap" >
+    <result column="xspa_note" property="xspaNote" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    xspa_id, xspa_studId, xspa_buyAnnual, xspa_buyTime, xspa_money, xspa_wsflId, xspa_workId, 
+    xspa_fromTime, xspa_toTime
+  </sql>
+  <sql id="Blob_Column_List" >
+    xspa_note
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sxpabx
+    where xspa_id = #{xspaId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sxpabx
+    where xspa_id = #{xspaId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.Sxpabx" >
+    insert into sxpabx (xspa_id, xspa_studId, xspa_buyAnnual, 
+      xspa_buyTime, xspa_money, xspa_wsflId, 
+      xspa_workId, xspa_fromTime, xspa_toTime, 
+      xspa_note)
+    values (#{xspaId,jdbcType=INTEGER}, #{xspaStudid,jdbcType=INTEGER}, #{xspaBuyannual,jdbcType=VARCHAR}, 
+      #{xspaBuytime,jdbcType=VARCHAR}, #{xspaMoney,jdbcType=DOUBLE}, #{xspaWsflid,jdbcType=INTEGER}, 
+      #{xspaWorkid,jdbcType=INTEGER}, #{xspaFromtime,jdbcType=TIMESTAMP}, #{xspaTotime,jdbcType=TIMESTAMP}, 
+      #{xspaNote,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.Sxpabx" >
+    insert into sxpabx
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="xspaId != null" >
+        xspa_id,
+      </if>
+      <if test="xspaStudid != null" >
+        xspa_studId,
+      </if>
+      <if test="xspaBuyannual != null" >
+        xspa_buyAnnual,
+      </if>
+      <if test="xspaBuytime != null" >
+        xspa_buyTime,
+      </if>
+      <if test="xspaMoney != null" >
+        xspa_money,
+      </if>
+      <if test="xspaWsflid != null" >
+        xspa_wsflId,
+      </if>
+      <if test="xspaWorkid != null" >
+        xspa_workId,
+      </if>
+      <if test="xspaFromtime != null" >
+        xspa_fromTime,
+      </if>
+      <if test="xspaTotime != null" >
+        xspa_toTime,
+      </if>
+      <if test="xspaNote != null" >
+        xspa_note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="xspaId != null" >
+        #{xspaId,jdbcType=INTEGER},
+      </if>
+      <if test="xspaStudid != null" >
+        #{xspaStudid,jdbcType=INTEGER},
+      </if>
+      <if test="xspaBuyannual != null" >
+        #{xspaBuyannual,jdbcType=VARCHAR},
+      </if>
+      <if test="xspaBuytime != null" >
+        #{xspaBuytime,jdbcType=VARCHAR},
+      </if>
+      <if test="xspaMoney != null" >
+        #{xspaMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="xspaWsflid != null" >
+        #{xspaWsflid,jdbcType=INTEGER},
+      </if>
+      <if test="xspaWorkid != null" >
+        #{xspaWorkid,jdbcType=INTEGER},
+      </if>
+      <if test="xspaFromtime != null" >
+        #{xspaFromtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="xspaTotime != null" >
+        #{xspaTotime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="xspaNote != null" >
+        #{xspaNote,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.Sxpabx" >
+    update sxpabx
+    <set >
+      <if test="xspaStudid != null" >
+        xspa_studId = #{xspaStudid,jdbcType=INTEGER},
+      </if>
+      <if test="xspaBuyannual != null" >
+        xspa_buyAnnual = #{xspaBuyannual,jdbcType=VARCHAR},
+      </if>
+      <if test="xspaBuytime != null" >
+        xspa_buyTime = #{xspaBuytime,jdbcType=VARCHAR},
+      </if>
+      <if test="xspaMoney != null" >
+        xspa_money = #{xspaMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="xspaWsflid != null" >
+        xspa_wsflId = #{xspaWsflid,jdbcType=INTEGER},
+      </if>
+      <if test="xspaWorkid != null" >
+        xspa_workId = #{xspaWorkid,jdbcType=INTEGER},
+      </if>
+      <if test="xspaFromtime != null" >
+        xspa_fromTime = #{xspaFromtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="xspaTotime != null" >
+        xspa_toTime = #{xspaTotime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="xspaNote != null" >
+        xspa_note = #{xspaNote,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where xspa_id = #{xspaId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="swust.edu.cn.zzxt.model.Sxpabx" >
+    update sxpabx
+    set xspa_studId = #{xspaStudid,jdbcType=INTEGER},
+      xspa_buyAnnual = #{xspaBuyannual,jdbcType=VARCHAR},
+      xspa_buyTime = #{xspaBuytime,jdbcType=VARCHAR},
+      xspa_money = #{xspaMoney,jdbcType=DOUBLE},
+      xspa_wsflId = #{xspaWsflid,jdbcType=INTEGER},
+      xspa_workId = #{xspaWorkid,jdbcType=INTEGER},
+      xspa_fromTime = #{xspaFromtime,jdbcType=TIMESTAMP},
+      xspa_toTime = #{xspaTotime,jdbcType=TIMESTAMP},
+      xspa_note = #{xspaNote,jdbcType=LONGVARCHAR}
+    where xspa_id = #{xspaId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Sxpabx" >
+    update sxpabx
+    set xspa_studId = #{xspaStudid,jdbcType=INTEGER},
+      xspa_buyAnnual = #{xspaBuyannual,jdbcType=VARCHAR},
+      xspa_buyTime = #{xspaBuytime,jdbcType=VARCHAR},
+      xspa_money = #{xspaMoney,jdbcType=DOUBLE},
+      xspa_wsflId = #{xspaWsflid,jdbcType=INTEGER},
+      xspa_workId = #{xspaWorkid,jdbcType=INTEGER},
+      xspa_fromTime = #{xspaFromtime,jdbcType=TIMESTAMP},
+      xspa_toTime = #{xspaTotime,jdbcType=TIMESTAMP}
+    where xspa_id = #{xspaId,jdbcType=INTEGER}
+  </update>
+  <!-- 通过studentid查找 -->
+  <select id="selectBystudentId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sxpabx
+    where xspa_studId = #{studentId,jdbcType=INTEGER}
+  </select>
+  <!-- 通过studentid和annual查找 -->
+  <select id="selectByStutId_Annual" resultMap="ResultMapWithBLOBs" parameterType="swust.edu.cn.zzxt.model.Sxpabx" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sxpabx
+    where (xspa_buyAnnual = #{xspaBuyannual,jdbcType=VARCHAR}) and (xspa_studId = #{xspaStudid,jdbcType=INTEGER})
+  </select>
+  
+  <!--   通过学生Id查找list -->
+  <select id="selectPabxbasiinfoByStudId" resultType="swust.edu.cn.zzxt.selfmodel.Pabxbasicinfo" parameterType="java.lang.Integer" >
+    select 
+    	l.xspa_id as xspaId,
+    	m.stud_id as studentId,
+    	m.stud_name as studentName,
+    	m.stud_number as studentNumber,
+    	n.class_name as className,
+    	n.class_shortname as classShortName,
+    	o.majr_name as majrName,
+    	o.majr_shortname as majrShortName,
+    	p.inst_name as instName,
+    	p.inst_shortname as instShortName,
+    	l.xspa_buyAnnual as buyAnnual,
+    	l.xspa_buyTime as buyTime
+    from 
+    	sxpabx l,
+    	student m,
+    	studentclass n,
+    	major o,
+    	institution p
+    	where p.inst_id = o.majr_instId
+	    and o.majr_id = n.class_majrId
+	    and n.class_id = m.stud_classId
+	    and m.stud_id = l.xspa_studId
+	    and l.xspa_studId = #{studId,jdbcType=INTEGER}
+  </select>
+  <!--   通过學院Id查找list -->
+ <select id="selectPabxbasiinfoByInstId" resultType="swust.edu.cn.zzxt.selfmodel.Pabxbasicinfo" parameterType="java.lang.Integer" >
+   select 
+    	l.xspa_id as xspaId,
+    	m.stud_id as studentId,
+    	m.stud_name as studentName,
+    	m.stud_number as studentNumber,
+    	n.class_name as className,
+    	n.class_shortname as classShortName,
+    	o.majr_name as majrName,
+    	o.majr_shortname as majrShortName,
+    	p.inst_name as instName,
+    	p.inst_shortname as instShortName,
+    	l.xspa_buyAnnual as buyAnnual,
+    	l.xspa_buyTime   as buyTime    	
+    from 
+    	sxpabx l,
+    	student m,
+    	studentclass n,
+    	major o,
+    	institution p
+    	where p.inst_id = o.majr_instId
+	    and o.majr_id = n.class_majrId
+	    and n.class_id = m.stud_classId
+	    and m.stud_id = l.xspa_studId
+	    and p.inst_id = #{instId,jdbcType=INTEGER}	 
+  </select>
+    <!--   通过专业Id查找list --> 
+ <select id="selectPabxbasiinfoByMajrId" resultType="swust.edu.cn.zzxt.selfmodel.Pabxbasicinfo" parameterType="java.lang.Integer" >
+    select 
+    	l.xspa_id as xspaId,
+    	m.stud_id as studentId,
+    	m.stud_name as studentName,
+    	m.stud_number as studentNumber,
+    	n.class_name as className,
+    	n.class_shortname as classShortName,
+    	o.majr_name as majrName,
+    	o.majr_shortname as majrShortName,
+    	p.inst_name as instName,
+    	p.inst_shortname as instShortName,
+    	l.xspa_buyAnnual as buyAnnual,
+    	l.xspa_buyTime   as buyTime
+    	
+    from 
+    	sxpabx l,
+    	student m,
+    	studentclass n,
+    	major o,
+    	institution p
+    	where p.inst_id = o.majr_instId
+	    and o.majr_id = n.class_majrId
+	    and n.class_id = m.stud_classId
+	    and m.stud_id = l.xspa_studId
+	    and o.majr_id = #{majrId,jdbcType=INTEGER}
+	    </select>
+  <!--   通过班级Id查找list -->
+  <select id="selectPabxbasiinfoByClassId" resultType="swust.edu.cn.zzxt.selfmodel.Pabxbasicinfo" parameterType="java.lang.Integer" >
+    select
+    	l.xspa_id as xspaId,
+    	m.stud_id as studentId,
+    	m.stud_name as studentName,
+    	m.stud_number as studentNumber,
+    	n.class_name as className,
+    	n.class_shortname as classShortName,
+    	o.majr_name as majrName,
+    	o.majr_shortname as majrShortName,
+    	p.inst_name as instName,
+    	p.inst_shortname as instShortName,
+    	l.xspa_buyAnnual as buyAnnual,
+    	l.xspa_buyTime   as buyTime    	
+    from
+    	sxpabx l,
+    	student m,
+    	studentclass n,
+    	major o,
+    	institution p
+    	where p.inst_id = o.majr_instId
+	    and o.majr_id = n.class_majrId
+	    and n.class_id = m.stud_classId
+	    and m.stud_id = l.xspa_studId
+	    and n.class_id = #{classId,jdbcType=INTEGER}
+	  
+  </select>
+  <!--   查找所有list -->
+  <select id="selectAllPabxbasiinfo" resultType="swust.edu.cn.zzxt.selfmodel.Pabxbasicinfo">
+    select
+    	l.xspa_id as xspaId,
+    	m.stud_id as studentId,
+    	m.stud_name as studentName,
+    	m.stud_number as studentNumber,
+    	n.class_name as className,
+    	n.class_shortname as classShortName,
+    	o.majr_name as majrName,
+    	o.majr_shortname as majrShortName,
+    	p.inst_name as instName,
+    	p.inst_shortname as instShortName,
+    	l.xspa_buyAnnual as buyAnnual,
+    	l.xspa_buyTime   as buyTime
+    from
+    	sxpabx l,
+    	student m,
+    	studentclass n,
+    	major o,
+    	institution p
+    	where p.inst_id = o.majr_instId
+	    and o.majr_id = n.class_majrId
+	    and n.class_id = m.stud_classId
+	    and m.stud_id = l.xspa_studId
+  </select>
+</mapper>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="swust.edu.cn.zzxt.dao.EducationexperienceMapper" >
+  <resultMap id="BaseResultMap" type="swust.edu.cn.zzxt.model.Educationexperience" >
+    <id column="edex_id" property="edexId" jdbcType="INTEGER" />
+    <result column="edex_startEndTime" property="edexStartendtime" jdbcType="VARCHAR" />
+    <result column="edex_school" property="edexSchool" jdbcType="VARCHAR" />
+    <result column="edex_major" property="edexMajor" jdbcType="VARCHAR" />
+    <result column="edex_educationalBackground" property="edexEducationalbackground" jdbcType="VARCHAR" />
+    <result column="edex_qysjId" property="edexQysjid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    edex_id, edex_startEndTime, edex_school, edex_major, edex_educationalBackground, 
+    edex_qysjId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from educationexperience
+    where edex_id = #{edexId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from educationexperience
+    where edex_id = #{edexId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="swust.edu.cn.zzxt.model.Educationexperience" >
+    insert into educationexperience (edex_id, edex_startEndTime, edex_school, 
+      edex_major, edex_educationalBackground, edex_qysjId
+      )
+    values (#{edexId,jdbcType=INTEGER}, #{edexStartendtime,jdbcType=VARCHAR}, #{edexSchool,jdbcType=VARCHAR}, 
+      #{edexMajor,jdbcType=VARCHAR}, #{edexEducationalbackground,jdbcType=VARCHAR}, #{edexQysjid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="swust.edu.cn.zzxt.model.Educationexperience" >
+    insert into educationexperience
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="edexId != null" >
+        edex_id,
+      </if>
+      <if test="edexStartendtime != null" >
+        edex_startEndTime,
+      </if>
+      <if test="edexSchool != null" >
+        edex_school,
+      </if>
+      <if test="edexMajor != null" >
+        edex_major,
+      </if>
+      <if test="edexEducationalbackground != null" >
+        edex_educationalBackground,
+      </if>
+      <if test="edexQysjid != null" >
+        edex_qysjId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="edexId != null" >
+        #{edexId,jdbcType=INTEGER},
+      </if>
+      <if test="edexStartendtime != null" >
+        #{edexStartendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="edexSchool != null" >
+        #{edexSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="edexMajor != null" >
+        #{edexMajor,jdbcType=VARCHAR},
+      </if>
+      <if test="edexEducationalbackground != null" >
+        #{edexEducationalbackground,jdbcType=VARCHAR},
+      </if>
+      <if test="edexQysjid != null" >
+        #{edexQysjid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="swust.edu.cn.zzxt.model.Educationexperience" >
+    update educationexperience
+    <set >
+      <if test="edexStartendtime != null" >
+        edex_startEndTime = #{edexStartendtime,jdbcType=VARCHAR},
+      </if>
+      <if test="edexSchool != null" >
+        edex_school = #{edexSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="edexMajor != null" >
+        edex_major = #{edexMajor,jdbcType=VARCHAR},
+      </if>
+      <if test="edexEducationalbackground != null" >
+        edex_educationalBackground = #{edexEducationalbackground,jdbcType=VARCHAR},
+      </if>
+      <if test="edexQysjid != null" >
+        edex_qysjId = #{edexQysjid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where edex_id = #{edexId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="swust.edu.cn.zzxt.model.Educationexperience" >
+    update educationexperience
+    set edex_startEndTime = #{edexStartendtime,jdbcType=VARCHAR},
+      edex_school = #{edexSchool,jdbcType=VARCHAR},
+      edex_major = #{edexMajor,jdbcType=VARCHAR},
+      edex_educationalBackground = #{edexEducationalbackground,jdbcType=VARCHAR},
+      edex_qysjId = #{edexQysjid,jdbcType=INTEGER}
+    where edex_id = #{edexId,jdbcType=INTEGER}
+  </update>
+</mapper>
